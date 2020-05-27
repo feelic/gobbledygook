@@ -1,24 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import { generateLanguage } from "./gobbledygook/generate-language/index";
+import { makeMorpheme, transliterate } from "./gobbledygook/use-language";
+const { setSeed } = require("./gobbledygook/util/random");
 
-function App() {
+function App(props) {
+  const { seed = "coucou" } = props;
+  const [lang, setLang] = useState();
+
+  useEffect(() => {
+    setSeed(seed);
+    setLang(generateLanguage());
+  }, [seed]);
+
+  if (!lang) {
+    return <div>no language</div>;
+  }
+
+  const wordLengths = [2, 3, 4, 1, 2];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {wordLengths.map(len => {
+        const word = makeMorpheme(lang, len);
+        const translit = transliterate(lang, word);
+
+        return (
+          <p>
+            {word} {translit}
+          </p>
+        );
+      })}
     </div>
   );
 }

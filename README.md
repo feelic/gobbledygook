@@ -1,68 +1,73 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# gobbledygook
 
-## Available Scripts
+This package aims at randomly generating human languages.
 
-In the project directory, you can run:
+## Language generation
 
-### `yarn start`
+The language is generated in layers:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Phonemes
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Each language will get a random set of vowels and consonants.
 
-### `yarn test`
+- 4 to 20 vowels
+- 5 to 30 consonants
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Morphemes
 
-### `yarn build`
+Morphemes will be made using a series of phonemes.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Morphology
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+The language will be either isolating, fusional or agglutinative
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Grammatical features
 
-### `yarn eject`
+## Resources
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Language creation
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The Language Construction Kit  
+http://www.zompist.com/kit.html
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### IPA and phonetics
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+IPA charts with sounds  
+http://www.internationalphoneticalphabet.org/ipa-sounds/ipa-chart-with-sounds/
 
-## Learn More
+Wikipedia article for vowel  
+https://en.wikipedia.org/wiki/Vowel
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Wikipedia article for consonant  
+https://en.wikipedia.org/wiki/Consonant
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+StackExchange question on languages with few phonemes  
+http://linguistics.stackexchange.com/questions/4561/languages-with-the-fewest-phonemes
 
-### Code Splitting
+Quora question on languages with most phonemes  
+https://www.quora.com/Phonetics-Which-language-has-the-most-amount-of-sounds
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+http://ipa-reader.xyz/
+https://cuttlesoft.com/blog/pronouncing-things-with-amazons-polly/
 
-### Analyzing the Bundle Size
+#### Morphology
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Wikipedia article for morpheme  
+https://en.wikipedia.org/wiki/Morpheme
+https://en.wikipedia.org/wiki/Morphology_(linguistics)
+https://en.wikipedia.org/wiki/Subject%E2%80%93verb%E2%80%93object
+https://en.wikipedia.org/wiki/Agglutinative_language
+https://en.wikipedia.org/wiki/Fusional_language
+https://en.wikipedia.org/wiki/Isolating_language
 
-### Making a Progressive Web App
+### Grammatical features
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+https://en.wikipedia.org/wiki/Grammatical_category
 
-### Advanced Configuration
+#### Language mutations
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Wikipedia article for consonant mutation  
+https://en.wikipedia.org/wiki/Consonant_mutation
 
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Wikipedia article for sound change  
+https://en.wikipedia.org/wiki/Sound_change
