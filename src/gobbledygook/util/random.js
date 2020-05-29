@@ -54,7 +54,7 @@ export const randomWithCoef = function randomWithCoef(values) {
     return prev.concat(new Array(weight).fill(value));
   }, []);
 
-  return pool[Math.floor(Math.random() * pool.length)];
+  return pool[Math.floor(random() * pool.length)];
 };
 
 export const nRandomFromArray = function nRandomFromArray(arr, n) {

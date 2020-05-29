@@ -1,6 +1,6 @@
 import { random, randomWithCoef } from "../util/random";
 
-export function makeMorpheme(lang, length) {
+export function makeMorpheme(phonology, length) {
   const morpheme = [];
 
   const phonemeTypes = ["vowels", "consonants"];
@@ -13,10 +13,10 @@ export function makeMorpheme(lang, length) {
   for (let i = 0; i < length; i += 1) {
     const phonemeType = phonemeTypes[nextPhoneme];
 
-    morpheme.push(randomWithCoef(lang[phonemeType]));
+    morpheme.push(randomWithCoef(phonology[phonemeType]));
 
     nextPhoneme = (nextPhoneme + 1) % 2;
   }
 
-  return morpheme;
+  return morpheme.join("");
 }

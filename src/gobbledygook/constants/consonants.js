@@ -384,7 +384,7 @@ export default {
       manner: "plosive",
       voicing: false
     },
-    translit: "n"
+    translit: "p"
   },
   q: {
     symbol: "q",

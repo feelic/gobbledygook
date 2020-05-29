@@ -6,32 +6,21 @@ import {
   shuffleArray
 } from "../util/random";
 import { bindNumber } from "../util/index";
-import consonants from "../constants/consonants";
-import vowels from "../constants/vowels";
 
-const phonemes = {
-  consonants,
-  vowels
-};
+import {
+  phonemes,
+  phonemicDistribution,
+  clusterConsonantPositions
+} from "../constants/phonology";
 
-const phonemicDistribution = {
-  consonants: {
-    min: 5,
-    mean: 18,
-    stdev: 8,
-    max: 40
-  },
-  vowels: {
-    min: 3,
-    mean: 14,
-    stdev: 6,
-    max: 20
-  }
-};
 const makeClusters = {
   vowels: makeDiphtongs,
   consonants: makeConsonantClusters
 };
+
+// Ideas for an improved phonology generation
+// const startConsonants = [];
+// const finalConsonants = [];
 
 /*
  * Returns an array of all phonemes allowed in a language
@@ -66,7 +55,6 @@ function assignFreqAndTranslit(selectedPhonemes, type, high = 50) {
   const reduction = Math.ceil(high / selectedPhonemes.length);
   return selectedPhonemes.reduce((res, phoneme, idx) => {
     const freq = Math.ceil(-reduction * idx) + high;
-    debugger;
     const translit =
       (phonemes[type][phoneme] && phonemes[type][phoneme].translit) ||
       phoneme
@@ -87,22 +75,15 @@ function assignFreqAndTranslit(selectedPhonemes, type, high = 50) {
 function makeDiphtongs() {
   return [];
 }
+
 function makeConsonantClusters(languageConsonants) {
-  const startConsonants = ["s"].filter(consonant =>
+  const startConsonants = clusterConsonantPositions.start.filter(consonant =>
     languageConsonants.includes(consonant)
   );
-  const midConsonants = [
-    "b",
-    "t",
-    "k",
-    "d",
-    "p",
-    "v",
-    "f",
-    "g",
-    "θ"
-  ].filter(consonant => languageConsonants.includes(consonant));
-  const finalConsonants = ["l", "r", "j"].filter(consonant =>
+  const midConsonants = clusterConsonantPositions.mid.filter(consonant =>
+    languageConsonants.includes(consonant)
+  );
+  const finalConsonants = clusterConsonantPositions.final.filter(consonant =>
     languageConsonants.includes(consonant)
   );
 
