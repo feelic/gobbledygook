@@ -1,0 +1,8 @@
+.App {
+  display: flex;
+}
+.speechBlock {
+  margin: 20px;
+  padding: 20px;
+  width: 100%;
+}

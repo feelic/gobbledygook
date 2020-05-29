@@ -1,4 +1,4 @@
-export const DEFAULT_VOICE = "Brian";
+export const DEFAULT_VOICE = "Gwyneth";
 export const VOICES = {
   Ivy: "Ivy [English - American]",
   Joanna: "Joanna [English - American]",
