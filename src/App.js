@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./App.css";
 import { generateLanguage } from "./gobbledygook/generate-language/index";
 import { makeMorpheme, transliterate } from "./gobbledygook/use-language";
+
+import { fetchAudio } from "./api";
+
 const { setSeed } = require("./gobbledygook/util/random");
 
 function App(props) {
   const { seed = "coucou" } = props;
   const [lang, setLang] = useState();
+  const [audio, setAudio] = useState();
+  const audioPlayer = useRef();
 
   useEffect(() => {
     setSeed(seed);
@@ -27,10 +32,25 @@ function App(props) {
 
         return (
           <p>
-            {word} {translit}
+            {word} {translit}{" "}
+            <button
+              onClick={() => {
+                fetchAudio(word.join(""))
+                  .then(res => setAudio(res))
+                  .then(() => {
+                    audioPlayer.current.load();
+                    audioPlayer.current.play();
+                  });
+              }}
+            >
+              :O
+            </button>
           </p>
         );
       })}
+      <audio ref={audioPlayer}>
+        {audio && <source src={audio} type="audio/mpeg"></source>}
+      </audio>
     </div>
   );
 }
