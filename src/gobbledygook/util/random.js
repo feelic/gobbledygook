@@ -1,16 +1,16 @@
-const seedrandom = require('seedrandom');
+import seedrandom from "seedrandom";
 
 let randomNumberGenerator = () => {
-  throw new Error('you must set a seed before running random');
+  throw new Error("you must set a seed before running random");
 };
-const random = () => randomNumberGenerator();
+export const random = () => randomNumberGenerator();
 
-const setSeed = function setSeed(seed) {
+export const setSeed = function setSeed(seed) {
   randomNumberGenerator = seedrandom(seed);
 };
 
 // This function was found here http://stackoverflow.com/a/35599181
-const gaussian = function gaussian(mean, stdev, integer = true) {
+export const gaussian = function gaussian(mean, stdev, integer = true) {
   let y2;
   let useLast = false;
 
@@ -47,7 +47,7 @@ const gaussian = function gaussian(mean, stdev, integer = true) {
   };
 };
 
-const randomWithCoef = function randomWithCoef(values) {
+export const randomWithCoef = function randomWithCoef(values) {
   const pool = Object.keys(values).reduce((prev, value) => {
     const { weight } = values[value];
 
@@ -57,7 +57,7 @@ const randomWithCoef = function randomWithCoef(values) {
   return pool[Math.floor(Math.random() * pool.length)];
 };
 
-const nRandomFromArray = function nRandomFromArray(arr, n) {
+export const nRandomFromArray = function nRandomFromArray(arr, n) {
   const max = n > arr.length ? arr.length : n;
   const result = [];
   let pool = JSON.parse(JSON.stringify(arr));
@@ -73,20 +73,10 @@ const nRandomFromArray = function nRandomFromArray(arr, n) {
   return result;
 };
 
-const randomFromArray = function randomFromArray(arr) {
+export const randomFromArray = function randomFromArray(arr) {
   return arr[Math.floor(random() * arr.length)];
 };
 
-const shuffleArray = function shuffleArray(arr) {
+export const shuffleArray = function shuffleArray(arr) {
   return arr.sort(() => Boolean(Math.round(random())));
-};
-
-module.exports = {
-  random,
-  setSeed,
-  gaussian,
-  randomWithCoef,
-  nRandomFromArray,
-  randomFromArray,
-  shuffleArray,
 };

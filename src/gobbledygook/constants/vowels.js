@@ -1,25 +1,25 @@
-module.exports = {
+export default {
   a: {
-    symbol: 'a',
+    symbol: "a",
     traits: {
-      height: 'open',
-      backness: 'front',
+      height: "open",
+      backness: "front",
       roundedness: false,
-      nasalization: false,
+      nasalization: false
     },
-    translit: 'a',
-    neighbours: ['ä', 'æ', 'ɶ'],
+    translit: "a",
+    neighbours: ["ä", "æ", "ɶ"]
   },
   ã: {
-    symbol: 'ã',
+    symbol: "ã",
     traits: {
-      height: 'open',
-      backness: 'central',
+      height: "open",
+      backness: "central",
       roundedness: false,
-      nasalization: true,
+      nasalization: true
     },
-    translit: 'a',
-    neighbours: ['ä', 'ɑ̃'],
+    translit: "a",
+    neighbours: ["ä", "ɑ̃"]
   },
   // ä: {
   //   symbol: 'ä',
@@ -33,26 +33,26 @@ module.exports = {
   //   neighbours: ['a', 'ã', 'ɑ', 'ɐ', 'ɒ̈'],
   // },
   ɑ: {
-    symbol: 'ɑ',
+    symbol: "ɑ",
     traits: {
-      height: 'open',
-      backness: 'back',
+      height: "open",
+      backness: "back",
       roundedness: false,
-      nasalization: false,
+      nasalization: false
     },
-    translit: 'a',
-    neighbours: ['ä', 'ɑ̃', 'ɒ'],
+    translit: "a",
+    neighbours: ["ä", "ɑ̃", "ɒ"]
   },
   ɑ̃: {
-    symbol: 'ɑ̃',
+    symbol: "ɑ̃",
     traits: {
-      height: 'open',
-      backness: 'back',
+      height: "open",
+      backness: "back",
       roundedness: false,
-      nasalization: true,
+      nasalization: true
     },
-    translit: 'a',
-    neighbours: ['ã', 'ɑ'],
+    translit: "a",
+    neighbours: ["ã", "ɑ"]
   },
   // ɐ: {
   //   symbol: 'ɐ',
@@ -66,15 +66,15 @@ module.exports = {
   //   neighbours: ['ä', 'æ', 'ɜ', 'ɞ'],
   // },
   ɒ: {
-    symbol: 'ɒ',
+    symbol: "ɒ",
     traits: {
-      height: 'open',
-      backness: 'back',
+      height: "open",
+      backness: "back",
       roundedness: true,
-      nasalization: false,
+      nasalization: false
     },
-    translit: 'å',
-    neighbours: ['ɑ', 'ɒ̈'],
+    translit: "å",
+    neighbours: ["ɑ", "ɒ̈"]
   },
   // ɒ̈: {
   //   symbol: 'ɒ̈',
@@ -88,48 +88,48 @@ module.exports = {
   //   neighbours: ['ä', 'ɒ', 'ɞ', 'ɶ'],
   // },
   æ: {
-    symbol: 'æ',
+    symbol: "æ",
     traits: {
-      height: 'near-open',
-      backness: 'front',
+      height: "near-open",
+      backness: "front",
       roundedness: false,
-      nasalization: false,
+      nasalization: false
     },
-    translit: 'ä',
-    neighbours: ['a', 'ɐ', 'ɛ'],
+    translit: "ä",
+    neighbours: ["a", "ɐ", "ɛ"]
   },
   ɔ: {
-    symbol: 'ɔ',
+    symbol: "ɔ",
     traits: {
-      height: 'open-mid',
-      'backnes,s': 'back',
+      height: "open-mid",
+      "backnes,s": "back",
       roundedness: true,
-      nasalization: false,
+      nasalization: false
     },
-    translit: 'o',
-    neighbours: ['ɔ̃', 'o̞', 'ʌ'],
+    translit: "o",
+    neighbours: ["ɔ̃", "o̞", "ʌ"]
   },
   ɔ̃: {
-    symbol: 'ɔ̃',
+    symbol: "ɔ̃",
     traits: {
-      height: 'open-mid',
-      backness: 'back',
+      height: "open-mid",
+      backness: "back",
       roundedness: true,
-      nasalization: true,
+      nasalization: true
     },
-    translit: 'on',
-    neighbours: ['ɔ', 'õ'],
+    translit: "on",
+    neighbours: ["ɔ", "õ"]
   },
   e: {
-    symbol: 'e',
+    symbol: "e",
     traits: {
-      height: 'close-mid',
-      backness: 'front',
+      height: "close-mid",
+      backness: "front",
       roundedness: false,
-      nasalization: false,
+      nasalization: false
     },
-    translit: 'é',
-    neighbours: ['e̞', 'ɘ', 'ø'],
+    translit: "é",
+    neighbours: ["e̞", "ɘ", "ø"]
   },
   // e̞: {
   //   symbol: 'e̞',
@@ -143,59 +143,59 @@ module.exports = {
   //   neighbours: ['e', 'ə', 'ɛ', 'ø̞'],
   // },
   ə: {
-    symbol: 'ə',
+    symbol: "ə",
     traits: {
-      height: 'mid',
-      backness: 'central',
+      height: "mid",
+      backness: "central",
       roundedness: false,
-      nasalization: false,
+      nasalization: false
     },
-    translit: 'e',
-    neighbours: ['e̞', 'ɘ', 'ɜ', 'ɵ̞', 'ɤ̞'],
+    translit: "e",
+    neighbours: ["e̞", "ɘ", "ɜ", "ɵ̞", "ɤ̞"]
   },
   ɘ: {
-    symbol: 'ɘ',
+    symbol: "ɘ",
     traits: {
-      height: 'close-mid',
-      backness: 'central',
+      height: "close-mid",
+      backness: "central",
       roundedness: false,
-      nasalization: false,
+      nasalization: false
     },
-    translit: 'e',
-    neighbours: ['e', 'ə', 'ɪ̈', 'ɵ', 'ɤ'],
+    translit: "e",
+    neighbours: ["e", "ə", "ɪ̈", "ɵ", "ɤ"]
   },
   ɛ: {
-    symbol: 'ɛ',
+    symbol: "ɛ",
     traits: {
-      height: 'open-mid',
-      backness: 'front',
+      height: "open-mid",
+      backness: "front",
       roundedness: false,
-      nasalization: false,
+      nasalization: false
     },
-    translit: 'ä',
-    neighbours: ['æ', 'e̞', 'ɛ̃', 'ɜ', 'œ'],
+    translit: "ä",
+    neighbours: ["æ", "e̞", "ɛ̃", "ɜ", "œ"]
   },
   ɛ̃: {
-    symbol: 'ɛ̃',
+    symbol: "ɛ̃",
     traits: {
-      height: 'open-mid',
-      backness: 'front',
+      height: "open-mid",
+      backness: "front",
       roundedness: false,
-      nasalization: true,
+      nasalization: true
     },
-    translit: 'in',
-    neighbours: ['ɛ', 'œ̃'],
+    translit: "in",
+    neighbours: ["ɛ", "œ̃"]
   },
   ɜ: {
-    symbol: 'ɜ',
+    symbol: "ɜ",
     traits: {
-      height: 'open-mid',
-      backness: 'central',
+      height: "open-mid",
+      backness: "central",
       roundedness: false,
-      nasalization: false,
+      nasalization: false
     },
-    translit: 'e',
-    neighbours: ['ɐ', 'ə', 'ɛ', 'ʌ'],
+    translit: "e",
+    neighbours: ["ɐ", "ə", "ɛ", "ʌ"]
   },
   // ɞ: {
   //   symbol: 'ɞ',
@@ -209,15 +209,15 @@ module.exports = {
   //   neighbours: ['ɐ', 'ɒ̈'],
   // },
   i: {
-    symbol: 'i',
+    symbol: "i",
     traits: {
-      height: 'close',
-      backness: 'front',
+      height: "close",
+      backness: "front",
       roundedness: false,
-      nasalization: false,
+      nasalization: false
     },
-    translit: 'i',
-    neighbours: ['ɨ', 'y'],
+    translit: "i",
+    neighbours: ["ɨ", "y"]
   },
   // ɨ: {
   //   symbol: 'ɨ',
@@ -253,15 +253,15 @@ module.exports = {
   //   neighbours: ['ɨ', 'u'],
   // },
   o: {
-    symbol: 'o',
+    symbol: "o",
     traits: {
-      height: 'close-mid',
-      backness: 'back',
+      height: "close-mid",
+      backness: "back",
       roundedness: true,
-      nasalization: false,
+      nasalization: false
     },
-    translit: 'o',
-    neighbours: ['o̞', 'ɵ', 'ɤ'],
+    translit: "o",
+    neighbours: ["o̞", "ɵ", "ɤ"]
   },
   // o̞: {
   //   symbol: 'o̞',
@@ -275,26 +275,26 @@ module.exports = {
   //   neighbours: ['ɔ', 'o', 'õ', 'ɵ̞', 'ɤ̞'],
   // },
   õ: {
-    symbol: 'õ',
+    symbol: "õ",
     traits: {
-      height: 'mid',
-      backness: 'back',
+      height: "mid",
+      backness: "back",
       roundedness: true,
-      nasalization: true,
+      nasalization: true
     },
-    translit: 'on',
-    neighbours: ['ɔ̃', 'o̞'],
+    translit: "on",
+    neighbours: ["ɔ̃", "o̞"]
   },
   ø: {
-    symbol: 'ø',
+    symbol: "ø",
     traits: {
-      height: 'close-mid',
-      backness: 'front',
+      height: "close-mid",
+      backness: "front",
       roundedness: true,
-      nasalization: false,
+      nasalization: false
     },
-    translit: 'e',
-    neighbours: ['e', 'ø̞', 'ɵ'],
+    translit: "e",
+    neighbours: ["e", "ø̞", "ɵ"]
   },
   // ø̞: {
   //   symbol: 'ø̞',
@@ -330,48 +330,48 @@ module.exports = {
   //   neighbours: ['ə', 'o̞', 'ø̞', 'ɵ'],
   // },
   œ: {
-    symbol: 'œ',
+    symbol: "œ",
     traits: {
-      height: 'open-mid',
-      backness: 'front',
+      height: "open-mid",
+      backness: "front",
       roundedness: true,
-      nasalization: false,
+      nasalization: false
     },
-    translit: 'e',
-    neighbours: ['ɛ', 'ø̞', 'œ̃'],
+    translit: "e",
+    neighbours: ["ɛ", "ø̞", "œ̃"]
   },
   œ̃: {
-    symbol: 'œ̃',
+    symbol: "œ̃",
     traits: {
-      height: 'open-mid',
-      backness: 'front',
+      height: "open-mid",
+      backness: "front",
       roundedness: true,
-      nasalization: true,
+      nasalization: true
     },
-    translit: 'en',
-    neighbours: ['ɛ̃', 'œ'],
+    translit: "en",
+    neighbours: ["ɛ̃", "œ"]
   },
   ɶ: {
-    symbol: 'ɶ',
+    symbol: "ɶ",
     traits: {
-      height: 'open',
-      backness: 'front',
+      height: "open",
+      backness: "front",
       roundedness: true,
-      nasalization: false,
+      nasalization: false
     },
-    translit: 'e',
-    neighbours: ['a', 'ɒ̈'],
+    translit: "e",
+    neighbours: ["a", "ɒ̈"]
   },
   u: {
-    symbol: 'u',
+    symbol: "u",
     traits: {
-      height: 'close',
-      backness: 'back',
+      height: "close",
+      backness: "back",
       roundedness: true,
-      nasalization: false,
+      nasalization: false
     },
-    translit: 'u',
-    neighbours: ['ɯ', 'ʉ'],
+    translit: "u",
+    neighbours: ["ɯ", "ʉ"]
   },
   // ʉ: {
   //   symbol: 'ʉ',
@@ -396,27 +396,27 @@ module.exports = {
   //   neighbours: ['ɪ̈', 'ɵ', 'ʉ'],
   // },
   ʌ: {
-    symbol: 'ʌ',
+    symbol: "ʌ",
     traits: {
-      height: 'open-mid',
-      backness: 'back',
+      height: "open-mid",
+      backness: "back",
       roundedness: false,
-      nasalization: false,
+      nasalization: false
     },
-    translit: 'e',
-    neighbours: ['ɔ', 'ɜ', 'ɤ̞'],
+    translit: "e",
+    neighbours: ["ɔ", "ɜ", "ɤ̞"]
   },
   y: {
-    symbol: 'y',
+    symbol: "y",
     traits: {
-      height: 'close',
-      backness: 'front',
+      height: "close",
+      backness: "front",
       roundedness: true,
-      nasalization: false,
+      nasalization: false
     },
-    translit: 'y',
-    neighbours: ['i', 'ʉ'],
-  },
+    translit: "y",
+    neighbours: ["i", "ʉ"]
+  }
   // ɤ: {
   //   symbol: 'ɤ',
   //   traits: {

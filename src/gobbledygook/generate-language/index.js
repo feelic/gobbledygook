@@ -1,5 +1,5 @@
-const { random } = require("../util/random");
-const { makePhonemeSet } = require("./make-phonology");
+import { random } from "../util/random";
+import { makePhonemeSet } from "./make-phonology";
 
 export function generateLanguage() {
   const vowels = makePhonemeSet("vowels");

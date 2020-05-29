@@ -1,4 +1,4 @@
-const { random, randomWithCoef } = require("../util/random");
+import { random, randomWithCoef } from "../util/random";
 
 export function makeMorpheme(lang, length) {
   const morpheme = [];
