@@ -16,7 +16,10 @@ export default function makeMorphology(phonology) {
   const interrogationMode = randomFromArray(interrogationModes);
   const advancedMorphology =
     (makeAdvancedMorphology[morphotype] &&
-      makeAdvancedMorphology[morphotype](phonology)) ||
+      makeAdvancedMorphology[morphotype](phonology, {
+        wordOrder,
+        interrogationMode
+      })) ||
     {};
 
   return {
@@ -27,8 +30,27 @@ export default function makeMorphology(phonology) {
   };
 }
 
-export function makeIsolatingMorphology(phonology) {
+export function makeIsolatingMorphology(phonology, baseMorphology) {
+  const { wordOrder } = baseMorphology;
   const caseMarkerPosition = randomFromArray(["before", "after"]);
+
+  const pronouns = {
+    firstPerson: { singular: "", plural: { inclusive: "", exclusive: "" } },
+    secondPerson: { singular: "", plural: "" },
+    thirdPerson: { singular: "", plural: "" }
+  };
+  const determiners = {
+    demonstrative: { singular: "", plural: "" },
+    distal: { singular: "", plural: "" },
+    possessive: {
+      firstPerson: { singular: "", plural: { inclusive: "", exclusive: "" } },
+      secondPerson: { singular: "", plural: "" },
+      thirdPerson: { singular: "", plural: "" }
+    },
+    quantifiers: { all: "", some: "", many: "", few: "", no: "" },
+    distributive: { each: "", any: "" },
+    interrogative: { what: "", which: "" }
+  };
 
   const caseMarkers = {
     ablative: makeMorpheme(phonology, Math.round(random()) + 1),

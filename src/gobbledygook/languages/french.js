@@ -1,4 +1,90 @@
-export default {
+export const french = {
+  pronouns: {
+    first: { singular: "", plural: { inclusive: "", exclusive: "" } },
+    second: { singular: "", plural: "" },
+    third: { singular: "", plural: "" }
+  },
+  determiners: {
+    definite: {
+      masc: { singular: "le", plural: "les" },
+      fem: { singular: "la", plural: "les" }
+    },
+    indefinite: {
+      masc: { singular: "le", plural: "les" },
+      fem: { singular: "la", plural: "les" }
+    },
+    demonstrative: { singular: "", plural: "" },
+    distal: { singular: "", plural: "" },
+    possessive: {
+      firstPerson: { singular: "", plural: { inclusive: "", exclusive: "" } },
+      secondPerson: { singular: "", plural: "" },
+      thirdPerson: { singular: "", plural: "" }
+    },
+    quantifiers: { all: "", some: "", many: "", few: "", no: "" },
+    distributive: { each: "", any: "" },
+    interrogative: { what: "", which: "" }
+  },
+  declension: {
+    nominative: {
+      masc: { singular: "{noun}", plural: "{noun}s" },
+      fem: { singular: "{noun}", plural: "{noun}s" }
+    },
+    accusative: {
+      masc: { singular: "{noun}", plural: "{noun}s" },
+      fem: { singular: "{noun}", plural: "{noun}s" }
+    },
+    dative: {
+      masc: { singular: "{noun}", plural: "{noun}s" },
+      fem: { singular: "{noun}", plural: "{noun}s" }
+    },
+    ablative: {
+      masc: { singular: "{noun}", plural: "{noun}s" },
+      fem: { singular: "{noun}", plural: "{noun}s" }
+    },
+    genitive: {
+      masc: { singular: "{noun}", plural: "{noun}s" },
+      fem: { singular: "{noun}", plural: "{noun}s" }
+    },
+    vocative: {
+      masc: { singular: "{noun}", plural: "{noun}s" },
+      fem: { singular: "{noun}", plural: "{noun}s" }
+    },
+    locative: {
+      masc: { singular: "{noun}", plural: "{noun}s" },
+      fem: { singular: "{noun}", plural: "{noun}s" }
+    },
+    instrumental: {
+      masc: { singular: "{noun}", plural: "{noun}s" },
+      fem: { singular: "{noun}", plural: "{noun}s" }
+    }
+  },
+  conjugation: {
+    general: {
+      firstPerson: { singular: "{verb}e", plural: "{verb}ont" },
+      secondPerson: { singular: "{verb}es", plural: "{verb}ez" },
+      thirdPerson: { singular: "{verb}e", plural: "{verb}ent" }
+    },
+    present: {
+      firstPerson: { singular: "{verb}e", plural: "{verb}ont" },
+      secondPerson: { singular: "{verb}es", plural: "{verb}ez" },
+      thirdPerson: { singular: "{verb}e", plural: "{verb}ent" }
+    }
+  },
+  nounPhraseFormation: "{determiner} {preadjectives} {noun} {postadjectives}",
+  verbPhraseFormation: "{preadverbs} {verb} {postadverbs}",
+  sentenceFormation: "{subject} {verb} {object}",
+  morphemeDictionary: {
+    horse: { morpheme: "cheval", gender: "masc" },
+    carrot: { morpheme: "carotte", gender: "fem" },
+    love: { morpheme: "aim" },
+    gray: { morpheme: "gris" },
+    orange: { morpheme: "orange" },
+    small: { morpheme: "petit" }
+  },
+  adjectives: {
+    preadjectives: ["size", "age"],
+    postadjectives: ["color"]
+  },
   vowels: {
     a: { weight: 50, translit: "a" },
     e: { weight: 40, translit: "é" },

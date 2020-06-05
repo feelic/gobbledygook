@@ -12,6 +12,12 @@ export const wordOrders = {
   VSO: { weight: 5 }, // VSO "Loves she him." 5%
   VOS: { weight: 5 } // VOS "Loves him she." 5%
 };
+export const wordOrdersTemplates = {
+  SOV: "{subject} {object} {verb}",
+  SVO: "{subject} {verb} {object}",
+  VSO: "{verb} {subject} {object}",
+  VOS: "{verb} {object} {subject}"
+};
 
 export const interrogationModes = [
   "enclitic", // use tag word to denote a question

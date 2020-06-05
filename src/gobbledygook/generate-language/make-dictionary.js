@@ -1,6 +1,7 @@
 import {
   family,
   animals,
+  foods,
   auxiliaries,
   actions,
   interrogativeWords
@@ -19,8 +20,9 @@ export default function makeDictionary(phonology, morphology) {
   }
 
   const dictionaryBase = {
-    ...makeMorphemesFromDictionary(family, gaussian(1, 1.5)),
-    ...makeMorphemesFromDictionary(animals, gaussian(1, 2)),
+    ...makeMorphemesFromDictionary(family, gaussian(1.5, 1.5)),
+    ...makeMorphemesFromDictionary(animals, gaussian(2, 2)),
+    ...makeMorphemesFromDictionary(foods, gaussian(2, 2.5)),
     ...makeMorphemesFromDictionary(auxiliaries, gaussian(0.5, 1.5)),
     ...makeMorphemesFromDictionary(actions, gaussian(0.5, 1.7)),
     ...makeMorphemesFromDictionary(interrogativeWords, gaussian(0.5, 1.2))
