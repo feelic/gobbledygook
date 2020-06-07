@@ -1,58 +1,63 @@
 export const english = {
+  name: "english",
   pronouns: {
-    firstPerson: { singular: "", plural: { inclusive: "", exclusive: "" } },
-    secondPerson: { singular: "", plural: "" },
-    thirdPerson: { singular: "", plural: "" }
+    firstPerson: {
+      default: { singular: "", plural: "" }
+    },
+    secondPerson: {
+      default: { singular: "", plural: "" }
+    },
+    thirdPerson: {
+      default: { singular: "", plural: "" }
+    }
   },
   determiners: {
-    definite: { neut: { singular: "the", plural: "the" } },
-    indefinite: { neut: { singular: "a", plural: "" } },
-    demonstrative: { neut: { singular: "", plural: "" } },
-    distal: { neut: { singular: "", plural: "" } },
+    definite: {
+      default: {
+        default: { singular: "the", plural: "the" }
+      }
+    },
+    indefinite: {
+      default: {
+        default: { singular: "a", plural: "" }
+      }
+    },
+    demonstrative: {
+      default: {
+        default: { singular: "", plural: "" }
+      }
+    },
+    distal: {
+      default: {
+        default: { singular: "", plural: "" }
+      }
+    },
     possessive: {
-      firstPerson: { singular: "", plural: { inclusive: "", exclusive: "" } },
-      secondPerson: { singular: "", plural: "" },
-      thirdPerson: { singular: "", plural: "" }
+      firstPerson: {
+        default: { singular: "", plural: "" }
+      },
+      secondPerson: {
+        default: { singular: "", plural: "" }
+      },
+      thirdPerson: {
+        default: { singular: "", plural: "" }
+      }
     },
     quantifiers: { all: "", some: "", many: "", few: "", no: "" },
     distributive: { each: "", any: "" },
     interrogative: { what: "", which: "" }
   },
   declension: {
-    nominative: {
-      neut: { singular: "{noun}", plural: "{noun}s" }
-    },
-    accusative: {
-      neut: { singular: "{noun}", plural: "{noun}s" }
-    },
-    dative: {
-      neut: { singular: "{noun}", plural: "{noun}s" }
-    },
-    ablative: {
-      neut: { singular: "{noun}", plural: "{noun}s" }
+    default: {
+      default: { singular: "{noun}", plural: "{noun}s" }
     },
     genitive: {
-      neut: { singular: "{noun}'s", plural: "{noun}s'" }
-    },
-    vocative: {
-      neut: { singular: "{noun}", plural: "{noun}s" }
-    },
-    locative: {
-      neut: { singular: "{noun}", plural: "{noun}s" }
-    },
-    instrumental: {
-      neut: { singular: "{noun}", plural: "{noun}s" }
+      default: { singular: "{noun}'s", plural: "{noun}s'" }
     }
   },
   conjugation: {
-    general: {
-      firstPerson: { singular: "{verb}", plural: "{verb}" },
-      secondPerson: { singular: "{verb}", plural: "{verb}" },
-      thirdPerson: { singular: "{verb}s", plural: "{verb}" }
-    },
-    present: {
-      firstPerson: { singular: "{verb}", plural: "{verb}" },
-      secondPerson: { singular: "{verb}", plural: "{verb}" },
+    default: {
+      default: { default: "{verb}" },
       thirdPerson: { singular: "{verb}s", plural: "{verb}" }
     }
   },

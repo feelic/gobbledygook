@@ -44,3 +44,13 @@ export const interrogationModes = [
 // vocative: Addressee
 // locative: Location, either physical or temporal
 // instrumental: A means or tool used or companion present in/while performing an action
+
+// determiner types
+// definite
+// indefinite
+// demonstrative
+// distal
+// possessive
+// quantifiers
+// distributive
+// interrogative

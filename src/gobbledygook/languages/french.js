@@ -1,59 +1,42 @@
 export const french = {
+  name: "french",
   pronouns: {
-    first: { singular: "", plural: { inclusive: "", exclusive: "" } },
-    second: { singular: "", plural: "" },
-    third: { singular: "", plural: "" }
+    firstPerson: {
+      default: { singular: "", plural: "" }
+    },
+    secondPerson: {
+      default: { singular: "", plural: "" }
+    },
+    thirdPerson: {
+      default: { singular: "", plural: "" }
+    }
   },
   determiners: {
     definite: {
-      masc: { singular: "le", plural: "les" },
-      fem: { singular: "la", plural: "les" }
+      default: {
+        masc: { singular: "le", plural: "les" },
+        fem: { singular: "la", plural: "les" }
+      }
     },
     indefinite: {
-      masc: { singular: "le", plural: "les" },
-      fem: { singular: "la", plural: "les" }
-    },
-    demonstrative: { singular: "", plural: "" },
-    distal: { singular: "", plural: "" },
-    possessive: {
-      firstPerson: { singular: "", plural: { inclusive: "", exclusive: "" } },
-      secondPerson: { singular: "", plural: "" },
-      thirdPerson: { singular: "", plural: "" }
-    },
-    quantifiers: { all: "", some: "", many: "", few: "", no: "" },
-    distributive: { each: "", any: "" },
-    interrogative: { what: "", which: "" }
+      default: {
+        masc: { singular: "le", plural: "les" },
+        fem: { singular: "la", plural: "les" }
+      }
+    }
+    // demonstrative: { singular: "", plural: "" },
+    // distal: { singular: "", plural: "" },
+    // possessive: {
+    //   firstPerson: { singular: "", plural: "" },
+    //   secondPerson: { singular: "", plural: "" },
+    //   thirdPerson: { singular: "", plural: "" }
+    // },
+    // quantifiers: { all: "", some: "", many: "", few: "", no: "" },
+    // distributive: { each: "", any: "" },
+    // interrogative: { what: "", which: "" }
   },
   declension: {
-    nominative: {
-      masc: { singular: "{noun}", plural: "{noun}s" },
-      fem: { singular: "{noun}", plural: "{noun}s" }
-    },
-    accusative: {
-      masc: { singular: "{noun}", plural: "{noun}s" },
-      fem: { singular: "{noun}", plural: "{noun}s" }
-    },
-    dative: {
-      masc: { singular: "{noun}", plural: "{noun}s" },
-      fem: { singular: "{noun}", plural: "{noun}s" }
-    },
-    ablative: {
-      masc: { singular: "{noun}", plural: "{noun}s" },
-      fem: { singular: "{noun}", plural: "{noun}s" }
-    },
-    genitive: {
-      masc: { singular: "{noun}", plural: "{noun}s" },
-      fem: { singular: "{noun}", plural: "{noun}s" }
-    },
-    vocative: {
-      masc: { singular: "{noun}", plural: "{noun}s" },
-      fem: { singular: "{noun}", plural: "{noun}s" }
-    },
-    locative: {
-      masc: { singular: "{noun}", plural: "{noun}s" },
-      fem: { singular: "{noun}", plural: "{noun}s" }
-    },
-    instrumental: {
+    default: {
       masc: { singular: "{noun}", plural: "{noun}s" },
       fem: { singular: "{noun}", plural: "{noun}s" }
     }
