@@ -1,23 +1,4 @@
-const defaultSentence = {
-  subject: {
-    core: "horse",
-    type: "animal",
-    adjectives: { color: "gray", size: "small" },
-    number: "singular",
-    determination: { type: "definite" },
-    person: "thirdPerson"
-  },
-  verb: { verb: "love", tense: "general" },
-  object: {
-    core: "carrot",
-    number: "plural",
-    adjectives: { color: "orange", size: "small" },
-    determination: { type: "indefinite" },
-    grammaticalCase: "accusative"
-  }
-};
-
-export function makeSentence(lang, sentenceDefinition = defaultSentence) {
+export function makeSentence(lang, sentenceDefinition) {
   const subject = normalizeNounDefinition(lang, sentenceDefinition.subject);
   const object = normalizeNounDefinition(lang, sentenceDefinition.object);
   let sentence = lang.sentenceFormation
@@ -57,6 +38,7 @@ function makeNounPhrase(lang, nounDefinition) {
     number
   ]);
   const declinedNoun = getRequiredForm(lang, "declension", [
+    "noun",
     grammaticalCase,
     gender,
     number
@@ -91,11 +73,12 @@ function makeAdjectives(lang, nounDefinition) {
         return prev;
       }
       const morpheme = lang.morphemeDictionary[adjective];
-      const declinedAdjective = getRequiredForm(lang, "declension", [
-        grammaticalCase,
-        gender,
-        number
-      ]).replace("{noun}", morpheme.morpheme);
+      const declinedAdjective = getRequiredForm(
+        lang,
+        "declension",
+        ["adjective", grammaticalCase, gender, number],
+        morpheme
+      ).replace("{adjective}", morpheme.morpheme);
 
       return `${prev} ${declinedAdjective}`;
     }, "");
@@ -112,11 +95,12 @@ function makeVerbPhrase(lang, sentenceDefinition) {
   const { number, person } = sentenceDefinition.subject;
   const { verb, tense } = sentenceDefinition.verb;
   const morpheme = lang.morphemeDictionary[verb];
-  const conjugatedVerb = getRequiredForm(lang, "conjugation", [
-    tense,
-    person,
-    number
-  ]).replace("{verb}", morpheme.morpheme);
+  const conjugatedVerb = getRequiredForm(
+    lang,
+    "conjugation",
+    [tense, person, number],
+    morpheme
+  ).replace("{verb}", morpheme.morpheme);
 
   return lang.verbPhraseFormation
     .replace("{preadverbs}", "")
@@ -124,13 +108,13 @@ function makeVerbPhrase(lang, sentenceDefinition) {
     .replace("{verb}", conjugatedVerb);
 }
 
-function getRequiredForm(lang, rule, parameters) {
+function getRequiredForm(lang, rule, parameters, morpheme = {}) {
   if (!lang[rule]) {
     throw new Error(
       `Error: ${lang.name || "language"} doesn't have a rule set for ${rule}`
     );
   }
-  return parameters.reduce((prev, curr) => {
+  const form = parameters.reduce((prev, curr) => {
     let key = curr;
 
     if (!prev[key] && prev[key] !== "") {
@@ -147,4 +131,32 @@ function getRequiredForm(lang, rule, parameters) {
     }
     return prev[key];
   }, lang[rule]);
+
+  return form;
 }
+
+// function getPhonemeSeparator(lang, form, morpheme) {
+//   const morph = morpheme.morpheme;
+//   let lastPhonemeOfMorpheme = morph[morph.length - 1];
+//   const languagePhonemes = [
+//     ...Object.keys(lang.vowels),
+//     ...Object.keys(lang.consonants)
+//   ];
+//
+//   if (!languagePhonemes.includes(lastPhonemeOfMorpheme)) {
+//     lastPhonemeOfMorpheme = morph[morph.length - 2] + morph[morph.length - 1];
+//
+//     if (!languagePhonemes.includes(lastPhonemeOfMorpheme)) {
+//       throw new Error(
+//         `Error: looks like "${lastPhonemeOfMorpheme}" is not a valid ${lang.name ||
+//           "language"} phoneme`
+//       );
+//     }
+//   }
+//
+//   if (Object.values(lang.vowels).includes(lastPhonemeOfMorpheme)) {
+//     return lang.phonemeSeparators.consonant;
+//   } else {
+//     return lang.phonemeSeparators.vowel;
+//   }
+// }

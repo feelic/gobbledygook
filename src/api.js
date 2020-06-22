@@ -3,7 +3,8 @@ import { DEFAULT_VOICE } from "./constants/voices";
 const API_ENDPOINT =
   "https://nwzovr1a4m.execute-api.eu-west-3.amazonaws.com/dev";
 
-export function fetchAudio(text) {
+export function fetchAudio(text, voice = DEFAULT_VOICE) {
+  console.log(voice);
   return fetch(API_ENDPOINT, {
     method: "POST",
     headers: {
@@ -11,7 +12,7 @@ export function fetchAudio(text) {
     },
     body: JSON.stringify({
       text,
-      voice: DEFAULT_VOICE
+      voice
     })
   })
     .then(response => {

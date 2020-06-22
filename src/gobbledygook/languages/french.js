@@ -14,14 +14,14 @@ export const french = {
   determiners: {
     definite: {
       default: {
-        masc: { singular: "le", plural: "les" },
-        fem: { singular: "la", plural: "les" }
+        masc: { singular: "lɘ", plural: "le" },
+        fem: { singular: "la", plural: "le" }
       }
     },
     indefinite: {
       default: {
-        masc: { singular: "le", plural: "les" },
-        fem: { singular: "la", plural: "les" }
+        masc: { singular: "lɘ", plural: "le" },
+        fem: { singular: "la", plural: "le" }
       }
     }
     // demonstrative: { singular: "", plural: "" },
@@ -35,34 +35,49 @@ export const french = {
     // distributive: { each: "", any: "" },
     // interrogative: { what: "", which: "" }
   },
+  phonemeSeparators: {
+    vowel: "t",
+    consonant: "e"
+  },
   declension: {
     default: {
-      masc: { singular: "{noun}", plural: "{noun}s" },
-      fem: { singular: "{noun}", plural: "{noun}s" }
+      default: {
+        masc: { singular: "{noun}", plural: "{noun}" },
+        fem: { singular: "{noun}", plural: "{noun}" }
+      }
+    },
+    adjective: {
+      default: {
+        masc: { singular: "{adjective}", plural: "{adjective}" },
+        fem: {
+          singular: "{adjective}t",
+          plural: "{adjective}t"
+        }
+      }
     }
   },
   conjugation: {
     general: {
-      firstPerson: { singular: "{verb}e", plural: "{verb}ont" },
-      secondPerson: { singular: "{verb}es", plural: "{verb}ez" },
-      thirdPerson: { singular: "{verb}e", plural: "{verb}ent" }
+      firstPerson: { singular: "{verb}", plural: "{verb}ɔ̃" },
+      secondPerson: { singular: "{verb}", plural: "{verb}e" },
+      thirdPerson: { singular: "{verb}", plural: "{verb}" }
     },
     present: {
-      firstPerson: { singular: "{verb}e", plural: "{verb}ont" },
-      secondPerson: { singular: "{verb}es", plural: "{verb}ez" },
-      thirdPerson: { singular: "{verb}e", plural: "{verb}ent" }
+      firstPerson: { singular: "{verb}", plural: "{verb}ɔ̃" },
+      secondPerson: { singular: "{verb}", plural: "{verb}e" },
+      thirdPerson: { singular: "{verb}", plural: "{verb}" }
     }
   },
   nounPhraseFormation: "{determiner} {preadjectives} {noun} {postadjectives}",
   verbPhraseFormation: "{preadverbs} {verb} {postadverbs}",
   sentenceFormation: "{subject} {verb} {object}",
   morphemeDictionary: {
-    horse: { morpheme: "cheval", gender: "masc" },
-    carrot: { morpheme: "carotte", gender: "fem" },
-    love: { morpheme: "aim" },
-    gray: { morpheme: "gris" },
-    orange: { morpheme: "orange" },
-    small: { morpheme: "petit" }
+    horse: { morpheme: "ʃɘval", gender: "masc" },
+    carrot: { morpheme: "kaʁot", gender: "fem" },
+    love: { morpheme: "ɛm" },
+    gray: { morpheme: "gʁi" },
+    orange: { morpheme: "orɑ̃ʒ" },
+    small: { morpheme: "pɘti" }
   },
   adjectives: {
     preadjectives: ["size", "age"],
@@ -73,7 +88,7 @@ export const french = {
     e: { weight: 40, translit: "é" },
     ɛ: { weight: 40, translit: "è" },
     i: { weight: 30, translit: "i" },
-    ø: { weight: 20, translit: "e" },
+    ɘ: { weight: 20, translit: "e" },
     o: { weight: 20, translit: "o" },
     ɔ: { weight: 20, translit: "au" },
     ɑ̃: { weight: 15, translit: "an" },

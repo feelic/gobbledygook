@@ -29,12 +29,15 @@ export const template = {
     interrogative: { what: "", which: "" }
   },
   declension: {
-    //case
+    //type (noun or adjective)
     default: {
-      //gender
+      //case
       default: {
-        //number
-        default: "{noun}a"
+        //gender
+        default: {
+          //number
+          default: "{noun}a"
+        }
       }
     }
   },

@@ -5,6 +5,7 @@ import { transliterate, makeSentence } from "./gobbledygook/use-language";
 
 import { fetchAudio } from "./api";
 import { english, french } from "./gobbledygook/languages/index";
+import sentences from "./gobbledygook/sample-sentences/index";
 const { setSeed } = require("./gobbledygook/util/random");
 
 function App() {
@@ -22,8 +23,8 @@ function App() {
     return <div>no language</div>;
   }
 
-  function handlePlayAudio(phrase) {
-    fetchAudio(phrase)
+  function handlePlayAudio(phrase, voice) {
+    fetchAudio(phrase, voice)
       .then(res => setAudio(res))
       .then(() => {
         audioPlayer.current.load();
@@ -44,9 +45,32 @@ function App() {
           }}
         />
         <div>
-          <p>{makeSentence(french)}</p>
-          <p>{makeSentence(english)}</p>
-          <p></p>
+          {sentences.map(sentence => {
+            const frenchSentence = makeSentence(french, sentence);
+            const englishSentence = makeSentence(english, sentence);
+
+            return (
+              <div>
+                <p>
+                  {transliterate(french, frenchSentence)}{" "}
+                  <button
+                    onClick={() => handlePlayAudio(frenchSentence, "Celine")}
+                  >
+                    :O
+                  </button>
+                </p>
+                <p>
+                  {transliterate(english, englishSentence)}{" "}
+                  <button
+                    onClick={() => handlePlayAudio(englishSentence, "Brian")}
+                  >
+                    :O
+                  </button>
+                </p>
+                <p></p>
+              </div>
+            );
+          })}
         </div>
         <ul>
           {Object.entries(lang.morphemeDictionary).map(([meaning, word]) => {
