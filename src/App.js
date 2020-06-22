@@ -56,7 +56,7 @@ function App() {
                   <button
                     onClick={() => handlePlayAudio(frenchSentence, "Celine")}
                   >
-                    :O
+                    :V
                   </button>
                 </p>
                 <p>
@@ -64,7 +64,7 @@ function App() {
                   <button
                     onClick={() => handlePlayAudio(englishSentence, "Brian")}
                   >
-                    :O
+                    :V
                   </button>
                 </p>
                 <p></p>
@@ -78,7 +78,7 @@ function App() {
             return (
               <li>
                 {meaning}: {translit} ( /{word}/ ){" "}
-                <button onClick={() => handlePlayAudio(word)}>:O</button>
+                <button onClick={() => handlePlayAudio(word)}>:V</button>
               </li>
             );
           })}

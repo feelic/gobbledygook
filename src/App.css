@@ -1,8 +1,44 @@
 .App {
   display: flex;
+  background-color: #447;
+  color: #ebb;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
 }
+
 .speechBlock {
   margin: 20px;
   padding: 20px;
   width: 100%;
+  line-height: 24px;
+}
+input {
+  border: 1px solid #99e;
+  background-color: #bbe;
+  color: #447;
+  border-radius: 2px;
+  padding: 2px 4px;
+}
+input:focus {
+  border-color: #44c;
+  background-color: #b3b3ee;
+  color: #448;
+  outline: none;
+}
+button {
+  border: 1px solid #e99;
+  background-color: #ebb;
+  color: #744;
+  border-radius: 2px;
+  padding: 2px 4px;
+}
+button:hover {
+  border-color: #e66;
+  background-color: #eeb3b3;
+}
+button:focus {
+  border-color: #c44;
+  background-color: #eeb3b3;
+  color: #844;
+  outline: none;
 }

@@ -11,7 +11,7 @@ export function generateLanguage() {
   const morphemeDictionary = makeDictionary(phonology);
 
   return {
-    phonology,
+    ...phonology,
     morphology,
     morphemeDictionary
   };
