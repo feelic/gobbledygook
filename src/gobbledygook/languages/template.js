@@ -31,12 +31,15 @@ export const template = {
   declension: {
     //type (noun or adjective)
     default: {
-      //case
+      // declension group (eg. first latin declension)
       default: {
-        //gender
+        //case
         default: {
-          //number
-          default: "{noun}a"
+          //gender
+          default: {
+            //number
+            default: "{noun}a"
+          }
         }
       }
     }

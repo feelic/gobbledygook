@@ -42,16 +42,39 @@ export const french = {
   declension: {
     default: {
       default: {
-        masc: { singular: "{noun}", plural: "{noun}" },
-        fem: { singular: "{noun}", plural: "{noun}" }
+        default: {
+          masc: { singular: "{noun}", plural: "{noun}" },
+          fem: { singular: "{noun}", plural: "{noun}" }
+        }
       }
     },
     adjective: {
       default: {
-        masc: { singular: "{adjective}", plural: "{adjective}" },
-        fem: {
-          singular: "{adjective}t",
-          plural: "{adjective}t"
+        default: {
+          default: { default: "{adjective}" }
+        }
+      },
+      sEnding: {
+        default: {
+          default: { default: "{adjective}" },
+          fem: { default: "{adjective}s" }
+        }
+      },
+      tEnding: {
+        default: {
+          default: { default: "{adjective}" },
+          fem: { default: "{adjective}t" }
+        }
+      },
+      zEnding: {
+        default: {
+          default: { default: "{adjective}" },
+          fem: { default: "{adjective}z" }
+        }
+      },
+      alEnding: {
+        default: {
+          default: { default: "{adjective}al", plural: "{adjective}o" }
         }
       }
     }
@@ -75,9 +98,12 @@ export const french = {
     horse: { morpheme: "ʃɘval", gender: "masc" },
     carrot: { morpheme: "kaʁot", gender: "fem" },
     love: { morpheme: "ɛm" },
-    gray: { morpheme: "gʁi" },
+    gray: {
+      morpheme: "gʁi",
+      declensionGroup: "zEnding"
+    },
     orange: { morpheme: "orɑ̃ʒ" },
-    small: { morpheme: "pɘti" }
+    small: { morpheme: "pɘti", declensionGroup: "tEnding" }
   },
   adjectives: {
     preadjectives: ["size", "age"],

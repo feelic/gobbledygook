@@ -50,16 +50,16 @@ export const english = {
   declension: {
     default: {
       default: {
-        default: { singular: "{noun}", plural: "{noun}s" }
-      },
-      genitive: {
-        default: { singular: "{noun}'s", plural: "{noun}s'" }
+        default: {
+          default: { singular: "{noun}", plural: "{noun}s" }
+        },
+        genitive: {
+          default: { singular: "{noun}'s", plural: "{noun}s'" }
+        }
       }
     },
     adjective: {
-      default: {
-        default: { default: "{adjective}" }
-      }
+      default: { default: { default: { default: "{adjective}" } } }
     }
   },
   conjugation: {

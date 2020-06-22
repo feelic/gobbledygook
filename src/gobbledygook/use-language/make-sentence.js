@@ -31,6 +31,7 @@ function makeNounPhrase(lang, nounDefinition) {
     determination,
     grammaticalCase
   } = nounDefinition;
+  const { declensionGroup } = morpheme;
   const determiner = getRequiredForm(lang, "determiners", [
     determination.type,
     grammaticalCase,
@@ -39,6 +40,7 @@ function makeNounPhrase(lang, nounDefinition) {
   ]);
   const declinedNoun = getRequiredForm(lang, "declension", [
     "noun",
+    declensionGroup,
     grammaticalCase,
     gender,
     number
@@ -73,10 +75,11 @@ function makeAdjectives(lang, nounDefinition) {
         return prev;
       }
       const morpheme = lang.morphemeDictionary[adjective];
+      const { declensionGroup } = morpheme;
       const declinedAdjective = getRequiredForm(
         lang,
         "declension",
-        ["adjective", grammaticalCase, gender, number],
+        ["adjective", declensionGroup, grammaticalCase, gender, number],
         morpheme
       ).replace("{adjective}", morpheme.morpheme);
 
