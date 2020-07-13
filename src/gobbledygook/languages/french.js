@@ -129,6 +129,17 @@ export const french = {
     orange: { morpheme: "orɑ̃ʒ" },
     small: { morpheme: "pɘti", declensionGroup: "tEnding" },
     give: { morpheme: "don" },
+    go: {
+      morpheme: "al",
+      irregular: {
+        present: {
+          firstPerson: { singular: "vɛ", plural: "{verb}ɔ̃" },
+          secondPerson: { singular: "va", plural: "{verb}e" },
+          thirdPerson: { singular: "va", plural: "vɔ̃" },
+        },
+      },
+    },
+    beach: { morpheme: "plaʒ", gender: "fem" },
   },
   adjectives: {
     preadjectives: ["size", "age"],

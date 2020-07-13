@@ -89,7 +89,7 @@ export const english = {
   conjugation: {
     default: {
       default: { default: "{verb}" },
-      thirdPerson: { singular: "{verb}s", plural: "{verb}" },
+      thirdPerson: { singular: "{verb}z", plural: "{verb}" },
     },
     past: {
       default: { default: "{verb}d" },
@@ -110,6 +110,8 @@ export const english = {
       morpheme: "giv",
       irregular: { past: { default: { default: "geɪv" } } },
     },
+    go: {morpheme: "go"},
+    beach: {morpheme: "bitʃ"},
   },
   adjectives: {
     preadjectives: ["size", "age", "color"],

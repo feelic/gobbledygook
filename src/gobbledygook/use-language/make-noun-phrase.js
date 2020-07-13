@@ -2,7 +2,7 @@ import { getRequiredForm } from "./get-required-form";
 import { makeAdjectives } from "./make-adjectives";
 import { makeAdjectiveClause } from "./make-adjective-clause";
 
-export function makeNounPhrase(context, nounDefinition, usePronoun = false) {
+export function makeNounPhrase(context, nounDefinition) {
   const { lang, references } = context;
   const {
     morpheme,
@@ -11,6 +11,7 @@ export function makeNounPhrase(context, nounDefinition, usePronoun = false) {
     determination,
     grammaticalCase,
     person,
+    usePronoun,
   } = nounDefinition;
   const { declensionGroup } = morpheme;
 
