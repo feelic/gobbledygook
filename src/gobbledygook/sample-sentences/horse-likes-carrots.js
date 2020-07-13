@@ -1,18 +1,73 @@
 export const horseLikesCarrots = {
-  subject: {
-    core: "horse",
-    type: "animal",
-    adjectives: { color: "gray", size: "small" },
-    number: "singular",
-    determination: { type: "definite" },
-    person: "thirdPerson"
+  entities: {
+    horse:{
+      core: 'horse',
+      type: 'animal',
+      adjectives: { color: "gray", size: "small" },
+      number: "singular",
+      determination: { type: "definite" },
+      person: "thirdPerson"
+    },
+    carrots: {
+      core: "carrot",
+      number: "plural",
+      adjectives: { color: "orange", size: "small" },
+      determination: { type: "indefinite" }
+    }
   },
-  verb: { verb: "love", tense: "general" },
-  object: {
-    core: "carrot",
-    number: "plural",
-    adjectives: { color: "orange", size: "small" },
-    determination: { type: "indefinite" },
-    grammaticalCase: "accusative"
+  sentence: {
+    subject: {
+      id: 'horse'
+    },
+    verb: { verb: "love", tense: "general" },
+    object: {
+      id: 'carrots',
+      grammaticalCase: 'accusative',
+    }
+  }
+};
+
+export const horseLikesCarrotsJohnnyGaveHim = {
+  entities: {
+    horse:{
+      core: 'horse',
+      type: 'animal',
+      adjectives: { color: "gray", size: "small" },
+      number: "singular",
+      determination: { type: "definite" },
+      person: "thirdPerson"
+    },
+    carrots: {
+      core: "carrot",
+      number: "plural",
+      adjectives: { color: "orange", size: "small" },
+      determination: { type: "indefinite" }
+    },
+    johnny: {
+      core: "dʒonɪ",
+      number: "singular",
+      person: "thirdPerson",
+      determination: { type: "properNoun" }
+    }
+  },
+  sentence: {
+    subject: {
+      id: 'horse'
+    },
+    verb: { verb: "love", tense: "general" },
+    object: {
+      id: 'carrots',
+      grammaticalCase: 'accusative',
+      adjectiveClause: {
+        subject: {
+          id: 'johnny'
+        },
+        verb: { verb: "give", tense: "past" },
+        object: {
+          id: 'horse',
+          grammaticalCase: 'dative'
+        }
+      }
+    }
   }
 };

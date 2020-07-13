@@ -2,85 +2,117 @@ export const english = {
   name: "english",
   pronouns: {
     firstPerson: {
-      default: { singular: "", plural: "" }
+      default: { default: { singular: "", plural: "" } },
     },
     secondPerson: {
-      default: { singular: "", plural: "" }
+      default: { default: { singular: "", plural: "" } },
     },
     thirdPerson: {
-      default: { singular: "", plural: "" }
-    }
+      nominative: {
+        default: { default: "ɪt", plural: "ðeɪ" },
+        masc: { singular: "hi", plural: "ðeɪ" },
+        fem: { default: "ʃi", plural: "ðeɪ" },
+      },
+      accusative: {
+        default: { default: "ɪt" },
+        masc: { singular: "", plural: "" },
+        fem: { singular: "la", plural: "" },
+      },
+      dative: {
+        default: { default: "ɪt" },
+        masc: { singular: "hɪm", plural: "lɘr" },
+        fem: { singular: "lɥi", plural: "lɘr" },
+      },
+      genitive: {
+        default: { default: "ɪt" },
+        masc: { singular: "hɪs", plural: "ð" },
+        fem: { singular: "lɥi", plural: "lɘr" },
+      },
+    },
   },
   determiners: {
     definite: {
       default: {
-        default: { singular: "ðə", plural: "ðə" }
-      }
+        default: { singular: "ðə", plural: "ðə" },
+      },
     },
     indefinite: {
       default: {
-        default: { singular: "ə", plural: "" }
-      }
+        default: { singular: "ə", plural: "" },
+      },
+    },
+    properNoun: {
+      default: {
+        default: { singular: "", plural: "" },
+      },
     },
     demonstrative: {
       default: {
-        default: { singular: "", plural: "" }
-      }
+        default: { singular: "", plural: "" },
+      },
     },
     distal: {
       default: {
-        default: { singular: "", plural: "" }
-      }
+        default: { singular: "", plural: "" },
+      },
     },
     possessive: {
       firstPerson: {
-        default: { singular: "", plural: "" }
+        default: { singular: "", plural: "" },
       },
       secondPerson: {
-        default: { singular: "", plural: "" }
+        default: { singular: "", plural: "" },
       },
       thirdPerson: {
-        default: { singular: "", plural: "" }
-      }
+        default: { singular: "", plural: "" },
+      },
     },
     quantifiers: { all: "", some: "", many: "", few: "", no: "" },
     distributive: { each: "", any: "" },
-    interrogative: { what: "", which: "" }
+    interrogative: { what: "", which: "" },
   },
   declension: {
     default: {
       default: {
         default: {
-          default: { singular: "{noun}", plural: "{noun}s" }
+          default: { singular: "{noun}", plural: "{noun}s" },
         },
         genitive: {
-          default: { singular: "{noun}'s", plural: "{noun}s'" }
-        }
-      }
+          default: { singular: "{noun}'s", plural: "{noun}s'" },
+        },
+      },
     },
     adjective: {
-      default: { default: { default: { default: "{adjective}" } } }
-    }
+      default: { default: { default: { default: "{adjective}" } } },
+    },
   },
   conjugation: {
     default: {
       default: { default: "{verb}" },
-      thirdPerson: { singular: "{verb}s", plural: "{verb}" }
-    }
+      thirdPerson: { singular: "{verb}s", plural: "{verb}" },
+    },
+    past: {
+      default: { default: "{verb}d" },
+    },
   },
-  nounPhraseFormation: "{determiner} {preadjectives} {noun}",
+  nounPhraseFormation: "{determiner} {preadjectives} {noun} {adjectiveClause}",
   verbPhraseFormation: "{preadverbs} {verb} {postadverbs}",
   sentenceFormation: "{subject} {verb} {object}",
+  adjectiveClauseFormation: "ðat {subject} {verb} {object}",
   morphemeDictionary: {
     horse: { morpheme: "hors" },
     carrot: { morpheme: "kærət" },
     love: { morpheme: "lov" },
     gray: { morpheme: "greɪ" },
     orange: { morpheme: "orɪndʒ" },
-    small: { morpheme: "smɔl" }
+    small: { morpheme: "smɔl" },
+    give: {
+      morpheme: "giv",
+      irregular: { past: { default: { default: "geɪv" } } },
+    },
   },
   adjectives: {
-    preadjectives: ["size", "age", "color"]
+    preadjectives: ["size", "age", "color"],
   },
   vowels: {
     æ: { weight: 1, translit: "a" },
@@ -98,7 +130,7 @@ export const english = {
     // aɪ: { weight: 1, translit: "i" },
     // ɔɪ: { weight: 1, translit: "oi" },
     // aʊ: { weight: 1, translit: "ou" },
-    ə: { weight: 1, translit: "e" }
+    ə: { weight: 1, translit: "e" },
   },
   consonants: {
     r: { weight: 1, translit: "r" },
@@ -139,6 +171,6 @@ export const english = {
     bl: { weight: 1, translit: "bl" },
     pl: { weight: 1, translit: "pl" },
     gl: { weight: 1, translit: "gl" },
-    ks: { weight: 1, translit: "ks" }
-  }
+    ks: { weight: 1, translit: "ks" },
+  },
 };

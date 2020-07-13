@@ -1,6 +1,9 @@
-import { horseLikesCarrots } from "./horse-likes-carrots.js";
+import {
+  horseLikesCarrots,
+  horseLikesCarrotsJohnnyGaveHim,
+} from "./horse-likes-carrots.js";
 
-export default [horseLikesCarrots];
+export default [horseLikesCarrots, horseLikesCarrotsJohnnyGaveHim];
 
 /*
 TRANSITIVE VERB + OBJECT

@@ -1,7 +1,7 @@
 export function transliterate(lang, phrase) {
   const phonemes = {
     ...lang.vowels,
-    ...lang.consonants
+    ...lang.consonants,
   };
   let translit = "";
 

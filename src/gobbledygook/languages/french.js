@@ -2,28 +2,44 @@ export const french = {
   name: "french",
   pronouns: {
     firstPerson: {
-      default: { singular: "", plural: "" }
+      default: { default: { singular: "", plural: "" } },
     },
     secondPerson: {
-      default: { singular: "", plural: "" }
+      default: { default: { singular: "", plural: "" } },
     },
     thirdPerson: {
-      default: { singular: "", plural: "" }
-    }
+      nominative: {
+        masc: { default: "il" },
+        fem: { default: "el" },
+      },
+      accusative: {
+        masc: { singular: "lɘ", plural: "le" },
+        fem: { singular: "la", plural: "le" },
+      },
+      dative: { default: { singular: "lɥi", plural: "lɘr" } },
+      genitive: { default: { singular: "sɔ̃", plural: "lɘr" } },
+    },
   },
   determiners: {
+    properNoun: {
+      default: {
+        default: { default: "" },
+      },
+    },
     definite: {
       default: {
+        default: { singular: "lɘ", plural: "le" },
         masc: { singular: "lɘ", plural: "le" },
-        fem: { singular: "la", plural: "le" }
-      }
+        fem: { singular: "la", plural: "le" },
+      },
     },
     indefinite: {
       default: {
+        default: { singular: "lɘ", plural: "le" },
         masc: { singular: "lɘ", plural: "le" },
-        fem: { singular: "la", plural: "le" }
-      }
-    }
+        fem: { singular: "la", plural: "le" },
+      },
+    },
     // demonstrative: { singular: "", plural: "" },
     // distal: { singular: "", plural: "" },
     // possessive: {
@@ -37,77 +53,86 @@ export const french = {
   },
   phonemeSeparators: {
     vowel: "t",
-    consonant: "e"
+    consonant: "e",
   },
   declension: {
     default: {
       default: {
         default: {
+          default: { default: "{noun}" },
           masc: { singular: "{noun}", plural: "{noun}" },
-          fem: { singular: "{noun}", plural: "{noun}" }
-        }
-      }
+          fem: { singular: "{noun}", plural: "{noun}" },
+        },
+      },
     },
     adjective: {
       default: {
         default: {
-          default: { default: "{adjective}" }
-        }
+          default: { default: "{adjective}" },
+        },
       },
       sEnding: {
         default: {
           default: { default: "{adjective}" },
-          fem: { default: "{adjective}s" }
-        }
+          fem: { default: "{adjective}s" },
+        },
       },
       tEnding: {
         default: {
           default: { default: "{adjective}" },
-          fem: { default: "{adjective}t" }
-        }
+          fem: { default: "{adjective}t" },
+        },
       },
       zEnding: {
         default: {
           default: { default: "{adjective}" },
-          fem: { default: "{adjective}z" }
-        }
+          fem: { default: "{adjective}z" },
+        },
       },
       alEnding: {
         default: {
-          default: { default: "{adjective}al", plural: "{adjective}o" }
-        }
-      }
-    }
+          default: { default: "{adjective}al", plural: "{adjective}o" },
+        },
+      },
+    },
   },
   conjugation: {
     general: {
       firstPerson: { singular: "{verb}", plural: "{verb}ɔ̃" },
       secondPerson: { singular: "{verb}", plural: "{verb}e" },
-      thirdPerson: { singular: "{verb}", plural: "{verb}" }
+      thirdPerson: { singular: "{verb}", plural: "{verb}" },
     },
     present: {
       firstPerson: { singular: "{verb}", plural: "{verb}ɔ̃" },
       secondPerson: { singular: "{verb}", plural: "{verb}e" },
-      thirdPerson: { singular: "{verb}", plural: "{verb}" }
-    }
+      thirdPerson: { singular: "{verb}", plural: "{verb}" },
+    },
+    past: {
+      firstPerson: { singular: "ɛ {verb}e", plural: "avɔ̃ {verb}e" },
+      secondPerson: { singular: "a {verb}e", plural: "ave {verb}e" },
+      thirdPerson: { singular: "a {verb}e", plural: "ɔ̃ {verb}e" },
+    },
   },
-  nounPhraseFormation: "{determiner} {preadjectives} {noun} {postadjectives}",
+  nounPhraseFormation:
+    "{determiner} {preadjectives} {noun} {postadjectives} {adjectiveClause}",
   verbPhraseFormation: "{preadverbs} {verb} {postadverbs}",
   sentenceFormation: "{subject} {verb} {object}",
+  adjectiveClauseFormation: "kɘ {subject} {object} {verb}",
   morphemeDictionary: {
     horse: { morpheme: "ʃɘval", gender: "masc" },
     carrot: { morpheme: "kaʁot", gender: "fem" },
     love: { morpheme: "ɛm" },
     gray: {
       morpheme: "gʁi",
-      declensionGroup: "zEnding"
+      declensionGroup: "zEnding",
     },
     orange: { morpheme: "orɑ̃ʒ" },
-    small: { morpheme: "pɘti", declensionGroup: "tEnding" }
+    small: { morpheme: "pɘti", declensionGroup: "tEnding" },
+    give: { morpheme: "don" },
   },
   adjectives: {
     preadjectives: ["size", "age"],
-    postadjectives: ["color"]
+    postadjectives: ["color"],
   },
   vowels: {
     a: { weight: 50, translit: "a" },
@@ -137,7 +162,7 @@ export const french = {
     ɛj: { weight: 1, translit: "eille" },
     ij: { weight: 1, translit: "ille" },
     œj: { weight: 1, translit: "euille" },
-    uj: { weight: 2, translit: "ouille" }
+    uj: { weight: 2, translit: "ouille" },
   },
   consonants: {
     ʁ: { weight: 50, translit: "r" },
@@ -174,6 +199,6 @@ export const french = {
     bl: { weight: 3, translit: "bl" },
     pl: { weight: 2, translit: "pl" },
     gl: { weight: 1, translit: "gl" },
-    ks: { weight: 1, translit: "ks" }
-  }
+    ks: { weight: 1, translit: "ks" },
+  },
 };
