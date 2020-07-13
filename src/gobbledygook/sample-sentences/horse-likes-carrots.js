@@ -41,7 +41,7 @@ export const horseLikesCarrotsJohnnyGaveHim = {
       core: "carrot",
       number: "plural",
       adjectives: { color: "orange", size: "small" },
-      determination: { type: "indefinite" }
+      determination: { type: "definite" }
     },
     johnny: {
       core: "dʒonɪ",
