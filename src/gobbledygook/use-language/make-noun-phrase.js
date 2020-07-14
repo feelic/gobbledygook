@@ -1,6 +1,7 @@
 import { getRequiredForm } from "./get-required-form";
 import { makeAdjectives } from "./make-adjectives";
 import { makeAdjectiveClause } from "./make-adjective-clause";
+import { makeNumber } from "./make-number";
 
 export function makeNounPhrase(context, nounDefinition) {
   const { lang, references } = context;
@@ -8,7 +9,6 @@ export function makeNounPhrase(context, nounDefinition) {
     morpheme,
     gender,
     number,
-    determination,
     grammaticalCase,
     person,
     usePronoun,
@@ -26,12 +26,7 @@ export function makeNounPhrase(context, nounDefinition) {
   // ADD REFERENCE MARKER TO ENTITY
   references[nounDefinition.id] = true;
 
-  const determiner = getRequiredForm(context, "determiners", [
-    determination.type,
-    grammaticalCase,
-    gender,
-    number,
-  ]);
+  const determiner = getDeterminer(context, nounDefinition);
   const declinedNoun = getRequiredForm(context, "declension", [
     "noun",
     declensionGroup,
@@ -51,4 +46,19 @@ export function makeNounPhrase(context, nounDefinition) {
     .replace("{postadjectives}", postadjectives)
     .replace("{noun}", declinedNoun)
     .replace("{adjectiveClause}", adjectiveClause);
+}
+
+function getDeterminer(context, nounDefinition) {
+  const { gender, number, determination, grammaticalCase } = nounDefinition;
+
+  if (determination.type === "count") {
+    return makeNumber(context, nounDefinition.count);
+  }
+
+  return getRequiredForm(context, "determiners", [
+    determination.type,
+    grammaticalCase,
+    gender,
+    number,
+  ]);
 }

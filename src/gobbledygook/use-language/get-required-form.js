@@ -17,7 +17,7 @@ export function getRequiredForm(context, rule, parameters, morpheme = {}) {
       throw new Error(
         `Error: couldn't agree ${
           lang.name || "language"
-        } ${rule} with parameter "${curr}" (${parameters.join(", ")})`
+        } ${rule} with parameter "${curr}" (${parameters.join(", ")}). available rules are: ${JSON.stringify(prev)}`
       );
     }
     return prev[key];

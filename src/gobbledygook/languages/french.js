@@ -139,7 +139,11 @@ export const french = {
         },
       },
     },
+    have: {
+      morpheme: "a",
+    },
     beach: { morpheme: "plaʒ", gender: "fem" },
+    chicken: {morpheme: "pulɛ", gender: "masc"}
   },
   adjectives: {
     preadjectives: ["size", "age"],

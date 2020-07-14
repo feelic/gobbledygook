@@ -5,8 +5,11 @@ import {
 import {
   sheGoesToTheBeach
 } from "./going-to-the-beach.js";
+import {
+  heHas12Chickens
+} from "./numbers.js";
 
-export default [horseLikesCarrots, horseLikesCarrotsJohnnyGaveHim, sheGoesToTheBeach];
+export default [horseLikesCarrots, horseLikesCarrotsJohnnyGaveHim, sheGoesToTheBeach, heHas12Chickens];
 
 /*
 TRANSITIVE VERB + OBJECT
