@@ -58,13 +58,22 @@ export const english = {
     },
     possessive: {
       firstPerson: {
-        default: { singular: "", plural: "" },
+        default: {
+          masc: { singular: "mon", plural: "mes" },
+          fem: { singular: "ma", plural: "mes" },
+        },
       },
       secondPerson: {
-        default: { singular: "", plural: "" },
+        default: {
+          masc: { singular: "ton", plural: "tes" },
+          fem: { singular: "ta", plural: "tes" },
+        },
       },
       thirdPerson: {
-        default: { singular: "", plural: "" },
+        default: {
+          masc: { singular: "son", plural: "ses" },
+          fem: { singular: "sa", plural: "ses" },
+        },
       },
     },
     quantifiers: { all: "", some: "", many: "", few: "", no: "" },
@@ -122,6 +131,16 @@ export const english = {
     },
     beach: { morpheme: "bitʃ" },
     chicken: { morpheme: "tʃɪkɪn" },
+    dog: {morpheme: "dɒɡ"},
+    lose: {morpheme: "luz"},
+    take: {morpheme: "teik"},
+    place: {morpheme: "pleis"},
+    hide: {morpheme: "haid"},
+    treasure: {morpheme: "trɛʒə"},
+    castle: {morpheme: "kɑsəl/"},
+    tower: {morpheme: "taʊ.ər"},
+    be: {morpheme: "be"},
+    round: {morpheme: "ɹaʊnd"}
   },
   adjectives: {
     preadjectives: ["size", "age", "color"],

@@ -42,11 +42,26 @@ export const french = {
     },
     // demonstrative: { singular: "", plural: "" },
     // distal: { singular: "", plural: "" },
-    // possessive: {
-    //   firstPerson: { singular: "", plural: "" },
-    //   secondPerson: { singular: "", plural: "" },
-    //   thirdPerson: { singular: "", plural: "" }
-    // },
+    possessive: {
+      firstPerson: {
+        default: {
+          masc: { singular: "mon", plural: "mes" },
+          fem: { singular: "ma", plural: "mes" },
+        },
+      },
+      secondPerson: {
+        default: {
+          masc: { singular: "ton", plural: "tes" },
+          fem: { singular: "ta", plural: "tes" },
+        },
+      },
+      thirdPerson: {
+        default: {
+          masc: { singular: "son", plural: "ses" },
+          fem: { singular: "sa", plural: "ses" },
+        },
+      },
+    },
     // quantifiers: { all: "", some: "", many: "", few: "", no: "" },
     // distributive: { each: "", any: "" },
     // interrogative: { what: "", which: "" }
@@ -150,7 +165,17 @@ export const french = {
       },
     },
     beach: { morpheme: "plaʒ", gender: "fem" },
-    chicken: {morpheme: "pulɛ", gender: "masc"}
+    chicken: { morpheme: "pulɛ", gender: "masc" },
+    dog: { morpheme: "dɒɡ" },
+    lose: { morpheme: "luz" },
+    take: { morpheme: "teik" },
+    place: { morpheme: "pleis" },
+    hide: { morpheme: "haid" },
+    treasure: { morpheme: "trɛʒə" },
+    castle: { morpheme: "kɑsəl/" },
+    tower: { morpheme: "taʊ.ər" },
+    be: { morpheme: "be" },
+    round: { morpheme: "ɹaʊnd" },
   },
   adjectives: {
     preadjectives: ["size", "age"],
@@ -216,15 +241,15 @@ export const french = {
       96: "katʁɘvɛ̃sɛz",
       97: "katʁɘvɛ̃diset",
       98: "katʁɘvɛ̃dizɥit",
-      99: "katʁɘvɛ̃diznɘf"
+      99: "katʁɘvɛ̃diznɘf",
     },
     unitFormation: {
       units: "{digit}",
       tens: "{digit}",
       hundreds: "{digit} sɑ̃",
-      thousands: "{digit} mil"
+      thousands: "{digit} mil",
     },
-    formation: "{thousands}{hundreds}{tens}{units}"
+    formation: "{thousands}{hundreds}{tens}{units}",
   },
   vowels: {
     a: { weight: 50, translit: "a" },

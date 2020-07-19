@@ -2,14 +2,25 @@ import {
   horseLikesCarrots,
   horseLikesCarrotsJohnnyGaveHim,
 } from "./horse-likes-carrots.js";
+import { sheGoesToTheBeach } from "./going-to-the-beach.js";
+import { theyHave31Chickens } from "./numbers.js";
 import {
-  sheGoesToTheBeach
-} from "./going-to-the-beach.js";
-import {
-  theyHave31Chickens
-} from "./numbers.js";
+  sheHasLostHerDog,
+  heHasTakenHisPlace,
+  iHaveHiddenMyTreasure,
+  theCastleTowerIsRound,
+} from "./genitive.js";
 
-export default [horseLikesCarrots, horseLikesCarrotsJohnnyGaveHim, sheGoesToTheBeach, theyHave31Chickens];
+export default [
+  horseLikesCarrots,
+  horseLikesCarrotsJohnnyGaveHim,
+  sheGoesToTheBeach,
+  theyHave31Chickens,
+  sheHasLostHerDog,
+  heHasTakenHisPlace,
+  iHaveHiddenMyTreasure,
+  theCastleTowerIsRound,
+];
 
 /*
 TRANSITIVE VERB + OBJECT
