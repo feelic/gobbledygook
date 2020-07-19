@@ -97,11 +97,13 @@ export const english = {
   },
   conjugation: {
     default: {
-      default: { default: "{verb}" },
-      thirdPerson: { singular: "{verb}z", plural: "{verb}" },
-    },
-    past: {
-      default: { default: "{verb}d" },
+      default: {
+        default: { default: "{verb}" },
+        thirdPerson: { singular: "{verb}z", plural: "{verb}" },
+      },
+      past: {
+        default: { default: "{verb}d" },
+      },
     },
   },
   nounPhraseFormation: "{determiner} {preadjectives} {noun} {adjectiveClause}",
@@ -117,30 +119,40 @@ export const english = {
     small: { morpheme: "smɔl" },
     give: {
       morpheme: "giv",
-      irregular: { past: { default: { default: "geɪv" } } },
+      irregular: {
+        default: {
+          default: {
+            default: { default: "{verb}" },
+            thirdPerson: { singular: "{verb}z", plural: "{verb}" },
+          },
+          past: { default: { default: "geɪv" } },
+        },
+      },
     },
     go: { morpheme: "go" },
     have: {
       morpheme: "ha",
       irregular: {
         default: {
-          default: { default: "{verb}v" },
-          thirdPerson: { singular: "{verb}z", plural: "{verb}v" },
+          default: {
+            default: { default: "{verb}v" },
+            thirdPerson: { singular: "{verb}z", plural: "{verb}v" },
+          },
         },
       },
     },
     beach: { morpheme: "bitʃ" },
     chicken: { morpheme: "tʃɪkɪn" },
-    dog: {morpheme: "dɒɡ"},
-    lose: {morpheme: "luz"},
-    take: {morpheme: "teik"},
-    place: {morpheme: "pleis"},
-    hide: {morpheme: "haid"},
-    treasure: {morpheme: "trɛʒə"},
-    castle: {morpheme: "kɑsəl/"},
-    tower: {morpheme: "taʊ.ər"},
-    be: {morpheme: "be"},
-    round: {morpheme: "ɹaʊnd"}
+    dog: { morpheme: "dɒɡ" },
+    lose: { morpheme: "luz" },
+    take: { morpheme: "teik" },
+    place: { morpheme: "pleis" },
+    hide: { morpheme: "haid" },
+    treasure: { morpheme: "trɛʒə" },
+    castle: { morpheme: "kɑsəl/" },
+    tower: { morpheme: "taʊ.ər" },
+    be: { morpheme: "be" },
+    round: { morpheme: "ɹaʊnd" },
   },
   adjectives: {
     preadjectives: ["size", "age", "color"],

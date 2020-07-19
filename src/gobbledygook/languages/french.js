@@ -112,20 +112,22 @@ export const french = {
     },
   },
   conjugation: {
-    general: {
-      firstPerson: { singular: "{verb}", plural: "{verb}ɔ̃" },
-      secondPerson: { singular: "{verb}", plural: "{verb}e" },
-      thirdPerson: { singular: "{verb}", plural: "{verb}" },
-    },
-    present: {
-      firstPerson: { singular: "{verb}", plural: "{verb}ɔ̃" },
-      secondPerson: { singular: "{verb}", plural: "{verb}e" },
-      thirdPerson: { singular: "{verb}", plural: "{verb}" },
-    },
-    past: {
-      firstPerson: { singular: "ɛ {verb}e", plural: "avɔ̃ {verb}e" },
-      secondPerson: { singular: "a {verb}e", plural: "ave {verb}e" },
-      thirdPerson: { singular: "a {verb}e", plural: "ɔ̃ {verb}e" },
+    default: {
+      general: {
+        firstPerson: { singular: "{verb}", plural: "{verb}ɔ̃" },
+        secondPerson: { singular: "{verb}", plural: "{verb}e" },
+        thirdPerson: { singular: "{verb}", plural: "{verb}" },
+      },
+      present: {
+        firstPerson: { singular: "{verb}", plural: "{verb}ɔ̃" },
+        secondPerson: { singular: "{verb}", plural: "{verb}e" },
+        thirdPerson: { singular: "{verb}", plural: "{verb}" },
+      },
+      past: {
+        firstPerson: { singular: "ɛ {verb}e", plural: "avɔ̃ {verb}e" },
+        secondPerson: { singular: "a {verb}e", plural: "ave {verb}e" },
+        thirdPerson: { singular: "a {verb}e", plural: "ɔ̃ {verb}e" },
+      },
     },
   },
   nounPhraseFormation:
@@ -147,20 +149,24 @@ export const french = {
     go: {
       morpheme: "al",
       irregular: {
-        present: {
-          firstPerson: { singular: "vɛ", plural: "{verb}ɔ̃" },
-          secondPerson: { singular: "va", plural: "{verb}e" },
-          thirdPerson: { singular: "va", plural: "vɔ̃" },
-        },
+        default: {
+          present: {
+            firstPerson: { singular: "vɛ", plural: "{verb}ɔ̃" },
+            secondPerson: { singular: "va", plural: "{verb}e" },
+            thirdPerson: { singular: "va", plural: "vɔ̃" },
+          },
+        }
       },
     },
     have: {
       morpheme: "a",
       irregular: {
-        present: {
-          firstPerson: { singular: "ai", plural: "{verb}vɔ̃" },
-          secondPerson: { singular: "{verb}", plural: "{verb}ve" },
-          thirdPerson: { singular: "a", plural: "zɔ̃" },
+        default: {
+          present: {
+            firstPerson: { singular: "ai", plural: "{verb}vɔ̃" },
+            secondPerson: { singular: "{verb}", plural: "{verb}ve" },
+            thirdPerson: { singular: "a", plural: "zɔ̃" },
+          },
         },
       },
     },
