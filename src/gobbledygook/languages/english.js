@@ -129,7 +129,7 @@ export const english = {
   numbers: {
     digits: {
       0: "o",
-      1: "wan",
+      1: "wʌn",
       2: "tu",
       3: "θri",
       4: "fɔr",

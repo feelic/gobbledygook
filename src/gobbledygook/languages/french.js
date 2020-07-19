@@ -141,6 +141,13 @@ export const french = {
     },
     have: {
       morpheme: "a",
+      irregular: {
+        present: {
+          firstPerson: { singular: "ai", plural: "{verb}vɔ̃" },
+          secondPerson: { singular: "{verb}", plural: "{verb}ve" },
+          thirdPerson: { singular: "a", plural: "zɔ̃" },
+        },
+      },
     },
     beach: { morpheme: "plaʒ", gender: "fem" },
     chicken: {morpheme: "pulɛ", gender: "masc"}

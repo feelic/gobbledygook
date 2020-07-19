@@ -1,4 +1,4 @@
-export const heHas12Chickens = {
+export const theyHave31Chickens = {
   entities: {
     he:{
       number: "plural",
