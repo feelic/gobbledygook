@@ -17,9 +17,9 @@ export default [
   sheGoesToTheBeach,
   theyHave31Chickens,
   sheHasLostHerDog,
-  heHasTakenHisPlace,
-  iHaveHiddenMyTreasure,
-  theCastleTowerIsRound,
+  // heHasTakenHisPlace,
+  // iHaveHiddenMyTreasure,
+  // theCastleTowerIsRound,
 ];
 
 /*

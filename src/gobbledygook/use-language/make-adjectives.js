@@ -24,8 +24,8 @@ export function makeAdjectives(context, nounDefinition) {
       const declinedAdjective = getRequiredForm(
         context,
         "declension",
-        ["adjective", declensionGroup, grammaticalCase, gender, number],
-        morpheme
+        {type: "adjective", declensionGroup, grammaticalCase, gender, number, morpheme},
+
       ).replace("{adjective}", morpheme.morpheme);
 
       return `${prev} ${declinedAdjective}`;

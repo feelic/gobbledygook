@@ -8,8 +8,7 @@ export function makeVerbPhrase(context, subject, verbDefinition) {
   const conjugatedVerb = getRequiredForm(
     context,
     "conjugation",
-    [group, tense, person, number],
-    morpheme
+    {group, tense, person, number, morpheme},
   ).replace("{verb}", morpheme.morpheme);
 
   return lang.verbPhraseFormation

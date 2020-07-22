@@ -1,13 +1,13 @@
 const formTableStructures = {
   conjugation: ["group", "tense", "person", "number"],
   declension: ["type", "group", "case", "gender", "number"],
-  pronouns: ["person", "case", "gender", "number"],
-  determiners: ["type", "person", "gender", "number"]
+  pronouns: ["person", "grammaticalCase", "gender", "number"],
+  determiners: ["determination.type", "person", "ownerGender", "gender", "number"]
 };
 
-export function getRequiredForm(context, rule, parameters, morpheme = {}) {
+export function getRequiredForm(context, rule, parameters) {
   const { lang } = context;
-
+  const { morpheme = {} } = parameters;
   if (!lang[rule]) {
     throw new Error(
       `Error: ${lang.name || "language"} doesn't have a rule set for ${rule}`
@@ -15,42 +15,70 @@ export function getRequiredForm(context, rule, parameters, morpheme = {}) {
   }
   const formTableStructure = formTableStructures[rule];
 
-  if (parameters.length !== formTableStructure.length) {
-    throw new Error(
-      `Error: ${lang.name ||
-        "language"} incorrect structure for rule ${rule}, expected (${formTableStructure.join(
-        ", "
-      )})`
-    );
+  const selectedRule = morpheme.irregular || lang[rule];
+
+  const form = formTableStructure.reduce(
+    (formTable, agreementParameter, idx) => {
+      let key = getPropertyValue(agreementParameter, parameters);
+
+      if (!formTable[key] && formTable[key] !== "") {
+        key = "default";
+      }
+      if (!formTable[key] && formTable[key] !== "") {
+        throw new Error(AgreementException(
+          context,
+          rule,
+          agreementParameter,
+          formTableStructure,
+          formTable,
+          morpheme,
+          key,
+          parameters
+        ));
+      }
+
+      return formTable[key];
+    },
+    selectedRule
+  );
+
+  return form;
+}
+
+function getPropertyValue(property, parameters) {
+  const path = property.split(".");
+
+  if (path.length > 1) {
+    return getPropertyValue(path.slice(1).join(""), parameters[path[0]]);
   }
 
-  const selectedRule = morpheme.irregular || lang[rule];
-  const form = parameters.reduce((prev, curr, idx) => {
-    let key = curr;
+  return parameters[path[0]] || "default";
+}
 
-    if (!prev[key] && prev[key] !== "") {
-      key = "default";
-    }
-    if (!prev[key] && prev[key] !== "") {
-      const form = formTableStructure[idx];
-      const availableOptions = Object.keys(prev);
-      const morphemeInfo =
-        (morpheme.morpheme && ` for "${morpheme.morpheme}"`) || "";
+function AgreementException(
+  context,
+  rule,
+  agreementParameter,
+  formTableStructure,
+  formTable,
+  morpheme,
+  key,
+  parameters
+) {
+  const { lang } = context;
+  const availableOptions = Object.keys(formTable);
+  const morphemeInfo =
+    (morpheme.morpheme && ` of "${morpheme.morpheme}"`) || "";
 
-      throw new Error(
-        `Error: couldn't agree ${lang.name ||
-          "language"}${morphemeInfo} ${rule} with parameter ${form} = "${curr}"
+  return `Error: couldn't agree ${lang.name ||
+    "language"} ${rule}${morphemeInfo} with parameter ${agreementParameter} = "${key}"
 Available options are: [${availableOptions.join(", ")}]
 
 Given options:
-${parameters.map((p, i) => `${formTableStructure[i]}: "${p}"`).join("\n")}
+${formTableStructure
+  .map((p, i) => `    ${p}: "${getPropertyValue(p, parameters)}"`)
+  .join("\n")}
 
 Matched rule:
-${JSON.stringify(prev)}`
-      );
-    }
-    return prev[key];
-  }, selectedRule);
-
-  return form;
+${JSON.stringify(formTable)}`;
 }

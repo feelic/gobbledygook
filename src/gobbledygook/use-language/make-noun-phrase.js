@@ -11,29 +11,31 @@ export function makeNounPhrase(context, nounDefinition) {
     number,
     grammaticalCase,
     person,
-    usePronoun,
+    usePronoun
   } = nounDefinition;
   const { declensionGroup } = morpheme;
 
   if (usePronoun || (references[nounDefinition.id] && person)) {
-    return getRequiredForm(context, "pronouns", [
+    return getRequiredForm(context, "pronouns", {
       person,
       grammaticalCase,
       gender,
       number,
-    ]);
+      morpheme
+    });
   }
   // ADD REFERENCE MARKER TO ENTITY
   references[nounDefinition.id] = true;
 
   const determiner = getDeterminer(context, nounDefinition);
-  const declinedNoun = getRequiredForm(context, "declension", [
-    "noun",
+  const declinedNoun = getRequiredForm(context, "declension", {
+    type: "noun",
     declensionGroup,
     grammaticalCase,
     gender,
     number,
-  ]).replace("{noun}", morpheme.morpheme);
+    morpheme
+  }).replace("{noun}", morpheme.morpheme);
   const { preadjectives, postadjectives } = makeAdjectives(
     context,
     nounDefinition
@@ -49,16 +51,19 @@ export function makeNounPhrase(context, nounDefinition) {
 }
 
 function getDeterminer(context, nounDefinition) {
-  const { gender, number, determination, grammaticalCase } = nounDefinition;
+  const { gender, number, determination, person, morpheme } = nounDefinition;
+  let ownerGender = 'default'
 
   if (determination.type === "count") {
     return makeNumber(context, nounDefinition.count);
   }
 
-  return getRequiredForm(context, "determiners", [
-    determination.type,
-    grammaticalCase,
+  return getRequiredForm(context, "determiners", {
+    determination,
+    person,
+    ownerGender,
     gender,
     number,
-  ]);
+    morpheme
+  });
 }

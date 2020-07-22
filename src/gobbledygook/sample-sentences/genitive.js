@@ -9,6 +9,7 @@ export const sheHasLostHerDog = {
     dog: {
       core: "dog",
       number: "singular",
+      gender: "masc",
       determination: { type: "possessive", owner: 'she', usePronoun: true },
     }
   },
