@@ -2,7 +2,7 @@ const formTableStructures = {
   conjugation: ["group", "tense", "person", "number"],
   declension: ["type", "group", "case", "gender", "number"],
   pronouns: ["person", "grammaticalCase", "gender", "number"],
-  determiners: ["determination.type", "person", "ownerGender", "gender", "number"]
+  determiners: ["determination.type", "owner.person", "owner.gender", "gender", "number"]
 };
 
 export function getRequiredForm(context, rule, parameters) {

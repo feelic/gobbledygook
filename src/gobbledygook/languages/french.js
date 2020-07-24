@@ -2,10 +2,10 @@ export const french = {
   name: "french",
   pronouns: {
     firstPerson: {
-      default: { default: { singular: "", plural: "" } }
+      default: { default: { singular: "ʒɘ", plural: "nu" } }
     },
     secondPerson: {
-      default: { default: { singular: "", plural: "" } }
+      default: { default: { singular: "ty", plural: "vu" } }
     },
     thirdPerson: {
       nominative: {
@@ -192,11 +192,11 @@ export const french = {
       }
     },
     take: { morpheme: "prɑ̃" },
-    place: { morpheme: "plas" },
+    place: { morpheme: "plas", gender: "fem" },
     hide: { morpheme: "kaʃ" },
-    treasure: { morpheme: "tʁezoʁ" },
-    castle: { morpheme: "ʃato" },
-    tower: { morpheme: "tuʁ" },
+    treasure: { morpheme: "tʁezoʁ", gender: "masc" },
+    castle: { morpheme: "ʃato", gender: "masc" },
+    tower: { morpheme: "tuʁ", gender: "fem" },
     be: { morpheme: "ɛ" },
     round: { morpheme: "ʁɔ̃" }
   },

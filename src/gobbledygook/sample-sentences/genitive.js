@@ -1,4 +1,5 @@
 export const sheHasLostHerDog = {
+  transcript: 'she lost her dog',
   entities: {
     she:{
       number: "singular",
@@ -24,7 +25,8 @@ export const sheHasLostHerDog = {
     }
   }
 };
-export const heHasTakenHisPlace = {
+export const heTakesHisPlace = {
+  transcript: 'he takes his place',
   entities: {
     he:{
       number: "singular",
@@ -34,7 +36,7 @@ export const heHasTakenHisPlace = {
     },
     place: {
       core: "place",
-      number: "plural",
+      number: "singular",
       determination: { type: "possessive", owner: 'he', usePronoun: true },
     }
   },
@@ -50,10 +52,11 @@ export const heHasTakenHisPlace = {
   }
 }
 export const iHaveHiddenMyTreasure = {
+  transcript: 'i have hidden my treasure',
   entities: {
     i:{
-      number: "plural",
-      person: "thirdPerson",
+      number: "singular",
+      person: "firstPerson",
       gender: "masc",
       usePronoun: true,
     },
@@ -65,7 +68,7 @@ export const iHaveHiddenMyTreasure = {
   },
   sentence: {
     subject: {
-      id: 'he'
+      id: 'i'
     },
     verb: { verb: "hide", tense: "past" },
     object: {
@@ -75,6 +78,7 @@ export const iHaveHiddenMyTreasure = {
   }
 }
 export const theCastleTowerIsRound = {
+  transcript: 'The castle tower is round',
   entities: {
     castle:{
       core: "castle",

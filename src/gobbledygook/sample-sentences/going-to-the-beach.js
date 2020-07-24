@@ -1,4 +1,5 @@
 export const sheGoesToTheBeach = {
+  transcript: "she goes to the beach",
   entities: {
     she:{
       number: "singular",

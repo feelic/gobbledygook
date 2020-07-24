@@ -1,4 +1,5 @@
 export const theyHave31Chickens = {
+  transcript: 'they have 31 chickens',
   entities: {
     he:{
       number: "plural",

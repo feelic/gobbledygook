@@ -2,10 +2,10 @@ export const english = {
   name: "english",
   pronouns: {
     firstPerson: {
-      default: { default: { singular: "", plural: "" } }
+      default: { default: { singular: "aɪ", plural: "wɪ" } }
     },
     secondPerson: {
-      default: { default: { singular: "", plural: "" } }
+      default: { default: { singular: "ju", plural: "ju" } }
     },
     thirdPerson: {
       nominative: {
@@ -68,22 +68,16 @@ export const english = {
     },
     possessive: {
       firstPerson: {
-        default: {
-          masc: { singular: "mon", plural: "mes" },
-          fem: { singular: "ma", plural: "mes" }
-        }
+        masc: { default: { singular: "maɪ", plural: "maɪ" } },
+        fem: { default: { singular: "maɪ", plural: "maɪ" } }
       },
       secondPerson: {
-        default: {
-          masc: { singular: "ton", plural: "tes" },
-          fem: { singular: "ta", plural: "tes" }
-        }
+        masc: { default: { singular: "jɔr", plural: "jɔr" } },
+        fem: { default: { singular: "jɔr", plural: "jɔr" } }
       },
       thirdPerson: {
-        default: {
-          masc: { singular: "son", plural: "ses" },
-          fem: { singular: "sa", plural: "ses" }
-        }
+        masc: { default: { singular: "hɪz", plural: "ðɛr" } },
+        fem: { default: { singular: "hər", plural: "ðɛr" } }
       }
     },
     quantifiers: { all: "", some: "", many: "", few: "", no: "" },
@@ -154,10 +148,34 @@ export const english = {
     beach: { morpheme: "bitʃ" },
     chicken: { morpheme: "tʃɪkɪn" },
     dog: { morpheme: "dɒɡ" },
-    lose: { morpheme: "luz" },
-    take: { morpheme: "teik" },
-    place: { morpheme: "pleis" },
-    hide: { morpheme: "haid" },
+    lose: {
+      morpheme: "luz",
+      irregular: {
+        default: {
+          default: {
+            default: { default: "{verb}" },
+            thirdPerson: { singular: "{verb}əz", plural: "{verb}" }
+          },
+          past: {
+            default: { default: "lost" }
+          }
+        }
+      }
+    },
+    take: { morpheme: "teɪk" },
+    place: { morpheme: "pleɪs" },
+    hide: { morpheme: "haɪd",
+    irregular: {
+      default: {
+        default: {
+          default: { default: "{verb}" },
+          thirdPerson: { singular: "{verb}z", plural: "{verb}" }
+        },
+        past: {
+          default: { default: "hɪd" }
+        }
+      }
+    } },
     treasure: { morpheme: "trɛʒə" },
     castle: { morpheme: "kɑsəl/" },
     tower: { morpheme: "taʊ.ər" },

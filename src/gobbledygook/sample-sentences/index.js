@@ -6,7 +6,7 @@ import { sheGoesToTheBeach } from "./going-to-the-beach.js";
 import { theyHave31Chickens } from "./numbers.js";
 import {
   sheHasLostHerDog,
-  heHasTakenHisPlace,
+  heTakesHisPlace,
   iHaveHiddenMyTreasure,
   theCastleTowerIsRound,
 } from "./genitive.js";
@@ -17,8 +17,8 @@ export default [
   sheGoesToTheBeach,
   theyHave31Chickens,
   sheHasLostHerDog,
-  // heHasTakenHisPlace,
-  // iHaveHiddenMyTreasure,
+  heTakesHisPlace,
+  iHaveHiddenMyTreasure,
   // theCastleTowerIsRound,
 ];
 

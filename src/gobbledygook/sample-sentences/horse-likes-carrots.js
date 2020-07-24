@@ -1,4 +1,5 @@
 export const horseLikesCarrots = {
+  transcript: 'the small grey horse lkes carrots',
   entities: {
     horse:{
       core: 'horse',
@@ -28,6 +29,7 @@ export const horseLikesCarrots = {
 };
 
 export const horseLikesCarrotsJohnnyGaveHim = {
+  transcript: 'the small grey horse lkes carrots that johnny gave him',
   entities: {
     horse:{
       core: 'horse',

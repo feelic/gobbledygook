@@ -10,7 +10,7 @@ export function getNounInfo(context, noun) {
     number: nounDefinition.number || "singular",
     determination: nounDefinition.determination || { type: "definite" },
     grammaticalCase: noun.grammaticalCase || "nominative",
-    person: noun.person || "thirdPerson",
+    person: nounDefinition.person || "thirdPerson",
     ...noun,
   };
 

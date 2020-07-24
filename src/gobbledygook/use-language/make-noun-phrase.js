@@ -52,16 +52,19 @@ export function makeNounPhrase(context, nounDefinition) {
 
 function getDeterminer(context, nounDefinition) {
   const { gender, number, determination, person, morpheme } = nounDefinition;
-  let ownerGender = 'default'
+  let owner = {}
 
   if (determination.type === "count") {
     return makeNumber(context, nounDefinition.count);
   }
-
+  if (determination.type === "possessive") {
+    owner = context.entities[determination.owner];
+  }
+  console.log(owner.person)
   return getRequiredForm(context, "determiners", {
     determination,
     person,
-    ownerGender,
+    owner,
     gender,
     number,
     morpheme
