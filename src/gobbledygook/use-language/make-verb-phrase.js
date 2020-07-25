@@ -5,11 +5,13 @@ export function makeVerbPhrase(context, subject, verbDefinition) {
   const { number, person } = subject;
   const { verb, tense, group } = verbDefinition;
   const morpheme = lang.morphemeDictionary[verb];
-  const conjugatedVerb = getRequiredForm(
-    context,
-    "conjugation",
-    {group, tense, person, number, morpheme},
-  ).replace("{verb}", morpheme.morpheme);
+  const conjugatedVerb = getRequiredForm(context, "conjugation", {
+    group,
+    tense,
+    person,
+    number,
+    morpheme,
+  }).replace("{verb}", morpheme.morpheme);
 
   return lang.verbPhraseFormation
     .replace("{preadverbs}", "")

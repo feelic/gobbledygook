@@ -1,189 +1,127 @@
+import morphemeDictionary from "./dictionary";
+
 export const english = {
   name: "english",
+  morphemeDictionary,
   pronouns: {
     firstPerson: {
-      default: { default: { singular: "aɪ", plural: "wɪ" } }
+      default: { default: { singular: "aɪ", plural: "wɪ" } },
     },
     secondPerson: {
-      default: { default: { singular: "ju", plural: "ju" } }
+      default: { default: { singular: "ju", plural: "ju" } },
     },
     thirdPerson: {
       nominative: {
         default: { default: "ɪt", plural: "ðeɪ" },
         masc: { singular: "hi", plural: "ðeɪ" },
-        fem: { default: "ʃi", plural: "ðeɪ" }
+        fem: { default: "ʃi", plural: "ðeɪ" },
       },
       accusative: {
         default: { default: "ɪt" },
         masc: { singular: "", plural: "" },
-        fem: { singular: "la", plural: "" }
+        fem: { singular: "la", plural: "" },
       },
       dative: {
         default: { default: "ɪt" },
         masc: { singular: "hɪm", plural: "lɘr" },
-        fem: { singular: "lɥi", plural: "lɘr" }
+        fem: { singular: "lɥi", plural: "lɘr" },
       },
       genitive: {
         default: { default: "ɪt" },
         masc: { singular: "hɪs", plural: "ð" },
-        fem: { singular: "lɥi", plural: "lɘr" }
-      }
-    }
+        fem: { singular: "lɥi", plural: "lɘr" },
+      },
+    },
   },
   determiners: {
     definite: {
       default: {
         default: {
-          default: { singular: "ðə", plural: "ðə" }
-        }
-      }
+          default: { singular: "ðə", plural: "ðə" },
+        },
+      },
     },
     indefinite: {
       default: {
         default: {
-          default: { singular: "ə", plural: "" }
-        }
-      }
+          default: { singular: "ə", plural: "" },
+        },
+      },
     },
     properNoun: {
       default: {
         default: {
-          default: { singular: "", plural: "" }
-        }
-      }
+          default: { singular: "", plural: "" },
+        },
+      },
     },
     demonstrative: {
       default: {
         default: {
-          default: { singular: "", plural: "" }
-        }
-      }
+          default: { singular: "", plural: "" },
+        },
+      },
     },
     distal: {
       default: {
         default: {
-          default: { singular: "", plural: "" }
-        }
-      }
+          default: { singular: "", plural: "" },
+        },
+      },
     },
     possessive: {
       firstPerson: {
+        default: { default: { singular: "maɪ", plural: "maɪ" } },
         masc: { default: { singular: "maɪ", plural: "maɪ" } },
-        fem: { default: { singular: "maɪ", plural: "maɪ" } }
+        fem: { default: { singular: "maɪ", plural: "maɪ" } },
       },
       secondPerson: {
+        default: { default: { singular: "jɔr", plural: "jɔr" } },
         masc: { default: { singular: "jɔr", plural: "jɔr" } },
-        fem: { default: { singular: "jɔr", plural: "jɔr" } }
+        fem: { default: { singular: "jɔr", plural: "jɔr" } },
       },
       thirdPerson: {
+        default: { default: { singular: "ɪts", plural: "ɪts" } },
         masc: { default: { singular: "hɪz", plural: "ðɛr" } },
-        fem: { default: { singular: "hər", plural: "ðɛr" } }
-      }
+        fem: { default: { singular: "hər", plural: "ðɛr" } },
+      },
     },
     quantifiers: { all: "", some: "", many: "", few: "", no: "" },
     distributive: { each: "", any: "" },
-    interrogative: { what: "", which: "" }
+    interrogative: { what: "", which: "" },
   },
   declension: {
     default: {
       default: {
         default: {
-          default: { singular: "{noun}", plural: "{noun}s" }
+          default: { singular: "{noun}", plural: "{noun}s" },
         },
         genitive: {
-          default: { singular: "{noun}'s", plural: "{noun}s'" }
-        }
-      }
+          default: { singular: "{noun}'s", plural: "{noun}s'" },
+        },
+      },
     },
     adjective: {
-      default: { default: { default: { default: "{adjective}" } } }
-    }
+      default: { default: { default: { default: "{adjective}" } } },
+    },
   },
   conjugation: {
     default: {
       default: {
         default: { default: "{verb}" },
-        thirdPerson: { singular: "{verb}z", plural: "{verb}" }
+        thirdPerson: { singular: "{verb}z", plural: "{verb}" },
       },
       past: {
-        default: { default: "{verb}d" }
-      }
-    }
+        default: { default: "{verb}d" },
+      },
+    },
   },
   nounPhraseFormation: "{determiner} {preadjectives} {noun} {adjectiveClause}",
   verbPhraseFormation: "{preadverbs} {verb} {postadverbs}",
   sentenceFormation: "{subject} {verb} {object}",
   adjectiveClauseFormation: "ðat {subject} {verb} {object}",
-  morphemeDictionary: {
-    horse: { morpheme: "hors" },
-    carrot: { morpheme: "kærət" },
-    love: { morpheme: "lov" },
-    gray: { morpheme: "greɪ" },
-    orange: { morpheme: "orɪndʒ" },
-    small: { morpheme: "smɔl" },
-    give: {
-      morpheme: "giv",
-      irregular: {
-        default: {
-          default: {
-            default: { default: "{verb}" },
-            thirdPerson: { singular: "{verb}z", plural: "{verb}" }
-          },
-          past: { default: { default: "geɪv" } }
-        }
-      }
-    },
-    go: { morpheme: "go" },
-    have: {
-      morpheme: "ha",
-      irregular: {
-        default: {
-          default: {
-            default: { default: "{verb}v" },
-            thirdPerson: { singular: "{verb}z", plural: "{verb}v" }
-          }
-        }
-      }
-    },
-    beach: { morpheme: "bitʃ" },
-    chicken: { morpheme: "tʃɪkɪn" },
-    dog: { morpheme: "dɒɡ" },
-    lose: {
-      morpheme: "luz",
-      irregular: {
-        default: {
-          default: {
-            default: { default: "{verb}" },
-            thirdPerson: { singular: "{verb}əz", plural: "{verb}" }
-          },
-          past: {
-            default: { default: "lost" }
-          }
-        }
-      }
-    },
-    take: { morpheme: "teɪk" },
-    place: { morpheme: "pleɪs" },
-    hide: { morpheme: "haɪd",
-    irregular: {
-      default: {
-        default: {
-          default: { default: "{verb}" },
-          thirdPerson: { singular: "{verb}z", plural: "{verb}" }
-        },
-        past: {
-          default: { default: "hɪd" }
-        }
-      }
-    } },
-    treasure: { morpheme: "trɛʒə" },
-    castle: { morpheme: "kɑsəl/" },
-    tower: { morpheme: "taʊ.ər" },
-    be: { morpheme: "be" },
-    round: { morpheme: "ɹaʊnd" }
-  },
   adjectives: {
-    preadjectives: ["size", "age", "color"]
+    preadjectives: ["size", "age", "color"],
   },
   numbers: {
     digits: {
@@ -214,15 +152,15 @@ export const english = {
       60: "sɪksti",
       70: "sɛvənti",
       80: "eɪti",
-      90: "naɪnti"
+      90: "naɪnti",
     },
     unitFormation: {
       units: "{digit}",
       tens: "{digit}",
       hundreds: "{digit} hundred and",
-      thousands: "{digit} θawzend"
+      thousands: "{digit} θawzend",
     },
-    formation: "{thousands}{hundreds}{tens}{units}"
+    formation: "{thousands}{hundreds}{tens}{units}",
   },
   vowels: {
     æ: { weight: 1, translit: "a" },
@@ -240,7 +178,7 @@ export const english = {
     // aɪ: { weight: 1, translit: "i" },
     // ɔɪ: { weight: 1, translit: "oi" },
     // aʊ: { weight: 1, translit: "ou" },
-    ə: { weight: 1, translit: "e" }
+    ə: { weight: 1, translit: "e" },
   },
   consonants: {
     r: { weight: 1, translit: "r" },
@@ -281,6 +219,6 @@ export const english = {
     bl: { weight: 1, translit: "bl" },
     pl: { weight: 1, translit: "pl" },
     gl: { weight: 1, translit: "gl" },
-    ks: { weight: 1, translit: "ks" }
-  }
+    ks: { weight: 1, translit: "ks" },
+  },
 };

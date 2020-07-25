@@ -1,7 +1,7 @@
 export const theyHave31Chickens = {
-  transcript: 'they have 31 chickens',
+  transcript: "they have 31 chickens",
   entities: {
-    he:{
+    he: {
       number: "plural",
       person: "thirdPerson",
       gender: "masc",
@@ -11,17 +11,17 @@ export const theyHave31Chickens = {
       core: "chicken",
       number: "plural",
       determination: { type: "count" },
-      count: 31
-    }
+      count: 31,
+    },
   },
   sentence: {
     subject: {
-      id: 'he'
+      id: "he",
     },
     verb: { verb: "have", tense: "present" },
     object: {
-      id: 'chickens',
-      grammaticalCase: 'accusative',
-    }
-  }
+      id: "chickens",
+      grammaticalCase: "accusative",
+    },
+  },
 };

@@ -1,8 +1,14 @@
 const formTableStructures = {
   conjugation: ["group", "tense", "person", "number"],
-  declension: ["type", "group", "case", "gender", "number"],
+  declension: ["type", "declensionGroup", "case", "gender", "number"],
   pronouns: ["person", "grammaticalCase", "gender", "number"],
-  determiners: ["determination.type", "owner.person", "owner.gender", "gender", "number"]
+  determiners: [
+    "determination.type",
+    "owner.person",
+    "owner.gender",
+    "gender",
+    "number",
+  ],
 };
 
 export function getRequiredForm(context, rule, parameters) {
@@ -16,7 +22,9 @@ export function getRequiredForm(context, rule, parameters) {
   const formTableStructure = formTableStructures[rule];
 
   const selectedRule = morpheme.irregular || lang[rule];
-
+  if (morpheme.morpheme === 'pɘti') {
+    console.log(parameters)
+  }
   const form = formTableStructure.reduce(
     (formTable, agreementParameter, idx) => {
       let key = getPropertyValue(agreementParameter, parameters);
@@ -25,18 +33,23 @@ export function getRequiredForm(context, rule, parameters) {
         key = "default";
       }
       if (!formTable[key] && formTable[key] !== "") {
-        throw new Error(AgreementException(
-          context,
-          rule,
-          agreementParameter,
-          formTableStructure,
-          formTable,
-          morpheme,
-          key,
-          parameters
-        ));
+        throw new Error(
+          AgreementException(
+            context,
+            rule,
+            agreementParameter,
+            formTableStructure,
+            formTable,
+            morpheme,
+            key,
+            parameters
+          )
+        );
       }
-
+      if (morpheme.morpheme === 'pɘti') {
+        console.log(agreementParameter, key)
+        console.log(formTable[key])
+      }
       return formTable[key];
     },
     selectedRule
@@ -70,8 +83,9 @@ function AgreementException(
   const morphemeInfo =
     (morpheme.morpheme && ` of "${morpheme.morpheme}"`) || "";
 
-  return `Error: couldn't agree ${lang.name ||
-    "language"} ${rule}${morphemeInfo} with parameter ${agreementParameter} = "${key}"
+  return `Error: couldn't agree ${
+    lang.name || "language"
+  } ${rule}${morphemeInfo} with parameter ${agreementParameter} = "${key}"
 Available options are: [${availableOptions.join(", ")}]
 
 Given options:

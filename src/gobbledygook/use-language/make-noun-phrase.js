@@ -11,7 +11,7 @@ export function makeNounPhrase(context, nounDefinition) {
     number,
     grammaticalCase,
     person,
-    usePronoun
+    usePronoun,
   } = nounDefinition;
   const { declensionGroup } = morpheme;
 
@@ -21,7 +21,7 @@ export function makeNounPhrase(context, nounDefinition) {
       grammaticalCase,
       gender,
       number,
-      morpheme
+      morpheme,
     });
   }
   // ADD REFERENCE MARKER TO ENTITY
@@ -34,7 +34,7 @@ export function makeNounPhrase(context, nounDefinition) {
     grammaticalCase,
     gender,
     number,
-    morpheme
+    morpheme,
   }).replace("{noun}", morpheme.morpheme);
   const { preadjectives, postadjectives } = makeAdjectives(
     context,
@@ -52,7 +52,7 @@ export function makeNounPhrase(context, nounDefinition) {
 
 function getDeterminer(context, nounDefinition) {
   const { gender, number, determination, person, morpheme } = nounDefinition;
-  let owner = {}
+  let owner = {};
 
   if (determination.type === "count") {
     return makeNumber(context, nounDefinition.count);
@@ -60,13 +60,13 @@ function getDeterminer(context, nounDefinition) {
   if (determination.type === "possessive") {
     owner = context.entities[determination.owner];
   }
-  console.log(owner.person)
+
   return getRequiredForm(context, "determiners", {
     determination,
     person,
     owner,
     gender,
     number,
-    morpheme
+    morpheme,
   });
 }

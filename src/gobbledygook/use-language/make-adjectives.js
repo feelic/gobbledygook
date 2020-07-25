@@ -21,12 +21,14 @@ export function makeAdjectives(context, nounDefinition) {
       }
       const morpheme = lang.morphemeDictionary[adjective];
       const { declensionGroup } = morpheme;
-      const declinedAdjective = getRequiredForm(
-        context,
-        "declension",
-        {type: "adjective", declensionGroup, grammaticalCase, gender, number, morpheme},
-
-      ).replace("{adjective}", morpheme.morpheme);
+      const declinedAdjective = getRequiredForm(context, "declension", {
+        type: "adjective",
+        declensionGroup,
+        grammaticalCase,
+        gender,
+        number,
+        morpheme,
+      }).replace("{adjective}", morpheme.morpheme);
 
       return `${prev} ${declinedAdjective}`;
     }, "");

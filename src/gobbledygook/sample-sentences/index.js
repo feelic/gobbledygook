@@ -19,7 +19,7 @@ export default [
   sheHasLostHerDog,
   heTakesHisPlace,
   iHaveHiddenMyTreasure,
-  // theCastleTowerIsRound,
+  theCastleTowerIsRound,
 ];
 
 /*

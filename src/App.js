@@ -58,8 +58,7 @@ function App() {
                   >
                     :V
                   </button>
-                </p>
-                <p>
+                <br/>
                   {transliterate(english, englishSentence)}{" "}
                   <button
                     onClick={() => handlePlayAudio(englishSentence, "Brian")}

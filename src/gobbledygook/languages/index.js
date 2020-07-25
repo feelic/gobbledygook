@@ -1,2 +1,2 @@
-export * from "./english";
-export * from "./french";
+export * from "./english/index";
+export * from "./french/index";
