@@ -81,4 +81,8 @@ export default {
     },
   },
   round: { morpheme: "raʊnd" },
+  ugly: {morpheme: 'əɡli'},
+  stupid: {morpheme: 'stjupɪd'},
+  smell: {morpheme: 'smɛl'},
+  bad: {morpheme: 'bæd'},
 };

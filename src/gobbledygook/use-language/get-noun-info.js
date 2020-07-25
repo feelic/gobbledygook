@@ -1,6 +1,12 @@
 export function getNounInfo(context, noun) {
   const { entities } = context;
   const nounDefinition = entities[noun.id];
+
+  if(! nounDefinition) {
+    debugger;
+    console.log('no entity for ', noun.id)
+  }
+
   const morpheme = getMorpheme(context, nounDefinition);
 
   const normalizedDefinition = {
@@ -19,6 +25,7 @@ export function getNounInfo(context, noun) {
 
 function getMorpheme(context, nounDefinition) {
   const { lang } = context;
+
   const morpheme = lang.morphemeDictionary[nounDefinition.core];
 
   if (!morpheme) {

@@ -56,4 +56,8 @@ export default {
   tower: { morpheme: "tuʁ", gender: "fem" },
   be: { morpheme: "ɛ" },
   round: { morpheme: "ʁɔ̃", declensionGroup: "dEnding" },
+  ugly: {morpheme: 'mɔʃ'},
+  stupid: {morpheme: 'stypid'},
+  smell: {morpheme: 'sɑ̃'},
+  bad: {morpheme: 'mɔvɛ'},
 };

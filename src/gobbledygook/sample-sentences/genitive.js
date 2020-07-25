@@ -77,32 +77,3 @@ export const iHaveHiddenMyTreasure = {
     },
   },
 };
-export const theCastleTowerIsRound = {
-  transcript: "The castle tower is round",
-  entities: {
-    castle: {
-      core: "castle",
-      number: "singular",
-      person: "thirdPerson",
-    },
-    tower: {
-      core: "tower",
-      number: "singular",
-      determination: { type: "possessive", owner: "castle" },
-    },
-    round: {
-      core: "round",
-    },
-  },
-  sentence: {
-    subject: {
-      id: "tower",
-    },
-    verb: { verb: "be", tense: "present" },
-    object: {
-      id: "round",
-      function: "adjective",
-      grammaticalCase: "accusative",
-    },
-  },
-};

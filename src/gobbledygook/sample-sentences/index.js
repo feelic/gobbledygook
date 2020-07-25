@@ -8,18 +8,28 @@ import {
   sheHasLostHerDog,
   heTakesHisPlace,
   iHaveHiddenMyTreasure,
-  theCastleTowerIsRound,
 } from "./genitive.js";
+import {
+  theHorseIsUgly,
+  bobIsUglyAndStupid,
+  jezIsTallerThanMark,
+  theDogSmellsReallyBad,
+  theCastleTowerIsRound,
+} from "./adjective-predicates.js";
 
 export default [
-  horseLikesCarrots,
-  horseLikesCarrotsJohnnyGaveHim,
-  sheGoesToTheBeach,
-  theyHave31Chickens,
-  sheHasLostHerDog,
-  heTakesHisPlace,
-  iHaveHiddenMyTreasure,
-  theCastleTowerIsRound,
+  // horseLikesCarrots,
+  // horseLikesCarrotsJohnnyGaveHim,
+  // sheGoesToTheBeach,
+  // theyHave31Chickens,
+  // sheHasLostHerDog,
+  // heTakesHisPlace,
+  // iHaveHiddenMyTreasure,
+  theHorseIsUgly,
+  bobIsUglyAndStupid,
+  jezIsTallerThanMark,
+  theDogSmellsReallyBad,
+  // theCastleTowerIsRound,
 ];
 
 /*
