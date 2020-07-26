@@ -17,6 +17,7 @@ export const theHorseIsUgly = {
     verb: { verb: "be", tense: "present" },
     object: {
       id: "ugly",
+      type: "adjective",
       grammaticalCase: "accusative",
     },
   },
@@ -41,6 +42,7 @@ export const bobIsUglyAndStupid = {
     verb: { verb: "be", tense: "present" },
     object: {
       id: "ugly",
+      type: "adjective",
       grammaticalCase: "accusative",
     },
   },
@@ -70,6 +72,7 @@ export const jezIsTallerThanMark = {
     verb: { verb: "be", tense: "present" },
     object: {
       id: "ugly",
+      type: "adjective",
       grammaticalCase: "accusative",
     },
   },
@@ -94,6 +97,7 @@ export const theDogSmellsReallyBad = {
     verb: { verb: "smell", tense: "present" },
     object: {
       id: "bad",
+      type: "adjective",
       grammaticalCase: "accusative",
     },
   },
@@ -123,6 +127,7 @@ export const theCastleTowerIsRound = {
     verb: { verb: "be", tense: "present" },
     object: {
       id: "round",
+      type: "adjective",
       grammaticalCase: "accusative",
     },
   },

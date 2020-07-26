@@ -1,5 +1,6 @@
 import { makeNounPhrase } from "./make-noun-phrase";
 import { makeVerbPhrase } from "./make-verb-phrase";
+import { makeObject } from "./make-object";
 import { getNounInfo } from "./get-noun-info";
 
 export function makeSentence(lang, { sentence, entities }) {
@@ -15,10 +16,10 @@ export function makeSentence(lang, { sentence, entities }) {
     references: {},
   };
   const subject = getNounInfo(context, sentence.subject);
-  const object = getNounInfo(context, sentence.object);
+  const objectPhrase = makeObject(context, sentence.object);
 
   return lang.sentenceFormation
     .replace("{subject}", makeNounPhrase(context, subject))
     .replace("{verb}", makeVerbPhrase(context, subject, sentence.verb))
-    .replace("{object}", makeNounPhrase(context, object));
+    .replace("{object}", objectPhrase);
 }
