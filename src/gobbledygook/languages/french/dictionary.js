@@ -60,4 +60,7 @@ export default {
   stupid: {morpheme: 'stypid'},
   smell: {morpheme: 'sɑ̃'},
   bad: {morpheme: 'mɔvɛ'},
+  grass: {morpheme: 'ɛʁb'},
+  donkey: {morpheme: 'an'},
+  and: {morpheme: 'e'},
 };

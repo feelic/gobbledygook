@@ -2,9 +2,21 @@ import { getRequiredForm } from "./get-required-form";
 import { makeAdjectives } from "./make-adjectives";
 import { makeAdjectiveClause } from "./make-adjective-clause";
 import { makeNumber } from "./make-number";
+import { getNounInfo } from "./get-noun-info";
+import getConjunction from "./get-conjunction";
 
-export function makeNounPhrase(context, nounDefinition) {
+export function makeNounPhrase(context, nounEntity) {
+  if (nounEntity.entities) {
+    return nounEntity.entities.map(entity => {
+      const singleEntity = {...nounEntity, ...entity};
+
+      delete singleEntity.entities;
+      return makeNounPhrase(context, singleEntity)
+    }).join(getConjunction(context, 'and'));
+  }
+
   const { lang, references } = context;
+  const nounDefinition = getNounInfo(context, nounEntity)
   const {
     morpheme,
     gender,
@@ -54,6 +66,9 @@ function getDeterminer(context, nounDefinition) {
   const { gender, number, determination, person, morpheme } = nounDefinition;
   let owner = {};
 
+  if (! determination) {
+    debugger;
+  }
   if (determination.type === "count") {
     return makeNumber(context, nounDefinition.count);
   }

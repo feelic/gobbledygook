@@ -1,14 +1,23 @@
 import { makeNounPhrase } from "./make-noun-phrase";
-import { getNounInfo } from "./get-noun-info";
+import getConjunction from "./get-conjunction";
 
-export function makeObject (context) {
-  const {sentence} = context;
+export function makeObject (context, object) {
+  if (object.entities && object.entities.length) {
+    return object.entities.map(entity => {
+      const singleEntity = {...object, ...entity};
 
-  if (sentence.object.type=== 'adjective') {
-    return 'adjective'
+      delete singleEntity.entities;
+      return makeObject(context, singleEntity)
+    }).join(getConjunction(context, 'and'));
   }
 
-  const object = getNounInfo(context, sentence.object);
+  if (object.type=== 'adjective') {
+    return makeAdjectivePredicate(context, object);
+  }
 
   return makeNounPhrase(context, object)
+}
+
+function makeAdjectivePredicate (context) {
+
 }

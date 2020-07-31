@@ -1,25 +1,25 @@
 import {
   horseLikesCarrots,
   horseLikesCarrotsJohnnyGaveHim,
-} from "./horse-likes-carrots.js";
-import { sheGoesToTheBeach } from "./going-to-the-beach.js";
-import { theyHave31Chickens } from "./numbers.js";
-import {
+  horseLikesCarrotsAndGrass,
+  horseAndDonkeyLikeCarrots,
+  sheGoesToTheBeach,
   sheHasLostHerDog,
   heTakesHisPlace,
   iHaveHiddenMyTreasure,
-} from "./genitive.js";
-import {
   theHorseIsUgly,
   bobIsUglyAndStupid,
   jezIsTallerThanMark,
   theDogSmellsReallyBad,
   theCastleTowerIsRound,
-} from "./adjective-predicates.js";
+  theyHave31Chickens,
+} from "./sample-sentences.js";
 
 export default [
   // horseLikesCarrots,
   // horseLikesCarrotsJohnnyGaveHim,
+  horseLikesCarrotsAndGrass,
+  horseAndDonkeyLikeCarrots,
   // sheGoesToTheBeach,
   // theyHave31Chickens,
   // sheHasLostHerDog,

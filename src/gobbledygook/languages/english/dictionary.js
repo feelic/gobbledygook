@@ -85,4 +85,7 @@ export default {
   stupid: {morpheme: 'stjupɪd'},
   smell: {morpheme: 'smɛl'},
   bad: {morpheme: 'bæd'},
+  grass: {morpheme: 'grɑs'},
+  donkey: {morpheme: 'dɑŋki'},
+  and: {morpheme: 'ænd'},
 };
