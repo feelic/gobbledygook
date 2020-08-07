@@ -268,6 +268,41 @@ export const iHaveHiddenMyTreasure = {
   }
 };
 
+export const bobsHorseLikesCarrots = {
+  transcript: "Bob's horse likes carrots",
+  entities: {
+    horse: {
+      core: "horse",
+      type: "animal",
+      number: "singular",
+      determination: { type: "possessive", owner: "bob", usePronoun: false },
+      person: "thirdPerson"
+    },
+    carrots: {
+      core: "carrot",
+      number: "plural",
+      determination: { type: "indefinite" }
+    },
+    bob: {
+      core: "bob",
+      number: "singular",
+      person: "thirdPerson",
+      gender: "masc",
+      determination: { type: "properNoun" }
+    },
+  },
+  sentence: {
+    subject: {
+      id: "horse"
+    },
+    verb: { verb: "love", tense: "general" },
+    object: {
+      id: "carrots",
+      grammaticalCase: "accusative"
+    }
+  }
+};
+
 export const theyHave31Chickens = {
   transcript: "they have 31 chickens",
   entities: {
