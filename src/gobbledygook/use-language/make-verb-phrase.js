@@ -1,5 +1,5 @@
 import { getRequiredForm } from "./get-required-form";
-import { getNounInfo } from "./get-noun-info";
+import { getSubjectInfo } from "./get-noun-info";
 
 export function makeVerbPhrase(context, subject, verbDefinition) {
   const { lang } = context;
@@ -18,15 +18,4 @@ export function makeVerbPhrase(context, subject, verbDefinition) {
     .replace("{preadverbs}", "")
     .replace("{postadverbs}", "")
     .replace("{verb}", conjugatedVerb);
-}
-
-function getSubjectInfo(context, subject) {
-  if (subject.entities) {
-    return {
-      number: "plural",
-      person: "thirdPerson"
-    };
-  }
-
-  return getNounInfo(context, subject);
 }

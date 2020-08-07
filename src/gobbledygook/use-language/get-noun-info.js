@@ -23,6 +23,17 @@ export function getNounInfo(context, noun) {
   return normalizedDefinition;
 }
 
+export function getSubjectInfo(context, subject) {
+  if (subject.entities) {
+    return {
+      number: "plural",
+      person: "thirdPerson"
+    };
+  }
+
+  return getNounInfo(context, subject);
+}
+
 function getMorpheme(context, nounDefinition) {
   const { lang } = context;
 

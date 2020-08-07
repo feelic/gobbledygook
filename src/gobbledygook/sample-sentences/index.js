@@ -18,18 +18,18 @@ import {
 export default [
   // horseLikesCarrots,
   // horseLikesCarrotsJohnnyGaveHim,
-  horseLikesCarrotsAndGrass,
-  horseAndDonkeyLikeCarrots,
+  // horseLikesCarrotsAndGrass,
+  // horseAndDonkeyLikeCarrots,
   // sheGoesToTheBeach,
   // theyHave31Chickens,
   // sheHasLostHerDog,
   // heTakesHisPlace,
   // iHaveHiddenMyTreasure,
-  theHorseIsUgly,
-  bobIsUglyAndStupid,
+  // theHorseIsUgly,
+  // bobIsUglyAndStupid,
   jezIsTallerThanMark,
   theDogSmellsReallyBad,
-  // theCastleTowerIsRound,
+  theCastleTowerIsRound,
 ];
 
 /*

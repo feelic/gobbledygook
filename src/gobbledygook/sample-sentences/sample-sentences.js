@@ -332,6 +332,9 @@ export const bobIsUglyAndStupid = {
     },
     ugly: {
       core: "ugly"
+    },
+    stupid: {
+      core: "stupid"
     }
   },
   sentence: {
@@ -340,7 +343,7 @@ export const bobIsUglyAndStupid = {
     },
     verb: { verb: "be", tense: "present" },
     object: {
-      id: "ugly",
+      entities: [{ id: "ugly" }, { id: "stupid" }],
       type: "adjective",
       grammaticalCase: "accusative"
     }
