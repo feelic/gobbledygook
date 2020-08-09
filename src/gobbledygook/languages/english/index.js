@@ -97,7 +97,7 @@ export const english = {
           default: { singular: "{noun}", plural: "{noun}s" },
         },
         genitive: {
-          default: { singular: "{noun}'s", plural: "{noun}s'" },
+          default: { singular: "{noun}s", plural: "{noun}s" },
         },
       },
     },
