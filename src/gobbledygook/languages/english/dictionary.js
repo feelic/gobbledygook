@@ -63,7 +63,7 @@ export default {
     },
   },
   treasure: { morpheme: "trɛʒə" },
-  castle: { morpheme: "kɑsəl/" },
+  castle: { morpheme: "kɑsəl" },
   tower: { morpheme: "taʊər" },
   be: {
     morpheme: "bi",
@@ -90,4 +90,5 @@ export default {
   and: { morpheme: "ænd" },
   very: { morpheme: "vɛri" },
   really: { morpheme: "rɪli" },
+  tall: {morpheme: 'tɔl'},
 };

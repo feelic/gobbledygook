@@ -116,7 +116,7 @@ export const english = {
       },
     },
   },
-  nounPhraseFormation: "{determiner} {preadjectives} {noun} {adjectiveClause}",
+  nounPhraseFormation: "{determiner} {genitive} {preadjectives} {noun} {adjectiveClause}",
   verbPhraseFormation: "{adverb} {verb}",
   sentenceFormation: "{subject} {verb} {object}",
   adjectiveClauseFormation: "ðat {subject} {verb} {object}",

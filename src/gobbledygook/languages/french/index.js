@@ -87,6 +87,11 @@ export const french = {
           masc: { singular: "{noun}", plural: "{noun}" },
           fem: { singular: "{noun}", plural: "{noun}" },
         },
+        genitive: {
+          default: { default: "dɘ {noun}" },
+          masc: { singular: "dɘ {noun}", plural: "dɘ {noun}" },
+          fem: { singular: "dɘ {noun}", plural: "dɘ {noun}" },
+        },
       },
     },
     adjective: {
@@ -120,7 +125,8 @@ export const french = {
       },
       dEnding: {
         default: {
-          default: { default: "{adjective}", plural: "{adjective}d" },
+          default: { default: "{adjective}" },
+          fem: { default: "{adjective}d" },
         },
       },
     },
@@ -145,7 +151,7 @@ export const french = {
     },
   },
   nounPhraseFormation:
-    "{determiner} {preadjectives} {noun} {postadjectives} {adjectiveClause}",
+    "{determiner} {preadjectives} {noun} {postadjectives} {genitive} {adjectiveClause}",
   verbPhraseFormation: "{verb} {adverb}",
   sentenceFormation: "{subject} {verb} {object}",
   adjectiveClauseFormation: "kɘ {subject} {object} {verb}",

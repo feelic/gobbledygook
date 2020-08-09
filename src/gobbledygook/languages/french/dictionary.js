@@ -65,4 +65,5 @@ export default {
   and: { morpheme: "e" },
   very: { morpheme: "tʁɛ" },
   really: { morpheme: "vʁɛmɑ̃" },
+  tall: {morpheme: 'gʁɑ̃'}
 };

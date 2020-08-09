@@ -275,7 +275,7 @@ export const bobsHorseLikesCarrots = {
       core: "horse",
       type: "animal",
       number: "singular",
-      determination: { type: "possessive", owner: "bob", usePronoun: false },
+      determination: { type: "definite", owner: "bob", usePronoun: false },
       person: "thirdPerson",
     },
     carrots: {
@@ -294,6 +294,7 @@ export const bobsHorseLikesCarrots = {
   sentence: {
     subject: {
       id: "horse",
+      genitive: "bob",
     },
     verb: { verb: "love", tense: "general", adverbs: ["really"] },
     object: {
@@ -400,8 +401,8 @@ export const jezIsTallerThanMark = {
       person: "thirdPerson",
       determination: { type: "properNoun" },
     },
-    ugly: {
-      core: "ugly",
+    tall: {
+      core: "tall",
     },
   },
   sentence: {
@@ -410,7 +411,7 @@ export const jezIsTallerThanMark = {
     },
     verb: { verb: "be", tense: "present" },
     object: {
-      id: "ugly",
+      id: "tall",
       type: "adjective",
       grammaticalCase: "accusative",
     },
@@ -448,13 +449,14 @@ export const theCastleTowerIsRound = {
   entities: {
     castle: {
       core: "castle",
+      type: "object",
       number: "singular",
       person: "thirdPerson",
     },
     tower: {
       core: "tower",
       number: "singular",
-      determination: { type: "possessive", owner: "castle" },
+      determination: { type: "definite", owner: "castle" },
     },
     round: {
       core: "round",
@@ -463,6 +465,7 @@ export const theCastleTowerIsRound = {
   sentence: {
     subject: {
       id: "tower",
+      genitive: "castle",
     },
     verb: { verb: "be", tense: "present" },
     object: {

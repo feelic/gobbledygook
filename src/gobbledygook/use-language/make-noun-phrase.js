@@ -3,20 +3,22 @@ import { makeAdjectives } from "./make-adjectives";
 import { makeAdjectiveClause } from "./make-adjective-clause";
 import { makeNumber } from "./make-number";
 import { getNounInfo } from "./get-noun-info";
-import {getConjunction} from "./get-invariables";
+import { getConjunction } from "./get-invariables";
 
 export function makeNounPhrase(context, nounEntity) {
   if (nounEntity.entities) {
-    return nounEntity.entities.map(entity => {
-      const singleEntity = {...nounEntity, ...entity};
+    return nounEntity.entities
+      .map((entity) => {
+        const singleEntity = { ...nounEntity, ...entity };
 
-      delete singleEntity.entities;
-      return makeNounPhrase(context, singleEntity)
-    }).join(getConjunction(context, 'and'));
+        delete singleEntity.entities;
+        return makeNounPhrase(context, singleEntity);
+      })
+      .join(getConjunction(context, "and"));
   }
 
   const { lang, references } = context;
-  const nounDefinition = getNounInfo(context, nounEntity)
+  const nounDefinition = getNounInfo(context, nounEntity);
   const {
     morpheme,
     gender,
@@ -53,12 +55,14 @@ export function makeNounPhrase(context, nounEntity) {
     nounDefinition
   );
   const adjectiveClause = makeAdjectiveClause(context, nounDefinition);
+  const genitiveForm = makeGenitiveForm(context, nounDefinition);
 
   return lang.nounPhraseFormation
     .replace("{determiner}", determiner)
     .replace("{preadjectives}", preadjectives)
     .replace("{postadjectives}", postadjectives)
     .replace("{noun}", declinedNoun)
+    .replace("{genitive}", genitiveForm)
     .replace("{adjectiveClause}", adjectiveClause);
 }
 
@@ -66,7 +70,7 @@ function getDeterminer(context, nounDefinition) {
   const { gender, number, determination, person, morpheme } = nounDefinition;
   let owner = {};
 
-  if (! determination) {
+  if (!determination) {
     debugger;
   }
   if (determination.type === "count") {
@@ -84,4 +88,23 @@ function getDeterminer(context, nounDefinition) {
     number,
     morpheme,
   });
+}
+
+function makeGenitiveForm(context, { genitive }) {
+  if (!genitive) {
+    return "";
+  }
+  const nounDefinition = getNounInfo(context, { id: genitive });
+  const { morpheme, gender, number } = nounDefinition;
+  const { declensionGroup } = morpheme;
+  const genitiveForm = getRequiredForm(context, "declension", {
+    type: "noun",
+    declensionGroup,
+    grammaticalCase: "genitive",
+    gender,
+    number,
+    morpheme,
+  }).replace("{noun}", morpheme.morpheme);
+
+  return genitiveForm;
 }

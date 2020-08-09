@@ -1,6 +1,6 @@
 const formTableStructures = {
   conjugation: ["group", "tense", "person", "number"],
-  declension: ["type", "declensionGroup", "case", "gender", "number"],
+  declension: ["type", "declensionGroup", "grammaticalCase", "gender", "number"],
   pronouns: ["person", "grammaticalCase", "gender", "number"],
   determiners: [
     "determination.type",
@@ -22,9 +22,6 @@ export function getRequiredForm(context, rule, parameters) {
   const formTableStructure = formTableStructures[rule];
 
   const selectedRule = morpheme.irregular || lang[rule];
-  if (morpheme.morpheme === 'pɘti') {
-    console.log(parameters)
-  }
   const form = formTableStructure.reduce(
     (formTable, agreementParameter, idx) => {
       let key = getPropertyValue(agreementParameter, parameters);
@@ -46,10 +43,7 @@ export function getRequiredForm(context, rule, parameters) {
           )
         );
       }
-      if (morpheme.morpheme === 'pɘti') {
-        console.log(agreementParameter, key)
-        console.log(formTable[key])
-      }
+
       return formTable[key];
     },
     selectedRule
