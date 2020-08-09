@@ -1,7 +1,7 @@
 import { makeNounPhrase } from "./make-noun-phrase";
 import { getRequiredForm } from "./get-required-form";
 import { getSubjectInfo } from "./get-noun-info";
-import getConjunction from "./get-conjunction";
+import { getConjunction, getAdverb } from "./get-invariables";
 
 export function makeObject(context, object) {
   if (object.entities && object.entities.length) {
@@ -16,7 +16,7 @@ export function makeObject(context, object) {
   }
 
   if (object.type === "adjective") {
-    const {subject} = context.sentence;
+    const { subject } = context.sentence;
     return makeAdjectivePredicate(context, subject, object);
   }
 
@@ -26,10 +26,11 @@ export function makeObject(context, object) {
 function makeAdjectivePredicate(context, subject, object) {
   const { lang } = context;
   const morpheme = lang.morphemeDictionary[object.id];
-  const {gender, number } = getSubjectInfo(context, subject);
-  const { grammaticalCase } = object;
+  const { gender, number } = getSubjectInfo(context, subject);
+  const { grammaticalCase, adverbs } = object;
   const { declensionGroup } = morpheme;
-  return getRequiredForm(context, "declension", {
+  const adverb = getAdverb(context, adverbs && adverbs[0]);
+  const declinedAdjective = getRequiredForm(context, "declension", {
     type: "adjective",
     declensionGroup,
     grammaticalCase,
@@ -37,4 +38,8 @@ function makeAdjectivePredicate(context, subject, object) {
     number,
     morpheme,
   }).replace("{adjective}", morpheme.morpheme);
+
+  return lang.adjectiveFormation
+    .replace("{adjective}", declinedAdjective)
+    .replace("{adverb}", adverb);
 }

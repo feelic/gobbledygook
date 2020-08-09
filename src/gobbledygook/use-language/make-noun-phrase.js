@@ -3,7 +3,7 @@ import { makeAdjectives } from "./make-adjectives";
 import { makeAdjectiveClause } from "./make-adjective-clause";
 import { makeNumber } from "./make-number";
 import { getNounInfo } from "./get-noun-info";
-import getConjunction from "./get-conjunction";
+import {getConjunction} from "./get-invariables";
 
 export function makeNounPhrase(context, nounEntity) {
   if (nounEntity.entities) {

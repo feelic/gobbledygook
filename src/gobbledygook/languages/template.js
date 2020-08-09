@@ -55,7 +55,7 @@ export const template = {
     }
   },
   nounPhraseFormation: "{determiner} {preadjectives} {noun} {postadjectives}",
-  verbPhraseFormation: "{preadverbs} {verb} {postadverbs}",
+  verbPhraseFormation: "{adverb} {verb}",
   sentenceFormation: "{subject} {verb} {object}",
   morphemeDictionary: {
     horse: { morpheme: "cheval", gender: "masc" }

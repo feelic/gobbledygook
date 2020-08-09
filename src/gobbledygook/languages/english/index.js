@@ -117,9 +117,10 @@ export const english = {
     },
   },
   nounPhraseFormation: "{determiner} {preadjectives} {noun} {adjectiveClause}",
-  verbPhraseFormation: "{preadverbs} {verb} {postadverbs}",
+  verbPhraseFormation: "{adverb} {verb}",
   sentenceFormation: "{subject} {verb} {object}",
   adjectiveClauseFormation: "ðat {subject} {verb} {object}",
+  adjectiveFormation: "{adverb} {adjective}",
   adjectives: {
     preadjectives: ["size", "age", "color"],
   },

@@ -146,9 +146,10 @@ export const french = {
   },
   nounPhraseFormation:
     "{determiner} {preadjectives} {noun} {postadjectives} {adjectiveClause}",
-  verbPhraseFormation: "{preadverbs} {verb} {postadverbs}",
+  verbPhraseFormation: "{verb} {adverb}",
   sentenceFormation: "{subject} {verb} {object}",
   adjectiveClauseFormation: "kɘ {subject} {object} {verb}",
+  adjectiveFormation: "{adverb} {adjective}",
   adjectives: {
     preadjectives: ["size", "age"],
     postadjectives: ["color"],

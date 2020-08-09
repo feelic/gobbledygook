@@ -7,28 +7,28 @@ export const horseLikesCarrots = {
       adjectives: { color: "gray", size: "small" },
       number: "singular",
       determination: { type: "definite" },
-      person: "thirdPerson"
+      person: "thirdPerson",
     },
     carrots: {
       core: "carrot",
       number: "plural",
       adjectives: {
         color: "orange",
-        size: "small"
+        size: "small",
       },
-      determination: { type: "indefinite" }
-    }
+      determination: { type: "indefinite" },
+    },
   },
   sentence: {
     subject: {
-      id: "horse"
+      id: "horse",
     },
     verb: { verb: "love", tense: "general" },
     object: {
       id: "carrots",
-      grammaticalCase: "accusative"
-    }
-  }
+      grammaticalCase: "accusative",
+    },
+  },
 };
 
 export const horseLikesCarrotsAndGrass = {
@@ -39,32 +39,32 @@ export const horseLikesCarrotsAndGrass = {
       type: "animal",
       number: "singular",
       determination: { type: "definite" },
-      person: "thirdPerson"
+      person: "thirdPerson",
     },
     carrots: {
       core: "carrot",
       number: "plural",
       adjectives: {
-        size: "small"
+        size: "small",
       },
-      determination: { type: "indefinite" }
+      determination: { type: "indefinite" },
     },
     grass: {
       core: "grass",
       number: "singular",
-      determination: { type: "indefinite" }
-    }
+      determination: { type: "indefinite" },
+    },
   },
   sentence: {
     subject: {
-      id: "horse"
+      id: "horse",
     },
     verb: { verb: "love", tense: "general" },
     object: {
       entities: [{ id: "carrots" }, { id: "grass" }],
-      grammaticalCase: "accusative"
-    }
-  }
+      grammaticalCase: "accusative",
+    },
+  },
 };
 
 export const horseAndDonkeyLikeCarrots = {
@@ -75,42 +75,42 @@ export const horseAndDonkeyLikeCarrots = {
       type: "animal",
       number: "singular",
       determination: { type: "definite" },
-      person: "thirdPerson"
+      person: "thirdPerson",
     },
     donkey: {
       core: "donkey",
       type: "animal",
       number: "singular",
       determination: { type: "definite" },
-      person: "thirdPerson"
+      person: "thirdPerson",
     },
     carrots: {
       core: "carrot",
       number: "plural",
       adjectives: {
-        size: "small"
+        size: "small",
       },
-      determination: { type: "indefinite" }
+      determination: { type: "indefinite" },
     },
     grass: {
       core: "grass",
       number: "singular",
       adjectives: {
-        size: "small"
+        size: "small",
       },
-      determination: { type: "indefinite" }
-    }
+      determination: { type: "indefinite" },
+    },
   },
   sentence: {
     subject: {
-      entities: [{ id: "horse" }, { id: "donkey" }]
+      entities: [{ id: "horse" }, { id: "donkey" }],
     },
     verb: { verb: "love", tense: "general" },
     object: {
       id: "carrots",
-      grammaticalCase: "accusative"
-    }
-  }
+      grammaticalCase: "accusative",
+    },
+  },
 };
 
 export const horseLikesCarrotsJohnnyGaveHim = {
@@ -122,24 +122,24 @@ export const horseLikesCarrotsJohnnyGaveHim = {
       adjectives: { color: "gray", size: "small" },
       number: "singular",
       determination: { type: "definite" },
-      person: "thirdPerson"
+      person: "thirdPerson",
     },
     carrots: {
       core: "carrot",
       number: "plural",
       adjectives: { color: "orange", size: "small" },
-      determination: { type: "definite" }
+      determination: { type: "definite" },
     },
     johnny: {
       core: "dʒonɪ",
       number: "singular",
       person: "thirdPerson",
-      determination: { type: "properNoun" }
-    }
+      determination: { type: "properNoun" },
+    },
   },
   sentence: {
     subject: {
-      id: "horse"
+      id: "horse",
     },
     verb: { verb: "love", tense: "general" },
     object: {
@@ -147,16 +147,16 @@ export const horseLikesCarrotsJohnnyGaveHim = {
       grammaticalCase: "accusative",
       adjectiveClause: {
         subject: {
-          id: "johnny"
+          id: "johnny",
         },
         verb: { verb: "give", tense: "past" },
         object: {
           id: "horse",
-          grammaticalCase: "dative"
-        }
-      }
-    }
-  }
+          grammaticalCase: "dative",
+        },
+      },
+    },
+  },
 };
 
 export const sheGoesToTheBeach = {
@@ -166,24 +166,24 @@ export const sheGoesToTheBeach = {
       number: "singular",
       person: "thirdPerson",
       gender: "fem",
-      usePronoun: true
+      usePronoun: true,
     },
     beach: {
       core: "beach",
       number: "singular",
-      determination: { type: "definite" }
-    }
+      determination: { type: "definite" },
+    },
   },
   sentence: {
     subject: {
-      id: "she"
+      id: "she",
     },
     verb: { verb: "go", tense: "present" },
     object: {
       id: "beach",
-      grammaticalCase: "lative"
-    }
-  }
+      grammaticalCase: "lative",
+    },
+  },
 };
 
 export const sheHasLostHerDog = {
@@ -193,25 +193,25 @@ export const sheHasLostHerDog = {
       number: "singular",
       person: "thirdPerson",
       gender: "fem",
-      usePronoun: true
+      usePronoun: true,
     },
     dog: {
       core: "dog",
       number: "singular",
       gender: "masc",
-      determination: { type: "possessive", owner: "she", usePronoun: true }
-    }
+      determination: { type: "possessive", owner: "she", usePronoun: true },
+    },
   },
   sentence: {
     subject: {
-      id: "she"
+      id: "she",
     },
     verb: { verb: "lose", tense: "past" },
     object: {
       id: "dog",
-      grammaticalCase: "accusative"
-    }
-  }
+      grammaticalCase: "accusative",
+    },
+  },
 };
 
 export const heTakesHisPlace = {
@@ -221,24 +221,24 @@ export const heTakesHisPlace = {
       number: "singular",
       person: "thirdPerson",
       gender: "masc",
-      usePronoun: true
+      usePronoun: true,
     },
     place: {
       core: "place",
       number: "singular",
-      determination: { type: "possessive", owner: "he", usePronoun: true }
-    }
+      determination: { type: "possessive", owner: "he", usePronoun: true },
+    },
   },
   sentence: {
     subject: {
-      id: "he"
+      id: "he",
     },
     verb: { verb: "take", tense: "present" },
     object: {
       id: "place",
-      grammaticalCase: "accusative"
-    }
-  }
+      grammaticalCase: "accusative",
+    },
+  },
 };
 
 export const iHaveHiddenMyTreasure = {
@@ -248,24 +248,24 @@ export const iHaveHiddenMyTreasure = {
       number: "singular",
       person: "firstPerson",
       gender: "masc",
-      usePronoun: true
+      usePronoun: true,
     },
     treasure: {
       core: "treasure",
       number: "singular",
-      determination: { type: "possessive", owner: "i", usePronoun: true }
-    }
+      determination: { type: "possessive", owner: "i", usePronoun: true },
+    },
   },
   sentence: {
     subject: {
-      id: "i"
+      id: "i",
     },
     verb: { verb: "hide", tense: "past" },
     object: {
       id: "treasure",
-      grammaticalCase: "accusative"
-    }
-  }
+      grammaticalCase: "accusative",
+    },
+  },
 };
 
 export const bobsHorseLikesCarrots = {
@@ -276,31 +276,31 @@ export const bobsHorseLikesCarrots = {
       type: "animal",
       number: "singular",
       determination: { type: "possessive", owner: "bob", usePronoun: false },
-      person: "thirdPerson"
+      person: "thirdPerson",
     },
     carrots: {
       core: "carrot",
       number: "plural",
-      determination: { type: "indefinite" }
+      determination: { type: "indefinite" },
     },
     bob: {
       core: "bob",
       number: "singular",
       person: "thirdPerson",
       gender: "masc",
-      determination: { type: "properNoun" }
+      determination: { type: "properNoun" },
     },
   },
   sentence: {
     subject: {
-      id: "horse"
+      id: "horse",
     },
-    verb: { verb: "love", tense: "general" },
+    verb: { verb: "love", tense: "general", adverbs: ["really"] },
     object: {
       id: "carrots",
-      grammaticalCase: "accusative"
-    }
-  }
+      grammaticalCase: "accusative",
+    },
+  },
 };
 
 export const theyHave31Chickens = {
@@ -310,25 +310,25 @@ export const theyHave31Chickens = {
       number: "plural",
       person: "thirdPerson",
       gender: "masc",
-      usePronoun: true
+      usePronoun: true,
     },
     chickens: {
       core: "chicken",
       number: "plural",
       determination: { type: "count" },
-      count: 31
-    }
+      count: 31,
+    },
   },
   sentence: {
     subject: {
-      id: "he"
+      id: "he",
     },
     verb: { verb: "have", tense: "present" },
     object: {
       id: "chickens",
-      grammaticalCase: "accusative"
-    }
-  }
+      grammaticalCase: "accusative",
+    },
+  },
 };
 
 export const theHorseIsUgly = {
@@ -337,23 +337,23 @@ export const theHorseIsUgly = {
     horse: {
       core: "horse",
       number: "singular",
-      person: "thirdPerson"
+      person: "thirdPerson",
     },
     ugly: {
-      core: "ugly"
-    }
+      core: "ugly",
+    },
   },
   sentence: {
     subject: {
-      id: "horse"
+      id: "horse",
     },
     verb: { verb: "be", tense: "present" },
     object: {
       id: "ugly",
       type: "adjective",
-      grammaticalCase: "accusative"
-    }
-  }
+      grammaticalCase: "accusative",
+    },
+  },
 };
 
 export const bobIsUglyAndStupid = {
@@ -363,26 +363,26 @@ export const bobIsUglyAndStupid = {
       core: "bob",
       number: "singular",
       person: "thirdPerson",
-      determination: { type: "properNoun" }
+      determination: { type: "properNoun" },
     },
     ugly: {
-      core: "ugly"
+      core: "ugly",
     },
     stupid: {
-      core: "stupid"
-    }
+      core: "stupid",
+    },
   },
   sentence: {
     subject: {
-      id: "bob"
+      id: "bob",
     },
     verb: { verb: "be", tense: "present" },
     object: {
       entities: [{ id: "ugly" }, { id: "stupid" }],
       type: "adjective",
-      grammaticalCase: "accusative"
-    }
-  }
+      grammaticalCase: "accusative",
+    },
+  },
 };
 
 export const jezIsTallerThanMark = {
@@ -392,29 +392,29 @@ export const jezIsTallerThanMark = {
       core: "mark",
       number: "singular",
       person: "thirdPerson",
-      determination: { type: "properNoun" }
+      determination: { type: "properNoun" },
     },
     jez: {
       core: "dʒez",
       number: "singular",
       person: "thirdPerson",
-      determination: { type: "properNoun" }
+      determination: { type: "properNoun" },
     },
     ugly: {
-      core: "ugly"
-    }
+      core: "ugly",
+    },
   },
   sentence: {
     subject: {
-      id: "jez"
+      id: "jez",
     },
     verb: { verb: "be", tense: "present" },
     object: {
       id: "ugly",
       type: "adjective",
-      grammaticalCase: "accusative"
-    }
-  }
+      grammaticalCase: "accusative",
+    },
+  },
 };
 
 export const theDogSmellsReallyBad = {
@@ -423,23 +423,24 @@ export const theDogSmellsReallyBad = {
     dog: {
       core: "dog",
       number: "singular",
-      person: "thirdPerson"
+      person: "thirdPerson",
     },
     bad: {
-      core: "bad"
-    }
+      core: "bad",
+    },
   },
   sentence: {
     subject: {
-      id: "dog"
+      id: "dog",
     },
     verb: { verb: "smell", tense: "present" },
     object: {
       id: "bad",
+      adverbs: ["very"],
       type: "adjective",
-      grammaticalCase: "accusative"
-    }
-  }
+      grammaticalCase: "accusative",
+    },
+  },
 };
 
 export const theCastleTowerIsRound = {
@@ -448,28 +449,28 @@ export const theCastleTowerIsRound = {
     castle: {
       core: "castle",
       number: "singular",
-      person: "thirdPerson"
+      person: "thirdPerson",
     },
     tower: {
       core: "tower",
       number: "singular",
-      determination: { type: "possessive", owner: "castle" }
+      determination: { type: "possessive", owner: "castle" },
     },
     round: {
-      core: "round"
-    }
+      core: "round",
+    },
   },
   sentence: {
     subject: {
-      id: "tower"
+      id: "tower",
     },
     verb: { verb: "be", tense: "present" },
     object: {
       id: "round",
       type: "adjective",
-      grammaticalCase: "accusative"
-    }
-  }
+      grammaticalCase: "accusative",
+    },
+  },
 };
 
 export const theChickenAndTheThiefAreGone = {};
