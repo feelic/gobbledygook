@@ -92,6 +92,11 @@ export const french = {
           masc: { singular: "dɘ {noun}", plural: "dɘ {noun}" },
           fem: { singular: "dɘ {noun}", plural: "dɘ {noun}" },
         },
+        lative: {
+          default: { default: "a {noun}" },
+          masc: { singular: "a {noun}", plural: "a {noun}" },
+          fem: { singular: "a {noun}", plural: "a {noun}" },
+        },
       },
     },
     adjective: {

@@ -99,6 +99,9 @@ export const english = {
         genitive: {
           default: { singular: "{noun}s", plural: "{noun}s" },
         },
+        lative: {
+          default: { singular: "tu {noun}", plural: "tu {noun}" },
+        },
       },
     },
     adjective: {

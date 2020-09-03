@@ -5,7 +5,7 @@ export function getConjunction(context, conjunction) {
     return '';
   }
   if (! lang.morphemeDictionary[conjunction]) {
-    throw new Error (`Unknown cunjunction "${conjunction}" in ${lang.name}`)
+    throw new Error (`Unknown conjunction "${conjunction}" in ${lang.name}`)
   }
   const { morpheme } = lang.morphemeDictionary[conjunction];
 

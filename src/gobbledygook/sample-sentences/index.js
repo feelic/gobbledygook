@@ -17,20 +17,20 @@ import {
 } from "./sample-sentences.js";
 
 export default [
-  horseLikesCarrots,
-  horseLikesCarrotsJohnnyGaveHim,
-  horseLikesCarrotsAndGrass,
-  horseAndDonkeyLikeCarrots,
+  // horseLikesCarrots,
+  // horseLikesCarrotsJohnnyGaveHim,
+  // horseLikesCarrotsAndGrass,
+  // horseAndDonkeyLikeCarrots,
   sheGoesToTheBeach,
-  theyHave31Chickens,
-  sheHasLostHerDog,
-  heTakesHisPlace,
-  iHaveHiddenMyTreasure,
-  bobsHorseLikesCarrots,
-  theHorseIsUgly,
-  bobIsUglyAndStupid,
+  // theyHave31Chickens,
+  // sheHasLostHerDog,
+  // heTakesHisPlace,
+  // iHaveHiddenMyTreasure,
+  // bobsHorseLikesCarrots,
+  // theHorseIsUgly,
+  // bobIsUglyAndStupid,
   jezIsTallerThanMark,
-  theDogSmellsReallyBad,
+  // theDogSmellsReallyBad,
   theCastleTowerIsRound,
 ];
 
