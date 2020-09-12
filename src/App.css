@@ -1,16 +1,55 @@
 .App {
   display: flex;
-  background-color: #447;
-  color: #ebb;
+  flex-direction: column;
+  color: #FFB394;
   font-weight: 500;
   font-family: "Roboto", sans-serif;
-}
-
-.speechBlock {
-  margin: 20px;
   padding: 20px;
-  width: 100%;
+}
+h1, h2 {
+  color: #92C778;
+}
+nav {
+    display: flex;
+    flex-direction: row;
+}
+nav button {
+  font-size: 16px;
+  color: #FFB394;
+  border: 0;
+  padding: 10px;
+  background: none;
+}
+nav button:hover {
+  background: none;
+}
+nav button.active {
+  background: #226;
+}
+nav button:focus {
+  color: #FFB394;
+}
+section {
   line-height: 24px;
+  display: none;
+}
+.sentenceBlock {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #7C3B38;
+}
+.sentenceBlock p {
+  margin-bottom: 5px;
+}
+.codeBlock {
+  margin: 10px;
+  padding: 10px;
+  font-size: 10px;
+  background: #226;
+  line-height: 14px;
+  display: none;
+}
+.open {
+  display: block;
 }
 input {
   border: 1px solid #99e;
@@ -27,18 +66,18 @@ input:focus {
 }
 button {
   border: 1px solid #e99;
-  background-color: #ebb;
-  color: #744;
+  background-color: #FFC3B4;
+  color: #AC4B48;
   border-radius: 2px;
   padding: 2px 4px;
 }
 button:hover {
-  border-color: #e66;
-  background-color: #eeb3b3;
+  border-color: #FF9894;
+  background-color: #EFB394;
 }
 button:focus {
-  border-color: #c44;
-  background-color: #eeb3b3;
-  color: #844;
+  border-color: #FF9894;
+  background-color: #EFB394;
+  color: #AC4B48;
   outline: none;
 }

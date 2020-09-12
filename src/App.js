@@ -10,6 +10,7 @@ import { setSeed } from "./gobbledygook/util/random";
 
 function App() {
   const [seed, setCurrentSeed] = useState("globe");
+  const [activePage, setactivePage] = useState("phraseBook");
   const [lang, setLang] = useState();
   const [audio, setAudio] = useState();
   const audioPlayer = useRef();
@@ -25,7 +26,7 @@ function App() {
 
   function handlePlayAudio(phrase, voice) {
     fetchAudio(phrase, voice)
-      .then(res => setAudio(res))
+      .then((res) => setAudio(res))
       .then(() => {
         audioPlayer.current.load();
         audioPlayer.current.play();
@@ -34,43 +35,68 @@ function App() {
 
   return (
     <div className="App">
-      <div className="speechBlock">
+      <h1>gobbledygook</h1>
+      <nav>
+        <button
+          className={`${(activePage === "phraseBook" && "active") || ""}`}
+          onClick={() => setactivePage("phraseBook")}
+        >
+          Phrase book
+        </button>
+        <button
+          className={`${(activePage === "procGenConLang" && "active") || ""}`}
+          onClick={() => setactivePage("procGenConLang")}
+        >
+          ProcGenConLang
+        </button>
+      </nav>
+      <section
+        className={`phraseBook ${
+          (activePage === "phraseBook" && "open") || ""
+        }`}
+      >
+        <h2>Generated phrase book</h2>
+        {sentences.map((sentence) => {
+          const frenchSentence = makeSentence(french, sentence);
+          const englishSentence = makeSentence(english, sentence);
+
+          return (
+            <div key={sentence.transcript} className="sentenceBlock">
+              <p>
+                {transliterate(french, frenchSentence)}{" "}
+                <button
+                  onClick={() => handlePlayAudio(frenchSentence, "Celine")}
+                >
+                  :V
+                </button>
+                <br />
+                {transliterate(english, englishSentence)}{" "}
+                <button
+                  onClick={() => handlePlayAudio(englishSentence, "Brian")}
+                >
+                  :V
+                </button>
+              </p>
+              <PhraseDefinitionBlock sentence={sentence} />
+            </div>
+          );
+        })}
+      </section>
+      <section
+        className={`procGenConLang ${
+          (activePage === "procGenConLang" && "open") || ""
+        }`}
+      >
+        <h2>ProcGenConLang</h2>
         <label htmlFor="seed">Seed:</label>{" "}
         <input
           id="seed"
           type="text"
           value={seed}
-          onChange={e => {
+          onChange={(e) => {
             setCurrentSeed(e.target.value);
           }}
         />
-        <div>
-          {sentences.map(sentence => {
-            const frenchSentence = makeSentence(french, sentence);
-            const englishSentence = makeSentence(english, sentence);
-
-            return (
-              <div key={sentence.transcript}>
-                <p>
-                  {transliterate(french, frenchSentence)}{" "}
-                  <button
-                    onClick={() => handlePlayAudio(frenchSentence, "Celine")}
-                  >
-                    :V
-                  </button>
-                <br/>
-                  {transliterate(english, englishSentence)}{" "}
-                  <button
-                    onClick={() => handlePlayAudio(englishSentence, "Brian")}
-                  >
-                    :V
-                  </button>
-                </p>
-                <p></p>
-              </div>
-            );
-          })}
-        </div>
         <ul>
           {Object.entries(lang.morphemeDictionary).map(([meaning, word]) => {
             const translit = transliterate(lang, word);
@@ -85,10 +111,20 @@ function App() {
         <audio ref={audioPlayer}>
           {audio && <source src={audio} type="audio/mpeg"></source>}
         </audio>
-      </div>
-      <div className="block">
-        <pre>{JSON.stringify(lang, null, 2)}</pre>
-      </div>
+      </section>
+    </div>
+  );
+}
+function PhraseDefinitionBlock({ sentence }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div>
+      <button title="show phrase definition" onClick={() => setOpen(!open)}>
+        +
+      </button>
+      <pre className={`codeBlock ${(open && "open") || ""}`}>
+        {JSON.stringify(sentence, null, 2)}
+      </pre>
     </div>
   );
 }
