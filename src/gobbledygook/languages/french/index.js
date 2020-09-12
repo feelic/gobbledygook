@@ -43,9 +43,9 @@ export const french = {
     indefinite: {
       default: {
         default: {
-          default: { singular: "lɘ", plural: "le" },
-          masc: { singular: "lɘ", plural: "le" },
-          fem: { singular: "la", plural: "le" },
+          default: { singular: "ɔ̃", plural: "de" },
+          masc: { singular: "ɔ̃", plural: "de" },
+          fem: { singular: "yn", plural: "de" },
         },
       },
     },
@@ -155,7 +155,7 @@ export const french = {
   nounPhraseFormation:
     "{preposition} {determiner} {preadjectives} {noun} {postadjectives} {genitive} {adjectiveClause}",
   verbPhraseFormation: "{verb} {adverb}",
-  sentenceFormation: "{subject} {verb} {object}",
+  sentenceFormation: "{subject} {verb} {object} {adverbialClauses}",
   adjectiveClauseFormation: "kɘ {subject} {object} {verb}",
   adjectiveFormation: "{adverb} {adjective}",
   adjectives: {

@@ -256,6 +256,10 @@ export const iHaveHiddenMyTreasure = {
       number: "singular",
       determination: { type: "possessive", owner: "i", usePronoun: true },
     },
+    cave: {
+      core: "cave",
+      determination: { type: "indefinite" },
+    }
   },
   sentence: {
     subject: {
@@ -266,6 +270,12 @@ export const iHaveHiddenMyTreasure = {
       id: "treasure",
       grammaticalCase: "accusative",
     },
+    adverbialClauses: [
+      {
+        id: "cave",
+        preposition: "in"
+      }
+    ]
   },
 };
 

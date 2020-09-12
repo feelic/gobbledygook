@@ -66,6 +66,7 @@ export default {
   very: { morpheme: "tʁɛ" },
   really: { morpheme: "vʁɛmɑ̃" },
   tall: {morpheme: 'gʁɑ̃'},
+  cave: {morpheme: 'gʁot', gender: "fem"},
   // const quantifiers = {
   all: {morpheme:"tu"},
   some: {morpheme:"kelk"},

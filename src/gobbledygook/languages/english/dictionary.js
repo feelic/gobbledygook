@@ -91,6 +91,7 @@ export default {
   very: { morpheme: "vɛri" },
   really: { morpheme: "rɪli" },
   tall: { morpheme: "tɔl" },
+  cave: {morpheme: "keɪv"},
   // const quantifiers = {
   all: {morpheme:"ɔl"},
   some: {morpheme:"sʌm"},

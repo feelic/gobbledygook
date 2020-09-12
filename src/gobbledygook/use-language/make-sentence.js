@@ -18,5 +18,16 @@ export function makeSentence(lang, { sentence, entities }) {
   return lang.sentenceFormation
     .replace("{subject}", makeNounPhrase(context, sentence.subject))
     .replace("{verb}", makeVerbPhrase(context, sentence.subject, sentence.verb))
-    .replace("{object}", makeObject(context, sentence.object));
+    .replace("{object}", makeObject(context, sentence.object))
+    .replace("{adverbialClauses}", makeAdverbialClauses(context, sentence.adverbialClauses))
+}
+
+function makeAdverbialClauses (context, adverbialClauses) {
+  if (! adverbialClauses) {
+    return '';
+  }
+
+  return adverbialClauses.map(clause =>
+    makeNounPhrase(context, clause)
+  ).join(' ')
 }
