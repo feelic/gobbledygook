@@ -3,7 +3,7 @@ import { makeAdjectives } from "./make-adjectives";
 import { makeAdjectiveClause } from "./make-adjective-clause";
 import { makeNumber } from "./make-number";
 import { getNounInfo } from "./get-noun-info";
-import { getConjunction } from "./get-invariables";
+import { getConjunction, getPreposition } from "./get-invariables";
 
 export function makeNounPhrase(context, nounEntity) {
   if (nounEntity.entities) {
@@ -41,6 +41,7 @@ export function makeNounPhrase(context, nounEntity) {
   // ADD REFERENCE MARKER TO ENTITY
   references[nounDefinition.id] = true;
 
+  const preposition = getPreposition(context, nounDefinition.preposition);
   const determiner = getDeterminer(context, nounDefinition);
   const declinedNoun = getRequiredForm(context, "declension", {
     type: "noun",
@@ -58,6 +59,7 @@ export function makeNounPhrase(context, nounEntity) {
   const genitiveForm = makeGenitiveForm(context, nounDefinition);
 
   return lang.nounPhraseFormation
+    .replace("{preposition}", preposition)
     .replace("{determiner}", determiner)
     .replace("{preadjectives}", preadjectives)
     .replace("{postadjectives}", postadjectives)

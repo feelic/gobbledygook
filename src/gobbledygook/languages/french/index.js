@@ -71,9 +71,6 @@ export const french = {
         },
       },
     },
-    // quantifiers: { all: "", some: "", many: "", few: "", no: "" },
-    // distributive: { each: "", any: "" },
-    // interrogative: { what: "", which: "" }
   },
   phonemeSeparators: {
     vowel: "t",
@@ -156,7 +153,7 @@ export const french = {
     },
   },
   nounPhraseFormation:
-    "{determiner} {preadjectives} {noun} {postadjectives} {genitive} {adjectiveClause}",
+    "{preposition} {determiner} {preadjectives} {noun} {postadjectives} {genitive} {adjectiveClause}",
   verbPhraseFormation: "{verb} {adverb}",
   sentenceFormation: "{subject} {verb} {object}",
   adjectiveClauseFormation: "kɘ {subject} {object} {verb}",

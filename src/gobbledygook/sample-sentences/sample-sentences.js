@@ -181,7 +181,8 @@ export const sheGoesToTheBeach = {
     verb: { verb: "go", tense: "present" },
     object: {
       id: "beach",
-      grammaticalCase: "lative",
+      preposition: "to",
+      grammaticalCase: "accusative",
     },
   },
 };

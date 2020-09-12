@@ -1,27 +1,26 @@
-export function getConjunction(context, conjunction) {
+function getInvariable (type, context, invariable) {
   const { lang } = context;
 
-  if (! conjunction) {
+  if (! invariable) {
     return '';
   }
-  if (! lang.morphemeDictionary[conjunction]) {
-    throw new Error (`Unknown conjunction "${conjunction}" in ${lang.name}`)
+  if (! lang.morphemeDictionary[invariable]) {
+    throw new Error (`Unknown ${type} "${invariable}" in ${lang.name}`)
   }
-  const { morpheme } = lang.morphemeDictionary[conjunction];
+  const { morpheme } = lang.morphemeDictionary[invariable];
 
   return ` ${morpheme} `;
 }
 
-export function getAdverb(context, adverb) {
-  const { lang } = context;
-
-  if (! adverb) {
-    return '';
-  }
-  if (! lang.morphemeDictionary[adverb]) {
-    throw new Error (`Unknown adverb "${adverb}" in ${lang.name}`)
-  }
-  const { morpheme } = lang.morphemeDictionary[adverb];
-
-  return morpheme;
+export function getConjunction(context, invariable) {
+  return getInvariable('conjunction', context, invariable);
+}
+export function getAdverb(context, invariable) {
+  return getInvariable('adverb', context, invariable);
+}
+export function getPreposition (context, invariable) {
+  return getInvariable('preposition', context, invariable);
+}
+export function getInterrogative (context, invariable) {
+  return getInvariable('interrogative', context, invariable);
 }

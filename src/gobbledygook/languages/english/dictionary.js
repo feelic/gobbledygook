@@ -90,5 +90,48 @@ export default {
   and: { morpheme: "ænd" },
   very: { morpheme: "vɛri" },
   really: { morpheme: "rɪli" },
-  tall: {morpheme: 'tɔl'},
+  tall: { morpheme: "tɔl" },
+  // const quantifiers = {
+  all: {morpheme:"ɔl"},
+  some: {morpheme:"sʌm"},
+  many: {morpheme:"mɛnɪ"},
+  few: {morpheme:"fju"},
+  no: {morpheme:"no"},
+  // };
+  // const distributive = {
+  each: {morpheme:"itʃ"},
+  any: {morpheme:"ɛnɪ"},
+  // };
+  // const interrogative = {
+  what: {morpheme:"hwat"},
+  which: {morpheme:"hwitʃ"},
+  when: {morpheme:"hwɛn"},
+  where: {morpheme:"hwɛr"},
+  who: {morpheme:"hu"},
+  why: {morpheme:"hwaɪ"},
+  how: {morpheme:"how"},
+  // };
+  // const prepositions = {
+  to: {morpheme:"tu"},
+  up: {morpheme:"up"},
+  down: {morpheme:"down"},
+  above: {morpheme:"above"},
+  upon: {morpheme:"upon"},
+  under: {morpheme:"under"},
+  around: {morpheme:"around"},
+  through: {morpheme:"through"},
+  infront: {morpheme:"infront"},
+  behind: {morpheme:"behind"},
+  in: {morpheme:"in"},
+  out: {morpheme:"out"},
+  into: {morpheme:"into"},
+  outof: {morpheme:"outof"},
+  against: {morpheme:"against"},
+  beside: {morpheme:"beside"},
+  from: {morpheme:"from"},
+  toward: {morpheme:"toward"},
+  with: {morpheme:"with"},
+  by: {morpheme:"by"},
+  for: {morpheme:"for"},
+  // };
 };

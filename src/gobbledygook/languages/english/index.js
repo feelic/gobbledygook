@@ -86,9 +86,6 @@ export const english = {
         fem: { default: { singular: "hər", plural: "ðɛr" } },
       },
     },
-    quantifiers: { all: "", some: "", many: "", few: "", no: "" },
-    distributive: { each: "", any: "" },
-    interrogative: { what: "", which: "" },
   },
   declension: {
     default: {
@@ -119,7 +116,7 @@ export const english = {
       },
     },
   },
-  nounPhraseFormation: "{determiner} {genitive} {preadjectives} {noun} {adjectiveClause}",
+  nounPhraseFormation: "{preposition} {determiner} {genitive} {preadjectives} {noun} {adjectiveClause}",
   verbPhraseFormation: "{adverb} {verb}",
   sentenceFormation: "{subject} {verb} {object}",
   adjectiveClauseFormation: "ðat {subject} {verb} {object}",

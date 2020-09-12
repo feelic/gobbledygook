@@ -65,5 +65,48 @@ export default {
   and: { morpheme: "e" },
   very: { morpheme: "tʁɛ" },
   really: { morpheme: "vʁɛmɑ̃" },
-  tall: {morpheme: 'gʁɑ̃'}
+  tall: {morpheme: 'gʁɑ̃'},
+  // const quantifiers = {
+  all: {morpheme:"tu"},
+  some: {morpheme:"kelk"},
+  many: {morpheme:"boku"},
+  few: {morpheme:"pɘ"},
+  no: {morpheme:"okɛ̃"},
+  // };
+  // const distributive = {
+  each: {morpheme:"ʃak"},
+  any: {morpheme:"tu"},
+  // };
+  // const interrogative = {
+  what: {morpheme:"kwa"},
+  which: {morpheme:"kɛl"},
+  when: {morpheme:"kɑ̃"},
+  where: {morpheme:"u"},
+  who: {morpheme:"ki"},
+  why: {morpheme:"puʁkwa"},
+  how: {morpheme:"komɑ̃"},
+  // };
+  // const prepositions = {
+  to: {morpheme:"a"},
+  up: {morpheme:"o desy"},
+  down: {morpheme:"ɑ̃ desu"},
+  above: {morpheme:"o desy"},
+  upon: {morpheme:"syʁ"},
+  under: {morpheme:"su"},
+  around: {morpheme:"otuʁ"},
+  through: {morpheme:"a tʁavɛʁ"},
+  infront: {morpheme:"dɘvɑ̃"},
+  behind: {morpheme:"dɛʁiɛʁ"},
+  in: {morpheme:"dɑ̃"},
+  out: {morpheme:"ɑ̃ deoʁ"},
+  into: {morpheme:"dɑ̃"},
+  outof: {morpheme:"oʁ"},
+  against: {morpheme:"kɔ̃tʁ"},
+  beside: {morpheme:"a kote"},
+  from: {morpheme:"dɘ"},
+  toward: {morpheme:"vɛʁ"},
+  with: {morpheme:"avɛk"},
+  by: {morpheme:"paʁ"},
+  for: {morpheme:"puʁ"},
+  // };
 };
