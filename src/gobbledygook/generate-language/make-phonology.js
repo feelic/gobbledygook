@@ -27,10 +27,12 @@ const makeClusters = {
  */
 export function makePhonemeSet(type = "consonants") {
   const distrib = phonemicDistribution[type];
+
   const standard = gaussian(distrib.mean, distrib.stdev);
   const number = bindNumber(standard(), distrib.min, distrib.max);
+  const phonemeSet = getPhonemes(type);
   const selectedPhonemes = nRandomFromArray(
-    Object.keys(phonemes[type]),
+    Object.keys(phonemeSet),
     number
   );
   const clustersExist = Boolean(Math.round(random()));
@@ -49,6 +51,14 @@ export function makePhonemeSet(type = "consonants") {
   );
 
   return { ...phonemesWithFrequency, ...clustersWithFrequency };
+}
+function getPhonemes(type) {
+  const includeNasalVowels = Boolean(random() < 0.18);
+
+  if (type === 'vowels' && includeNasalVowels) {
+    return {...phonemes[type], ...phonemes['nasalVowels']}
+  }
+  return phonemes[type]
 }
 
 function assignFreqAndTranslit(selectedPhonemes, type, high = 50) {

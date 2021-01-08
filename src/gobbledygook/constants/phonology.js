@@ -1,9 +1,10 @@
 import consonants from "../constants/consonants";
-import vowels from "../constants/vowels";
+import vowels, {nasalVowels} from "../constants/vowels";
 
 export const phonemes = {
   consonants,
-  vowels
+  vowels,
+  nasalVowels
 };
 
 export const phonemicDistribution = {

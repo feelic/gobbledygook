@@ -72,10 +72,6 @@ export const french = {
       },
     },
   },
-  phonemeSeparators: {
-    vowel: "t",
-    consonant: "e",
-  },
   declension: {
     default: {
       default: {

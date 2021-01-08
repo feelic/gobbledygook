@@ -87,7 +87,7 @@ function App() {
           (activePage === "procGenConLang" && "open") || ""
         }`}
       >
-        <h2>ProcGenConLang</h2>
+        <h2>ProcGenConLang: {transliterate(lang, lang.name)} language</h2>
         <label htmlFor="seed">Seed:</label>{" "}
         <input
           id="seed"
