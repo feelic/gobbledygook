@@ -43,8 +43,8 @@ export const french = {
     indefinite: {
       default: {
         default: {
-          default: { singular: "ɔ̃", plural: "de" },
-          masc: { singular: "ɔ̃", plural: "de" },
+          default: { singular: "ɛ̃", plural: "de" },
+          masc: { singular: "ɛ̃", plural: "de" },
           fem: { singular: "yn", plural: "de" },
         },
       },
@@ -161,6 +161,22 @@ export const french = {
   adjectives: {
     preadjectives: ["size", "age"],
     postadjectives: ["color"],
+  },
+  comparative: {
+    formation: "{quality} {comparedObject}",
+    comparator: {
+      negative: "mwɛ̃ {adjective}",
+      positive: "ply {adjective}",
+    },
+    object: "kɘ {determiner} {object}",
+  },
+  superlative: {
+    formation: "{determiner} {quality} {comparedObject}",
+    comparator: {
+      negative: "mwɛ̃ {adjective}",
+      positive: "ply {adjective}",
+    },
+    object: "{determiner} {object}",
   },
   numbers: {
     digits: {

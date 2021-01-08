@@ -124,6 +124,22 @@ export const english = {
   adjectives: {
     preadjectives: ["size", "age", "color"],
   },
+  comparative: {
+    formation: "{quality} {comparedObject}",
+    comparator: {
+      negative: "lɛs {adjective}",
+      positive: "mɔr {adjective}",
+    },
+    object: "ðan {determiner} {object}",
+  },
+  superlative: {
+    formation: "{determiner} {quality} {comparedObject}",
+    comparator: {
+      negative: "list {adjective}",
+      positive: "mɔst {adjective}",
+    },
+    object: "{determiner} {object}",
+  },
   numbers: {
     digits: {
       0: "o",

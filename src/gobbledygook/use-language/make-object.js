@@ -1,6 +1,7 @@
 import { makeNounPhrase } from "./make-noun-phrase";
 import { getRequiredForm } from "./get-required-form";
 import { getSubjectInfo } from "./get-noun-info";
+import { makeComparison } from "./make-comparison";
 import { getConjunction, getAdverb } from "./get-invariables";
 
 export function makeObject(context, object) {
@@ -14,7 +15,9 @@ export function makeObject(context, object) {
       })
       .join(getConjunction(context, "and"));
   }
-
+  if (object.type === "comparison") {
+    return makeComparison(context, object);
+  }
   if (object.type === "adjective") {
     const { subject } = context.sentence;
     return makeAdjectivePredicate(context, subject, object);

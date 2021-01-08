@@ -37,7 +37,7 @@ export default {
   chicken: { morpheme: "pulɛ", gender: "masc" },
   dog: { morpheme: "ʃiɛ̃" },
   lose: {
-    morpheme: "per",
+    morpheme: "peʁ",
     irregular: {
       default: {
         past: {
@@ -48,7 +48,19 @@ export default {
       },
     },
   },
-  take: { morpheme: "prɑ̃" },
+  find: {
+    morpheme: "tʁuv",
+  },
+  take: { morpheme: "pʁɑ̃",
+  irregular: {
+    default: {
+      default: {
+        default: { default: "{verb}" },
+      },
+      past: { default: { default: "a pʁi" } },
+    },
+  }, },
+  group: { morpheme: "gʁup", gender: "masc" },
   place: { morpheme: "plas", gender: "fem" },
   hide: { morpheme: "kaʃ" },
   treasure: { morpheme: "tʁezoʁ", gender: "masc" },

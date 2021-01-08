@@ -214,6 +214,33 @@ export const sheHasLostHerDog = {
     },
   },
 };
+export const sheFoundADog = {
+  transcript: "she found a dog",
+  entities: {
+    she: {
+      number: "singular",
+      person: "thirdPerson",
+      gender: "fem",
+      usePronoun: true,
+    },
+    dog: {
+      core: "dog",
+      number: "singular",
+      gender: "masc",
+      determination: { type: "indefinite" },
+    },
+  },
+  sentence: {
+    subject: {
+      id: "she",
+    },
+    verb: { verb: "find", tense: "past" },
+    object: {
+      id: "dog",
+      grammaticalCase: "accusative",
+    },
+  },
+};
 
 export const heTakesHisPlace = {
   transcript: "he takes his place",
@@ -243,7 +270,7 @@ export const heTakesHisPlace = {
 };
 
 export const iHaveHiddenMyTreasure = {
-  transcript: "i have hidden my treasure",
+  transcript: "i have hidden my treasure in a cave",
   entities: {
     i: {
       number: "singular",
@@ -401,7 +428,7 @@ export const jezIsTallerThanMark = {
   transcript: "Jez is taller than Mark",
   entities: {
     mark: {
-      core: "mark",
+      core: "mɑrk",
       number: "singular",
       person: "thirdPerson",
       determination: { type: "properNoun" },
@@ -422,12 +449,48 @@ export const jezIsTallerThanMark = {
     },
     verb: { verb: "be", tense: "present" },
     object: {
-      id: "tall",
-      type: "adjective",
-      grammaticalCase: "accusative",
+      quality: "tall",
+      degree: "comparative",
+      type: "comparison",
+      value: "positive",
+      object: "mark",
     },
   },
 };
+export const johnnyIsTheTallestOfTheGroup = {
+  transcript: "Johnny is the tallest of the group",
+  entities: {
+    johnny: {
+      core: "dʒonɪ",
+      number: "singular",
+      person: "thirdPerson",
+      determination: { type: "properNoun" },
+    },
+    group: {
+      core: "group",
+      number: "singular",
+      person: "thirdPerson",
+      determination: { type: "definite" },
+    },
+    tall: {
+      core: "tall",
+    },
+  },
+  sentence: {
+    subject: {
+      id: "johnny",
+    },
+    verb: { verb: "be", tense: "present" },
+    object: {
+      quality: "tall",
+      degree: "superlative",
+      type: "comparison",
+      value: "positive",
+      object: "group",
+    },
+  },
+};
+
 
 export const theDogSmellsReallyBad = {
   transcript: "the dog smells really bad",

@@ -1,7 +1,6 @@
-import { getRequiredForm } from "./get-required-form";
+import { getRequiredForm, getDeterminer } from "./get-required-form";
 import { makeAdjectives } from "./make-adjectives";
 import { makeAdjectiveClause } from "./make-adjective-clause";
-import { makeNumber } from "./make-number";
 import { getNounInfo } from "./get-noun-info";
 import { getConjunction, getPreposition } from "./get-invariables";
 
@@ -66,30 +65,6 @@ export function makeNounPhrase(context, nounEntity) {
     .replace("{noun}", declinedNoun)
     .replace("{genitive}", genitiveForm)
     .replace("{adjectiveClause}", adjectiveClause);
-}
-
-function getDeterminer(context, nounDefinition) {
-  const { gender, number, determination, person, morpheme } = nounDefinition;
-  let owner = {};
-
-  if (!determination) {
-    debugger;
-  }
-  if (determination.type === "count") {
-    return makeNumber(context, nounDefinition.count);
-  }
-  if (determination.type === "possessive") {
-    owner = context.entities[determination.owner];
-  }
-
-  return getRequiredForm(context, "determiners", {
-    determination,
-    person,
-    owner,
-    gender,
-    number,
-    morpheme,
-  });
 }
 
 function makeGenitiveForm(context, { genitive }) {

@@ -1,3 +1,5 @@
+import { makeNumber } from "./make-number";
+
 const formTableStructures = {
   conjugation: ["group", "tense", "person", "number"],
   declension: ["type", "declensionGroup", "grammaticalCase", "gender", "number"],
@@ -89,4 +91,28 @@ ${formTableStructure
 
 Matched rule:
 ${JSON.stringify(formTable)}`;
+}
+
+export function getDeterminer(context, nounDefinition) {
+  const { gender, number, determination, person, morpheme } = nounDefinition;
+  let owner = {};
+
+  if (!determination) {
+    debugger;
+  }
+  if (determination.type === "count") {
+    return makeNumber(context, nounDefinition.count);
+  }
+  if (determination.type === "possessive") {
+    owner = context.entities[determination.owner];
+  }
+
+  return getRequiredForm(context, "determiners", {
+    determination,
+    person,
+    owner,
+    gender,
+    number,
+    morpheme,
+  });
 }
