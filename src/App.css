@@ -83,3 +83,6 @@ button:focus {
   color: #AC4B48;
   outline: none;
 }
+.originalSentence {
+  font-style: italic; 
+}
