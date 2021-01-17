@@ -1,12 +1,12 @@
-export default {
+const consonants = {
   b: {
     symbol: "b",
     traits: {
       place: "bilabial",
       manner: "plosive",
-      voicing: true
+      voicing: true,
     },
-    translit: "b"
+    translit: "b",
   },
   // ɓ: {
   //   symbol: 'ɓ',
@@ -31,18 +31,18 @@ export default {
     traits: {
       place: "bilabial",
       manner: "fricative",
-      voicing: true
+      voicing: true,
     },
-    translit: "v"
+    translit: "v",
   },
   c: {
     symbol: "c",
     traits: {
       place: "palatal",
       manner: "plosive",
-      voicing: false
+      voicing: false,
     },
-    translit: "k"
+    translit: "k",
   },
   // ɕ: {
   //   symbol: 'ɕ',
@@ -67,9 +67,9 @@ export default {
     traits: {
       place: "alveolar",
       manner: "plosive",
-      voicing: true
+      voicing: true,
     },
-    translit: "d"
+    translit: "d",
   },
   // ɗ: {
   //   symbol: 'ɗ',
@@ -94,27 +94,27 @@ export default {
     traits: {
       place: "dental",
       manner: "fricative",
-      voicing: true
+      voicing: true,
     },
-    translit: "ð"
+    translit: "ð",
   },
   ʤ: {
     symbol: "ʤ",
     traits: {
       place: "alveolopalatal",
       manner: "affricate",
-      voicing: true
+      voicing: true,
     },
-    translit: "dj"
+    translit: "dj",
   },
   f: {
     symbol: "f",
     traits: {
       place: "labiodental",
       manner: "fricative",
-      voicing: false
+      voicing: false,
     },
-    translit: "f"
+    translit: "f",
   },
   // ɟ: {
   //   symbol: 'ɟ',
@@ -139,9 +139,9 @@ export default {
     traits: {
       place: "velar",
       manner: "plosive",
-      voicing: true
+      voicing: true,
     },
-    translit: "g"
+    translit: "g",
   },
   // ɠ: {
   //   symbol: 'ɠ',
@@ -175,9 +175,9 @@ export default {
     traits: {
       place: "glottal",
       manner: "fricative",
-      voicing: false
+      voicing: false,
     },
-    translit: "h"
+    translit: "h",
   },
   // ɦ: {
   //   symbol: 'ɦ',
@@ -220,9 +220,9 @@ export default {
     traits: {
       place: "palatal",
       manner: "approximant",
-      voicing: true
+      voicing: true,
     },
-    translit: "j"
+    translit: "j",
   },
   // ʝ: {
   //   symbol: 'ʝ',
@@ -238,18 +238,18 @@ export default {
     traits: {
       place: "velar",
       manner: "plosive",
-      voicing: false
+      voicing: false,
     },
-    translit: "k"
+    translit: "k",
   },
   l: {
     symbol: "l",
     traits: {
       place: "alveolar",
       manner: "lateral-approximant",
-      voicing: true
+      voicing: true,
     },
-    translit: "l"
+    translit: "l",
   },
   // ɭ: {
   //   symbol: 'ɭ',
@@ -274,9 +274,9 @@ export default {
     traits: {
       place: "alveolar",
       manner: "lateral-fricative",
-      voicing: true
+      voicing: true,
     },
-    translit: "ll"
+    translit: "ll",
   },
   // ʟ: {
   //   symbol: 'ʟ',
@@ -292,9 +292,9 @@ export default {
     traits: {
       place: "bilabial",
       manner: "nasal",
-      voicing: true
+      voicing: true,
     },
-    translit: "m"
+    translit: "m",
   },
   // ɱ: {
   //   symbol: 'ɱ',
@@ -319,18 +319,18 @@ export default {
     traits: {
       place: "alveolar",
       manner: "nasal",
-      voicing: true
+      voicing: true,
     },
-    translit: "n"
+    translit: "n",
   },
   ŋ: {
     symbol: "ŋ",
     traits: {
       place: "velar",
       manner: "nasal",
-      voicing: true
+      voicing: true,
     },
-    translit: "n"
+    translit: "n",
   },
   // ɳ: {
   //   symbol: 'ɳ',
@@ -346,9 +346,9 @@ export default {
     traits: {
       place: "palatal",
       manner: "nasal",
-      voicing: true
+      voicing: true,
     },
-    translit: "n"
+    translit: "n",
   },
   // ɴ: {
   //   symbol: 'ɴ',
@@ -373,45 +373,45 @@ export default {
     traits: {
       place: "dental",
       manner: "fricative",
-      voicing: false
+      voicing: false,
     },
-    translit: "þ"
+    translit: "þ",
   },
   p: {
     symbol: "p",
     traits: {
       place: "bilabial",
       manner: "plosive",
-      voicing: false
+      voicing: false,
     },
-    translit: "p"
+    translit: "p",
   },
   q: {
     symbol: "q",
     traits: {
       place: "uvular",
       manner: "plosive",
-      voicing: false
+      voicing: false,
     },
-    translit: "k"
+    translit: "k",
   },
   r: {
     symbol: "r",
     traits: {
       place: "alveolar",
       manner: "trill",
-      voicing: true
+      voicing: true,
     },
-    translit: "r"
+    translit: "r",
   },
   ɹ: {
     symbol: "ɹ",
     traits: {
       place: "alveolar",
       manner: "approximant",
-      voicing: true
+      voicing: true,
     },
-    translit: "r"
+    translit: "r",
   },
   // ɺ: {
   //   symbol: 'ɺ',
@@ -445,18 +445,18 @@ export default {
     traits: {
       place: "uvular",
       manner: "trill",
-      voicing: true
+      voicing: true,
     },
-    translit: "r"
+    translit: "r",
   },
   ʁ: {
     symbol: "ʁ",
     traits: {
       place: "uvular",
       manner: "fricative",
-      voicing: true
+      voicing: true,
     },
-    translit: "r"
+    translit: "r",
   },
   // ɽ: {
   //   symbol: 'ɽ',
@@ -472,9 +472,9 @@ export default {
     traits: {
       place: "alveolar",
       manner: "fricative",
-      voicing: false
+      voicing: false,
     },
-    translit: "s"
+    translit: "s",
   },
   // ʂ: {
   //   symbol: 'ʂ',
@@ -490,18 +490,18 @@ export default {
     traits: {
       place: "alveolopalatal",
       manner: "fricative",
-      voicing: false
+      voicing: false,
     },
-    translit: "sh"
+    translit: "sh",
   },
   t: {
     symbol: "t",
     traits: {
       place: "alveolar",
       manner: "plosive",
-      voicing: false
+      voicing: false,
     },
-    translit: "t"
+    translit: "t",
   },
   // ʈ: {
   //   symbol: 'ʈ',
@@ -517,9 +517,9 @@ export default {
     traits: {
       place: "alveolopalatal",
       manner: "affricate",
-      voicing: false
+      voicing: false,
     },
-    translit: "ch"
+    translit: "ch",
   },
   // ʋ: {
   //   symbol: 'ʋ',
@@ -535,9 +535,9 @@ export default {
     traits: {
       place: "labiodental",
       manner: "fricative",
-      voicing: true
+      voicing: true,
     },
-    translit: "v"
+    translit: "v",
   },
   // ⱱ: {
   //   symbol: 'ⱱ',
@@ -553,18 +553,18 @@ export default {
     traits: {
       place: "velar",
       manner: "fricative",
-      voicing: true
+      voicing: true,
     },
-    translit: "jh"
+    translit: "jh",
   },
   w: {
     symbol: "w",
     traits: {
       place: "labial-velar",
       manner: "approximant",
-      voicing: true
+      voicing: true,
     },
-    translit: "w"
+    translit: "w",
   },
   // ʍ: {
   //   symbol: 'ʍ',
@@ -580,18 +580,18 @@ export default {
     traits: {
       place: "velar",
       manner: "fricative",
-      voicing: false
+      voicing: false,
     },
-    translit: "kh"
+    translit: "kh",
   },
   χ: {
     symbol: "χ",
     traits: {
       place: "uvular",
       manner: "fricative",
-      voicing: false
+      voicing: false,
     },
-    translit: "kh"
+    translit: "kh",
   },
   // ʎ: {
   //   symbol: 'ʎ',
@@ -607,9 +607,9 @@ export default {
     traits: {
       place: "alveolar",
       manner: "fricative",
-      voicing: true
+      voicing: true,
     },
-    translit: "z"
+    translit: "z",
   },
   // ʑ: {
   //   symbol: 'ʑ',
@@ -634,28 +634,28 @@ export default {
     traits: {
       place: "alveolopalatal",
       manner: "fricative",
-      voicing: true
+      voicing: true,
     },
-    translit: "j"
+    translit: "j",
   },
   ʔ: {
     symbol: "ʔ",
     traits: {
       place: "glottal",
       manner: "plosive",
-      voicing: false
+      voicing: false,
     },
-    translit: "'"
+    translit: "'",
   },
   ʡ: {
     symbol: "ʡ",
     traits: {
       place: "pharyngeal",
       manner: "plosive",
-      voicing: true
+      voicing: true,
     },
-    translit: "'"
-  }
+    translit: "'",
+  },
   // ʕ: {
   //   symbol: 'ʕ',
   //   traits: {
@@ -675,3 +675,5 @@ export default {
   //   translit: 'h',
   // },
 };
+
+export default consonants;

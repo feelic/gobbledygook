@@ -1,4 +1,4 @@
-export default {
+const dictionary = {
   horse: { morpheme: "hors" },
   carrot: { morpheme: "kærət" },
   love: { morpheme: "lov" },
@@ -162,3 +162,5 @@ export default {
   for: { morpheme: "for" },
   // };
 };
+
+export default dictionary;

@@ -13,25 +13,25 @@ nav {
     display: flex;
     flex-direction: row;
 }
-nav button {
+nav .navBtn {
   font-size: 16px;
   color: #FFB394;
   border: 0;
   padding: 10px;
   background: none;
+  text-decoration: none;
 }
-nav button:hover {
+nav .navBtn:hover {
   background: none;
 }
-nav button.active {
+nav .navBtn.active {
   background: #226;
 }
-nav button:focus {
+nav .navBtn:focus {
   color: #FFB394;
 }
 section {
   line-height: 24px;
-  display: none;
 }
 .sentenceBlock {
   padding-bottom: 15px;
@@ -51,14 +51,16 @@ section {
 .open {
   display: block;
 }
-input {
+input, select {
   border: 1px solid #99e;
   background-color: #bbe;
   color: #447;
   border-radius: 2px;
   padding: 2px 4px;
+  margin-right: 8px;
+  line-height: 17px;
 }
-input:focus {
+input:focus, select:focus {
   border-color: #44c;
   background-color: #b3b3ee;
   color: #448;

@@ -1,14 +1,14 @@
-export default {
+const vowels = {
   a: {
     symbol: "a",
     traits: {
       height: "open",
       backness: "front",
       roundedness: false,
-      nasalization: false
+      nasalization: false,
     },
     translit: "a",
-    neighbours: ["ä", "æ", "ɶ"]
+    neighbours: ["ä", "æ", "ɶ"],
   },
   ɑ: {
     symbol: "ɑ",
@@ -16,10 +16,10 @@ export default {
       height: "open",
       backness: "back",
       roundedness: false,
-      nasalization: false
+      nasalization: false,
     },
     translit: "a",
-    neighbours: ["ä", "ɑ̃", "ɒ"]
+    neighbours: ["ä", "ɑ̃", "ɒ"],
   },
   ɒ: {
     symbol: "ɒ",
@@ -27,10 +27,10 @@ export default {
       height: "open",
       backness: "back",
       roundedness: true,
-      nasalization: false
+      nasalization: false,
     },
     translit: "å",
-    neighbours: ["ɑ", "ɒ̈"]
+    neighbours: ["ɑ", "ɒ̈"],
   },
   æ: {
     symbol: "æ",
@@ -38,10 +38,10 @@ export default {
       height: "near-open",
       backness: "front",
       roundedness: false,
-      nasalization: false
+      nasalization: false,
     },
     translit: "ä",
-    neighbours: ["a", "ɐ", "ɛ"]
+    neighbours: ["a", "ɐ", "ɛ"],
   },
   ɔ: {
     symbol: "ɔ",
@@ -49,10 +49,10 @@ export default {
       height: "open-mid",
       "backnes,s": "back",
       roundedness: true,
-      nasalization: false
+      nasalization: false,
     },
     translit: "o",
-    neighbours: ["ɔ̃", "o̞", "ʌ"]
+    neighbours: ["ɔ̃", "o̞", "ʌ"],
   },
   e: {
     symbol: "e",
@@ -60,10 +60,10 @@ export default {
       height: "close-mid",
       backness: "front",
       roundedness: false,
-      nasalization: false
+      nasalization: false,
     },
     translit: "é",
-    neighbours: ["e̞", "ɘ", "ø"]
+    neighbours: ["e̞", "ɘ", "ø"],
   },
   ə: {
     symbol: "ə",
@@ -71,10 +71,10 @@ export default {
       height: "mid",
       backness: "central",
       roundedness: false,
-      nasalization: false
+      nasalization: false,
     },
     translit: "e",
-    neighbours: ["e̞", "ɘ", "ɜ", "ɵ̞", "ɤ̞"]
+    neighbours: ["e̞", "ɘ", "ɜ", "ɵ̞", "ɤ̞"],
   },
   ɘ: {
     symbol: "ɘ",
@@ -82,10 +82,10 @@ export default {
       height: "close-mid",
       backness: "central",
       roundedness: false,
-      nasalization: false
+      nasalization: false,
     },
     translit: "e",
-    neighbours: ["e", "ə", "ɪ̈", "ɵ", "ɤ"]
+    neighbours: ["e", "ə", "ɪ̈", "ɵ", "ɤ"],
   },
   ɛ: {
     symbol: "ɛ",
@@ -93,10 +93,10 @@ export default {
       height: "open-mid",
       backness: "front",
       roundedness: false,
-      nasalization: false
+      nasalization: false,
     },
     translit: "ä",
-    neighbours: ["æ", "e̞", "ɛ̃", "ɜ", "œ"]
+    neighbours: ["æ", "e̞", "ɛ̃", "ɜ", "œ"],
   },
   ɜ: {
     symbol: "ɜ",
@@ -104,10 +104,10 @@ export default {
       height: "open-mid",
       backness: "central",
       roundedness: false,
-      nasalization: false
+      nasalization: false,
     },
     translit: "e",
-    neighbours: ["ɐ", "ə", "ɛ", "ʌ"]
+    neighbours: ["ɐ", "ə", "ɛ", "ʌ"],
   },
   i: {
     symbol: "i",
@@ -115,10 +115,10 @@ export default {
       height: "close",
       backness: "front",
       roundedness: false,
-      nasalization: false
+      nasalization: false,
     },
     translit: "i",
-    neighbours: ["ɨ", "y"]
+    neighbours: ["ɨ", "y"],
   },
   o: {
     symbol: "o",
@@ -126,10 +126,10 @@ export default {
       height: "close-mid",
       backness: "back",
       roundedness: true,
-      nasalization: false
+      nasalization: false,
     },
     translit: "o",
-    neighbours: ["o̞", "ɵ", "ɤ"]
+    neighbours: ["o̞", "ɵ", "ɤ"],
   },
   ø: {
     symbol: "ø",
@@ -137,10 +137,10 @@ export default {
       height: "close-mid",
       backness: "front",
       roundedness: true,
-      nasalization: false
+      nasalization: false,
     },
     translit: "e",
-    neighbours: ["e", "ø̞", "ɵ"]
+    neighbours: ["e", "ø̞", "ɵ"],
   },
   œ: {
     symbol: "œ",
@@ -148,10 +148,10 @@ export default {
       height: "open-mid",
       backness: "front",
       roundedness: true,
-      nasalization: false
+      nasalization: false,
     },
     translit: "e",
-    neighbours: ["ɛ", "ø̞", "œ̃"]
+    neighbours: ["ɛ", "ø̞", "œ̃"],
   },
   ɶ: {
     symbol: "ɶ",
@@ -159,10 +159,10 @@ export default {
       height: "open",
       backness: "front",
       roundedness: true,
-      nasalization: false
+      nasalization: false,
     },
     translit: "e",
-    neighbours: ["a", "ɒ̈"]
+    neighbours: ["a", "ɒ̈"],
   },
   u: {
     symbol: "u",
@@ -170,10 +170,10 @@ export default {
       height: "close",
       backness: "back",
       roundedness: true,
-      nasalization: false
+      nasalization: false,
     },
     translit: "u",
-    neighbours: ["ɯ", "ʉ"]
+    neighbours: ["ɯ", "ʉ"],
   },
   ʌ: {
     symbol: "ʌ",
@@ -181,10 +181,10 @@ export default {
       height: "open-mid",
       backness: "back",
       roundedness: false,
-      nasalization: false
+      nasalization: false,
     },
     translit: "e",
-    neighbours: ["ɔ", "ɜ", "ɤ̞"]
+    neighbours: ["ɔ", "ɜ", "ɤ̞"],
   },
   y: {
     symbol: "y",
@@ -192,11 +192,11 @@ export default {
       height: "close",
       backness: "front",
       roundedness: true,
-      nasalization: false
+      nasalization: false,
     },
     translit: "y",
-    neighbours: ["i", "ʉ"]
-  }
+    neighbours: ["i", "ʉ"],
+  },
 };
 
 export const nasalVowels = {
@@ -206,10 +206,10 @@ export const nasalVowels = {
       height: "open",
       backness: "central",
       roundedness: false,
-      nasalization: true
+      nasalization: true,
     },
     translit: "a",
-    neighbours: ["ä", "ɑ̃"]
+    neighbours: ["ä", "ɑ̃"],
   },
   ɑ̃: {
     symbol: "ɑ̃",
@@ -217,10 +217,10 @@ export const nasalVowels = {
       height: "open",
       backness: "back",
       roundedness: false,
-      nasalization: true
+      nasalization: true,
     },
     translit: "a",
-    neighbours: ["ã", "ɑ"]
+    neighbours: ["ã", "ɑ"],
   },
   ɔ̃: {
     symbol: "ɔ̃",
@@ -228,10 +228,10 @@ export const nasalVowels = {
       height: "open-mid",
       backness: "back",
       roundedness: true,
-      nasalization: true
+      nasalization: true,
     },
     translit: "on",
-    neighbours: ["ɔ", "õ"]
+    neighbours: ["ɔ", "õ"],
   },
   ɛ̃: {
     symbol: "ɛ̃",
@@ -239,31 +239,33 @@ export const nasalVowels = {
       height: "open-mid",
       backness: "front",
       roundedness: false,
-      nasalization: true
+      nasalization: true,
     },
     translit: "in",
-    neighbours: ["ɛ", "œ̃"]
+    neighbours: ["ɛ", "œ̃"],
   },
-õ: {
-  symbol: "õ",
-  traits: {
-    height: "mid",
-    backness: "back",
-    roundedness: true,
-    nasalization: true
+  õ: {
+    symbol: "õ",
+    traits: {
+      height: "mid",
+      backness: "back",
+      roundedness: true,
+      nasalization: true,
+    },
+    translit: "on",
+    neighbours: ["ɔ̃", "o̞"],
   },
-  translit: "on",
-  neighbours: ["ɔ̃", "o̞"]
-},
   œ̃: {
     symbol: "œ̃",
     traits: {
       height: "open-mid",
       backness: "front",
       roundedness: true,
-      nasalization: true
+      nasalization: true,
     },
     translit: "en",
-    neighbours: ["ɛ̃", "œ"]
+    neighbours: ["ɛ̃", "œ"],
   },
-}
+};
+
+export default vowels;

@@ -18,7 +18,7 @@ import {
   theyHave31Chickens,
 } from "./sample-sentences.js";
 
-export default [
+const sentences = [
   horseLikesCarrots,
   horseLikesCarrotsJohnnyGaveHim,
   horseLikesCarrotsAndGrass,
@@ -37,6 +37,7 @@ export default [
   theDogSmellsReallyBad,
   theCastleTowerIsRound,
 ];
+export default sentences;
 
 /*
 TRANSITIVE VERB + OBJECT
