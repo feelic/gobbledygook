@@ -1,6 +1,7 @@
 import { Switch, Route, NavLink, useRouteMatch } from "react-router-dom";
 import ProcGenConLang from "./components/ProcGenConLang";
 import PhraseBook from "./components/PhraseBook";
+import Home from "./components/Home";
 import "./App.css";
 
 export default function App() {
@@ -11,6 +12,14 @@ export default function App() {
     <div className="App">
       <h1>gobbledygook</h1>
       <nav>
+        <NavLink
+          activeClassName="active"
+          className="navBtn"
+          exact
+          to={`${process.env.PUBLIC_URL}/`}
+        >
+          Home
+        </NavLink>
         <NavLink
           activeClassName="active"
           className="navBtn"
@@ -32,6 +41,9 @@ export default function App() {
         </Route>
         <Route path={`${process.env.PUBLIC_URL}/ProcGenConLang`}>
           <ProcGenConLang />
+        </Route>
+        <Route path="/">
+          <Home />
         </Route>
       </Switch>
     </div>
