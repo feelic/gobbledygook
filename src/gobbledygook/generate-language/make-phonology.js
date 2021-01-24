@@ -3,19 +3,19 @@ import {
   nRandomFromArray,
   randomFromArray,
   random,
-  shuffleArray
+  shuffleArray,
 } from "../util/random";
 import { bindNumber } from "../util/index";
 
 import {
   phonemes,
   phonemicDistribution,
-  clusterConsonantPositions
+  clusterConsonantPositions,
 } from "../constants/phonology";
 
 const makeClusters = {
   vowels: makeDiphtongs,
-  consonants: makeConsonantClusters
+  consonants: makeConsonantClusters,
 };
 
 // Ideas for an improved phonology generation
@@ -31,10 +31,7 @@ export function makePhonemeSet(type = "consonants") {
   const standard = gaussian(distrib.mean, distrib.stdev);
   const number = bindNumber(standard(), distrib.min, distrib.max);
   const phonemeSet = getPhonemes(type);
-  const selectedPhonemes = nRandomFromArray(
-    Object.keys(phonemeSet),
-    number
-  );
+  const selectedPhonemes = nRandomFromArray(Object.keys(phonemeSet), number);
   const clustersExist = Boolean(Math.round(random()));
 
   const clusters =
@@ -55,29 +52,38 @@ export function makePhonemeSet(type = "consonants") {
 function getPhonemes(type) {
   const includeNasalVowels = Boolean(random() < 0.18);
 
-  if (type === 'vowels' && includeNasalVowels) {
-    return {...phonemes[type], ...phonemes['nasalVowels']}
+  if (type === "vowels" && includeNasalVowels) {
+    return { ...phonemes[type], ...phonemes["nasalVowels"] };
   }
-  return phonemes[type]
+  return phonemes[type];
 }
 
 function assignFreqAndTranslit(selectedPhonemes, type, high = 50) {
   const reduction = Math.ceil(high / selectedPhonemes.length);
+  const allPhonemes = {
+    ...phonemes.consonants,
+    ...phonemes.vowels,
+    ...phonemes.nasalVowels,
+  };
+
   return selectedPhonemes.reduce((res, phoneme, idx) => {
     const freq = Math.ceil(-reduction * idx) + high;
+
     const translit =
-      (phonemes[type][phoneme] && phonemes[type][phoneme].translit) ||
+      (allPhonemes[phoneme] && allPhonemes[phoneme].translit) ||
       phoneme
         .split("")
-        .map(char => phonemes[type][char].translit)
+        .map((char) => {
+          return allPhonemes[char].translit;
+        })
         .join("");
     return {
       ...res,
       [phoneme]: {
         ...selectedPhonemes[phoneme],
         weight: (freq > 0 && freq) || 1,
-        translit
-      }
+        translit,
+      },
     };
   }, {});
 }
@@ -87,13 +93,13 @@ function makeDiphtongs() {
 }
 
 function makeConsonantClusters(languageConsonants) {
-  const startConsonants = clusterConsonantPositions.start.filter(consonant =>
+  const startConsonants = clusterConsonantPositions.start.filter((consonant) =>
     languageConsonants.includes(consonant)
   );
-  const midConsonants = clusterConsonantPositions.mid.filter(consonant =>
+  const midConsonants = clusterConsonantPositions.mid.filter((consonant) =>
     languageConsonants.includes(consonant)
   );
-  const finalConsonants = clusterConsonantPositions.final.filter(consonant =>
+  const finalConsonants = clusterConsonantPositions.final.filter((consonant) =>
     languageConsonants.includes(consonant)
   );
 

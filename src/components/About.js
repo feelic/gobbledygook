@@ -7,7 +7,7 @@ export default function About() {
         find out more!
       </p>
       <p><b>ProcGenConLang</b>: generate an imaginary language, choose a voice and listen to it</p>
-      <p><b>Phrase</b>: have a look at how the sausage is made</p>
+      <p><b>Phrase Book</b>: have a look at how the sausage is made</p>
     </section>
   );
 }
