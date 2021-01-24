@@ -1,4 +1,4 @@
-export default function Home() {
+export default function About() {
   return (
     <section>
       <h2>Hi, welcome to Gobbledygook ;)</h2>
@@ -6,6 +6,8 @@ export default function Home() {
         It's a constructed language procedural generator, click on the menu to
         find out more!
       </p>
+      <p><b>ProcGenConLang</b>: generate an imaginary language, choose a voice and listen to it</p>
+      <p><b>Phrase</b>: have a look at how the sausage is made</p>
     </section>
   );
 }

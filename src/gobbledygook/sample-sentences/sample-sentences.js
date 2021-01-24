@@ -1,5 +1,5 @@
 export const horseLikesCarrots = {
-  transcript: "the small grey horse likes carrots",
+  transcript: "the small grey horse likes small orange carrots",
   entities: {
     horse: {
       core: "horse",

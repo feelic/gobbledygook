@@ -40,6 +40,15 @@ section {
 .sentenceBlock p {
   margin-bottom: 5px;
 }
+.sentenceBlock .transcript {
+  font-size: 12px;
+  font-style: italic;
+  color: #e99;
+}
+.errorDetail {
+  font-size: 10px;
+  color: #e99;
+}
 .codeBlock {
   margin: 10px;
   padding: 10px;
@@ -84,5 +93,5 @@ button:focus {
   outline: none;
 }
 .originalSentence {
-  font-style: italic; 
+  font-style: italic;
 }

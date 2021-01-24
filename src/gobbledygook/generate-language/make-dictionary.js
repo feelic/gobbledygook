@@ -20,7 +20,12 @@ export default function makeDictionary(phonology, morphology) {
     return dictionary.reduce((dictionary, meaning) => {
       return {
         ...dictionary,
-        [meaning]: makeMorpheme(phonology, Math.abs(morphemeLengthLaw()) + min)
+        [meaning]: {
+          morpheme: makeMorpheme(
+            phonology,
+            Math.abs(morphemeLengthLaw()) + min
+          ),
+        },
       };
     }, {});
   }
