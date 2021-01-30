@@ -136,10 +136,10 @@ function makeSentenceFormation() {
     VOS: { weight: 5 }, // VOS "Loves him she." 5%
   };
   const wordOrdersTemplates = {
-    SOV: "{subject} {object} {verb}",
-    SVO: "{subject} {verb} {object}",
-    VSO: "{verb} {subject} {object}",
-    VOS: "{verb} {object} {subject}",
+    SOV: "{subject} {object} {verb} {adverbialClauses}",
+    SVO: "{subject} {verb} {adverbialClauses} {object}",
+    VSO: "{verb} {adverbialClauses} {subject} {object}",
+    VOS: "{verb} {adverbialClauses} {object} {subject}",
   };
   const wordOrder = randomWithCoef(wordOrders);
 
