@@ -34,6 +34,8 @@ export const places = ["beach", "place", "castle", "tower", "cave"];
 export const things = ["treasure", "grass"];
 export const adverbs = ["very", "really"];
 export const utilities = [
+  "than",
+  "that",
   "and",
   "tall",
   "all",

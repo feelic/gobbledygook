@@ -1,9 +1,14 @@
 import { useEffect, useState, Fragment } from "react";
 import { generateLanguage } from "../gobbledygook/generate-language/index";
-import { transliterate, makeSentence, makeNumber } from "../gobbledygook/use-language";
+import {
+  transliterate,
+  makeSentence,
+  makeNumber,
+} from "../gobbledygook/use-language";
 import sentences from "../gobbledygook/sample-sentences/index";
 import AudioButton from "./AudioButton";
 import { VOICES, DEFAULT_VOICE } from "../constants/voices";
+import InteractiveTranscription from "./InteractiveTranscription";
 
 import { setSeed } from "../gobbledygook/util/random";
 
@@ -74,34 +79,36 @@ export default function ProcGenConLang() {
     </section>
   );
 }
-function CountToTen({lang, voice}) {
+function CountToTen({ lang, voice }) {
   const sentence = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((number) => {
-      return makeNumber({lang}, number)
-    }).join(', ')
+    return makeNumber({ lang }, number);
+  });
 
-  return <div className="sentenceBlock">
-    <p>
-      {transliterate(lang, sentence)}{" "}
-      <AudioButton sentence={sentence} voice={voice} />
-      <br />
-      <span className="transcript">0 1 2 3 4 5 6 7 8 9 10</span>
-    </p>
-  </div>
+  return (
+    <div className="sentenceBlock">
+      <InteractiveTranscription lang={lang} sentence={sentence} />
+      <p>
+        <AudioButton sentence={sentence} voice={voice} />
+        <br />
+        <span className="transcript">0 1 2 3 4 5 6 7 8 9 10</span>
+      </p>
+    </div>
+  );
 }
 function Sentence({ lang, sentence, voice }) {
   try {
-    const formedSentence = makeSentence(lang, sentence);
+  const formedSentence = makeSentence(lang, sentence);
 
-    return (
-      <div className="sentenceBlock">
-        <p>
-          {transliterate(lang, formedSentence)}{" "}
-          <AudioButton sentence={formedSentence} voice={voice} />
-          <br />
-          <span className="transcript">{sentence.transcript}</span>
-        </p>
-      </div>
-    );
+  return (
+    <div className="sentenceBlock">
+      <InteractiveTranscription lang={lang} sentence={formedSentence} />
+      <p>
+        <AudioButton sentence={formedSentence} voice={voice} />
+        <br />
+        <span className="transcript">{sentence.transcript}</span>
+      </p>
+    </div>
+  );
   } catch (error) {
     return (
       <Fragment>

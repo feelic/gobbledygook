@@ -21,9 +21,15 @@ export function makeSentence(lang, { sentence, entities }) {
   const formedSentence = sentenceFormation.map((pos) => {
     switch (pos) {
       case "subject":
+        const subject = makeNounPhrase(context, sentence.subject);
+
+        if (! subject) {
+          return null;
+        }
+
         return {
           pos: "S",
-          content: [makeNounPhrase(context, sentence.subject)],
+          content: [subject],
         };
       case "verb":
         return makeVerbPhrase(context, sentence.subject, sentence.verb);

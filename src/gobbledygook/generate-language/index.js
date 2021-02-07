@@ -29,32 +29,27 @@ export function generateLanguage() {
     genders
   );
 
-  const { declension, declensionGroups } = makeDeclension(
-    phonology,
-    morphologyType,
-    cases,
-    genders
-  );
-  const { conjugation, conjugationGroups, tenseSystem } = makeConjugation(
-    phonology,
-    morphologyType
-  );
+  const declension = makeDeclension(phonology, morphologyType, cases, genders);
+  const conjugation = makeConjugation(phonology, morphologyType);
 
   const morphemeDictionary = makeDictionary(
     phonology,
-    declensionGroups,
-    conjugationGroups
+    declension.declensionGroups,
+    conjugation.conjugationGroups
   );
 
-  const sentenceFormation = makeSentenceFormation();
+  const sentenceFormations = makeSentenceFormations();
   const {
     nounPhraseFormation,
     verbPhraseFormation,
     adjectiveClauseFormation,
     adjectiveFormation,
   } = makeClausesFormation();
-  const adjectives = { preadjectives: ["size", "age", "color"], postadjectives: [] };
-  const {comparative, superlative} = makeComparisonSystem(phonology);
+  const adjectives = {
+    preadjectives: ["size", "age", "color"],
+    postadjectives: [],
+  };
+  const { comparative, superlative, comparisonAdverb } = makeComparisonSystem(phonology);
   const numbers = makeNumbers(phonology);
 
   const language = {
@@ -65,19 +60,17 @@ export function generateLanguage() {
     pronouns,
     determiners,
     declension,
-    declensionGroups,
     conjugation,
-    tenseSystem,
-    conjugationGroups,
     morphemeDictionary,
     nounPhraseFormation,
     verbPhraseFormation,
-    sentenceFormation,
+    sentenceFormations,
     adjectiveClauseFormation,
     adjectiveFormation,
     adjectives,
     comparative,
     superlative,
+    comparisonAdverb,
     numbers,
     ...phonology,
   };
@@ -128,7 +121,7 @@ function makeCaseSystem(morphologyType) {
 
   return caseSystem;
 }
-function makeSentenceFormation() {
+function makeSentenceFormations() {
   const wordOrders = {
     SOV: { weight: 45 }, // SOV "She him loves." 45%
     SVO: { weight: 45 }, // SVO "She loves him." 45%
@@ -136,21 +129,29 @@ function makeSentenceFormation() {
     VOS: { weight: 5 }, // VOS "Loves him she." 5%
   };
   const wordOrdersTemplates = {
-    SOV: "{subject} {object} {verb} {adverbialClauses}",
-    SVO: "{subject} {verb} {adverbialClauses} {object}",
-    VSO: "{verb} {adverbialClauses} {subject} {object}",
-    VOS: "{verb} {adverbialClauses} {object} {subject}",
+    SOV: ["subject", "object", "verb", "adverbialClauses"],
+    SVO: ["subject", "verb", "adverbialClauses", "object"],
+    VSO: ["verb", "adverbialClauses", "subject", "object"],
+    VOS: ["verb", "adverbialClauses", "object", "subject"],
   };
   const wordOrder = randomWithCoef(wordOrders);
+  const declarative = wordOrdersTemplates[wordOrder];
 
-  return wordOrdersTemplates[wordOrder];
+  return { declarative };
 }
 function makeClausesFormation() {
-  const nounPhraseFormation =
-    "{preposition} {determiner} {preadjectives} {noun} {postadjectives} {genitive} {adjectiveClause}";
-  const verbPhraseFormation = "{verb} {adverb}";
-  const adjectiveClauseFormation = "{subject} {object} {verb}";
-  const adjectiveFormation = "{adjective} {adverb}";
+  const nounPhraseFormation = [
+    "preposition",
+    "determiner",
+    "preadjectives",
+    "noun",
+    "postadjectives",
+    "genitive",
+    "adjectiveClause",
+  ];
+  const verbPhraseFormation = ["verb", "adverb"];
+  const adjectiveClauseFormation = ["subject", "object", "verb"];
+  const adjectiveFormation = ["adjective", "adverb"];
 
   return {
     nounPhraseFormation,
@@ -159,31 +160,33 @@ function makeClausesFormation() {
     adjectiveFormation,
   };
 }
+
 function makePronouns(phonology, morphologyType, cases, genders) {
   const persons = ["firstPerson", "secondPerson", "thirdPerson"];
   const numbers = ["singular", "plural"];
-  // const formRules = [persons, cases, genders, numbers];
+  const rules = ["persons", "cases", "genders", "numbers"];
 
-  const pronouns = {};
+  const forms = {};
 
   //no pronoun system
   if (random() > 0.2) {
     return {
-      default: { default: { default: { default: "" } } },
+      rules: ["persons"],
+      forms: { default: "" },
     };
   }
 
   persons.forEach((person) => {
-    pronouns[person] = {};
+    forms[person] = {};
 
     cases.forEach((grammaticalCase) => {
-      pronouns[person][grammaticalCase] = {};
+      forms[person][grammaticalCase] = {};
 
       genders.forEach((gender) => {
-        pronouns[person][grammaticalCase][gender] = {};
+        forms[person][grammaticalCase][gender] = {};
 
         numbers.forEach((number) => {
-          pronouns[person][grammaticalCase][gender][number] = makeMorpheme(
+          forms[person][grammaticalCase][gender][number] = makeMorpheme(
             phonology,
             1 + gaussian(1, 1)()
           );
@@ -192,7 +195,7 @@ function makePronouns(phonology, morphologyType, cases, genders) {
     });
   });
 
-  return pronouns;
+  return { forms, rules };
 }
 
 function makeDeterminers(phonology, morphologyType, cases, genders) {
@@ -204,15 +207,22 @@ function makeDeterminers(phonology, morphologyType, cases, genders) {
   //no determiner system
   if (random() > 0.2) {
     return {
-      default: { default: { default: { default: { default: "" } } } },
+      rules: ["determination.type"],
+      forms: { default: "" },
     };
   }
-  //determiners: "determination.type", "owner.person", "owner.gender", "gender", "number",
-  const determiners = {
+  const rules = [
+    "determination.type",
+    "owner.person",
+    "owner.gender",
+    "gender",
+    "number",
+  ];
+  const forms = {
     default: { default: { default: { default: { default: "" } } } },
   };
 
-  return determiners;
+  return { rules, forms };
 }
 
 function makeDeclension(phonology, morphologyType, cases, genders) {
@@ -220,18 +230,19 @@ function makeDeclension(phonology, morphologyType, cases, genders) {
   // const numbers = ["singular", "plural"];
   // const types = ["default", adjective];
   const declensionGroups = ["default"];
-  // const formRules = [types, declensionGroups, cases, genders, numbers];
-  const declension = {
-    default: { default: { default: { default: { default: "{noun}" } } } },
+  const rules = ["types", "declensionGroups", "cases", "genders", "numbers"];
+  const forms = {
+    default: { default: { default: { default: { default: "{morpheme}" } } } },
     adjective: {
-      default: { default: { default: { default: "{adjective}" } } },
+      default: { default: { default: { default: "{morpheme}" } } },
     },
   };
 
-  return { declension, declensionGroups };
+  return { forms, rules, declensionGroups };
 }
+
 function makeConjugation() {
-  //conjugation: "group", "tense", "person", "number"
+  const rules = ["group", "tense", "person", "number"];
   const conjugationGroups = ["default"];
   const tenseSystem = {
     default: "default",
@@ -240,23 +251,24 @@ function makeConjugation() {
     future: "default",
   };
   // const tenses = [...new Set(Object.values[tenseSystem])]
-  const conjugation = {
-    default: { default: { default: { default: "{verb}" } } },
+  const forms = {
+    default: { default: { default: { default: "{morpheme}" } } },
   };
 
-  return { conjugation, conjugationGroups, tenseSystem };
+  return { forms, rules, conjugationGroups, tenseSystem };
 }
+
 function makeNumbers(phonology) {
   let digits = [];
   function makeDigit(previousDigits) {
-    const newDigit = makeMorpheme(phonology, gaussian(1.5, 1)() + 1)
+    const newDigit = makeMorpheme(phonology, gaussian(1.5, 1)() + 1);
 
-    if (! previousDigits.includes(newDigit)) {
+    if (!previousDigits.includes(newDigit)) {
       return newDigit;
     }
     return makeDigit(previousDigits);
   }
-  for (let i = 0; i < 10; i+= 1) {
+  for (let i = 0; i < 10; i += 1) {
     digits.push(makeDigit(digits));
   }
   const numbers = {
@@ -268,27 +280,26 @@ function makeNumbers(phonology) {
       thousands: "{digit}",
     },
     formation: "{thousands}{hundreds}{tens}{units}",
-  }
+  };
 
   return numbers;
 }
+
 function makeComparisonSystem(phonology) {
+  //should either work as a type of adjectives, or an adverb system
+
   return {
-    comparative: {
-      formation: "{quality} {comparedObject}",
-      comparator: {
-        negative: makeMorpheme(phonology, gaussian(1.5, 1)() + 1) + " {adjective}",
-        positive: makeMorpheme(phonology, gaussian(1.5, 1)() + 1) + " {adjective}",
+    comparisonAdverb: {
+      comparative: {
+        negative: makeMorpheme(phonology, gaussian(1.5, 1)() + 1),
+        positive: makeMorpheme(phonology, gaussian(1.5, 1)() + 1)
       },
-      object: makeMorpheme(phonology, gaussian(1.5, 1)() + 1) + " {determiner} {object}",
+      superlative: {
+        negative: makeMorpheme(phonology, gaussian(1.5, 1)() + 1),
+        positive: makeMorpheme(phonology, gaussian(1.5, 1)() + 1)
+      }
     },
-    superlative: {
-      formation: "{determiner} {quality} {comparedObject}",
-      comparator: {
-        negative: makeMorpheme(phonology, gaussian(1.5, 1)() + 1) + " {adjective}",
-        positive: makeMorpheme(phonology, gaussian(1.5, 1)() + 1) + " {adjective}",
-      },
-      object: "{determiner} {object}",
-    },
-  }
+    comparative: ["comparisonAdverb", "adjective", "comparisonPreposition", "comparedObject"],
+    superlative: ["determiner", "comparisonAdverb", "adjective", "comparedObject"],
+  };
 }

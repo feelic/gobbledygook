@@ -36,8 +36,8 @@ function PhraseActionsBlock({ sentence, voice }) {
   const [open, setOpen] = useState(false);
   const sentenceIPA = getIPATranscript(sentence);
   return (
-    <div class="PhraseActionsBlock">
-      <div class="PhraseActionsButtons">
+    <div className="PhraseActionsBlock">
+      <div className="PhraseActionsButtons">
         <AudioButton sentence={sentenceIPA} voice={voice} />
         <button title="show phrase definition" onClick={() => setOpen(!open)}>
           +
