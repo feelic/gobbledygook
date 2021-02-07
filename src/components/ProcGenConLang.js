@@ -4,6 +4,7 @@ import {
   transliterate,
   makeSentence,
   makeNumber,
+  getIPATranscript,
 } from "../gobbledygook/use-language";
 import sentences from "../gobbledygook/sample-sentences/index";
 import AudioButton from "./AudioButton";
@@ -13,7 +14,7 @@ import InteractiveTranscription from "./InteractiveTranscription";
 import { setSeed } from "../gobbledygook/util/random";
 
 export default function ProcGenConLang() {
-  const [seed, setCurrentSeed] = useState("language");
+  const [seed, setCurrentSeed] = useState("randome");
   const [lang, setLang] = useState();
   useEffect(() => {
     setSeed(seed);
@@ -103,7 +104,7 @@ function Sentence({ lang, sentence, voice }) {
     <div className="sentenceBlock">
       <InteractiveTranscription lang={lang} sentence={formedSentence} />
       <p>
-        <AudioButton sentence={formedSentence} voice={voice} />
+        <AudioButton sentence={getIPATranscript(formedSentence)} voice={voice} />
         <br />
         <span className="transcript">{sentence.transcript}</span>
       </p>

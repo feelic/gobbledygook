@@ -15,7 +15,7 @@ export function generateLanguage() {
   };
 
   //name
-  const name = makeMorpheme(phonology, gaussian(2.5, 1.2)() + 1);
+  const name = makeMorpheme(phonology, gaussian(3, 1)() + 3);
 
   const morphologyType = makeMorphologyType();
   const genders = makeGenders();
