@@ -1,18 +1,5 @@
 import { makeNumber } from "./make-number";
 
-const formTableStructures = {
-  conjugation: ["group", "tense", "person", "number"],
-  declension: ["type", "declensionGroup", "grammaticalCase", "gender", "number"],
-  pronouns: ["person", "grammaticalCase", "gender", "number"],
-  determiners: [
-    "determination.type",
-    "owner.person",
-    "owner.gender",
-    "gender",
-    "number",
-  ],
-};
-
 export function getRequiredForm(context, rule, parameters) {
   const { lang } = context;
   const { morpheme = {} } = parameters;
@@ -21,9 +8,9 @@ export function getRequiredForm(context, rule, parameters) {
       `Error: ${lang.name || "language"} doesn't have a rule set for ${rule}`
     );
   }
-  const formTableStructure = formTableStructures[rule];
+  const formTableStructure = lang[rule].rules;
 
-  const selectedRule = morpheme.irregular || lang[rule];
+  const selectedRule = morpheme.irregular || lang[rule].forms;
   const form = formTableStructure.reduce(
     (formTable, agreementParameter, idx) => {
       let key = getPropertyValue(agreementParameter, parameters);
@@ -51,7 +38,7 @@ export function getRequiredForm(context, rule, parameters) {
     selectedRule
   );
 
-  return form;
+  return { form, morpheme, rules: parameters };
 }
 
 function getPropertyValue(property, parameters) {

@@ -13,25 +13,27 @@ export function makeAdjectives(context, nounDefinition) {
       return "";
     }
 
-    return adjectives.reduce((prev, curr) => {
-      const adjective = nounDefinition.adjectives[curr];
+    return adjectives
+      .map((adj) => {
+        const adjective = nounDefinition.adjectives[adj];
 
-      if (!adjective) {
-        return prev;
-      }
-      const morpheme = lang.morphemeDictionary[adjective];
-      const { declensionGroup } = morpheme;
-      const declinedAdjective = getRequiredForm(context, "declension", {
-        type: "adjective",
-        declensionGroup,
-        grammaticalCase,
-        gender,
-        number,
-        morpheme,
-      }).replace("{adjective}", morpheme.morpheme);
+        if (!adjective) {
+          return null;
+        }
+        const morpheme = lang.morphemeDictionary[adjective];
+        const { declensionGroup } = morpheme;
+        const declinedAdjective = getRequiredForm(context, "declension", {
+          type: "adjective",
+          declensionGroup,
+          grammaticalCase,
+          gender,
+          number,
+          morpheme,
+        });
 
-      return `${prev} ${declinedAdjective}`;
-    }, "");
+        return declinedAdjective;
+      })
+      .filter((pos) => pos !== null);
   }
   const preadjectives = makeAdjectivesByPosition(lang.adjectives.preadjectives);
   const postadjectives = makeAdjectivesByPosition(

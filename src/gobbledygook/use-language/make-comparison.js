@@ -7,26 +7,32 @@ export function makeComparison(context, object) {
   const subjectEntity = getNounInfo(context, context.sentence.subject);
 
   return forms.formation
-    .replace(
-      "{determiner}",
-      getDeterminer(
-        context,
-        subjectEntity
-      )
-    )
-    .replace("{quality}", makeComparativeQuality(context, object))
-    .replace("{comparedObject}", makeComparedObject(context, object));
+    .map((pos) => {
+      switch (pos) {
+        case "determiner":
+          return getDeterminer(context, subjectEntity);
+        case "quality":
+          return makeComparativeQuality(context, object);
+        case "comparedObject":
+          return makeComparedObject(context, object);
+        default:
+          return null;
+      }
+    })
+    .filter((pos) => pos !== null);
 }
-function makeComparativeQuality (context, object) {
+
+function makeComparativeQuality(context, object) {
   const { lang } = context;
-  const qualityEntity = getNounInfo(context, {id: object.quality});
+  const qualityEntity = getNounInfo(context, { id: object.quality });
   const irregularForm = qualityEntity[object.degree];
 
   if (irregularForm) {
     return irregularForm;
   }
 
-  return lang[object.degree].comparator[object.value].replace('{adjective}', qualityEntity.morpheme.morpheme)
+  // TODO this should go through getRequiredForm one way or another
+  return lang[object.degree].comparator[object.value];
 }
 
 function makeComparedObject(context, object) {
@@ -37,15 +43,19 @@ function makeComparedObject(context, object) {
   }
   const forms = lang[object.degree];
 
-  const objectEntity = getNounInfo(context, {id: object.object});
+  const objectEntity = getNounInfo(context, { id: object.object });
 
   return forms.object
-    .replace(
-      "{determiner}",
-      getDeterminer(
-        context,
-        objectEntity
-      )
-    )
-    .replace("{object}", objectEntity.morpheme.morpheme);
+    .map((pos) => {
+      switch (pos) {
+        case "determiner":
+          return getDeterminer(context, objectEntity);
+        case "object":
+          // TODO use getRequiredForm
+          return objectEntity.morpheme.morpheme;
+        default:
+          return null;
+      }
+    })
+    .filter((pos) => pos !== null);
 }

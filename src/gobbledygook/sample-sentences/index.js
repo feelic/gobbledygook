@@ -39,6 +39,31 @@ const sentences = [
 ];
 export default sentences;
 
+// NEGATION
+// the dog does not like carrots
+
+// QUANTIFIERS
+// everybody likes carrots
+// everybody except the dog likes carrots
+// the dog likes everything except carrots
+// the dog is the only one who doesn't like carrots
+
+// INTERROGATION
+// does the dog like carrot ?
+// why does the dog not like carrots ?
+// how does the dog likes carrot to be cooked ?
+
+// CONDITIONAL
+// if the dog likes carrots we will have a party
+
+// MODALITY
+// the dog might like carrots
+
+// EVIDENTIALS
+// i wonder if the dog likes carrots
+// i believe the dog likes carrots
+// i heard that the dog likes carrots
+
 /*
 TRANSITIVE VERB + OBJECT
 she runs the meeting

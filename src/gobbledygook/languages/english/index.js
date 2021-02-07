@@ -4,141 +4,132 @@ export const english = {
   name: "english",
   morphemeDictionary,
   pronouns: {
-    firstPerson: {
-      default: { default: { singular: "aɪ", plural: "wɪ" } },
-    },
-    secondPerson: {
-      default: { default: { singular: "ju", plural: "ju" } },
-    },
-    thirdPerson: {
-      nominative: {
-        default: { default: "ɪt", plural: "ðeɪ" },
-        masc: { singular: "hi", plural: "ðeɪ" },
-        fem: { default: "ʃi", plural: "ðeɪ" },
+    rules: ["person", "grammaticalCase", "gender", "number"],
+    forms: {
+      firstPerson: {
+        default: { default: { singular: "aɪ", plural: "wɪ" } },
       },
-      accusative: {
-        default: { default: "ɪt" },
-        masc: { singular: "", plural: "" },
-        fem: { singular: "la", plural: "" },
+      secondPerson: {
+        default: { default: { singular: "ju", plural: "ju" } },
       },
-      dative: {
-        default: { default: "ɪt" },
-        masc: { singular: "hɪm", plural: "lɘr" },
-        fem: { singular: "lɥi", plural: "lɘr" },
-      },
-      genitive: {
-        default: { default: "ɪt" },
-        masc: { singular: "hɪs", plural: "ð" },
-        fem: { singular: "lɥi", plural: "lɘr" },
+      thirdPerson: {
+        nominative: {
+          default: { default: "ɪt", plural: "ðeɪ" },
+          masc: { singular: "hi", plural: "ðeɪ" },
+          fem: { default: "ʃi", plural: "ðeɪ" },
+        },
+        accusative: {
+          default: { default: "ɪt" },
+          masc: { singular: "", plural: "" },
+          fem: { singular: "la", plural: "" },
+        },
+        dative: {
+          default: { default: "ɪt" },
+          masc: { singular: "hɪm", plural: "lɘr" },
+          fem: { singular: "lɥi", plural: "lɘr" },
+        },
+        genitive: {
+          default: { default: "ɪt" },
+          masc: { singular: "hɪs", plural: "ð" },
+          fem: { singular: "lɥi", plural: "lɘr" },
+        },
       },
     },
   },
   determiners: {
-    definite: {
-      default: {
-        default: {
-          default: { singular: "ðə", plural: "ðə" },
+    rules: ["determination.type", "owner.person", "owner.gender", "number"],
+    forms: {
+      definite: { default: { default: { singular: "ðə", plural: "ðə" } } },
+      indefinite: { default: { default: { singular: "ə", plural: "" } } },
+      properNoun: { default: { default: { singular: "", plural: "" } } },
+      demonstrative: { default: { default: { singular: "", plural: "" } } },
+      distal: { default: { default: { singular: "", plural: "" } } },
+      possessive: {
+        firstPerson: {
+          default: { singular: "maɪ", plural: "maɪ" },
+          masc: { singular: "maɪ", plural: "maɪ" },
+          fem: { singular: "maɪ", plural: "maɪ" },
         },
-      },
-    },
-    indefinite: {
-      default: {
-        default: {
-          default: { singular: "ə", plural: "" },
+        secondPerson: {
+          default: { singular: "jɔr", plural: "jɔr" },
+          masc: { singular: "jɔr", plural: "jɔr" },
+          fem: { singular: "jɔr", plural: "jɔr" },
         },
-      },
-    },
-    properNoun: {
-      default: {
-        default: {
-          default: { singular: "", plural: "" },
+        thirdPerson: {
+          default: { singular: "ɪts", plural: "ɪts" },
+          masc: { singular: "hɪz", plural: "ðɛr" },
+          fem: { singular: "hər", plural: "ðɛr" },
         },
-      },
-    },
-    demonstrative: {
-      default: {
-        default: {
-          default: { singular: "", plural: "" },
-        },
-      },
-    },
-    distal: {
-      default: {
-        default: {
-          default: { singular: "", plural: "" },
-        },
-      },
-    },
-    possessive: {
-      firstPerson: {
-        default: { default: { singular: "maɪ", plural: "maɪ" } },
-        masc: { default: { singular: "maɪ", plural: "maɪ" } },
-        fem: { default: { singular: "maɪ", plural: "maɪ" } },
-      },
-      secondPerson: {
-        default: { default: { singular: "jɔr", plural: "jɔr" } },
-        masc: { default: { singular: "jɔr", plural: "jɔr" } },
-        fem: { default: { singular: "jɔr", plural: "jɔr" } },
-      },
-      thirdPerson: {
-        default: { default: { singular: "ɪts", plural: "ɪts" } },
-        masc: { default: { singular: "hɪz", plural: "ðɛr" } },
-        fem: { default: { singular: "hər", plural: "ðɛr" } },
       },
     },
   },
   declension: {
-    default: {
+    rules: ["type", "declensionGroup", "grammaticalCase", "gender", "number"],
+    forms: {
       default: {
         default: {
-          default: { singular: "{noun}", plural: "{noun}s" },
-        },
-        genitive: {
-          default: { singular: "{noun}s", plural: "{noun}s" },
-        },
-        lative: {
-          default: { singular: "tu {noun}", plural: "tu {noun}" },
+          default: {
+            default: { singular: "{noun}", plural: "{noun}s" },
+          },
+          genitive: {
+            default: { singular: "{noun}s", plural: "{noun}s" },
+          },
+          lative: {
+            default: { singular: "tu {noun}", plural: "tu {noun}" },
+          },
         },
       },
-    },
-    adjective: {
-      default: { default: { default: { default: "{adjective}" } } },
+      adjective: {
+        default: { default: { default: { default: "{adjective}" } } },
+      },
     },
   },
   conjugation: {
-    default: {
+    rules: ["group", "tense", "person", "number"],
+    forms: {
       default: {
-        default: { default: "{verb}" },
-        thirdPerson: { singular: "{verb}z", plural: "{verb}" },
-      },
-      past: {
-        default: { default: "{verb}d" },
+        default: {
+          default: { default: "{verb}" },
+          thirdPerson: { singular: "{verb}z", plural: "{verb}" },
+        },
+        past: {
+          default: { default: "{verb}d" },
+        },
       },
     },
   },
-  nounPhraseFormation: "{preposition} {determiner} {genitive} {preadjectives} {noun} {adjectiveClause}",
-  verbPhraseFormation: "{adverb} {verb}",
-  sentenceFormation: "{subject} {verb} {object} {adverbialClauses}",
-  adjectiveClauseFormation: "ðat {subject} {verb} {object}",
-  adjectiveFormation: "{adverb} {adjective}",
+  nounPhraseFormation: [
+    "preposition",
+    "determiner",
+    "genitive",
+    "preadjectives",
+    "noun",
+    "adjectiveClause",
+  ],
+  verbPhraseFormation: ["adverb", "verb"],
+  sentenceFormations: {
+    declarative: ["subject", "verb", "object", "adverbialClauses"],
+  },
+  adjectiveClauseFormation: ["ðat", "subject", "verb", "object"],
+  adjectiveFormation: ["adverb", "adjective"],
   adjectives: {
     preadjectives: ["size", "age", "color"],
   },
   comparative: {
-    formation: "{quality} {comparedObject}",
+    formation: ["quality", "comparedObject"],
     comparator: {
-      negative: "lɛs {adjective}",
-      positive: "mɔr {adjective}",
+      negative: ["lɛs", "adjective"],
+      positive: ["mɔr", "adjective"],
     },
-    object: "ðan {determiner} {object}",
+    object: ["ðan", "determiner", "object"],
   },
   superlative: {
-    formation: "{determiner} {quality} {comparedObject}",
+    formation: ["determiner", "quality", "comparedObject"],
     comparator: {
-      negative: "list {adjective}",
-      positive: "mɔst {adjective}",
+      negative: ["list", "adjective"],
+      positive: ["mɔst", "adjective"],
     },
-    object: "{determiner} {object}",
+    object: ["determiner", "object"],
   },
   numbers: {
     digits: {

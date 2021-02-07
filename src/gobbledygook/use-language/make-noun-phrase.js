@@ -40,31 +40,35 @@ export function makeNounPhrase(context, nounEntity) {
   // ADD REFERENCE MARKER TO ENTITY
   references[nounDefinition.id] = true;
 
-  const preposition = getPreposition(context, nounDefinition.preposition);
-  const determiner = getDeterminer(context, nounDefinition);
-  const declinedNoun = getRequiredForm(context, "declension", {
-    type: "noun",
-    declensionGroup,
-    grammaticalCase,
-    gender,
-    number,
-    morpheme,
-  }).replace("{noun}", morpheme.morpheme);
-  const { preadjectives, postadjectives } = makeAdjectives(
-    context,
-    nounDefinition
-  );
-  const adjectiveClause = makeAdjectiveClause(context, nounDefinition);
-  const genitiveForm = makeGenitiveForm(context, nounDefinition);
-
   return lang.nounPhraseFormation
-    .replace("{preposition}", preposition)
-    .replace("{determiner}", determiner)
-    .replace("{preadjectives}", preadjectives)
-    .replace("{postadjectives}", postadjectives)
-    .replace("{noun}", declinedNoun)
-    .replace("{genitive}", genitiveForm)
-    .replace("{adjectiveClause}", adjectiveClause);
+    .map((pos) => {
+      switch (pos) {
+        case "preposition":
+          return getPreposition(context, nounDefinition.preposition);
+        case "determiner":
+          return getDeterminer(context, nounDefinition);
+        case "preadjectives":
+        case "postadjectives":
+          const adjectives = makeAdjectives(context, nounDefinition);
+          return adjectives[pos];
+        case "noun":
+          return getRequiredForm(context, "declension", {
+            type: "noun",
+            declensionGroup,
+            grammaticalCase,
+            gender,
+            number,
+            morpheme,
+          });
+        case "genitive":
+          return makeGenitiveForm(context, nounDefinition);
+        case "adjectiveClause":
+          return makeAdjectiveClause(context, nounDefinition);
+        default:
+          return null;
+      }
+    })
+    .filter((pos) => pos !== null);
 }
 
 function makeGenitiveForm(context, { genitive }) {
@@ -81,7 +85,7 @@ function makeGenitiveForm(context, { genitive }) {
     gender,
     number,
     morpheme,
-  }).replace("{noun}", morpheme.morpheme);
+  });
 
   return genitiveForm;
 }

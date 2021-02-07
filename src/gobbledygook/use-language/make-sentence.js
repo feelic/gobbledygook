@@ -15,24 +15,28 @@ export function makeSentence(lang, { sentence, entities }) {
     references: {},
   };
 
-  const NP = makeNounPhrase(context, sentence.subject);
-  const VP = makeVerbPhrase(context, sentence.subject, sentence.verb);
-  const OBJ = makeObject(context, sentence.object);
-  const AC = makeAdverbialClauses(context, sentence.adverbialClauses);
+  const sentenceType = sentence.type || "declarative";
+  const sentenceFormation = lang.sentenceFormations[sentenceType];
 
-  return lang.sentenceFormation
-    .replace("{subject}", NP)
-    .replace("{verb}", VP)
-    .replace("{object}", OBJ)
-    .replace("{adverbialClauses}", AC);
-}
-
-function makeAdverbialClauses(context, adverbialClauses) {
-  if (!adverbialClauses) {
-    return "";
-  }
-
-  return adverbialClauses
-    .map((clause) => makeNounPhrase(context, clause))
-    .join(" ");
+  return sentenceFormation
+    .map((pos) => {
+      switch (pos) {
+        case "subject":
+          return makeNounPhrase(context, sentence.subject);
+        case "verb":
+          return makeVerbPhrase(context, sentence.subject, sentence.verb);
+        case "object":
+          return makeObject(context, sentence.object);
+        case "adverbialClauses":
+          if (!sentence.adverbialClauses) {
+            return null;
+          }
+          return sentence.adverbialClauses.map((clause) =>
+            makeNounPhrase(context, clause)
+          );
+        default:
+          return null;
+      }
+    })
+    .filter((pos) => pos !== null);
 }

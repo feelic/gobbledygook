@@ -2,9 +2,9 @@ export function getNounInfo(context, noun) {
   const { entities } = context;
   const nounDefinition = entities[noun.id];
 
-  if(! nounDefinition) {
+  if (!nounDefinition) {
     debugger;
-    console.log('no entity for ', noun.id)
+    console.log("no entity for ", noun.id);
   }
 
   const morpheme = getMorpheme(context, nounDefinition);
@@ -27,7 +27,7 @@ export function getSubjectInfo(context, subject) {
   if (subject.entities) {
     return {
       number: "plural",
-      person: "thirdPerson"
+      person: "thirdPerson",
     };
   }
 

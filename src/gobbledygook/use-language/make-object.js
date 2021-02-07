@@ -32,17 +32,24 @@ function makeAdjectivePredicate(context, subject, object) {
   const { gender, number } = getSubjectInfo(context, subject);
   const { grammaticalCase, adverbs } = object;
   const { declensionGroup } = morpheme;
-  const adverb = getAdverb(context, adverbs && adverbs[0]);
-  const declinedAdjective = getRequiredForm(context, "declension", {
-    type: "adjective",
-    declensionGroup,
-    grammaticalCase,
-    gender,
-    number,
-    morpheme,
-  }).replace("{adjective}", morpheme.morpheme);
 
   return lang.adjectiveFormation
-    .replace("{adjective}", declinedAdjective)
-    .replace("{adverb}", adverb);
+    .map((pos) => {
+      switch (pos) {
+        case "adjective":
+          return getRequiredForm(context, "declension", {
+            type: "adjective",
+            declensionGroup,
+            grammaticalCase,
+            gender,
+            number,
+            morpheme,
+          });
+        case "adverb":
+          return getAdverb(context, adverbs && adverbs[0]);
+        default:
+          return null;
+      }
+    })
+    .filter((pos) => pos !== null);
 }

@@ -14,7 +14,17 @@ export function makeAdjectiveClause(context, nounDefinition) {
   const object = getNounInfo(context, adjectiveClause.object);
 
   return lang.adjectiveClauseFormation
-    .replace("{subject}", makeNounPhrase(context, subject))
-    .replace("{verb}", makeVerbPhrase(context, subject, adjectiveClause.verb))
-    .replace("{object}", makeNounPhrase(context, object));
+    .map((pos) => {
+      switch (pos) {
+        case "subject":
+          return makeNounPhrase(context, subject);
+        case "verb":
+          return makeVerbPhrase(context, subject, adjectiveClause.verb);
+        case "object":
+          return makeNounPhrase(context, object);
+        default:
+          return null;
+      }
+    })
+    .filter((pos) => pos !== null);
 }
