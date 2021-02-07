@@ -31,27 +31,21 @@ export const french = {
     forms: {
       properNoun: {
         default: {
-          default: {
-            default: { default: "" },
-          },
+          default: { default: "" },
         },
       },
       definite: {
         default: {
-          default: {
-            default: { singular: "lɘ", plural: "le" },
-            masc: { singular: "lɘ", plural: "le" },
-            fem: { singular: "la", plural: "le" },
-          },
+          default: { singular: "lɘ", plural: "le" },
+          masc: { singular: "lɘ", plural: "le" },
+          fem: { singular: "la", plural: "le" },
         },
       },
       indefinite: {
         default: {
-          default: {
-            default: { singular: "ɛ̃", plural: "de" },
-            masc: { singular: "ɛ̃", plural: "de" },
-            fem: { singular: "yn", plural: "de" },
-          },
+          default: { singular: "ɛ̃", plural: "de" },
+          masc: { singular: "ɛ̃", plural: "de" },
+          fem: { singular: "yn", plural: "de" },
         },
       },
       // demonstrative: { singular: "", plural: "" },
@@ -73,60 +67,60 @@ export const french = {
     },
   },
   declension: {
-    rules: ["group", "tense", "person", "number"],
+    rules: ["type", "declensionGroup", "tense", "gender", "number"],
     forms: {
       default: {
         default: {
           default: {
-            default: { default: "{noun}" },
-            masc: { singular: "{noun}", plural: "{noun}" },
-            fem: { singular: "{noun}", plural: "{noun}" },
+            default: { default: "{morpheme}" },
+            masc: { singular: "{morpheme}", plural: "{morpheme}" },
+            fem: { singular: "{morpheme}", plural: "{morpheme}" },
           },
           genitive: {
-            default: { default: "dɘ {noun}" },
-            masc: { singular: "dɘ {noun}", plural: "dɘ {noun}" },
-            fem: { singular: "dɘ {noun}", plural: "dɘ {noun}" },
+            default: { default: "dɘ {morpheme}" },
+            masc: { singular: "dɘ {morpheme}", plural: "dɘ {morpheme}" },
+            fem: { singular: "dɘ {morpheme}", plural: "dɘ {morpheme}" },
           },
           lative: {
-            default: { default: "a {noun}" },
-            masc: { singular: "a {noun}", plural: "a {noun}" },
-            fem: { singular: "a {noun}", plural: "a {noun}" },
+            default: { default: "a {morpheme}" },
+            masc: { singular: "a {morpheme}", plural: "a {morpheme}" },
+            fem: { singular: "a {morpheme}", plural: "a {morpheme}" },
           },
         },
       },
       adjective: {
         default: {
           default: {
-            default: { default: "{adjective}" },
+            default: { default: "{morpheme}" },
           },
         },
         sEnding: {
           default: {
-            default: { default: "{adjective}" },
-            fem: { default: "{adjective}s" },
+            default: { default: "{morpheme}" },
+            fem: { default: "{morpheme}s" },
           },
         },
         tEnding: {
           default: {
-            default: { default: "{adjective}" },
-            fem: { default: "{adjective}t" },
+            default: { default: "{morpheme}" },
+            fem: { default: "{morpheme}t" },
           },
         },
         zEnding: {
           default: {
-            default: { default: "{adjective}" },
-            fem: { default: "{adjective}z" },
+            default: { default: "{morpheme}" },
+            fem: { default: "{morpheme}z" },
           },
         },
         alEnding: {
           default: {
-            default: { default: "{adjective}al", plural: "{adjective}o" },
+            default: { default: "{morpheme}al", plural: "{morpheme}o" },
           },
         },
         dEnding: {
           default: {
-            default: { default: "{adjective}" },
-            fem: { default: "{adjective}d" },
+            default: { default: "{morpheme}" },
+            fem: { default: "{morpheme}d" },
           },
         },
       },
@@ -137,19 +131,19 @@ export const french = {
     forms: {
       default: {
         general: {
-          firstPerson: { singular: "{verb}", plural: "{verb}ɔ̃" },
-          secondPerson: { singular: "{verb}", plural: "{verb}e" },
-          thirdPerson: { singular: "{verb}", plural: "{verb}" },
+          firstPerson: { singular: "{morpheme}", plural: "{morpheme}ɔ̃" },
+          secondPerson: { singular: "{morpheme}", plural: "{morpheme}e" },
+          thirdPerson: { singular: "{morpheme}", plural: "{morpheme}" },
         },
         present: {
-          firstPerson: { singular: "{verb}", plural: "{verb}ɔ̃" },
-          secondPerson: { singular: "{verb}", plural: "{verb}e" },
-          thirdPerson: { singular: "{verb}", plural: "{verb}" },
+          firstPerson: { singular: "{morpheme}", plural: "{morpheme}ɔ̃" },
+          secondPerson: { singular: "{morpheme}", plural: "{morpheme}e" },
+          thirdPerson: { singular: "{morpheme}", plural: "{morpheme}" },
         },
         past: {
-          firstPerson: { singular: "ɛ {verb}e", plural: "avɔ̃ {verb}e" },
-          secondPerson: { singular: "a {verb}e", plural: "ave {verb}e" },
-          thirdPerson: { singular: "a {verb}e", plural: "ɔ̃ {verb}e" },
+          firstPerson: { singular: "ɛ {morpheme}e", plural: "avɔ̃ {morpheme}e" },
+          secondPerson: { singular: "a {morpheme}e", plural: "ave {morpheme}e" },
+          thirdPerson: { singular: "a {morpheme}e", plural: "ɔ̃ {morpheme}e" },
         },
       },
     },
@@ -167,7 +161,7 @@ export const french = {
   sentenceFormations: {
     declarative: ["subject", "verb", "object", "adverbialClauses"],
   },
-  adjectiveClauseFormation: ["kɘ", "subject", "object", "verb"],
+  adjectiveClauseFormation: ["relativePronoun", "subject", "object", "verb"],
   adjectiveFormation: ["adverb", "adjective"],
   adjectives: {
     preadjectives: ["size", "age"],
@@ -179,7 +173,7 @@ export const french = {
       negative: ["mwɛ̃", "adjective"],
       positive: ["ply", "adjective"],
     },
-    object: ["kɘ", "determiner", "object"],
+    object: ["relativePronoun", "determiner", "object"],
   },
   superlative: {
     formation: ["determiner", "quality", "comparedObject"],

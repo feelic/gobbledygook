@@ -10,8 +10,8 @@ const dictionary = {
     irregular: {
       default: {
         default: {
-          default: { default: "{verb}" },
-          thirdPerson: { singular: "{verb}z", plural: "{verb}" },
+          default: { default: "{morpheme}" },
+          thirdPerson: { singular: "{morpheme}z", plural: "{morpheme}" },
         },
         past: { default: { default: "geɪv" } },
       },
@@ -23,8 +23,8 @@ const dictionary = {
     irregular: {
       default: {
         default: {
-          default: { default: "{verb}v" },
-          thirdPerson: { singular: "{verb}z", plural: "{verb}v" },
+          default: { default: "{morpheme}v" },
+          thirdPerson: { singular: "{morpheme}z", plural: "{morpheme}v" },
         },
       },
     },
@@ -37,8 +37,8 @@ const dictionary = {
     irregular: {
       default: {
         default: {
-          default: { default: "{verb}" },
-          thirdPerson: { singular: "{verb}əz", plural: "{verb}" },
+          default: { default: "{morpheme}" },
+          thirdPerson: { singular: "{morpheme}əz", plural: "{morpheme}" },
         },
         past: {
           default: { default: "lost" },
@@ -51,8 +51,8 @@ const dictionary = {
     irregular: {
       default: {
         default: {
-          default: { default: "{verb}" },
-          thirdPerson: { singular: "{verb}z", plural: "{verb}" },
+          default: { default: "{morpheme}" },
+          thirdPerson: { singular: "{morpheme}z", plural: "{morpheme}" },
         },
         past: {
           default: { default: "fawnd" },
@@ -65,8 +65,8 @@ const dictionary = {
     irregular: {
       default: {
         default: {
-          default: { default: "{verb}" },
-          thirdPerson: { singular: "{verb}s", plural: "{verb}" },
+          default: { default: "{morpheme}" },
+          thirdPerson: { singular: "{morpheme}s", plural: "{morpheme}" },
         },
         past: { default: { default: "tuk" } },
       },
@@ -79,8 +79,8 @@ const dictionary = {
     irregular: {
       default: {
         default: {
-          default: { default: "{verb}" },
-          thirdPerson: { singular: "{verb}z", plural: "{verb}" },
+          default: { default: "{morpheme}" },
+          thirdPerson: { singular: "{morpheme}z", plural: "{morpheme}" },
         },
         past: {
           default: { default: "hɪd" },
@@ -124,6 +124,9 @@ const dictionary = {
   many: { morpheme: "mɛnɪ" },
   few: { morpheme: "fju" },
   no: { morpheme: "no" },
+  // };
+  // const relativePronouns {
+  that: {morpheme: "ðat"},
   // };
   // const distributive = {
   each: { morpheme: "itʃ" },

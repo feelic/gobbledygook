@@ -4,13 +4,13 @@ export function makeAdjectives(context, nounDefinition) {
   const { lang } = context;
 
   if (!nounDefinition.adjectives) {
-    return { preadjectives: "", postadjectives: "" };
+    return { preadjectives: null, postadjectives: null };
   }
   const { gender, number, grammaticalCase } = nounDefinition;
 
   function makeAdjectivesByPosition(adjectives) {
     if (!adjectives || adjectives.length === 0) {
-      return "";
+      return null;
     }
 
     return adjectives

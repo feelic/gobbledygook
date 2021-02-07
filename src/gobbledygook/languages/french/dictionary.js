@@ -14,8 +14,8 @@ const dictionary = {
     irregular: {
       default: {
         present: {
-          firstPerson: { singular: "vɛ", plural: "{verb}ɔ̃" },
-          secondPerson: { singular: "va", plural: "{verb}e" },
+          firstPerson: { singular: "vɛ", plural: "{morpheme}ɔ̃" },
+          secondPerson: { singular: "va", plural: "{morpheme}e" },
           thirdPerson: { singular: "va", plural: "vɔ̃" },
         },
       },
@@ -26,8 +26,8 @@ const dictionary = {
     irregular: {
       default: {
         present: {
-          firstPerson: { singular: "ai", plural: "{verb}vɔ̃" },
-          secondPerson: { singular: "{verb}", plural: "{verb}ve" },
+          firstPerson: { singular: "ai", plural: "{morpheme}vɔ̃" },
+          secondPerson: { singular: "{morpheme}", plural: "{morpheme}ve" },
           thirdPerson: { singular: "a", plural: "zɔ̃" },
         },
       },
@@ -41,9 +41,9 @@ const dictionary = {
     irregular: {
       default: {
         past: {
-          firstPerson: { singular: "ɛ {verb}dy", plural: "avɔ̃ {verb}dy" },
-          secondPerson: { singular: "a {verb}dy", plural: "ave {verb}dy" },
-          thirdPerson: { singular: "a {verb}dy", plural: "zɔ̃ {verb}dy" },
+          firstPerson: { singular: "ɛ {morpheme}dy", plural: "avɔ̃ {morpheme}dy" },
+          secondPerson: { singular: "a {morpheme}dy", plural: "ave {morpheme}dy" },
+          thirdPerson: { singular: "a {morpheme}dy", plural: "zɔ̃ {morpheme}dy" },
         },
       },
     },
@@ -55,7 +55,7 @@ const dictionary = {
   irregular: {
     default: {
       default: {
-        default: { default: "{verb}" },
+        default: { default: "{morpheme}" },
       },
       past: { default: { default: "a pʁi" } },
     },
@@ -86,6 +86,9 @@ const dictionary = {
   few: {morpheme:"pɘ"},
   no: {morpheme:"okɛ̃"},
   // };
+  // const relativePronouns {
+  that: {morpheme: "kɘ"},
+  // };
   // const distributive = {
   each: {morpheme:"ʃak"},
   any: {morpheme:"tu"},
@@ -101,9 +104,9 @@ const dictionary = {
   // };
   // const prepositions = {
   to: {morpheme:"a"},
-  up: {morpheme:"o desy"},
-  down: {morpheme:"ɑ̃ desu"},
-  above: {morpheme:"o desy"},
+  up: {morpheme:"o dɘsy"},
+  down: {morpheme:"ɑ̃ dɘsu"},
+  above: {morpheme:"o dɘsy"},
   upon: {morpheme:"syʁ"},
   under: {morpheme:"su"},
   around: {morpheme:"otuʁ"},

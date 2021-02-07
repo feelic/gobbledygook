@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { transliterate, makeSentence } from "../gobbledygook/use-language";
+import { transliterate, makeSentence, getIPATranscript } from "../gobbledygook/use-language";
 import { english, french } from "../gobbledygook/languages/index";
 import sentences from "../gobbledygook/sample-sentences/index";
 import AudioButton from './AudioButton';
@@ -15,14 +15,14 @@ export default function PhraseBook() {
         return (
           <div key={sentence.transcript} className="sentenceBlock">
             <p>
-              {transliterate(french, frenchSentence)}{" "}
+              {transliterate(french, getIPATranscript(frenchSentence))}
               <AudioButton sentence={frenchSentence} voice="Celine" />
               <br />
-              {transliterate(english, englishSentence)}{" "}
+              {transliterate(english, getIPATranscript(englishSentence))}
 
               <AudioButton sentence={englishSentence} voice="Brian" />
             </p>
-            <PhraseDefinitionBlock sentence={sentence} />
+            <PhraseDefinitionBlock sentence={frenchSentence} />
           </div>
         );
       })}

@@ -6,14 +6,19 @@ import { getConjunction, getPreposition } from "./get-invariables";
 
 export function makeNounPhrase(context, nounEntity) {
   if (nounEntity.entities) {
-    return nounEntity.entities
-      .map((entity) => {
-        const singleEntity = { ...nounEntity, ...entity };
+    const group = nounEntity.entities.reduce((prev, entity, idx) => {
+      const singleEntity = { ...nounEntity, ...entity };
 
-        delete singleEntity.entities;
-        return makeNounPhrase(context, singleEntity);
-      })
-      .join(getConjunction(context, "and"));
+      delete singleEntity.entities;
+
+      const np = makeNounPhrase(context, singleEntity);
+
+      if (idx === nounEntity.entities.length - 1) {
+        return [...prev, np];
+      }
+      return [...prev, np, getConjunction(context, "and")];
+    }, []);
+    return { pos: "G", content: group };
   }
 
   const { lang, references } = context;
@@ -40,7 +45,7 @@ export function makeNounPhrase(context, nounEntity) {
   // ADD REFERENCE MARKER TO ENTITY
   references[nounDefinition.id] = true;
 
-  return lang.nounPhraseFormation
+  const NP = lang.nounPhraseFormation
     .map((pos) => {
       switch (pos) {
         case "preposition":
@@ -68,12 +73,15 @@ export function makeNounPhrase(context, nounEntity) {
           return null;
       }
     })
+    .flat()
     .filter((pos) => pos !== null);
+
+  return { pos: "NP", content: NP };
 }
 
 function makeGenitiveForm(context, { genitive }) {
   if (!genitive) {
-    return "";
+    return null;
   }
   const nounDefinition = getNounInfo(context, { id: genitive });
   const { morpheme, gender, number } = nounDefinition;

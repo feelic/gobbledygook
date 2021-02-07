@@ -8,7 +8,7 @@ export function makeVerbPhrase(context, subject, verbDefinition) {
   const { verb, tense, group, adverbs } = verbDefinition;
   const morpheme = lang.morphemeDictionary[verb];
 
-  return lang.verbPhraseFormation
+  const VP = lang.verbPhraseFormation
     .map((pos) => {
       switch (pos) {
         case "adverb":
@@ -26,4 +26,6 @@ export function makeVerbPhrase(context, subject, verbDefinition) {
       }
     })
     .filter((pos) => pos !== null);
+
+  return {pos: 'VP', content: VP};
 }

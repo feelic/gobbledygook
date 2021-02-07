@@ -6,14 +6,20 @@ import { getConjunction, getAdverb } from "./get-invariables";
 
 export function makeObject(context, object) {
   if (object.entities && object.entities.length) {
-    return object.entities
-      .map((entity) => {
-        const singleEntity = { ...object, ...entity };
+    const group = object.entities
+    .reduce((prev, entity, idx) => {
+      const singleEntity = { ...object, ...entity };
 
-        delete singleEntity.entities;
-        return makeObject(context, singleEntity);
-      })
-      .join(getConjunction(context, "and"));
+      delete singleEntity.entities;
+
+      const np = makeNounPhrase(context, singleEntity);
+
+      if (idx === object.entities.length - 1) {
+        return [...prev, np];
+      }
+      return [...prev, np, getConjunction(context, "and")]
+    }, []);
+    return {pos: 'G', content: group}
   }
   if (object.type === "comparison") {
     return makeComparison(context, object);

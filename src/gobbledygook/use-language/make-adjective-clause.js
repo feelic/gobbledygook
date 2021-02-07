@@ -1,12 +1,13 @@
 import { makeNounPhrase } from "./make-noun-phrase";
 import { makeVerbPhrase } from "./make-verb-phrase";
 import { getNounInfo } from "./get-noun-info";
+import {getRelativePronoun} from "./get-invariables";
 
 export function makeAdjectiveClause(context, nounDefinition) {
   const { lang } = context;
 
   if (!nounDefinition.adjectiveClause) {
-    return "";
+    return null;
   }
   const adjectiveClause = nounDefinition.adjectiveClause;
 
@@ -16,6 +17,8 @@ export function makeAdjectiveClause(context, nounDefinition) {
   return lang.adjectiveClauseFormation
     .map((pos) => {
       switch (pos) {
+        case "relativePronoun":
+          return getRelativePronoun(context, "that")
         case "subject":
           return makeNounPhrase(context, subject);
         case "verb":

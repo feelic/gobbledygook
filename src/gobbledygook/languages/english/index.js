@@ -69,18 +69,18 @@ export const english = {
       default: {
         default: {
           default: {
-            default: { singular: "{noun}", plural: "{noun}s" },
+            default: { singular: "{morpheme}", plural: "{morpheme}s" },
           },
           genitive: {
-            default: { singular: "{noun}s", plural: "{noun}s" },
+            default: { singular: "{morpheme}s", plural: "{morpheme}s" },
           },
           lative: {
-            default: { singular: "tu {noun}", plural: "tu {noun}" },
+            default: { singular: "tu {morpheme}", plural: "tu {morpheme}" },
           },
         },
       },
       adjective: {
-        default: { default: { default: { default: "{adjective}" } } },
+        default: { default: { default: { default: "{morpheme}" } } },
       },
     },
   },
@@ -89,11 +89,11 @@ export const english = {
     forms: {
       default: {
         default: {
-          default: { default: "{verb}" },
-          thirdPerson: { singular: "{verb}z", plural: "{verb}" },
+          default: { default: "{morpheme}" },
+          thirdPerson: { singular: "{morpheme}z", plural: "{morpheme}" },
         },
         past: {
-          default: { default: "{verb}d" },
+          default: { default: "{morpheme}d" },
         },
       },
     },
@@ -110,7 +110,7 @@ export const english = {
   sentenceFormations: {
     declarative: ["subject", "verb", "object", "adverbialClauses"],
   },
-  adjectiveClauseFormation: ["ðat", "subject", "verb", "object"],
+  adjectiveClauseFormation: ["relativePronoun", "subject", "verb", "object"],
   adjectiveFormation: ["adverb", "adjective"],
   adjectives: {
     preadjectives: ["size", "age", "color"],

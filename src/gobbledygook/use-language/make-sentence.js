@@ -18,25 +18,28 @@ export function makeSentence(lang, { sentence, entities }) {
   const sentenceType = sentence.type || "declarative";
   const sentenceFormation = lang.sentenceFormations[sentenceType];
 
-  return sentenceFormation
-    .map((pos) => {
-      switch (pos) {
-        case "subject":
-          return makeNounPhrase(context, sentence.subject);
-        case "verb":
-          return makeVerbPhrase(context, sentence.subject, sentence.verb);
-        case "object":
-          return makeObject(context, sentence.object);
-        case "adverbialClauses":
-          if (!sentence.adverbialClauses) {
-            return null;
-          }
-          return sentence.adverbialClauses.map((clause) =>
-            makeNounPhrase(context, clause)
-          );
-        default:
+  const formedSentence = sentenceFormation.map((pos) => {
+    switch (pos) {
+      case "subject":
+        return {
+          pos: "S",
+          content: [makeNounPhrase(context, sentence.subject)],
+        };
+      case "verb":
+        return makeVerbPhrase(context, sentence.subject, sentence.verb);
+      case "object":
+        return { pos: "Obj", content: [makeObject(context, sentence.object) ]};
+      case "adverbialClauses":
+        if (!sentence.adverbialClauses) {
           return null;
-      }
-    })
-    .filter((pos) => pos !== null);
+        }
+        return sentence.adverbialClauses.map((clause) => {
+          return { pos: "NP", content: makeNounPhrase(context, clause) };
+        });
+      default:
+        return null;
+    }
+  }).filter((pos) => pos !== null);
+
+  return formedSentence;
 }

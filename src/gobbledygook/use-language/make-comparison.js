@@ -39,7 +39,7 @@ function makeComparedObject(context, object) {
   const { lang } = context;
 
   if (!object.object) {
-    return "";
+    return null;
   }
   const forms = lang[object.degree];
 

@@ -38,7 +38,32 @@ export function getRequiredForm(context, rule, parameters) {
     selectedRule
   );
 
-  return { form, morpheme, rules: parameters };
+  const rawText = form.replace("{morpheme}", morpheme.morpheme);
+
+  return {
+    form: rawText,
+    morpheme,
+    rules: parameters,
+    pos: getPOSCode(rule, parameters),
+  };
+}
+
+function getPOSCode(rule, parameters) {
+  switch (rule) {
+    case "determiners":
+      return "Det";
+    case "conjugation":
+      return "V";
+    case "declension":
+      if (parameters.type === "adjective") {
+        return "Adj";
+      }
+      return "N";
+    case "pronouns":
+      return "Pro";
+    default:
+      console.log(rule);
+  }
 }
 
 function getPropertyValue(property, parameters) {
