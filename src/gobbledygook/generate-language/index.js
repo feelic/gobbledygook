@@ -164,14 +164,14 @@ function makeClausesFormation() {
 function makePronouns(phonology, morphologyType, cases, genders) {
   const persons = ["firstPerson", "secondPerson", "thirdPerson"];
   const numbers = ["singular", "plural"];
-  const rules = ["persons", "cases", "genders", "numbers"];
+  const rules = ["person", "grammaticalCase", "gender", "number"];
 
   const forms = {};
 
   //no pronoun system
   if (random() > 0.2) {
     return {
-      rules: ["persons"],
+      rules: ["person"],
       forms: { default: "" },
     };
   }

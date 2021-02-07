@@ -97,7 +97,7 @@ function CountToTen({ lang, voice }) {
   );
 }
 function Sentence({ lang, sentence, voice }) {
-  try {
+  // try {
   const formedSentence = makeSentence(lang, sentence);
 
   return (
@@ -110,19 +110,19 @@ function Sentence({ lang, sentence, voice }) {
       </p>
     </div>
   );
-  } catch (error) {
-    return (
-      <Fragment>
-        <p>
-          Couldn't say{" "}
-          <span className="originalSentence">"{sentence.transcript}"</span> in{" "}
-          {transliterate(lang, lang.name)}
-          <br />
-          <span className="errorDetail">
-            error {error.stack.split("\n").slice(1, 2)}
-          </span>
-        </p>
-      </Fragment>
-    );
-  }
+  // } catch (error) {
+  //   return (
+  //     <Fragment>
+  //       <p>
+  //         Couldn't say{" "}
+  //         <span className="originalSentence">"{sentence.transcript}"</span> in{" "}
+  //         {transliterate(lang, lang.name)}
+  //         <br />
+  //         <span className="errorDetail">
+  //           error {error.stack.split("\n").slice(1, 2)}
+  //         </span>
+  //       </p>
+  //     </Fragment>
+  //   );
+  // }
 }
