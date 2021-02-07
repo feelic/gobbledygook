@@ -46,6 +46,9 @@ export function getRequiredForm(context, rule, parameters) {
   if (!parameters.id) {
     throw new Error (`no id provided with getRequiredForm call`);
   }
+  if (rawText === "") {
+    return null;
+  }
   return {
     pos: getPOSCode(rule, parameters),
     form: rawText,
