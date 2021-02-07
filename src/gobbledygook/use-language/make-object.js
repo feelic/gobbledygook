@@ -12,7 +12,7 @@ export function makeObject(context, object) {
 
       delete singleEntity.entities;
 
-      const np = makeNounPhrase(context, singleEntity);
+      const np = makeObject(context, singleEntity);
 
       if (idx === object.entities.length - 1) {
         return [...prev, np];
@@ -22,11 +22,12 @@ export function makeObject(context, object) {
     return {pos: 'G', content: group}
   }
   if (object.type === "comparison") {
-    return makeComparison(context, object);
+    return {pos: 'G', content: makeComparison(context, object)};
   }
   if (object.type === "adjective") {
     const { subject } = context.sentence;
-    return makeAdjectivePredicate(context, subject, object);
+
+    return {pos: 'G', content: makeAdjectivePredicate(context, subject, object)};
   }
 
   return makeNounPhrase(context, object);
@@ -50,6 +51,7 @@ function makeAdjectivePredicate(context, subject, object) {
             gender,
             number,
             morpheme,
+            id: object.id
           });
         case "adverb":
           return getAdverb(context, adverbs && adverbs[0]);

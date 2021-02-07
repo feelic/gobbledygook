@@ -82,6 +82,12 @@ export const english = {
       adjective: {
         default: { default: { default: { default: "{morpheme}" } } },
       },
+      comparative: {
+        default: { default: { default: { default: "{morpheme}" } } },
+      },
+      superlative: {
+        default: { default: { default: { default: "{morpheme}" } } },
+      }
     },
   },
   conjugation: {
@@ -115,22 +121,18 @@ export const english = {
   adjectives: {
     preadjectives: ["size", "age", "color"],
   },
-  comparative: {
-    formation: ["quality", "comparedObject"],
-    comparator: {
-      negative: ["lɛs", "adjective"],
-      positive: ["mɔr", "adjective"],
+  comparisonAdverb: {
+    comparative: {
+      negative: "lɛs",
+      positive: "mɔr"
     },
-    object: ["ðan", "determiner", "object"],
+    superlative: {
+      negative: "list",
+      positive: "mɔst"
+    }
   },
-  superlative: {
-    formation: ["determiner", "quality", "comparedObject"],
-    comparator: {
-      negative: ["list", "adjective"],
-      positive: ["mɔst", "adjective"],
-    },
-    object: ["determiner", "object"],
-  },
+  comparative: ["comparisonAdverb", "adjective", "comparisonPreposition", "comparedObject"],
+  superlative: ["determiner", "comparisonAdverb", "adjective", "comparedObject"],
   numbers: {
     digits: {
       0: "o",

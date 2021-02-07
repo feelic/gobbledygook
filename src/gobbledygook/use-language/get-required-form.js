@@ -9,6 +9,7 @@ export function getRequiredForm(context, rule, parameters) {
     );
   }
   const formTableStructure = lang[rule].rules;
+  let usedRules = {};
 
   const selectedRule = morpheme.irregular || lang[rule].forms;
   const form = formTableStructure.reduce(
@@ -33,6 +34,8 @@ export function getRequiredForm(context, rule, parameters) {
         );
       }
 
+      usedRules[agreementParameter] = key;
+
       return formTable[key];
     },
     selectedRule
@@ -40,11 +43,14 @@ export function getRequiredForm(context, rule, parameters) {
 
   const rawText = form.replace("{morpheme}", morpheme.morpheme);
 
+  if (!parameters.id) {
+    throw new Error (`no id provided with getRequiredForm call`);
+  }
   return {
-    form: rawText,
-    morpheme,
-    rules: parameters,
     pos: getPOSCode(rule, parameters),
+    form: rawText,
+    meaning: parameters.id,
+    rules: usedRules,
   };
 }
 
@@ -62,7 +68,7 @@ function getPOSCode(rule, parameters) {
     case "pronouns":
       return "Pro";
     default:
-      console.log(rule);
+      throw new Error(`unknown pos code for rule ${rule}`)
   }
 }
 
@@ -110,7 +116,7 @@ export function getDeterminer(context, nounDefinition) {
   let owner = {};
 
   if (!determination) {
-    debugger;
+    throw new Error('no determination parameter provided with getDeterminer call');
   }
   if (determination.type === "count") {
     return makeNumber(context, nounDefinition.count);
@@ -126,5 +132,6 @@ export function getDeterminer(context, nounDefinition) {
     gender,
     number,
     morpheme,
+    id: "determiner",
   });
 }

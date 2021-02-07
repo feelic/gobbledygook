@@ -6,7 +6,7 @@ export function makeNumber(context, number) {
   }
 
   if (numbersRules.digits[number]) {
-    return numbersRules.digits[number];
+    return {pos: "Num", form: numbersRules.digits[number], meaning: number};
   }
   const placeNames = ["units", "tens", "hundreds", "thousands"];
   const breakdown = number.toString().split("").reverse();
@@ -27,7 +27,9 @@ export function makeNumber(context, number) {
     };
   }, {});
 
-  return placeNames.reduce((prev, curr) => {
+  const formedNumber = placeNames.reduce((prev, curr) => {
     return prev.replace(`{${curr}}`, bits[curr] || "");
   }, numbersRules.formation);
+
+  return {pos: "Num", form: formedNumber, meaning: number};
 }

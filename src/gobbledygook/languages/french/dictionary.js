@@ -103,6 +103,7 @@ const dictionary = {
   how: {morpheme:"komɑ̃"},
   // };
   // const prepositions = {
+  than: {morpheme: "kɘ"},
   to: {morpheme:"a"},
   up: {morpheme:"o dɘsy"},
   down: {morpheme:"ɑ̃ dɘsu"},

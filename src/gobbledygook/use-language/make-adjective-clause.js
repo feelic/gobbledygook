@@ -14,7 +14,7 @@ export function makeAdjectiveClause(context, nounDefinition) {
   const subject = getNounInfo(context, adjectiveClause.subject);
   const object = getNounInfo(context, adjectiveClause.object);
 
-  return lang.adjectiveClauseFormation
+  const clause = lang.adjectiveClauseFormation
     .map((pos) => {
       switch (pos) {
         case "relativePronoun":
@@ -30,4 +30,6 @@ export function makeAdjectiveClause(context, nounDefinition) {
       }
     })
     .filter((pos) => pos !== null);
+
+    return {pos: "AdjP", content: clause}
 }

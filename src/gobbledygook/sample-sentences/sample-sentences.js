@@ -41,7 +41,7 @@ export const horseLikesCarrots = {
         color: "orange",
         size: "small",
       },
-      determination: { type: "indefinite" },
+      determination: { type: "definite" },
     },
   },
   sentence: {
@@ -72,12 +72,12 @@ export const horseLikesCarrotsAndGrass = {
       adjectives: {
         size: "small",
       },
-      determination: { type: "indefinite" },
+      determination: { type: "definite" },
     },
     grass: {
       core: "grass",
       number: "singular",
-      determination: { type: "indefinite" },
+      determination: { type: "definite" },
     },
   },
   sentence: {
@@ -115,7 +115,7 @@ export const horseAndDonkeyLikeCarrots = {
       adjectives: {
         size: "small",
       },
-      determination: { type: "indefinite" },
+      determination: { type: "definite" },
     },
     grass: {
       core: "grass",
@@ -123,7 +123,7 @@ export const horseAndDonkeyLikeCarrots = {
       adjectives: {
         size: "small",
       },
-      determination: { type: "indefinite" },
+      determination: { type: "definite" },
     },
   },
   sentence: {
@@ -311,7 +311,7 @@ export const iHaveHiddenMyTreasure = {
     cave: {
       core: "cave",
       determination: { type: "indefinite" },
-    }
+    },
   },
   sentence: {
     subject: {
@@ -325,9 +325,9 @@ export const iHaveHiddenMyTreasure = {
     adverbialClauses: [
       {
         id: "cave",
-        preposition: "in"
-      }
-    ]
+        preposition: "in",
+      },
+    ],
   },
 };
 
@@ -344,7 +344,7 @@ export const bobsHorseLikesCarrots = {
     carrots: {
       core: "carrot",
       number: "plural",
-      determination: { type: "indefinite" },
+      determination: { type: "definite" },
     },
     bob: {
       core: "bob",
@@ -442,7 +442,7 @@ export const bobIsUglyAndStupid = {
     },
     verb: { verb: "be", tense: "present" },
     object: {
-      entities: [{ id: "ugly" }, { id: "stupid" }],
+      entities: [{ id: "ugly", adverbs: ["very"] }, { id: "stupid" }],
       type: "adjective",
       grammaticalCase: "accusative",
     },
@@ -515,7 +515,6 @@ export const johnnyIsTheTallestOfTheGroup = {
     },
   },
 };
-
 
 export const theDogSmellsReallyBad = {
   transcript: "the dog smells really bad",

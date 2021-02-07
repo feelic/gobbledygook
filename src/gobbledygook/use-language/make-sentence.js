@@ -34,12 +34,12 @@ export function makeSentence(lang, { sentence, entities }) {
           return null;
         }
         return sentence.adverbialClauses.map((clause) => {
-          return { pos: "NP", content: makeNounPhrase(context, clause) };
+          return { pos: "AdvP", content: [makeNounPhrase(context, clause)] };
         });
       default:
         return null;
     }
-  }).filter((pos) => pos !== null);
+  }).flat().filter((pos) => pos !== null);
 
   return formedSentence;
 }

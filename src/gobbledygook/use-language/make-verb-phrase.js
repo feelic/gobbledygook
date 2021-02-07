@@ -20,6 +20,7 @@ export function makeVerbPhrase(context, subject, verbDefinition) {
             person,
             number,
             morpheme,
+            id: verb
           });
         default:
           return null;

@@ -142,6 +142,7 @@ const dictionary = {
   how: { morpheme: "how" },
   // };
   // const prepositions = {
+  than: {morpheme: "ðən"},
   to: { morpheme: "tu" },
   up: { morpheme: "up" },
   down: { morpheme: "down" },

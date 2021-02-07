@@ -17,7 +17,7 @@ function getInvariable(type, context, invariable) {
   }
   const { morpheme } = lang.morphemeDictionary[invariable];
 
-  return {pos: posCodes[type], form: morpheme};
+  return {pos: posCodes[type], form: morpheme, meaning: invariable};
 }
 
 export function getConjunction(context, invariable) {

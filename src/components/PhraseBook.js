@@ -1,8 +1,12 @@
 import { useState } from "react";
-import { transliterate, makeSentence, getIPATranscript } from "../gobbledygook/use-language";
+import {
+  transliterate,
+  makeSentence,
+  getIPATranscript,
+} from "../gobbledygook/use-language";
 import { english, french } from "../gobbledygook/languages/index";
 import sentences from "../gobbledygook/sample-sentences/index";
-import AudioButton from './AudioButton';
+import AudioButton from "./AudioButton";
 
 export default function PhraseBook() {
   return (
@@ -10,19 +14,26 @@ export default function PhraseBook() {
       <h2>Generated phrase book</h2>
       {sentences.map((sentence) => {
         const frenchSentence = makeSentence(french, sentence);
+        const frenchSentenceIPA = getIPATranscript(frenchSentence);
         const englishSentence = makeSentence(english, sentence);
+        const englishSentenceIPA = getIPATranscript(englishSentence);
 
         return (
           <div key={sentence.transcript} className="sentenceBlock">
             <p>
-              {transliterate(french, getIPATranscript(frenchSentence))}
-              <AudioButton sentence={frenchSentence} voice="Celine" />
-              <br />
-              {transliterate(english, getIPATranscript(englishSentence))}
-
-              <AudioButton sentence={englishSentence} voice="Brian" />
+              {transliterate(french, frenchSentenceIPA)}
+              <AudioButton sentence={frenchSentenceIPA} voice="Celine" />
             </p>
             <PhraseDefinitionBlock sentence={frenchSentence} />
+            <p>
+              {transliterate(english, englishSentenceIPA)}
+
+              <AudioButton
+                sentence={englishSentenceIPA}
+                voice="Brian"
+              />
+            </p>
+            <PhraseDefinitionBlock sentence={englishSentence} />
           </div>
         );
       })}

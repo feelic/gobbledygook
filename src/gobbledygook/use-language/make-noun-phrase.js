@@ -40,6 +40,7 @@ export function makeNounPhrase(context, nounEntity) {
       gender,
       number,
       morpheme,
+      id: nounDefinition.id
     });
   }
   // ADD REFERENCE MARKER TO ENTITY
@@ -64,6 +65,7 @@ export function makeNounPhrase(context, nounEntity) {
             gender,
             number,
             morpheme,
+            id: nounDefinition.id
           });
         case "genitive":
           return makeGenitiveForm(context, nounDefinition);
@@ -93,6 +95,7 @@ function makeGenitiveForm(context, { genitive }) {
     gender,
     number,
     morpheme,
+    id: nounDefinition.id
   });
 
   return genitiveForm;

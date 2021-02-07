@@ -20,7 +20,7 @@ import {
 
 const sentences = [
   // horseLikesCarrots,
-  horseLikesCarrotsJohnnyGaveHim,
+  // horseLikesCarrotsJohnnyGaveHim,
   // horseLikesCarrotsAndGrass,
   // horseAndDonkeyLikeCarrots,
   // sheGoesToTheBeach,
@@ -31,7 +31,7 @@ const sentences = [
   // iHaveHiddenMyTreasure,
   // bobsHorseLikesCarrots,
   // theHorseIsUgly,
-  // bobIsUglyAndStupid,
+  bobIsUglyAndStupid,
   // jezIsTallerThanMark,
   // johnnyIsTheTallestOfTheGroup,
   // theDogSmellsReallyBad,

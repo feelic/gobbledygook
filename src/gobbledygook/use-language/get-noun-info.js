@@ -3,8 +3,7 @@ export function getNounInfo(context, noun) {
   const nounDefinition = entities[noun.id];
 
   if (!nounDefinition) {
-    debugger;
-    console.log("no entity for ", noun.id);
+    throw new Error(`no entity for ${noun.id}`);
   }
 
   const morpheme = getMorpheme(context, nounDefinition);

@@ -29,6 +29,7 @@ export function makeAdjectives(context, nounDefinition) {
           gender,
           number,
           morpheme,
+          id: adjective
         });
 
         return declinedAdjective;

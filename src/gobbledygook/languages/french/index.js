@@ -67,7 +67,7 @@ export const french = {
     },
   },
   declension: {
-    rules: ["type", "declensionGroup", "tense", "gender", "number"],
+    rules: ["type", "declensionGroup", "grammaticalCase", "gender", "number"],
     forms: {
       default: {
         default: {
@@ -89,6 +89,78 @@ export const french = {
         },
       },
       adjective: {
+        default: {
+          default: {
+            default: { default: "{morpheme}" },
+          },
+        },
+        sEnding: {
+          default: {
+            default: { default: "{morpheme}" },
+            fem: { default: "{morpheme}s" },
+          },
+        },
+        tEnding: {
+          default: {
+            default: { default: "{morpheme}" },
+            fem: { default: "{morpheme}t" },
+          },
+        },
+        zEnding: {
+          default: {
+            default: { default: "{morpheme}" },
+            fem: { default: "{morpheme}z" },
+          },
+        },
+        alEnding: {
+          default: {
+            default: { default: "{morpheme}al", plural: "{morpheme}o" },
+          },
+        },
+        dEnding: {
+          default: {
+            default: { default: "{morpheme}" },
+            fem: { default: "{morpheme}d" },
+          },
+        },
+      },
+      comparative: {
+        default: {
+          default: {
+            default: { default: "{morpheme}" },
+          },
+        },
+        sEnding: {
+          default: {
+            default: { default: "{morpheme}" },
+            fem: { default: "{morpheme}s" },
+          },
+        },
+        tEnding: {
+          default: {
+            default: { default: "{morpheme}" },
+            fem: { default: "{morpheme}t" },
+          },
+        },
+        zEnding: {
+          default: {
+            default: { default: "{morpheme}" },
+            fem: { default: "{morpheme}z" },
+          },
+        },
+        alEnding: {
+          default: {
+            default: { default: "{morpheme}al", plural: "{morpheme}o" },
+          },
+        },
+        dEnding: {
+          default: {
+            default: { default: "{morpheme}" },
+            fem: { default: "{morpheme}d" },
+          },
+        },
+      },
+      superlative: {
         default: {
           default: {
             default: { default: "{morpheme}" },
@@ -167,22 +239,18 @@ export const french = {
     preadjectives: ["size", "age"],
     postadjectives: ["color"],
   },
-  comparative: {
-    formation: ["quality", "comparedObject"],
-    comparator: {
-      negative: ["mwɛ̃", "adjective"],
-      positive: ["ply", "adjective"],
+  comparisonAdverb: {
+    comparative: {
+      negative: "mwɛ̃",
+      positive: "ply"
     },
-    object: ["relativePronoun", "determiner", "object"],
+    superlative: {
+      negative: "mwɛ̃",
+      positive: "ply"
+    }
   },
-  superlative: {
-    formation: ["determiner", "quality", "comparedObject"],
-    comparator: {
-      negative: ["mwɛ̃", "adjective"],
-      positive: ["ply", "adjective"],
-    },
-    object: ["determiner", "object"],
-  },
+  comparative: ["comparisonAdverb", "adjective", "comparisonPreposition", "comparedObject"],
+  superlative: ["comparisonAdverb", "adjective", "comparedObject"],
   numbers: {
     digits: {
       0: "zeʁo",
