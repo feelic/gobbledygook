@@ -14,7 +14,8 @@ export function getRequiredForm(context, rule, parameters) {
   const selectedRule = morpheme.irregular || lang[rule].forms;
   const form = formTableStructure.reduce(
     (formTable, agreementParameter, idx) => {
-      let key = getPropertyValue(agreementParameter, parameters);
+      const originalKey = getPropertyValue(agreementParameter, parameters);
+      let key = originalKey;
 
       if (!formTable[key] && formTable[key] !== "") {
         key = "default";
@@ -34,7 +35,9 @@ export function getRequiredForm(context, rule, parameters) {
         );
       }
 
-      usedRules[agreementParameter] = key;
+      if (originalKey !== 'default') {
+        usedRules[agreementParameter] = originalKey;
+      }
 
       return formTable[key];
     },

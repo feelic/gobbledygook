@@ -1,0 +1,24 @@
+.InteractiveTranscription {
+  margin: 10px 0;
+
+  span.pos {
+    cursor: pointer;
+    padding: 4px 4px;
+    border-radius: 6px;
+    border: #226;
+
+    &:hover {
+
+        background: #393979;
+    }
+  }
+}
+
+.DefinitionToolTip {
+  h3 {
+    span {
+      font-size: 12px;
+      font-style: italic;
+    }
+  }
+}

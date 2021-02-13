@@ -64,31 +64,25 @@ export const english = {
     },
   },
   declension: {
-    rules: ["type", "declensionGroup", "grammaticalCase", "gender", "number"],
+    rules: ["type", "grammaticalCase", "number"],
     forms: {
       default: {
-        default: {
-          default: {
-            default: { singular: "{morpheme}", plural: "{morpheme}s" },
-          },
-          genitive: {
-            default: { singular: "{morpheme}s", plural: "{morpheme}s" },
-          },
-          lative: {
-            default: { singular: "tu {morpheme}", plural: "tu {morpheme}" },
-          },
-        },
+          default:  { singular: "{morpheme}", plural: "{morpheme}s" },
+
+          genitive: { singular: "{morpheme}s", plural: "{morpheme}s" },
+
+          lative: { singular: "tu {morpheme}", plural: "tu {morpheme}" },
       },
       adjective: {
-        default: { default: { default: { default: "{morpheme}" } } },
+        default: {  default: "{morpheme}" } ,
       },
       comparative: {
-        default: { default: { default: { default: "{morpheme}" } } },
+        default: {  default: "{morpheme}" }  ,
       },
       superlative: {
-        default: { default: { default: { default: "{morpheme}" } } },
+        default: {  default: "{morpheme}" } ,
       }
-    },
+    }
   },
   conjugation: {
     rules: ["group", "tense", "person", "number"],

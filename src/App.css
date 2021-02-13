@@ -1,34 +1,5 @@
-.App {
-  display: flex;
-  flex-direction: column;
-  color: #FFB394;
-  font-weight: 500;
-  font-family: "Roboto", sans-serif;
-  padding: 20px;
-}
 h1, h2 {
   color: #92C778;
-}
-nav {
-    display: flex;
-    flex-direction: row;
-}
-nav .navBtn {
-  font-size: 16px;
-  color: #FFB394;
-  border: 0;
-  padding: 10px;
-  background: none;
-  text-decoration: none;
-}
-nav .navBtn:hover {
-  background: none;
-}
-nav .navBtn.active {
-  background: #226;
-}
-nav .navBtn:focus {
-  color: #FFB394;
 }
 section {
   line-height: 24px;
@@ -94,18 +65,6 @@ button:focus {
 }
 .originalSentence {
   font-style: italic;
-}
-.InteractiveTranscription {
-  margin: 10px 0;
-}
-.InteractiveTranscription span.pos {
-  cursor: pointer;
-  padding: 4px 4px;
-  border-radius: 6px;
-  border: #226;
-}
-.InteractiveTranscription span.pos:hover {
-  background: #393979;
 }
 .PhraseActionsButtons button{
   margin-right: 10px;

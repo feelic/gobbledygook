@@ -1,10 +1,23 @@
 import { transliterate } from "../gobbledygook/use-language";
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
+import styles from './InteractiveTranscription.module.scss';
 
+const posAbbreviations = {
+  N: 'noun',
+  V: 'verb',
+  Adv: 'adverb',
+  Adj: 'adjective',
+  Pro: 'pronoun',
+  Num: 'number',
+  Con: 'conjunction',
+  Pre: 'preposition'
+}
 export default function InteractiveTranscription(props) {
   const { sentence, lang } = props;
 
   return (
-    <div className="InteractiveTranscription">
+    <div className={styles.InteractiveTranscription}>
       {sentence.map((pos, idx) => {
         return <PartOfSpeech key={idx} pos={pos} lang={lang} />;
       })}
@@ -20,7 +33,7 @@ function PartOfSpeech(props) {
 
   if (pos.content) {
     return (
-      <span className="posGroup">
+      <span className={styles.posGroup}>
         {pos.content.map((subpos, idx) => {
           return <PartOfSpeech key={idx} pos={subpos} lang={lang} />;
         })}
@@ -29,8 +42,22 @@ function PartOfSpeech(props) {
   }
 
   return (
-    <span className="pos" title={pos.meaning}>
-      {transliterate(lang, pos.form)}
-    </span>
+    <Tippy content={<DefinitionToolTip pos={pos} />} placement="bottom">
+      <span className={styles.pos}>
+      {transliterate(lang, pos.form)}{" "}
+      </span>
+    </Tippy>
   );
+}
+
+function DefinitionToolTip (props) {
+  const {pos} = props;
+
+  return <div className={styles.DefinitionToolTip}><h3>{pos.meaning}, <span>{posAbbreviations[pos.pos]}</span></h3>
+  {pos.rules &&
+    <ul>{Object.keys(pos.rules).map(rule => {
+      return <li>{rule}: {pos.rules[rule]}</li>
+    })}</ul>
+  }
+  </div>
 }
