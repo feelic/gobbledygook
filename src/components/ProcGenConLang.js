@@ -11,6 +11,7 @@ import AudioButton from "./AudioButton";
 import { VOICES, DEFAULT_VOICE } from "../constants/voices";
 import InteractiveTranscription from "./InteractiveTranscription";
 import ConLangDescription from "./ConLangDescription";
+import styles from "./ProcGenConLang.module.scss";
 
 import { setSeed } from "../gobbledygook/util/random";
 
@@ -51,7 +52,7 @@ export default function ProcGenConLang() {
           </option>
         ))}
       </select>
-      <ul>
+      <ul className={styles.toc}>
         <li>
           <a href="#description">description</a>
         </li>

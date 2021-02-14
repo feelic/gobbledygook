@@ -1,0 +1,14 @@
+.toc {
+  list-style-type:lower-roman;
+  padding: 15px 24px;
+  margin: 24px 0;
+  border-top: 1px solid #ffb394;
+  border-bottom: 1px solid #ffb394;
+  a {
+    color: #ffb394;
+    text-decoration: none;
+    &:hover {
+      color: #AC4B48;
+    }
+  }
+}

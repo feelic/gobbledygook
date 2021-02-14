@@ -16,3 +16,4 @@
 * [ ] shape out determiners generation
 * [x] shape out declension generation
 * [x] shape out conjugation generation
+* [ ] update declension form tables for all numbers of rules
