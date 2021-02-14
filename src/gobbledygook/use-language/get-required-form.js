@@ -18,6 +18,9 @@ export function getRequiredForm(context, rule, parameters) {
       let key = originalKey;
 
       if (!formTable[key] && formTable[key] !== "") {
+        key = "1st group";
+      }
+      if (!formTable[key] && formTable[key] !== "") {
         key = "default";
       }
       if (!formTable[key] && formTable[key] !== "") {

@@ -56,7 +56,7 @@ function DefinitionToolTip (props) {
   return <div className={styles.DefinitionToolTip}><h3>{pos.meaning}, <span>{posAbbreviations[pos.pos]}</span></h3>
   {pos.rules &&
     <ul>{Object.keys(pos.rules).map(rule => {
-      return <li>{rule}: {pos.rules[rule]}</li>
+      return <li key={rule}>{rule}: {pos.rules[rule]}</li>
     })}</ul>
   }
   </div>

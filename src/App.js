@@ -18,6 +18,7 @@ export default function App() {
         {menu.map((entry) => {
           return (
             <NavLink
+            key={entry.link}
               activeClassName={styles.active}
               className={styles.navBtn}
               exact

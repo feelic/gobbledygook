@@ -9,10 +9,10 @@
 * [ ] add quantifiers
 * [ ] add conditional clauses
 * [ ] move "in a cave" preposition to inessive case
-* [ ] shape out genders generation
+* [x] shape out genders generation
 * [ ] shape out case system generation
 * [ ] shape out sub clauses system generation
-* [ ] shape out pronouns generation
+* [x] shape out pronouns generation
 * [ ] shape out determiners generation
-* [ ] shape out declension generation
-* [ ] shape out conjugation generation
+* [x] shape out declension generation
+* [x] shape out conjugation generation

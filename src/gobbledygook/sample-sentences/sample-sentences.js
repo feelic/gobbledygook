@@ -135,6 +135,7 @@ export const horseLikesCarrotsJohnnyGaveHim = {
       number: "singular",
       person: "thirdPerson",
       determination: { type: "properNoun" },
+      gender: "masc"
     },
   },
   sentence: {
@@ -465,6 +466,7 @@ export const johnnyIsTheTallestOfTheGroup = {
       number: "singular",
       person: "thirdPerson",
       determination: { type: "properNoun" },
+      gender: "masc"
     },
     group: {
       core: "group",
