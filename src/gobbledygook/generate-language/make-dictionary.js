@@ -16,15 +16,16 @@ import { makeMorpheme } from "./make-morpheme";
 import { gaussian } from "../util/random";
 
 export default function makeDictionary(phonology, morphology) {
+  const morphemes = [];
   function makeMorphemesFromDictionary(dictionary, morphemeLengthLaw, min = 1) {
     return dictionary.reduce((dictionary, meaning) => {
+      const morpheme = makeNewMorpheme(phonology, morphemes, morphemeLengthLaw, min = 1)
+
+      morphemes.push(morpheme);
       return {
         ...dictionary,
         [meaning]: {
-          morpheme: makeMorpheme(
-            phonology,
-            Math.abs(morphemeLengthLaw()) + min
-          ),
+          morpheme
         },
       };
     }, {});
@@ -46,4 +47,17 @@ export default function makeDictionary(phonology, morphology) {
   };
 
   return dictionaryBase;
+}
+
+function makeNewMorpheme(phonology, morphemes, morphemeLengthLaw, min) {
+  let morpheme = makeMorpheme(
+    phonology,
+    Math.abs(morphemeLengthLaw()) + min
+  )
+
+  if (morphemes.includes(morpheme)) {
+    return makeNewMorpheme(phonology, morphemes, morphemeLengthLaw, min)
+  }
+
+  return morpheme;
 }
