@@ -38,6 +38,7 @@ export default function makeDictionary(phonology, groups) {
         ...dictionary,
         [meaning]: {
           morpheme,
+          type: posType,
           ...properties,
         },
       };
@@ -50,7 +51,7 @@ export default function makeDictionary(phonology, groups) {
     ...makeMorphemesFromDictionary(foods, gaussian(3, 2.5), 2, "noun"),
     ...makeMorphemesFromDictionary(auxiliaries, gaussian(0.5, 1.5), 1, "verb"),
     ...makeMorphemesFromDictionary(actions, gaussian(1, 1.7), 2, "verb"),
-    ...makeMorphemesFromDictionary(interrogativeWords, gaussian(0.5, 1.2), 1),
+    ...makeMorphemesFromDictionary(interrogativeWords, gaussian(0.5, 1.2), 1, "util"),
     ...makeMorphemesFromDictionary(places, gaussian(2.5, 1.2), 1, "noun"),
     ...makeMorphemesFromDictionary(things, gaussian(2, 1), 2, "noun"),
     ...makeMorphemesFromDictionary(colors, gaussian(1.5, 1.2), 1, "adjective"),

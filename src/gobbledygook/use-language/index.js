@@ -1,6 +1,7 @@
 export * from "./transliterate";
 export * from "./make-sentence";
 export * from "./make-number";
+export * from "./get-required-form";
 
 export function getIPATranscript(sentence) {
   return sentence

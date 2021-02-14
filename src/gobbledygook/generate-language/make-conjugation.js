@@ -11,15 +11,17 @@ export default function makeConjugation(phonology, morphologyType) {
   }
   const conjugationGroups = makeConjugationGroups(morphologyType);
   const tenses = makeTenses(morphologyType);
-  const tenseSystem = {
+  const tenseSystem = (tenses && {
     default: "default",
     present: (tenses.includes("present") && "present") || "default",
     past: (tenses.includes("past") && "past") || "default",
     future: (tenses.includes("future") && "future") || "default",
     conditional: (tenses.includes("conditional") && "conditional") || "default",
+  }) || {
+    default: "default",
   };
   const numbers = ["singular", "plural"];
-    const persons = ["firstPerson", "secondPerson", "thirdPerson"];
+  const persons = ["firstPerson", "secondPerson", "thirdPerson"];
   const rules = [];
   if (conjugationGroups) {
     rules.push("conjugationGroup");
@@ -53,7 +55,10 @@ function makeForms(phonology, rules, ruleOptions) {
     }, {});
   }
   return ruleOptions[rules[0]].reduce((prev, curr) => {
-    return { ...prev, [curr]: `{morpheme}${makeMorpheme(phonology, gaussian(1, 1)())}` };
+    return {
+      ...prev,
+      [curr]: `{morpheme}${makeMorpheme(phonology, gaussian(1, 1)())}`,
+    };
   }, {});
 }
 function makeConjugationGroups(morphologyType) {
@@ -79,7 +84,7 @@ function makeTenses() {
     tenses.push("conditional");
   }
   if (tenses.length === 1) {
-    return
+    return;
   }
   return tenses;
 }

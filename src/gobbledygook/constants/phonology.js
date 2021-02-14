@@ -9,13 +9,13 @@ export const phonemes = {
 
 export const phonemicDistribution = {
   consonants: {
-    min: 5,
+    min: 7,
     mean: 18,
     stdev: 8,
     max: 40
   },
   vowels: {
-    min: 3,
+    min: 5,
     mean: 14,
     stdev: 6,
     max: 20

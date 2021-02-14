@@ -81,7 +81,6 @@ export function generateLanguage() {
   };
 
   console.log(language);
-  console.log(language.conjugation)
   return language;
 }
 

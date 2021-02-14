@@ -17,7 +17,7 @@ export default function makeDeclension(
   }
 
   const rules = ["type"];
-  const types = ["default", "adjective"];
+  const types = ["noun", "adjective"];
   const declensionGroups = makeDeclensionGroups(morphologyType);
   const numbers = ["singular", "plural"];
 

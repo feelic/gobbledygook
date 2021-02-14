@@ -24,7 +24,7 @@ export default function InteractiveTranscription(props) {
     </div>
   );
 }
-function PartOfSpeech(props) {
+export function PartOfSpeech(props) {
   const { pos, lang } = props;
 
   if (!pos) {
@@ -54,6 +54,7 @@ function DefinitionToolTip (props) {
   const {pos} = props;
 
   return <div className={styles.DefinitionToolTip}><h3>{pos.meaning}, <span>{posAbbreviations[pos.pos]}</span></h3>
+  IPA: <span>/{pos.form}/</span>
   {pos.rules &&
     <ul>{Object.keys(pos.rules).map(rule => {
       return <li key={rule}>{rule}: {pos.rules[rule]}</li>

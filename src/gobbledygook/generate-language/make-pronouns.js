@@ -31,6 +31,13 @@ export default function makePronouns(
   if (random() > 0.5) {
     rules.push("number");
   }
+
+  if (rules.length === 0) {
+    return {
+      rules: ["person"],
+      forms: { default: "" },
+    };
+  }
   const ruleOptions = {
     person: persons,
     grammaticalCase: cases,

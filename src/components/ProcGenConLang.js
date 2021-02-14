@@ -10,6 +10,7 @@ import sentences from "../gobbledygook/sample-sentences/index";
 import AudioButton from "./AudioButton";
 import { VOICES, DEFAULT_VOICE } from "../constants/voices";
 import InteractiveTranscription from "./InteractiveTranscription";
+import ConLangDescription from "./ConLangDescription";
 
 import { setSeed } from "../gobbledygook/util/random";
 
@@ -50,7 +51,23 @@ export default function ProcGenConLang() {
           </option>
         ))}
       </select>
-      <h3>{transliterate(lang, lang.name)} phrase book</h3>
+      <ul>
+        <li>
+          <a href="#description">description</a>
+        </li>
+        <li>
+          <a href="#phrase-book">phrase book</a>
+        </li>
+        <li>
+          <a href="#dictionary">dictionary</a>
+        </li>
+        <li>
+          <a href="#raw">raw definition file</a>
+        </li>
+      </ul>
+      <h3 id="description">A short description of the {transliterate(lang, lang.name)} language</h3>
+      <ConLangDescription lang={lang}/>
+      <h3 id="phrase-book">{transliterate(lang, lang.name)} phrase book</h3>
       {sentences.map((sentence) => {
         return (
           <Sentence
@@ -62,7 +79,7 @@ export default function ProcGenConLang() {
         );
       })}
       <CountToTen lang={lang} voice={voice} />
-      <h3>{transliterate(lang, lang.name)} dictionary</h3>
+      <h3 id="dictionary">{transliterate(lang, lang.name)} dictionary</h3>
       <ul>
         {Object.entries(lang.morphemeDictionary).map(([meaning, word]) => {
           const translit = transliterate(lang, word.morpheme);
@@ -75,7 +92,7 @@ export default function ProcGenConLang() {
           );
         })}
       </ul>
-      <h3>{transliterate(lang, lang.name)} raw definition</h3>
+      <h3 id="raw">{transliterate(lang, lang.name)} raw definition</h3>
       <pre className="codeBlock open">{JSON.stringify(lang, null, 2)}</pre>
     </section>
   );
@@ -97,32 +114,35 @@ function CountToTen({ lang, voice }) {
   );
 }
 function Sentence({ lang, sentence, voice }) {
-  // try {
-  const formedSentence = makeSentence(lang, sentence);
+  try {
+    const formedSentence = makeSentence(lang, sentence);
 
-  return (
-    <div className="sentenceBlock">
-      <InteractiveTranscription lang={lang} sentence={formedSentence} />
-      <p>
-        <AudioButton sentence={getIPATranscript(formedSentence)} voice={voice} />
-        <br />
-        <span className="transcript">{sentence.transcript}</span>
-      </p>
-    </div>
-  );
-  // } catch (error) {
-  //   return (
-  //     <Fragment>
-  //       <p>
-  //         Couldn't say{" "}
-  //         <span className="originalSentence">"{sentence.transcript}"</span> in{" "}
-  //         {transliterate(lang, lang.name)}
-  //         <br />
-  //         <span className="errorDetail">
-  //           error {error.stack.split("\n").slice(1, 2)}
-  //         </span>
-  //       </p>
-  //     </Fragment>
-  //   );
-  // }
+    return (
+      <div className="sentenceBlock">
+        <InteractiveTranscription lang={lang} sentence={formedSentence} />
+        <p>
+          <AudioButton
+            sentence={getIPATranscript(formedSentence)}
+            voice={voice}
+          />
+          <br />
+          <span className="transcript">{sentence.transcript}</span>
+        </p>
+      </div>
+    );
+  } catch (error) {
+    return (
+      <Fragment>
+        <p>
+          Couldn't say{" "}
+          <span className="originalSentence">"{sentence.transcript}"</span> in{" "}
+          {transliterate(lang, lang.name)}
+          <br />
+          <span className="errorDetail">
+            error {error.stack.split("\n").slice(1, 2)}
+          </span>
+        </p>
+      </Fragment>
+    );
+  }
 }
