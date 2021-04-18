@@ -63,6 +63,7 @@ function makeForms(phonology, rules, ruleOptions) {
     }, {});
   }
   return ruleOptions[rules[0]].reduce((prev, curr) => {
-    return { ...prev, [curr]: `${makeMorpheme(phonology, gaussian(1, 1)())}` };
+    const length = Math.max(gaussian(1, 1)(), 1);
+    return { ...prev, [curr]: `${makeMorpheme(phonology, length)}` };
   }, {});
 }

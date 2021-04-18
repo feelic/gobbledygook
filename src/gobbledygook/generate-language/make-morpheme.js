@@ -1,6 +1,11 @@
 import { random, randomWithCoef } from "../util/random";
 
-export function makeMorpheme(phonology, length) {
+let existingWords = [];
+
+export function resetExistingWords () {
+  existingWords = [];
+}
+export function makeMorpheme(phonology, length, checkExisting = true, tries = 0) {
   const morpheme = [];
 
   const phonemeTypes = ["vowels", "consonants"];
@@ -18,5 +23,20 @@ export function makeMorpheme(phonology, length) {
     nextPhoneme = (nextPhoneme + 1) % 2;
   }
 
-  return morpheme.join("");
+  const generatedMorpheme = morpheme.join("");
+
+  if (generatedMorpheme === "") {
+    return generatedMorpheme;
+  }
+
+  if (existingWords.includes(generatedMorpheme)) {
+    let newLength = length;
+    if (tries > 4) {
+      newLength += 1;
+    }
+    return makeMorpheme(phonology, newLength, checkExisting, tries + 1);
+  }
+
+  existingWords.push(generatedMorpheme);
+  return generatedMorpheme;
 }

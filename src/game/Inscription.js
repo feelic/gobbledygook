@@ -1,18 +1,7 @@
 import { transliterate } from "../gobbledygook/use-language";
-import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import styles from "./Inscription.module.scss";
 
-const posAbbreviations = {
-  N: "noun",
-  V: "verb",
-  Adv: "adverb",
-  Adj: "adjective",
-  Pro: "pronoun",
-  Num: "number",
-  Con: "conjunction",
-  Pre: "preposition",
-};
 export default function Inscription(props) {
   const { sentence, lang, notes, updateNote } = props;
 

@@ -9,7 +9,7 @@ DONE
 * [x] shape out conjugation generation
 
 TODO
-* [ ] avoid homonyms in vocabulary generation
+* [x] avoid homonyms in vocabulary generation
 * [ ] add interrogative mode
 * [ ] add negative phrases
 * [ ] add quantifiers

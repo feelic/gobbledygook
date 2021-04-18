@@ -6,6 +6,8 @@
   .pos {
     display: flex;
     flex-direction: column;
+    min-width: 60px;
+    margin:0 4px;
     span {
       font-size: 24px;
       text-align: center;
@@ -13,7 +15,7 @@
     input {
       font-size: 10px;
       width: 60px;
-      margin: 0 4px;
+      margin: 0 auto;
     }
   }
 }

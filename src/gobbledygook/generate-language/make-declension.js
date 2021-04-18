@@ -1,6 +1,6 @@
 import { random, gaussian } from "../util/random";
 import { makeMorpheme } from "./make-morpheme";
-import {getOrdinalNumber} from "../util"
+import { getOrdinalNumber } from "../util";
 
 export default function makeDeclension(
   phonology,
@@ -43,7 +43,6 @@ export default function makeDeclension(
 
   const forms = makeForms(phonology, rules, ruleOptions);
 
-
   return { forms, rules, declensionGroups };
 }
 
@@ -57,7 +56,7 @@ function makeForms(phonology, rules, ruleOptions) {
     }, {});
   }
   return ruleOptions[rules[0]].reduce((prev, curr) => {
-    return { ...prev, [curr]: `{morpheme}${makeMorpheme(phonology, gaussian(1, 1)())}` };
+    return { ...prev, [curr]: `{morpheme}${makeMorpheme(phonology, gaussian(1, 1)(), false)}` };
   }, {});
 }
 

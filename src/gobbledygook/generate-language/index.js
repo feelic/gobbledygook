@@ -1,5 +1,5 @@
 import { makePhonemeSet } from "./make-phonology";
-import { makeMorpheme } from "./make-morpheme";
+import { makeMorpheme, resetExistingWords } from "./make-morpheme";
 import makeDictionary from "./make-dictionary";
 import makeDeclension from "./make-declension";
 import makePronouns from "./make-pronouns";
@@ -12,6 +12,7 @@ import {
 } from "../util/random";
 
 export function generateLanguage() {
+  resetExistingWords();
   const phonology = {
     vowels: makePhonemeSet("vowels"),
     consonants: makePhonemeSet("consonants"),

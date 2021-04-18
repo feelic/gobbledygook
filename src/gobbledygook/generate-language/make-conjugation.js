@@ -57,7 +57,7 @@ function makeForms(phonology, rules, ruleOptions) {
   return ruleOptions[rules[0]].reduce((prev, curr) => {
     return {
       ...prev,
-      [curr]: `{morpheme}${makeMorpheme(phonology, gaussian(1, 1)())}`,
+      [curr]: `{morpheme}${makeMorpheme(phonology, gaussian(1, 1)(), false)}`,
     };
   }, {});
 }
