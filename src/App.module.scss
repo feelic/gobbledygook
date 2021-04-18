@@ -6,19 +6,33 @@
   font-family: "Roboto", sans-serif;
   padding: 20px;
 }
-nav {
+footer {
+  width: 100%;
+  background-color: #447;
+  box-sizing: border-box;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #ffb394;
 
   .navBtn {
-    font-size: 16px;
-    color: #ffb394;
-    border: 1px solid transparent;
+    margin: 0 10px;
     padding: 10px;
-    background: none;
+  }
+  a {
     text-decoration: none;
+    color: #df7364;
+    &:hover {
+      color: #AC4B48;
+      text-decoration: underline;
+    }
     &.active {
-      background: #226;
+      color: #AC4B48;
     }
   }
 }
