@@ -16,6 +16,10 @@ import {
   theDogSmellsReallyBad,
   theCastleTowerIsRound,
   theyHave31Chickens,
+  sheSings,
+  whoIsThis,
+  whatIsThis,
+  areYouReady,
 } from "./sample-sentences.js";
 
 const sentences = [
@@ -36,6 +40,10 @@ const sentences = [
   johnnyIsTheTallestOfTheGroup,
   theDogSmellsReallyBad,
   theCastleTowerIsRound,
+  sheSings,
+  whoIsThis,
+  whatIsThis,
+  areYouReady,
 ];
 export default sentences;
 

@@ -15,7 +15,7 @@ export const french = {
       thirdPerson: {
         nominative: {
           masc: { default: "il" },
-          fem: { default: "el" },
+          fem: { default: "ɛl" },
         },
         accusative: {
           masc: { singular: "lɘ", plural: "le" },
@@ -232,6 +232,8 @@ export const french = {
   verbPhraseFormation: ["verb", "adverb"],
   sentenceFormations: {
     declarative: ["subject", "verb", "object", "adverbialClauses"],
+    polarInterrogative: ["verb", "subject", "object"],
+    openInterrogative: ["interrogativePronoun", "verb", "subject"],
   },
   adjectiveClauseFormation: ["relativePronoun", "subject", "object", "verb"],
   adjectiveFormation: ["adverb", "adjective"],

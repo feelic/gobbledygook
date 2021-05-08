@@ -72,6 +72,16 @@ const dictionary = {
       },
     },
   },
+  sing: { morpheme: "siŋ",
+  irregular: {
+    default: {
+      default: {
+        default: { default: "{morpheme}" },
+        thirdPerson: { singular: "{morpheme}s", plural: "{morpheme}" },
+      },
+      past: { default: { default: "saŋ" } },
+    },
+  }, },
   group: { morpheme: "grup" },
   place: { morpheme: "pleɪs" },
   hide: {
@@ -96,9 +106,9 @@ const dictionary = {
     irregular: {
       default: {
         default: {
-          firstPerson: { singular: "am", plural: "ar" },
-          secondPerson: { singular: "ar", plural: "ar" },
-          thirdPerson: { singular: "ɪz", plural: "ar" },
+          firstPerson: { singular: "am", plural: "ɑɹ" },
+          secondPerson: { singular: "ɑɹ", plural: "ɑɹ" },
+          thirdPerson: { singular: "ɪz", plural: "ɑɹ" },
         },
         past: {
           default: { default: "hɪd" },
@@ -108,6 +118,7 @@ const dictionary = {
   },
   round: { morpheme: "raʊnd" },
   ugly: { morpheme: "əɡli" },
+  ready: { morpheme: "rɛdi" },
   stupid: { morpheme: "stjupɪd" },
   smell: { morpheme: "smɛl" },
   bad: { morpheme: "bæd" },

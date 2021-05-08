@@ -552,3 +552,85 @@ export const theCastleTowerIsRound = {
 };
 
 export const theChickenAndTheThiefAreGone = {};
+
+export const sheSings = {
+  transcript: "She sings",
+  entities: {
+    she: {
+      number: "singular",
+      person: "thirdPerson",
+      gender: "fem",
+      usePronoun: true,
+    },
+  },
+  sentence: {
+    subject: {
+      id: "she"
+    },
+    verb: { verb: "sing", tense: "present" }
+  },
+};
+
+export const whoIsThis = {
+  transcript: "Who is he?",
+  entities: {
+    he: {
+      number: "singular",
+      person: "thirdPerson",
+      gender: "masc",
+      usePronoun: true,
+    },
+  },
+  sentence: {
+    type: "openInterrogative",
+    question: "who",
+    subject: {
+      id: "he"
+    },
+    verb: { verb: "be", tense: "present" }
+  },
+};
+export const whatIsThis = {
+  transcript: "What is this?",
+  entities: {
+    this: {
+      number: "singular",
+      person: "thirdPerson",
+      gender: "masc",
+      usePronoun: true,
+    },
+  },
+  sentence: {
+    type: "openInterrogative",
+    question: "what",
+    subject: {
+      id: "this"
+    },
+    verb: { verb: "be", tense: "present" }
+  },
+};
+export const areYouReady = {
+  transcript: "Are you Ready?",
+  entities: {
+    you: {
+      number: "plural",
+      person: "secondPerson",
+      gender: "masc",
+      usePronoun: true,
+    },
+    ready: {
+      core: "ready",
+    },
+  },
+  sentence: {
+    type: "polarInterrogative",
+    subject: {
+      id: "you"
+    },
+    verb: { verb: "be", tense: "present" },
+    object: {
+      id: "ready",
+      type: "adjective",
+    }
+  },
+};

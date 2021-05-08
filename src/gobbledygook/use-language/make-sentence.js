@@ -1,6 +1,7 @@
 import { makeNounPhrase } from "./make-noun-phrase";
 import { makeVerbPhrase } from "./make-verb-phrase";
 import { makeObject } from "./make-object";
+import {getInterrogative} from "./get-invariables";
 
 export function makeSentence(lang, { sentence, entities }) {
   const context = {
@@ -34,6 +35,9 @@ export function makeSentence(lang, { sentence, entities }) {
       case "verb":
         return makeVerbPhrase(context, sentence.subject, sentence.verb);
       case "object":
+        if (!sentence.object) {
+          return null;
+        }
         return { pos: "Obj", content: [makeObject(context, sentence.object) ]};
       case "adverbialClauses":
         if (!sentence.adverbialClauses) {
@@ -42,6 +46,8 @@ export function makeSentence(lang, { sentence, entities }) {
         return sentence.adverbialClauses.map((clause) => {
           return { pos: "AdvP", content: [makeNounPhrase(context, clause)] };
         });
+      case "interrogativePronoun":
+        return getInterrogative(context, sentence.question);
       default:
         return null;
     }

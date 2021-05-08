@@ -33,7 +33,7 @@ export function PartOfSpeech(props) {
 
   if (pos.content) {
     return (
-      <span className={styles.posGroup}>
+      <span className={pos.pos}>
         {pos.content.map((subpos, idx) => {
           return <PartOfSpeech key={idx} pos={subpos} lang={lang} />;
         })}

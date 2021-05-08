@@ -109,6 +109,8 @@ export const english = {
   verbPhraseFormation: ["adverb", "verb"],
   sentenceFormations: {
     declarative: ["subject", "verb", "object", "adverbialClauses"],
+    polarInterrogative: ["verb", "subject", "object"],
+    openInterrogative: ["interrogativePronoun", "verb", "subject"],
   },
   adjectiveClauseFormation: ["relativePronoun", "subject", "verb", "object"],
   adjectiveFormation: ["adverb", "adjective"],
@@ -186,6 +188,7 @@ export const english = {
   },
   consonants: {
     r: { weight: 1, translit: "r" },
+    ɹ: { weight: 1, translit: "r" },
     s: { weight: 1, translit: "s" },
     l: { weight: 1, translit: "l" },
     ð: { weight: 1, translit: "th" },

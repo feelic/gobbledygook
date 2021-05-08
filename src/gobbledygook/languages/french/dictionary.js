@@ -60,15 +60,37 @@ const dictionary = {
       past: { default: { default: "a pʁi" } },
     },
   }, },
+  sing: { morpheme: "ʃɑ̃t",
+  irregular: {
+    default: {
+      default: {
+        default: { default: "{morpheme}" },
+      },
+      past: { default: { default: "a ʃɑ̃te" } },
+    },
+  }, },
   group: { morpheme: "gʁup", gender: "masc" },
   place: { morpheme: "plas", gender: "fem" },
   hide: { morpheme: "kaʃ" },
   treasure: { morpheme: "tʁezoʁ", gender: "masc" },
   castle: { morpheme: "ʃato", gender: "masc" },
   tower: { morpheme: "tuʁ", gender: "fem" },
-  be: { morpheme: "ɛ" },
+  be: { morpheme: "ɛ",
+  irregular: {
+    default: {
+      default: {
+        firstPerson: { singular: "syi", plural: "som" },
+        secondPerson: { singular: "ɛ", plural: "ɛt" },
+        thirdPerson: { singular: "ɛ", plural: "sɔ̃" },
+      },
+      past: {
+        default: { default: "hɪd" },
+      },
+    },
+  }, },
   round: { morpheme: "ʁɔ̃", declensionGroup: "dEnding" },
   ugly: { morpheme: "mɔʃ" },
+  ready: { morpheme: "pʁɛ" },
   stupid: { morpheme: "stypid" },
   smell: { morpheme: "sɑ̃" },
   bad: { morpheme: "mɔvɛ" },
