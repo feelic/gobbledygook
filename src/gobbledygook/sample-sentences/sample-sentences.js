@@ -617,6 +617,7 @@ export const areYouReady = {
       person: "secondPerson",
       gender: "masc",
       usePronoun: true,
+      determination: { type: "demonstrative" },
     },
     ready: {
       core: "ready",
@@ -631,6 +632,83 @@ export const areYouReady = {
     object: {
       id: "ready",
       type: "adjective",
+    }
+  },
+};
+export const whereIsTheDog = {
+  transcript: "Where is the dog?",
+  entities: {
+    dog: {
+      core: "dog",
+      number: "singular",
+      person: "thirdPerson",
+      determination: { type: "definite" },
+      gender: "masc",
+    },
+    ready: {
+      core: "ready",
+    },
+  },
+  sentence: {
+    type: "openInterrogative",
+    question: "where",
+    subject: {
+      id: "dog"
+    },
+    verb: { verb: "be", tense: "present" },
+  },
+};
+export const whyAreTheseChickenHere = {
+  transcript: "Why are these chicken here?",
+  entities: {
+    chicken: {
+      core: "chicken",
+      number: "plural",
+      person: "thirdPerson",
+      determination: { type: "demonstrative" },
+      gender: "masc",
+    },
+    here: {
+      core: "here",
+    },
+  },
+  sentence: {
+    type: "openInterrogative",
+    question: "why",
+    subject: {
+      id: "chicken"
+    },
+    verb: { verb: "be", tense: "present" },
+    object: {
+      id: "here",
+      type: "adverb",
+    }
+  },
+};
+export const whyAreYouSoDumb = {
+  transcript: "Why are you so dumb?",
+  entities: {
+    you: {
+      number: "singular",
+      person: "secondPerson",
+      gender: "masc",
+      usePronoun: true,
+    },
+    dumb: {
+      core: "dumb",
+    },
+  },
+  sentence: {
+    type: "openInterrogative",
+    question: "why",
+    subject: {
+      id: "you"
+    },
+    verb: { verb: "be", tense: "present" },
+    object: {
+      entities: [{ id: "dumb", adverbs: ["so"] }],
+      type: "adjective",
+      grammaticalCase: "accusative",
     }
   },
 };

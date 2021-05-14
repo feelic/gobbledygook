@@ -18,6 +18,18 @@ const dictionary = {
     },
   },
   go: { morpheme: "go" },
+  do: {
+    morpheme: "du",
+    irregular: {
+      default: {
+        present: {
+          firstPerson: { singular: "du", plural: "du" },
+          secondPerson: { singular: "du", plural: "du" },
+          thirdPerson: { singular: "dəz", plural: "du" },
+        },
+      },
+    },
+  },
   have: {
     morpheme: "ha",
     irregular: {
@@ -118,6 +130,7 @@ const dictionary = {
   },
   round: { morpheme: "raʊnd" },
   ugly: { morpheme: "əɡli" },
+  dumb: { morpheme: "dʌm" },
   ready: { morpheme: "rɛdi" },
   stupid: { morpheme: "stjupɪd" },
   smell: { morpheme: "smɛl" },
@@ -125,7 +138,9 @@ const dictionary = {
   grass: { morpheme: "grɑs" },
   donkey: { morpheme: "dɑŋki" },
   and: { morpheme: "ænd" },
+  here: { morpheme: "hir" },
   very: { morpheme: "vɛri" },
+  so: { morpheme: "so" },
   really: { morpheme: "rɪli" },
   tall: { morpheme: "tɔl", comparative: 'tɔlər', superlative:'tɔləst' },
   cave: { morpheme: "keɪv" },

@@ -42,7 +42,7 @@ export const english = {
       definite: { default: { default: { singular: "ðə", plural: "ðə" } } },
       indefinite: { default: { default: { singular: "ə", plural: "" } } },
       properNoun: { default: { default: { singular: "", plural: "" } } },
-      demonstrative: { default: { default: { singular: "", plural: "" } } },
+      demonstrative: { default: { default: { singular: "ðis", plural: "ðiz" } } },
       distal: { default: { default: { singular: "", plural: "" } } },
       possessive: {
         firstPerson: {
@@ -110,7 +110,7 @@ export const english = {
   sentenceFormations: {
     declarative: ["subject", "verb", "object", "adverbialClauses"],
     polarInterrogative: ["verb", "subject", "object"],
-    openInterrogative: ["interrogativePronoun", "verb", "subject"],
+    openInterrogative: ["interrogativePronoun", "verb", "subject", "object"],
   },
   adjectiveClauseFormation: ["relativePronoun", "subject", "verb", "object"],
   adjectiveFormation: ["adverb", "adjective"],

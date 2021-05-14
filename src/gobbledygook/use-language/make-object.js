@@ -24,7 +24,7 @@ export function makeObject(context, object) {
   if (object.type === "comparison") {
     return {pos: 'G', content: makeComparison(context, object)};
   }
-  if (object.type === "adjective") {
+  if (object.type === "adjective" || object.type === "adverb") {
     const { subject } = context.sentence;
 
     return {pos: 'G', content: makeAdjectivePredicate(context, subject, object)};

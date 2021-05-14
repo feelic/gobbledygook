@@ -48,7 +48,18 @@ export const french = {
           fem: { singular: "yn", plural: "de" },
         },
       },
-      // demonstrative: { singular: "", plural: "" },
+      demonstrative: {
+        default: {
+          default: {
+            singular: "sɘ", plural: "se"
+          },
+          masc: {
+            singular: "sɘ", plural: "se"
+          },
+          fem: {
+            singular: "sɛt", plural: "se"
+          },
+         }},
       // distal: { singular: "", plural: "" },
       possessive: {
         firstPerson: {
@@ -233,7 +244,7 @@ export const french = {
   sentenceFormations: {
     declarative: ["subject", "verb", "object", "adverbialClauses"],
     polarInterrogative: ["verb", "subject", "object"],
-    openInterrogative: ["interrogativePronoun", "verb", "subject"],
+    openInterrogative: ["interrogativePronoun", "verb", "subject", "object"],
   },
   adjectiveClauseFormation: ["relativePronoun", "subject", "object", "verb"],
   adjectiveFormation: ["adverb", "adjective"],
@@ -262,7 +273,7 @@ export const french = {
       4: "katʁ",
       5: "sɛ̃k",
       6: "sis",
-      7: "set",
+      7: "sɛt",
       8: "ɥit",
       9: "nɘf",
       10: "dis",

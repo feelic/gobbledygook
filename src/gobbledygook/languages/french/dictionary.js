@@ -21,6 +21,18 @@ const dictionary = {
       },
     },
   },
+  do: {
+    morpheme: "fɛ",
+    irregular: {
+      default: {
+        present: {
+          firstPerson: { singular: "fɛ", plural: "fɔ̃" },
+          secondPerson: { singular: "fɛ", plural: "fɛt" },
+          thirdPerson: { singular: "fɛ", plural: "fɔ̃" },
+        },
+      },
+    },
+  },
   have: {
     morpheme: "a",
     irregular: {
@@ -90,6 +102,7 @@ const dictionary = {
   }, },
   round: { morpheme: "ʁɔ̃", declensionGroup: "dEnding" },
   ugly: { morpheme: "mɔʃ" },
+  dumb: { morpheme: "kɔ̃" },
   ready: { morpheme: "pʁɛ" },
   stupid: { morpheme: "stypid" },
   smell: { morpheme: "sɑ̃" },
@@ -97,8 +110,10 @@ const dictionary = {
   grass: { morpheme: "ɛʁb" },
   donkey: { morpheme: "an" },
   and: { morpheme: "e" },
+  here: { morpheme: "isi" },
   very: { morpheme: "tʁɛ" },
   really: { morpheme: "vʁɛmɑ̃" },
+  so: { morpheme: "osi" },
   tall: {morpheme: 'gʁɑ̃'},
   cave: {morpheme: 'gʁot', gender: "fem"},
   // const quantifiers = {
@@ -116,7 +131,7 @@ const dictionary = {
   any: {morpheme:"tu"},
   // };
   // const interrogative = {
-  what: {morpheme:"kwa"},
+  what: {morpheme:"kɘ"},
   which: {morpheme:"kɛl"},
   when: {morpheme:"kɑ̃"},
   where: {morpheme:"u"},

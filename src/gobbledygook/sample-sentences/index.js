@@ -20,6 +20,9 @@ import {
   whoIsThis,
   whatIsThis,
   areYouReady,
+  whereIsTheDog,
+  whyAreTheseChickenHere,
+  whyAreYouSoDumb,
 } from "./sample-sentences.js";
 
 const sentences = [
@@ -44,6 +47,9 @@ const sentences = [
   whoIsThis,
   whatIsThis,
   areYouReady,
+  whereIsTheDog,
+  whyAreTheseChickenHere,
+  whyAreYouSoDumb,
 ];
 export default sentences;
 
