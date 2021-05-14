@@ -2,6 +2,7 @@ import { getRequiredForm } from "./get-required-form";
 import { getSubjectInfo } from "./get-noun-info";
 import { getAdverb } from "./get-invariables";
 
+
 export function makeVerbPhrase(context, subject, verbDefinition) {
   const { lang } = context;
   const { number, person } = getSubjectInfo(context, subject);

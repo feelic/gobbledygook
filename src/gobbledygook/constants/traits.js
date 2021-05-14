@@ -1,4 +1,4 @@
-export default {
+const phonologyTraits = {
   consonants: {
     place: [
       "bilabial",
@@ -44,3 +44,5 @@ export default {
     nasalization: [true, false]
   }
 };
+
+export default phonologyTraits;
