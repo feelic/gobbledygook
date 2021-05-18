@@ -1,5 +1,5 @@
 export interface PoS {
-  pos: pos;
+  pos: tPosCode;
   content?: Array<PoS>;
   meaning?: string;
   form?: string;
@@ -8,20 +8,15 @@ export interface PoS {
 export interface Context {
   lang: Language;
 }
-export interface Dictionary<T> {
-  [Key: string]: T;
-}
 export interface Morpheme {
   morpheme: string;
 }
 export interface Language {
   name: string;
-  morphemeDictionary: Dictionary<Morpheme>;
+  morphemeDictionary: Record<string,Morpheme>;
 }
-type tPoSCodes = {
-  [Key: string]: pos;
-};
-type pos =
+
+export type tPosCode =
   | "Adj"
   | "Adv"
   | "AdvP"
@@ -37,11 +32,3 @@ type pos =
   | "S"
   | "V"
   | "VP";
-
-export const posCodes: tPoSCodes = {
-  conjunction: "Con",
-  adverb: "Adv",
-  preposition: "Pre",
-  interrogative: "Int",
-  relativePronoun: "Pro",
-};

@@ -1,0 +1,17 @@
+export const posCodesLabels = {
+  Adj: "Adjective",
+  Adv: "Adverb",
+  AdvP: "Adverbial clause",
+  Con: "Conjunction",
+  G: "Group",
+  Int: "Interrogative",
+  N: "Noun",
+  NP: "Noun phrase",
+  Num: "Number",
+  Obj: "Object",
+  Pre: "Preposition",
+  Pro: "Relative pronoun",
+  S: "Subject",
+  V: "Verb",
+  VP: "Verb phrase",
+};
