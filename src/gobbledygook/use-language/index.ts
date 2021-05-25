@@ -1,9 +1,11 @@
+import { PoS } from "../interfaces";
+
 export * from "./transliterate";
 export * from "./make-sentence";
 export * from "./make-number";
 export * from "./get-required-form";
 
-export function getIPATranscript(sentence) {
+export function getIPATranscript(sentence: Array<PoS>) :string {
   return sentence
     .map((pos) => {
       if (pos.content && Array.isArray(pos.content)) {

@@ -1,4 +1,6 @@
-export function getNounInfo(context, noun) {
+import { Context, EntityDefinition } from "../interfaces";
+
+export function getNounInfo(context: Context, noun: any) {
   const { entities } = context;
   const nounDefinition = entities[noun.id];
 
@@ -22,7 +24,7 @@ export function getNounInfo(context, noun) {
   return normalizedDefinition;
 }
 
-export function getSubjectInfo(context, subject) {
+export function getSubjectInfo(context: Context, subject: any) {
   if (subject.entities) {
     return {
       number: "plural",
@@ -33,7 +35,7 @@ export function getSubjectInfo(context, subject) {
   return getNounInfo(context, subject);
 }
 
-function getMorpheme(context, nounDefinition) {
+function getMorpheme(context: Context, nounDefinition: EntityDefinition) {
   const { lang } = context;
 
   const morpheme = lang.morphemeDictionary[nounDefinition.core];

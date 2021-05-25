@@ -1,6 +1,7 @@
+import { Morpheme, EntityDefinition, Context, Language, tRuleName } from "../interfaces";
 import { makeNumber } from "./make-number";
 
-export function getRequiredForm(context, rule, parameters) {
+export function getRequiredForm(context: Context, rule: tRuleName, parameters: any) {
   const { lang } = context;
   const { morpheme = {} } = parameters;
   if (!lang[rule]) {
@@ -9,7 +10,7 @@ export function getRequiredForm(context, rule, parameters) {
     );
   }
   const formTableStructure = lang[rule].rules;
-  let usedRules = {};
+  let usedRules : any = {};
 
   const selectedRule = morpheme.irregular || lang[rule].forms;
   const form = formTableStructure.reduce(
@@ -63,7 +64,7 @@ export function getRequiredForm(context, rule, parameters) {
   };
 }
 
-function getPOSCode(rule, parameters) {
+function getPOSCode(rule: string, parameters: any) {
   switch (rule) {
     case "determiners":
       return "Det";
@@ -81,7 +82,7 @@ function getPOSCode(rule, parameters) {
   }
 }
 
-function getPropertyValue(property, parameters) {
+function getPropertyValue(property: string, parameters: any): any {
   const path = property.split(".");
 
   if (path.length > 1) {
@@ -92,14 +93,14 @@ function getPropertyValue(property, parameters) {
 }
 
 function AgreementException(
-  context,
-  rule,
-  agreementParameter,
-  formTableStructure,
-  formTable,
-  morpheme,
-  key,
-  parameters
+  context: Context,
+  rule: string,
+  agreementParameter: string,
+  formTableStructure: Array<string>,
+  formTable: any,
+  morpheme: Morpheme,
+  key: string,
+  parameters: any
 ) {
   const { lang } = context;
   const availableOptions = Object.keys(formTable);
@@ -120,7 +121,7 @@ Matched rule:
 ${JSON.stringify(formTable)}`;
 }
 
-export function getDeterminer(context, nounDefinition) {
+export function getDeterminer(context: Context, nounDefinition: EntityDefinition) {
   const { gender, number, determination, person, morpheme } = nounDefinition;
   let owner = {};
 
