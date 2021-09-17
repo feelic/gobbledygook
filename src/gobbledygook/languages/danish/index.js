@@ -7,7 +7,7 @@ export const danish = {
     rules: ["person", "grammaticalCase", "gender", "number"],
     forms: {
       firstPerson: {
-        default: { default: { singular: "jai", plural: "vi" } }
+        default: { default: { singular: "jɑ", plural: "vi" } }
       },
       secondPerson: {
         default: { default: { singular: "du", plural: "i" } }
@@ -46,10 +46,20 @@ export const danish = {
     ],
     forms: {
       definite: {
-        default: { default: { default: { singular: "", plural: "" } } }
+        default: {
+          default: {
+            default: { singular: "den", plural: "de" },
+            neuter: { singular: "det", plural: "de" }
+          }
+        }
       },
       indefinite: {
-        default: { default: { default: { singular: "", plural: "" } } }
+        default: {
+          default: {
+            default: { singular: "en", plural: "" },
+            neuter: { singular: "et", plural: "" }
+          }
+        }
       },
       properNoun: {
         default: { default: { default: { singular: "", plural: "" } } }
@@ -108,7 +118,7 @@ export const danish = {
   conjugation: {
     rules: ["tense"],
     forms: {
-      default: "{morpheme}r"
+      default: "{morpheme}"
     }
   },
   nounPhraseFormation: [
@@ -158,36 +168,36 @@ export const danish = {
       1: "en",
       2: "to",
       3: "tʀɛ",
-      4: "fɔr",
-      5: "faɪv",
-      6: "sɪks",
-      7: "sɛvən",
-      8: "eɪt",
-      9: "naɪn",
-      10: "tɛn",
-      11: "ɪlɛvən",
-      12: "twelv",
-      13: "θərtin",
-      14: "fɔrtin",
-      15: "fɪftin",
-      16: "sɪkstin",
-      17: "sɛvəntin",
-      18: "eɪtin",
-      19: "naɪntin",
-      20: "twɛnti",
-      30: "θərti",
-      40: "fɔrti",
-      50: "fɪfti",
-      60: "sɪksti",
-      70: "sɛvənti",
-      80: "eɪti",
-      90: "naɪnti"
+      4: "",
+      5: "",
+      6: "",
+      7: "",
+      8: "",
+      9: "",
+      10: "",
+      11: "",
+      12: "",
+      13: "",
+      14: "",
+      15: "",
+      16: "",
+      17: "",
+      18: "",
+      19: "",
+      20: "",
+      30: "",
+      40: "",
+      50: "",
+      60: "",
+      70: "",
+      80: "",
+      90: ""
     },
     unitFormation: {
       units: "{digit}",
       tens: "{digit}",
-      hundreds: "{digit} hundred and",
-      thousands: "{digit} θawzend"
+      hundreds: "{digit}",
+      thousands: "{digit}"
     },
     formation: "{thousands}{hundreds}{tens}{units}"
   },

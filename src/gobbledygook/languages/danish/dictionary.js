@@ -1,16 +1,16 @@
 const dictionary = {
   horse: { morpheme: "hest" },
-  carrot: { morpheme: "guləʀod" },
-  love: { morpheme: "elskə" },
-  gray: { morpheme: "gʀo" },
-  orange: { morpheme: "orɪndʒ" },
-  pink: {morpheme: "lysəʀød"},
+  carrot: { morpheme: "guləʀoðˀ" },
+  love: { morpheme: "elsɡə" },
+  gray: { morpheme: "gʁo" },
+  orange: { morpheme: "orandʒ" },
+  pink: {morpheme: "lysəʁœðˀ"},
   small: { morpheme: "lilə" },
   give: {
     morpheme: "giw",
     irregular: {
-      default: "givər",
-      past: "gaw" ,
+      default: "giwɐ",
+      past: "gæ" ,
     }
   },
   go: { morpheme: "go" },
@@ -18,7 +18,7 @@ const dictionary = {
     morpheme: "du",
   },
   have: {
-    morpheme: "ha",
+    morpheme: "ɦɑ",
   },
   beach: { morpheme: "sdʀan" },
   chicken: { morpheme: "kyleŋ" },
