@@ -18,6 +18,7 @@ export const VOICES = {
   Vitoria: "Vitoria [Brazilian Portuguese]",
   Lotte: "Lotte [Dutch]",
   Ruben: "Ruben [Dutch]",
+  Mads: "Mads [Danish]",
   Mathieu: "Mathieu [French]",
   Celine: "Celine [French]",
   Chantal: "Chantal [Canadian French]",

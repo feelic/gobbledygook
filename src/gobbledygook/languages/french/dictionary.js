@@ -7,6 +7,7 @@ const dictionary = {
     declensionGroup: "zEnding",
   },
   orange: { morpheme: "oʁɑ̃ʒ" },
+  pink: {morpheme: "ʁoz"},
   small: { morpheme: "pɘti", declensionGroup: "tEnding" },
   give: { morpheme: "don" },
   go: {
@@ -37,7 +38,7 @@ const dictionary = {
     morpheme: "a",
     irregular: {
       default: {
-        present: {
+        default: {
           firstPerson: { singular: "ai", plural: "{morpheme}vɔ̃" },
           secondPerson: { singular: "{morpheme}", plural: "{morpheme}ve" },
           thirdPerson: { singular: "a", plural: "zɔ̃" },
@@ -100,6 +101,7 @@ const dictionary = {
       },
     },
   }, },
+  car: {morpheme: "vwatyʁ", gender: "fem"},
   round: { morpheme: "ʁɔ̃", declensionGroup: "dEnding" },
   ugly: { morpheme: "mɔʃ" },
   dumb: { morpheme: "kɔ̃" },

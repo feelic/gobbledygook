@@ -1,4 +1,5 @@
 import {
+  iHaveAPinkCar,
   horseLikesCarrots,
   horseLikesCarrotsJohnnyGaveHim,
   horseLikesCarrotsAndGrass,
@@ -26,6 +27,7 @@ import {
 } from "./sample-sentences.js";
 
 const sentences = [
+  iHaveAPinkCar,
   horseLikesCarrots,
   horseLikesCarrotsJohnnyGaveHim,
   horseLikesCarrotsAndGrass,

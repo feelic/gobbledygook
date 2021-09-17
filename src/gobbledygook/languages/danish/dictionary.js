@@ -1,0 +1,117 @@
+const dictionary = {
+  horse: { morpheme: "hest" },
+  carrot: { morpheme: "guləʀod" },
+  love: { morpheme: "elskə" },
+  gray: { morpheme: "gʀo" },
+  orange: { morpheme: "orɪndʒ" },
+  pink: {morpheme: "lysəʀød"},
+  small: { morpheme: "lilə" },
+  give: {
+    morpheme: "giw",
+    irregular: {
+      default: "givər",
+      past: "gaw" ,
+    }
+  },
+  go: { morpheme: "go" },
+  do: {
+    morpheme: "du",
+  },
+  have: {
+    morpheme: "ha",
+  },
+  beach: { morpheme: "sdʀan" },
+  chicken: { morpheme: "kyleŋ" },
+  dog: { morpheme: "hun" },
+  lose: {
+    morpheme: "",
+  },
+  find: {
+    morpheme: "",
+  },
+  take: {
+    morpheme: "",
+  },
+  sing: { morpheme: "" },
+  group: { morpheme: "" },
+  place: { morpheme: "plæs" },
+  hide: {
+    morpheme: "",
+  },
+  treasure: { morpheme: "" },
+  castle: { morpheme: "" },
+  tower: { morpheme: "" },
+  be: {
+    morpheme: "eʀ",
+    irregular: {
+      default: "eʀ",
+      past: "vaʀ"
+    },
+  },
+  car: {morpheme: "bil"},
+  round: { morpheme: "" },
+  ugly: { morpheme: "" },
+  dumb: { morpheme: "" },
+  ready: { morpheme: "" },
+  stupid: { morpheme: "" },
+  smell: { morpheme: "" },
+  bad: { morpheme: "" },
+  grass: { morpheme: "" },
+  donkey: { morpheme: "" },
+  and: { morpheme: "" },
+  here: { morpheme: "" },
+  very: { morpheme: "" },
+  so: { morpheme: "" },
+  really: { morpheme: "" },
+  tall: { morpheme: "", comparative: '', superlative:'' },
+  cave: { morpheme: "" },
+  // const quantifiers = {
+  all: { morpheme: "" },
+  some: { morpheme: "" },
+  many: { morpheme: "" },
+  few: { morpheme: "" },
+  no: { morpheme: "" },
+  // };
+  // const relativePronouns {
+  that: {morpheme: ""},
+  // };
+  // const distributive = {
+  each: { morpheme: "" },
+  any: { morpheme: "" },
+  // };
+  // const interrogative = {
+  what: { morpheme: "" },
+  which: { morpheme: "" },
+  when: { morpheme: "" },
+  where: { morpheme: "" },
+  who: { morpheme: "" },
+  why: { morpheme: "" },
+  how: { morpheme: "" },
+  // };
+  // const prepositions = {
+  than: {morpheme: ""},
+  to: { morpheme: "" },
+  up: { morpheme: "" },
+  down: { morpheme: "" },
+  above: { morpheme: "" },
+  upon: { morpheme: "" },
+  under: { morpheme: "" },
+  around: { morpheme: "" },
+  through: { morpheme: "" },
+  infront: { morpheme: "" },
+  behind: { morpheme: "" },
+  in: { morpheme: "" },
+  out: { morpheme: "" },
+  into: { morpheme: "" },
+  outof: { morpheme: "" },
+  against: { morpheme: "" },
+  beside: { morpheme: "" },
+  from: { morpheme: "" },
+  toward: { morpheme: "" },
+  with: { morpheme: "" },
+  by: { morpheme: "" },
+  for: { morpheme: "" },
+  // };
+};
+
+export default dictionary;

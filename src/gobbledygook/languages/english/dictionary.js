@@ -4,6 +4,7 @@ const dictionary = {
   love: { morpheme: "lov" },
   gray: { morpheme: "greɪ" },
   orange: { morpheme: "orɪndʒ" },
+  pink: {morpheme: "pink"},
   small: { morpheme: "smɔl" },
   give: {
     morpheme: "giv",
@@ -128,6 +129,7 @@ const dictionary = {
       },
     },
   },
+  car: {morpheme: "kɑr"},
   round: { morpheme: "raʊnd" },
   ugly: { morpheme: "əɡli" },
   dumb: { morpheme: "dʌm" },

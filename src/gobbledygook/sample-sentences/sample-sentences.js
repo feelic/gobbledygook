@@ -1,3 +1,32 @@
+export const iHaveAPinkCar = {
+  transcript: "I have a pink car",
+  entities: {
+    car: {
+      core: "car",
+      type: "object",
+      adjectives: { color: "pink"},
+      number: "singular",
+      determination: { type: "indefinite" },
+      person: "thirdPerson",
+    },
+    i: {
+      number: "singular",
+      person: "firstPerson",
+      usePronoun: true
+    },
+  },
+  sentence: {
+    subject: {
+      id: "i",
+    },
+    verb: { verb: "have", tense: "general" },
+    object: {
+      id: "car",
+      grammaticalCase: "accusative",
+    },
+  },
+};
+
 export const horseLikesCarrots = {
   transcript: "the small grey horse likes small orange carrots",
   entities: {
