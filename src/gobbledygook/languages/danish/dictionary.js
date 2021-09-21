@@ -58,7 +58,7 @@ const dictionary = {
   bad: { morpheme: "" },
   grass: { morpheme: "" },
   donkey: { morpheme: "" },
-  and: { morpheme: "" },
+  and: { morpheme: "o" },
   here: { morpheme: "" },
   very: { morpheme: "" },
   so: { morpheme: "" },

@@ -1,4 +1,4 @@
-import { Switch, Route, NavLink } from "react-router-dom";
+import { Routes, Route, NavLink } from "react-router-dom";
 import ProcGenConLang from "./components/ProcGenConLang";
 import PhraseBook from "./components/PhraseBook";
 import Game from "./game/index";
@@ -17,29 +17,19 @@ export default function App() {
     <div className={styles.App}>
       <h1>gobbledygook</h1>
 
-      <Switch>
-        <Route path={`${process.env.PUBLIC_URL}/PhraseBook`}>
-          <PhraseBook />
-        </Route>
-        <Route path="/About">
-          <About />
-        </Route>
-        <Route path={`${process.env.PUBLIC_URL}/PGCL`}>
-          <ProcGenConLang />
-        </Route>
-        <Route path={`${process.env.PUBLIC_URL}/`}>
-          <Game />
-        </Route>
-      </Switch>
+      <Routes>
+        <Route path={`PhraseBook`} element={<PhraseBook />} />
+        <Route path="/About" element={<About />} />
+        <Route path={`PGCL`} element={<ProcGenConLang />} />
+        <Route path={`/`} element={<Game />} />
+      </Routes>
 
       <footer>
         {menu.map((entry) => {
           return (
             <NavLink
-            key={entry.link}
-              activeClassName={styles.active}
+              key={entry.link}
               className={styles.navBtn}
-              exact
               to={entry.link}
             >
               {entry.title}

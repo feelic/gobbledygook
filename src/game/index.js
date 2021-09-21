@@ -1,25 +1,21 @@
-import { Switch, Route, NavLink } from "react-router-dom";
 import { generateLanguage } from "../gobbledygook/generate-language/index";
-import styles from "./index.module.scss";
 import { useEffect, useState } from "react";
 import {
   transliterate,
   makeSentence,
-  makeNumber,
-  getIPATranscript,
 } from "../gobbledygook/use-language";
 import { setSeed } from "../gobbledygook/util/random";
 import inscriptionsCatalogue from './inscriptions';
 import Inscription from './Inscription';
 
 export default function App() {
-  const [seed, setCurrentSeed] = useState("random");
+  const [seed, /* setCurrentSeed */] = useState("random");
   const [lang, setLang] = useState();
   useEffect(() => {
     setSeed(seed);
     setLang(generateLanguage());
   }, [seed]);
-  const [inscriptions, setInscriptions] = useState(inscriptionsCatalogue);
+  const [inscriptions, /*setInscriptions*/] = useState(inscriptionsCatalogue);
   const [notes, setNotes] = useState({});
 
   if (!lang) {
