@@ -143,7 +143,11 @@ function makeSentenceFormations() {
   const wordOrder = randomWithCoef(wordOrders);
   const declarative = wordOrdersTemplates[wordOrder];
 
-  return { declarative };
+  return { declarative,
+    //question forms are hard coded for now
+    polarInterrogative: ["verb", "subject", "object"],
+    openInterrogative: ["interrogativePronoun", "verb", "subject", "object"],
+   };
 }
 function makeClausesFormation() {
   const nounPhraseFormation = [

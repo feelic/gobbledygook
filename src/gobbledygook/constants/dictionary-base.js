@@ -1,7 +1,7 @@
 export const family = ["father", "mother", "brother", "sister", "group"];
 export const animals = ["dog", "cat", "cow", "horse", "chicken", "donkey"];
 export const foods = ["carrot"];
-export const colors = ["gray", "orange"];
+export const colors = ["white", "gray", "black", "orange", "pink", "red", "yellow", "blue", "green", "purple"];
 export const adjectives = ["small", "round", "stupid", "ugly", "bad", "dumb"];
 export const auxiliaries = ["be", "have", "do"];
 export const actions = [
