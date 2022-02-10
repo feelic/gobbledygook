@@ -1,0 +1,21 @@
+.table {
+  border-width: 1px;
+	border-spacing: 2px;
+	border-style: inset;
+	border-color: #ffb394;
+	border-collapse: collapse;
+
+  th {
+    border-width: 1px;
+  	padding: 5px;
+  	border-style: inset;
+  	border-color: #ffb394;
+  }
+  td {
+    border-width: 1px;
+  	padding: 5px;
+  	border-style: inset;
+  	border-color: #ffb394;
+    text-align: center;
+  }
+}

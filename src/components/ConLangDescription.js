@@ -2,6 +2,8 @@ import { Fragment } from "react";
 import { transliterate, getRequiredForm } from "../gobbledygook/use-language";
 import styles from "./ConLangDescription.module.scss";
 import {PartOfSpeech} from "./InteractiveTranscription";
+import ConLangVowelChart from "./ConLangVowelChart";
+import ConLangConsonantChart from "./ConLangConsonantChart";
 
 export default function ConLangDescription(props) {
   const { lang } = props;
@@ -13,6 +15,9 @@ export default function ConLangDescription(props) {
         is {(lang.morphologyType === "isolating" && "an") || "a"}{" "}
         {lang.morphologyType} language.
       </p>
+
+      <ConLangVowelChart lang={lang} />
+      <ConLangConsonantChart lang={lang} />
 
       {(lang.declension.rules.length === 1 && (
         <p>Nouns and adjectives are invariable</p>

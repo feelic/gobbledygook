@@ -12,7 +12,8 @@ export const iHaveAPinkCar = {
     i: {
       number: "singular",
       person: "firstPerson",
-      usePronoun: true
+      usePronoun: true,
+      gender: "masc"
     },
   },
   sentence: {
@@ -639,7 +640,7 @@ export const whatIsThis = {
   },
 };
 export const areYouReady = {
-  transcript: "Are you Ready?",
+  transcript: "Are you ready?",
   entities: {
     you: {
       number: "plural",
@@ -661,6 +662,7 @@ export const areYouReady = {
     object: {
       id: "ready",
       type: "adjective",
+      grammaticalCase: "accusative",
     }
   },
 };
@@ -711,6 +713,7 @@ export const whyAreTheseChickenHere = {
     object: {
       id: "here",
       type: "adverb",
+      grammaticalCase: "accusative",
     }
   },
 };

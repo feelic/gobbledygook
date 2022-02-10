@@ -52,7 +52,7 @@ const dictionary = {
   round: { morpheme: "" },
   ugly: { morpheme: "" },
   dumb: { morpheme: "" },
-  ready: { morpheme: "" },
+  ready: { morpheme: "klaʀ" },
   stupid: { morpheme: "" },
   smell: { morpheme: "" },
   bad: { morpheme: "" },

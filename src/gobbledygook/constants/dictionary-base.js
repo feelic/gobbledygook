@@ -2,7 +2,7 @@ export const family = ["father", "mother", "brother", "sister", "group"];
 export const animals = ["dog", "cat", "cow", "horse", "chicken", "donkey"];
 export const foods = ["carrot"];
 export const colors = ["white", "gray", "black", "orange", "pink", "red", "yellow", "blue", "green", "purple"];
-export const adjectives = ["small", "round", "stupid", "ugly", "bad", "dumb"];
+export const adjectives = ["small", "round", "stupid", "ugly", "bad", "dumb", "ready"];
 export const auxiliaries = ["be", "have", "do"];
 export const actions = [
   "speak",
@@ -32,7 +32,7 @@ export const interrogativeWords = [
   "how",
 ];
 export const places = ["beach", "place", "castle", "tower", "cave"];
-export const things = ["treasure", "grass"];
+export const things = ["treasure", "grass", "car"];
 export const adverbs = ["very", "really", "so", "here"];
 export const utilities = [
   "than",
