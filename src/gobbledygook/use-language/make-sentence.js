@@ -1,7 +1,7 @@
 import { makeNounPhrase } from "./make-noun-phrase";
 import { makeVerbPhrase } from "./make-verb-phrase";
 import { makeObject } from "./make-object";
-import {getInterrogative} from "./get-invariables";
+import {getInterrogative, getInterrogativeParticle} from "./get-invariables";
 
 export function makeSentence(lang, { sentence, entities }) {
   const context = {
@@ -48,6 +48,8 @@ export function makeSentence(lang, { sentence, entities }) {
         });
       case "interrogativePronoun":
         return getInterrogative(context, sentence.question);
+      case "interrogativeParticle":
+        return getInterrogativeParticle(context, 'interrogativeParticle');
       default:
         return null;
     }

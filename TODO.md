@@ -11,7 +11,7 @@ DONE
 
 TODO
 * [x] add interrogative mode
-* [ ] add interrogative forms in language generation
+* [x] add interrogative forms in language generation
 * [ ] add demonstrative pronouns
 * [ ] add demonstrative forms in language generation
 * [ ] add negative phrases
