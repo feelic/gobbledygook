@@ -30,6 +30,9 @@ export function getPreposition(context: Context, invariable: string) {
 export function getInterrogative(context: Context, invariable: string) {
   return getInvariable("Int", context, invariable);
 }
+export function getInterrogativeParticle(context: Context, invariable: string) {
+  return getInvariable("Int", context, invariable);
+}
 export function getRelativePronoun(context: Context, invariable: string) {
   return getInvariable("Pro", context, invariable);
 }

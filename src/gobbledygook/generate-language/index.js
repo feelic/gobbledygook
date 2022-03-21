@@ -94,7 +94,7 @@ function makeMorphologyType() {
   ]);
 }
 
-// classifier systems should probably go in their too at some point
+// classifier systems should probably go in there too at some point
 function makeGenders() {
   const genderSystems = [
     ["fem", "masc"],
@@ -143,11 +143,51 @@ function makeSentenceFormations() {
   const wordOrder = randomWithCoef(wordOrders);
   const declarative = wordOrdersTemplates[wordOrder];
 
-  return { declarative,
+  return {
+    declarative,
     //question forms are hard coded for now
-    polarInterrogative: ["verb", "subject", "object"],
-    openInterrogative: ["interrogativePronoun", "verb", "subject", "object"],
-   };
+    ...makeInterrogativeForms(declarative),
+  };
+}
+function makeInterrogativeForms(declarative) {
+  const randomNbr = random();
+
+  if (randomNbr < 0.4) {
+    // french / english style
+    return {
+      polarInterrogative: [...declarative].reverse(),
+      openInterrogative: [...declarative, "interrogativePronoun"].reverse(),
+    };
+  }
+
+  if (randomNbr < 0.6) {
+    return {
+      polarInterrogative: [...declarative, "interrogativeParticle"],
+      openInterrogative: [
+        "interrogativePronoun",
+        ...declarative,
+      ],
+    };
+  }
+
+  if (randomNbr < 0.8) {
+    return {
+      polarInterrogative: ["interrogativeParticle", ...declarative].reverse(),
+      openInterrogative: [
+        ...declarative,
+        "interrogativePronoun",
+      ].reverse(),
+    };
+  }
+
+  return {
+    polarInterrogative: ["interrogativeParticle", ...declarative].reverse(),
+    openInterrogative: [
+      "interrogativeParticle",
+      ...declarative,
+      "interrogativePronoun",
+    ].reverse(),
+  };
 }
 function makeClausesFormation() {
   const nounPhraseFormation = [

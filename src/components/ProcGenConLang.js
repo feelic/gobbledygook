@@ -16,7 +16,7 @@ import styles from "./ProcGenConLang.module.scss";
 import { setSeed } from "../gobbledygook/util/random";
 
 export default function ProcGenConLang() {
-  const [seed, setCurrentSeed] = useState("randome");
+  const [seed, setCurrentSeed] = useState("");
   const [lang, setLang] = useState();
   useEffect(() => {
     setSeed(seed);
@@ -24,34 +24,42 @@ export default function ProcGenConLang() {
   }, [seed]);
   const [voice, setVoice] = useState(DEFAULT_VOICE);
 
-  if (!lang) {
-    return <div>no language</div>;
-  }
-
   return (
     <section className={`procGenConLang`}>
+      <p>
+        <label htmlFor="seed">Seed:</label>{" "}
+        <input
+          id="seed"
+          type="text"
+          value={seed}
+          onChange={(e) => {
+            setCurrentSeed(e.target.value);
+          }}
+        />
+        <select
+          onChange={(e) => {
+            setVoice(e.target.value);
+          }}
+          value={voice}
+        >
+          {Object.keys(VOICES).map((v) => (
+            <option value={v} key={v}>
+              {VOICES[v]}
+            </option>
+          ))}
+        </select>
+      </p>
+      <hr />
+      {!lang || (!seed && <p>Input a seed to generate a language</p>) || (
+        <LanguageDescription lang={lang} voice={voice} />
+      )}
+    </section>
+  );
+}
+function LanguageDescription({ lang, voice }) {
+  return (
+    <Fragment>
       <h2>ProcGenConLang: {transliterate(lang, lang.name)} language</h2>
-      <label htmlFor="seed">Seed:</label>{" "}
-      <input
-        id="seed"
-        type="text"
-        value={seed}
-        onChange={(e) => {
-          setCurrentSeed(e.target.value);
-        }}
-      />
-      <select
-        onChange={(e) => {
-          setVoice(e.target.value);
-        }}
-        value={voice}
-      >
-        {Object.keys(VOICES).map((v) => (
-          <option value={v} key={v}>
-            {VOICES[v]}
-          </option>
-        ))}
-      </select>
       <ul className={styles.toc}>
         <li>
           <a href="#description">description</a>
@@ -66,8 +74,10 @@ export default function ProcGenConLang() {
           <a href="#raw">raw definition file</a>
         </li>
       </ul>
-      <h3 id="description">A short description of the {transliterate(lang, lang.name)} language</h3>
-      <ConLangDescription lang={lang}/>
+      <h3 id="description">
+        A short description of the {transliterate(lang, lang.name)} language
+      </h3>
+      <ConLangDescription lang={lang} />
       <h3 id="phrase-book">{transliterate(lang, lang.name)} phrase book</h3>
       {sentences.map((sentence) => {
         return (
@@ -95,9 +105,10 @@ export default function ProcGenConLang() {
       </ul>
       <h3 id="raw">{transliterate(lang, lang.name)} raw definition</h3>
       <pre className="codeBlock open">{JSON.stringify(lang, null, 2)}</pre>
-    </section>
+    </Fragment>
   );
 }
+
 function CountToTen({ lang, voice }) {
   const sentence = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((number) => {
     return makeNumber({ lang }, number);
@@ -114,6 +125,7 @@ function CountToTen({ lang, voice }) {
     </div>
   );
 }
+
 function Sentence({ lang, sentence, voice }) {
   try {
     const formedSentence = makeSentence(lang, sentence);

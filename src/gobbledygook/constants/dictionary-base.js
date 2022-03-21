@@ -30,6 +30,7 @@ export const interrogativeWords = [
   "who",
   "why",
   "how",
+  "interrogativeParticle",
 ];
 export const places = ["beach", "place", "castle", "tower", "cave"];
 export const things = ["treasure", "grass", "car"];
