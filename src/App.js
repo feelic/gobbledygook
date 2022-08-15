@@ -1,7 +1,6 @@
 import { Routes, Route, NavLink } from "react-router-dom";
 import ProcGenConLang from "./components/ProcGenConLang";
 import PhraseBook from "./components/PhraseBook";
-import Game from "./game/index";
 import About from "./components/About";
 import styles from "./App.module.scss";
 import "./App.css";
@@ -26,9 +25,8 @@ export default function App() {
       </p>
       <Routes>
         <Route path={`PhraseBook`} element={<PhraseBook />} />
-        // <Route path="/About" element={<About />} />
+        <Route path="/About" element={<About />} />
         <Route path={`/`} element={<ProcGenConLang />} />
-        // <Route path={`/`} element={<Game />} />
       </Routes>
 
       <footer>

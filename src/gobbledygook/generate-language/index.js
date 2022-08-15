@@ -4,6 +4,7 @@ import makeDictionary from "./make-dictionary";
 import makeDeclension from "./make-declension";
 import makePronouns from "./make-pronouns";
 import makeConjugation from "./make-conjugation";
+import makeCaseSystem from "./make-case-system";
 import {
   gaussian,
   random,
@@ -109,24 +110,6 @@ function makeGenders() {
   return randomFromArray(genderSystems);
 }
 
-function makeCaseSystem(morphologyType) {
-  const grammaticalCases = [
-    "nominative",
-    "vocative",
-    "accusative",
-    "dative",
-    "genitive",
-    "lative",
-    "instrumental",
-  ];
-  const caseSystem = {};
-
-  grammaticalCases.forEach((grammaticalCase) => {
-    caseSystem[grammaticalCase] = grammaticalCase;
-  });
-
-  return caseSystem;
-}
 function makeSentenceFormations() {
   const wordOrders = {
     SOV: { weight: 45 }, // SOV "She him loves." 45%
