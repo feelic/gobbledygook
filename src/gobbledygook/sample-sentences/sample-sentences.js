@@ -210,11 +210,10 @@ export const sheGoesToTheBeach = {
       id: "she",
     },
     verb: { verb: "go", tense: "present" },
-    object: {
+    adverbialClauses: [{
       id: "beach",
-      preposition: "to",
-      grammaticalCase: "accusative",
-    },
+      grammaticalCase: "lative",
+    }]
   },
 };
 
@@ -331,7 +330,7 @@ export const iHaveHiddenMyTreasure = {
     adverbialClauses: [
       {
         id: "cave",
-        preposition: "in",
+        grammaticalCase: "inessive",
       },
     ],
   },
@@ -344,7 +343,6 @@ export const bobsHorseLikesCarrots = {
       core: "horse",
       type: "animal",
       number: "singular",
-      determination: { type: "definite", owner: "bob", usePronoun: false },
       person: "thirdPerson",
     },
     carrots: {
@@ -710,10 +708,9 @@ export const whyAreTheseChickenHere = {
       id: "chicken"
     },
     verb: { verb: "be", tense: "present" },
-    object: {
-      id: "here",
-      type: "adverb",
-      grammaticalCase: "accusative",
+    adverbialClauses: {
+      id:"here",
+      grammaticalCase:"locative",
     }
   },
 };

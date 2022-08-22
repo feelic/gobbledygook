@@ -101,8 +101,6 @@ export const danish = {
         default: { singular: "{morpheme}", plural: "{morpheme}" },
 
         genitive: { singular: "{morpheme}s", plural: "{morpheme}s" },
-
-        lative: { singular: "til {morpheme}", plural: "til {morpheme}" }
       },
       adjective: {
         default: { default: "{morpheme}" }
@@ -113,6 +111,10 @@ export const danish = {
       superlative: {
         default: { default: "{morpheme}" }
       }
+    },
+    prepositions: {
+      lative:"til",
+      inessive:"i"
     }
   },
   conjugation: {

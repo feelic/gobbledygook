@@ -86,17 +86,7 @@ export const french = {
             default: { default: "{morpheme}" },
             masc: { singular: "{morpheme}", plural: "{morpheme}" },
             fem: { singular: "{morpheme}", plural: "{morpheme}" },
-          },
-          genitive: {
-            default: { default: "dɘ {morpheme}" },
-            masc: { singular: "dɘ {morpheme}", plural: "dɘ {morpheme}" },
-            fem: { singular: "dɘ {morpheme}", plural: "dɘ {morpheme}" },
-          },
-          lative: {
-            default: { default: "a {morpheme}" },
-            masc: { singular: "a {morpheme}", plural: "a {morpheme}" },
-            fem: { singular: "a {morpheme}", plural: "a {morpheme}" },
-          },
+          }
         },
       },
       adjective: {
@@ -208,6 +198,10 @@ export const french = {
         },
       },
     },
+    prepositions: {
+      lative: "a",
+      genitive: "dɘ"
+    }
   },
   conjugation: {
     rules: ["group", "tense", "person", "number"],

@@ -70,8 +70,6 @@ export const english = {
           default:  { singular: "{morpheme}", plural: "{morpheme}s" },
 
           genitive: { singular: "{morpheme}s", plural: "{morpheme}s" },
-
-          lative: { singular: "tu {morpheme}", plural: "tu {morpheme}" },
       },
       adjective: {
         default: {  default: "{morpheme}" } ,
@@ -82,6 +80,10 @@ export const english = {
       superlative: {
         default: {  default: "{morpheme}" } ,
       }
+    },
+    prepositions: {
+      lative:"tu",
+      inessive:"in"
     }
   },
   conjugation: {

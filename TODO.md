@@ -8,16 +8,16 @@ DONE
 * [x] shape out declension generation
 * [x] shape out conjugation generation
 * [x] avoid homonyms in vocabulary generation
-
-TODO
 * [x] add interrogative mode
 * [x] add interrogative forms in language generation
+
+TODO
+* [ ] extended case system
 * [ ] add demonstrative pronouns
 * [ ] add demonstrative forms in language generation
 * [ ] add negative phrases
 * [ ] add quantifiers
 * [ ] add conditional clauses
-* [ ] move "in a cave" preposition to inessive case
 * [ ] shape out case system generation
 * [ ] shape out sub clauses system generation
 * [ ] shape out determiners generation

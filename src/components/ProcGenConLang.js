@@ -2,15 +2,15 @@ import { useEffect, useState, Fragment } from "react";
 import { generateLanguage } from "../gobbledygook/generate-language/index";
 import {
   transliterate,
-  makeSentence,
   makeNumber,
-  getIPATranscript,
 } from "../gobbledygook/use-language";
 import sentences from "../gobbledygook/sample-sentences/index";
 import AudioButton from "./AudioButton";
 import { VOICES, DEFAULT_VOICE } from "../constants/voices";
 import InteractiveTranscription from "./InteractiveTranscription";
 import ConLangDescription from "./ConLangDescription";
+import SentenceMaker from "./SentenceMaker/index";
+import Sentence from "./Sentence";           
 import styles from "./ProcGenConLang.module.scss";
 
 import { setSeed } from "../gobbledygook/util/random";
@@ -78,6 +78,8 @@ function LanguageDescription({ lang, voice }) {
         A short description of the {transliterate(lang, lang.name)} language
       </h3>
       <ConLangDescription lang={lang} />
+      <h3>Make your own sentences</h3>
+      <SentenceMaker lang={lang} voice={voice} />
       <h3 id="phrase-book">{transliterate(lang, lang.name)} phrase book</h3>
       {sentences.map((sentence) => {
         return (
@@ -126,36 +128,3 @@ function CountToTen({ lang, voice }) {
   );
 }
 
-function Sentence({ lang, sentence, voice }) {
-  try {
-    const formedSentence = makeSentence(lang, sentence);
-
-    return (
-      <div className="sentenceBlock">
-        <InteractiveTranscription lang={lang} sentence={formedSentence} />
-        <p>
-          <AudioButton
-            sentence={getIPATranscript(formedSentence)}
-            voice={voice}
-          />
-          <br />
-          <span className="transcript">{sentence.transcript}</span>
-        </p>
-      </div>
-    );
-  } catch (error) {
-    return (
-      <Fragment>
-        <p>
-          Couldn't say{" "}
-          <span className="originalSentence">"{sentence.transcript}"</span> in{" "}
-          {transliterate(lang, lang.name)}
-          <br />
-          <span className="errorDetail">
-            error {error.stack.split("\n").slice(1, 2)}
-          </span>
-        </p>
-      </Fragment>
-    );
-  }
-}

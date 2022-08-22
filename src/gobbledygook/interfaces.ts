@@ -25,6 +25,7 @@ export interface Language {
 export interface FormTable {
   rules: Array<string>;
   forms: any;
+  prepositions: any;
 }
 
 export type tRuleName =

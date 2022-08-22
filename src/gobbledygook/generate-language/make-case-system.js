@@ -1,6 +1,4 @@
-import { pointer } from "@testing-library/user-event/dist/types/pointer";
-
-function makeCaseSystem(morphologyType) {
+export default function makeCaseSystem(morphologyType) {
     const grammaticalCases = [
       "nominative",
       "vocative",
@@ -18,48 +16,113 @@ function makeCaseSystem(morphologyType) {
   
     return caseSystem;
   }
-
+const prepositions = {
+  
+    // const quantifiers = {
+      all: { morpheme: "" },
+      some: { morpheme: "" },
+      many: { morpheme: "" },
+      few: { morpheme: "" },
+      no: { morpheme: "" },
+      // };
+      // const relativePronouns {
+      that: {morpheme: ""},
+      // };
+      // const distributive = {
+      each: { morpheme: "" },
+      any: { morpheme: "" },
+      // };
+      // const interrogative = {
+      what: { morpheme: "" },
+      which: { morpheme: "" },
+      when: { morpheme: "" },
+      where: { morpheme: "" },
+      who: { morpheme: "" },
+      why: { morpheme: "" },
+      how: { morpheme: "" },
+      // };
+      // const prepositions = {
+      than: {morpheme: ""},
+      to: { morpheme: "" },
+      up: { morpheme: "" },
+      down: { morpheme: "" },
+      above: { morpheme: "" },
+      upon: { morpheme: "" },
+      under: { morpheme: "" },
+      around: { morpheme: "" },
+      through: { morpheme: "" },
+      infront: { morpheme: "" },
+      behind: { morpheme: "" },
+      in: { morpheme: "" },
+      out: { morpheme: "" },
+      into: { morpheme: "" },
+      outof: { morpheme: "" },
+      against: { morpheme: "" },
+      beside: { morpheme: "" },
+      from: { morpheme: "" },
+      toward: { morpheme: "" },
+      with: { morpheme: "" },
+      by: { morpheme: "" },
+      for: { morpheme: "" },
+      // };
+}
   const cases = [
-    "privative", // "without"
-    //absolutive + ergative -> to consider at some point
+    "nominative", // subject
     "accusative", // "direct object of transitive verb"
+    "dative", // "recipient of action" "to me" "indirect object"
+    "genitive", // of, 's
+      "possessive", //
+    "instrumental", //using
+    "privative", // "without"
     "comitative", // "together with" "in the company of"
     "benefactive", // "for"
+
     "causative", // "because"
     "concessive", // "although"
-    "dative", // "recipient of action" "to me" "indirect object"
-    "evitative", // feared "lest"
-
-    "instrumental", //using
-
-    "translative", // to a state
-    "exessive", // from state
-    "essive", // in a state
-
     "proprietive", //propriety of having X
 
-    "genitive", // of, 's
-        "possessive", // 
+    "evitative", // feared "lest"
 
+    "translative", // to a state
+    "essive", // in a state
+    //beside
+    //against
+    //around
+    //through
     "locative",
-    "adessive", // "at"
-    "ablative", //"from" / "off"
+    "ablative", //"from" "off" away
+    "elative", // "from" "out of"
+    "exessive", // outside out
+    "lative", //"to" toward
+
+    "adessive", // "on"
     "allative", // "onto"
+    "delative", //"off of", "down from"
+
     "inessive", // "in"
     "illative", // into
-    "delative", //"off of", "down from"
-    "elative", // "out of"
     "inelative", // "from inside"
-    "superessive", // "on top of"
+
+    "superessive", // "above of"
     "superlative", // to above
     "superelative", // from above
+
+    "subessive", // under
+    "sublative", // to under
+    "subelative", // from under
+
     "prolative", // via
     "prosecutive", // across, along
-    "subessive", // under
-    "subelative", // from under
-    "sublative", // down under
-    "postessive", // after
 
-    "nominative", // subject
+    "postessive", // behind
+    "postlative", // to behind
+    "postelative", // from behind
+ 
+    "preessive", // in front of
+    "prelative", // to in front of
+    "preelative", // from in front of
 
+    //before
+    //after
+    //during
   ]

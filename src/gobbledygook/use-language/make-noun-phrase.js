@@ -50,7 +50,7 @@ export function makeNounPhrase(context, nounEntity) {
     .map((pos) => {
       switch (pos) {
         case "preposition":
-          return getPreposition(context, nounDefinition.preposition);
+          return getPreposition(context, grammaticalCase);
         case "determiner":
           return getDeterminer(context, nounDefinition);
         case "preadjectives":

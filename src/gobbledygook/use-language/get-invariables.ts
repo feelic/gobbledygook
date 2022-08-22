@@ -1,4 +1,4 @@
-import { PoS, Context, Language, tPosCode } from "../interfaces";
+import { PoS, Context, tPosCode } from "../interfaces";
 import {posCodesLabels} from "../constants/pos-codes";
 
 function getInvariable(
@@ -24,8 +24,14 @@ export function getConjunction(context: Context, invariable: string) {
 export function getAdverb(context: Context, invariable: string) {
   return getInvariable("Adv", context, invariable);
 }
-export function getPreposition(context: Context, invariable: string) {
-  return getInvariable("Pre", context, invariable);
+export function getPreposition(context: Context, grammaticalCase: string) {
+  const { lang } = context;
+
+  return {
+    pos:"Pre",
+    form: lang.declension.prepositions[grammaticalCase] || "",
+    meaning: `${grammaticalCase} preposition`
+  };
 }
 export function getInterrogative(context: Context, invariable: string) {
   return getInvariable("Int", context, invariable);
