@@ -23,12 +23,3 @@ TODO
 * [ ] shape out determiners generation
 * [ ] update declension form tables for all numbers of rules
 
-EXTRA/ADVANCED FEATURES
-* [ ] add evidentials support
-
-DECIPHER MODE
-* [ ] inscription view
-* [ ] take notes on words
-* [ ] decipher script
-* [ ] artefact + context
-* [ ] general game UI

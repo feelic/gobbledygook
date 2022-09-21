@@ -1,4 +1,14 @@
-export default function makeCaseSystem(morphologyType) {
+export function makeMorphologyType() {
+  return randomFromArray([
+    "inflectional",
+    "semiFlectional",
+    "analytic",
+    // "agglutinative", i'll do that later
+  ]);
+}
+
+export function makeCaseSystem(morphologyType) {
+  //morphosyntactic alignment: later 
     const grammaticalCases = [
       "nominative",
       "vocative",
@@ -16,6 +26,7 @@ export default function makeCaseSystem(morphologyType) {
   
     return caseSystem;
   }
+
 const prepositions = {
   
     // const quantifiers = {
@@ -126,3 +137,16 @@ const prepositions = {
     //after
     //during
   ]
+
+// - ÉNUMERATION : D'abord , en premier lieu, enfin, ensuite...
+// - ADDITION : Aussi, de même, de plus, encore, et, également...
+// - LIAISON / RÉSUMÉ : Bref, d'ailleurs, donc, ensuite, en somme, en outre , or, par ailleurs, puis...
+// - EXPLICATION : C'est-à-dire, en effet, effectivement, étant donné que, puisque...
+// - ILLUSTRATION / COMPARAISON : Entre autres, notamment, par exemple, autant dire que...
+// - OPPOSITION : Au contraire, néanmoins, en revanche, mais, pourtant, quoique, toutefois...
+// - CONSÉQUENCE : Alors, ainsi, c'est pourquoi, d'où, dans ces conditions, de sorte que, donc, en conséquence, par conséquent...
+// - TERMINAISON / RÉSULTAT : Ainsi, étant donné que ... 
+// - BUT : Pour, En vue de, pour que...
+// - CONCESSION : Certes, sans doute, effectivement, à la riueur, j'admets que, je reconnais que, il est vrai que ...
+// - CONDITION :  À moins de/que, à condition que ...
+// - CAUSE : Car, parce que ...

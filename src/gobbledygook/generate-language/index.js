@@ -4,7 +4,7 @@ import makeDictionary from "./make-dictionary";
 import makeDeclension from "./make-declension";
 import makePronouns from "./make-pronouns";
 import makeConjugation from "./make-conjugation";
-import makeCaseSystem from "./make-case-system";
+import {makeCaseSystem, makeMorphologyType} from "./make-case-system";
 import {
   gaussian,
   random,
@@ -84,15 +84,6 @@ export function generateLanguage() {
 
   console.log(language);
   return language;
-}
-
-function makeMorphologyType() {
-  return randomFromArray([
-    "inflectional",
-    "semiFlectional",
-    "isolating",
-    // "agglutinative", i'll do that later
-  ]);
 }
 
 // classifier systems should probably go in there too at some point
