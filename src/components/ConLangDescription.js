@@ -42,7 +42,7 @@ function RuleDescription({ lang, rule }) {
     gender: lang.genders,
     tense: [...new Set(Object.values(lang.conjugation.tenseSystem))],
     declensionGroup: lang.declension.declensionGroups,
-    grammaticalCase: [...new Set(Object.values(lang.caseSystem))],
+    grammaticalCase: lang.grammaticalCases,
   };
 
   if (rules.length !== 3) {
@@ -53,7 +53,7 @@ function RuleDescription({ lang, rule }) {
     <div>
       {ruleOptions[rules[0]].map((option) => {
         return (
-          <div>
+          <div key={option}>
             <h4>{option}</h4>
             <FormTable
               lang={lang}
@@ -80,14 +80,14 @@ function FormTable({ lang, rules, rule, ruleOptions, formParameters }) {
         <tr>
           <th>{rule}</th>
           {ruleOptions[rules[1]].map((option) => {
-            return <th>{option}</th>;
+            return <th key={option}>{option}</th>;
           })}
         </tr>
       </thead>
       <tbody>
         {ruleOptions[rules[0]].map((option0) => {
           return (
-            <tr>
+            <tr key={option0}>
               <td>{option0}</td>
               {ruleOptions[rules[1]].map((option1) => {
                 const parameters = {

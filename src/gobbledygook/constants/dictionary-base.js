@@ -35,37 +35,4 @@ export const interrogativeWords = [
 export const places = ["beach", "place", "castle", "tower", "cave"];
 export const things = ["treasure", "grass", "car"];
 export const adverbs = ["very", "really", "so", "here"];
-export const utilities = [
-  "than",
-  "that",
-  "and",
-  "tall",
-  "all",
-  "some",
-  "many",
-  "few",
-  "no",
-  "each",
-  "any",
-  "to",
-  "up",
-  "down",
-  "above",
-  "upon",
-  "under",
-  "around",
-  "through",
-  "infront",
-  "behind",
-  "in",
-  "out",
-  "into",
-  "outof",
-  "against",
-  "beside",
-  "from",
-  "toward",
-  "with",
-  "by",
-  "for",
-];
+

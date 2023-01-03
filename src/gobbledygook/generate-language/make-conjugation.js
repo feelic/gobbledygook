@@ -3,7 +3,7 @@ import { makeMorpheme } from "./make-morpheme";
 import { getOrdinalNumber } from "../util";
 
 export default function makeConjugation(phonology, morphologyType) {
-  if (morphologyType === "isolating") {
+  if (morphologyType === "analytic") {
     return {
       rules: ["tense"],
       forms: { default: "{morpheme}" },
@@ -26,9 +26,9 @@ export default function makeConjugation(phonology, morphologyType) {
   if (conjugationGroups) {
     rules.push("conjugationGroup");
   }
-  if (tenses) {
-    rules.push("tense");
-  }
+  
+  rules.push("tense");
+
   if (random() > 0.5) {
     rules.push("person");
   }
@@ -84,7 +84,7 @@ function makeTenses() {
     tenses.push("conditional");
   }
   if (tenses.length === 1) {
-    return;
+    return ["default"];
   }
   return tenses;
 }

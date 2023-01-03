@@ -30,7 +30,7 @@ export default function ConLangConsonantChart(props) {
               <td>{lang.consonants['m̥'] && 'm̥'}{lang.consonants['m'] && 'm'}</td>
               <td>{lang.consonants['ɱ'] && 'ɱ'}</td>
               <td>{lang.consonants['n̼'] && 'n̼'}</td>
-              <td colspan="3">{lang.consonants['n̥'] && 'n̥'}{lang.consonants['n'] && 'n'}</td>
+              <td colSpan="3">{lang.consonants['n̥'] && 'n̥'}{lang.consonants['n'] && 'n'}</td>
               <td>{lang.consonants['ɳ̊'] && 'ɳ̊'}{lang.consonants['ɳ'] && 'ɳ'}</td>
               <td>{lang.consonants['ɲ̊'] && 'ɲ̊'}{lang.consonants['ɲ'] && 'ɲ'}</td>
               <td>{lang.consonants['ŋ̊'] && 'ŋ̊'}{lang.consonants['ŋ'] && 'ŋ'}</td>
@@ -43,7 +43,7 @@ export default function ConLangConsonantChart(props) {
               <td>{lang.consonants['p'] && 'p'}	{lang.consonants['b'] && 'b'}</td>
               <td>{lang.consonants['p̪'] && 'p̪'} {lang.consonants['b̪'] && 'b̪'}</td>
               <td>{lang.consonants['t̼'] && 't̼'} {lang.consonants['d̼'] && 'd̼'}</td>
-              <td colspan="3">{lang.consonants['t'] && 't'}	{lang.consonants['d'] && 'd'}</td>
+              <td colSpan="3">{lang.consonants['t'] && 't'}	{lang.consonants['d'] && 'd'}</td>
               <td>{lang.consonants['ʈ'] && 'ʈ'}	{lang.consonants['ɖ'] && 'ɖ'}</td>
               <td>{lang.consonants['c'] && 'c'}	{lang.consonants['ɟ'] && 'ɟ'}</td>
               <td>{lang.consonants['k'] && 'k'}	{lang.consonants['ɡ'] && 'ɡ'}</td>
@@ -56,7 +56,7 @@ export default function ConLangConsonantChart(props) {
               <td></td>
               <td></td>
               <td></td>
-	             <td colspan="2">{lang.consonants['ts'] && 'ts'}	{lang.consonants['dz'] && 'dz'}</td>
+	             <td colSpan="2">{lang.consonants['ts'] && 'ts'}	{lang.consonants['dz'] && 'dz'}</td>
                <td>{lang.consonants['t̠ʃ'] && 't̠ʃ'}	{lang.consonants['d̠ʒ'] && 'd̠ʒ'}</td>
                <td>{lang.consonants['ʈʂ'] && 'ʈʂ'}	{lang.consonants['ɖʐ'] && 'ɖʐ'}</td>
                <td>{lang.consonants['tɕ'] && 'tɕ'}	{lang.consonants['dʑ'] && 'dʑ'}</td>
@@ -70,7 +70,7 @@ export default function ConLangConsonantChart(props) {
               <td></td>
               <td></td>
               <td></td>
-              <td colspan="2">{lang.consonants['s'] && 's'}	{lang.consonants['z'] && 'z'}</td>
+              <td colSpan="2">{lang.consonants['s'] && 's'}	{lang.consonants['z'] && 'z'}</td>
               <td>{lang.consonants['ʃ'] && 'ʃ'}	{lang.consonants['ʒ'] && 'ʒ'}</td>
               <td>{lang.consonants['ʂ'] && 'ʂ'}	{lang.consonants['ʐ'] && 'ʐ'}</td>
               <td>{lang.consonants['ɕ'] && 'ɕ'}	{lang.consonants['ʑ'] && 'ʑ'}</td>
@@ -99,7 +99,7 @@ export default function ConLangConsonantChart(props) {
               <td></td>
               <td>{lang.consonants['ʋ'] && 'ʋ'}</td>
               <td></td>
-              <td colspan="2">{lang.consonants['ɹ'] && 'ɹ'}</td>
+              <td colSpan="2">{lang.consonants['ɹ'] && 'ɹ'}</td>
               <td>{lang.consonants['ɻ'] && 'ɻ'}</td>
               <td>{lang.consonants['j'] && 'j'}</td>
               <td>{lang.consonants['ɰ'] && 'ɰ'}</td>

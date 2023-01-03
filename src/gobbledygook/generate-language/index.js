@@ -1,7 +1,6 @@
 import { makePhonemeSet } from "./make-phonology";
 import { makeMorpheme, resetExistingWords } from "./make-morpheme";
 import makeDictionary from "./make-dictionary";
-import makeDeclension from "./make-declension";
 import makePronouns from "./make-pronouns";
 import makeConjugation from "./make-conjugation";
 import {makeCaseSystem, makeMorphologyType} from "./make-case-system";
@@ -24,17 +23,15 @@ export function generateLanguage() {
 
   const morphologyType = makeMorphologyType();
   const genders = makeGenders();
-  const caseSystem = makeCaseSystem(morphologyType);
-  const cases = [...new Set(Object.values(caseSystem))];
-  const pronouns = makePronouns(phonology, morphologyType, cases, genders);
+  const {grammaticalCases, declension} = makeCaseSystem(morphologyType, phonology, genders);
+  const pronouns = makePronouns(phonology, morphologyType, grammaticalCases, genders);
   const determiners = makeDeterminers(
     phonology,
     morphologyType,
-    cases,
+    grammaticalCases,
     genders
   );
 
-  const declension = makeDeclension(phonology, morphologyType, cases, genders);
   const conjugation = makeConjugation(phonology, morphologyType);
 
   const morphemeDictionary = makeDictionary(phonology, {
@@ -62,7 +59,7 @@ export function generateLanguage() {
   const language = {
     name,
     morphologyType,
-    caseSystem,
+    grammaticalCases,
     genders,
     pronouns,
     determiners,

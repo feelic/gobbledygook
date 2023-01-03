@@ -17,7 +17,7 @@ export default function SentenceMaker({ lang, voice }) {
       {languages.map((language) => {
         return (
           <Sentence
-            key={sentence.transcript}
+            key={sentence.transcript + language.name}
             lang={language}
             sentence={sentence}
             voice={voice}

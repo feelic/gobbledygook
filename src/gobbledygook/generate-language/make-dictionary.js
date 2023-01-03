@@ -10,7 +10,6 @@ import {
   places,
   things,
   adverbs,
-  utilities,
 } from "../constants/dictionary-base";
 import { makeMorpheme } from "./make-morpheme";
 import { gaussian, randomFromArray } from "../util/random";
@@ -62,7 +61,6 @@ export default function makeDictionary(phonology, groups) {
       "adjective"
     ),
     ...makeMorphemesFromDictionary(adverbs, gaussian(2.5, 1.2), 2, "adverb"),
-    ...makeMorphemesFromDictionary(utilities, gaussian(1.5, 1.2), 1),
   };
 
   return dictionaryBase;

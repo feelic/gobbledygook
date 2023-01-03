@@ -8,14 +8,6 @@ export default function makeDeclension(
   cases,
   genders
 ) {
-  if (morphologyType === "isolating") {
-    return {
-      declensionGroups: [],
-      rules: ["type"],
-      forms: { default: "{morpheme}", adjective: "{morpheme}" },
-    };
-  }
-
   const rules = ["type"];
   const types = ["noun", "adjective"];
   const declensionGroups = makeDeclensionGroups(morphologyType);
@@ -24,7 +16,7 @@ export default function makeDeclension(
   if (declensionGroups) {
     rules.push("declensionGroup");
   }
-  if (cases && random() > 0.5) {
+  if (cases && cases.length && random() > 0.5) {
     rules.push("grammaticalCase");
   }
   if (genders && random() > 0.5) {
@@ -56,7 +48,10 @@ function makeForms(phonology, rules, ruleOptions) {
     }, {});
   }
   return ruleOptions[rules[0]].reduce((prev, curr) => {
-    return { ...prev, [curr]: `{morpheme}${makeMorpheme(phonology, gaussian(1, 1)(), false)}` };
+    return {
+      ...prev,
+      [curr]: `{morpheme}${makeMorpheme(phonology, gaussian(1, 1)(), false)}`,
+    };
   }, {});
 }
 
