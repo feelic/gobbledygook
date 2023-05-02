@@ -4,13 +4,13 @@ const dictionary = {
   love: { morpheme: "elsɡə" },
   gray: { morpheme: "gʁo" },
   orange: { morpheme: "orandʒ" },
-  pink: {morpheme: "lysəʁœðˀ"},
+  pink: { morpheme: "lysəʁœðˀ" },
   small: { morpheme: "lilə" },
   give: {
     morpheme: "giw",
     irregular: {
       default: "giwɐ",
-      past: "gæ" ,
+      past: "gæ",
     }
   },
   go: { morpheme: "go" },
@@ -23,6 +23,7 @@ const dictionary = {
   beach: { morpheme: "sdʀan" },
   chicken: { morpheme: "kyleŋ" },
   dog: { morpheme: "hun" },
+  pancake: { morpheme: "pandekej" },
   lose: {
     morpheme: "",
   },
@@ -41,6 +42,7 @@ const dictionary = {
   treasure: { morpheme: "" },
   castle: { morpheme: "" },
   tower: { morpheme: "" },
+  make: { morpheme: "lɛw" },
   be: {
     morpheme: "eʀ",
     irregular: {
@@ -48,7 +50,7 @@ const dictionary = {
       past: "vaʀ"
     },
   },
-  car: {morpheme: "bil"},
+  car: { morpheme: "bil" },
   round: { morpheme: "" },
   ugly: { morpheme: "" },
   dumb: { morpheme: "" },
@@ -63,7 +65,7 @@ const dictionary = {
   very: { morpheme: "" },
   so: { morpheme: "" },
   really: { morpheme: "" },
-  tall: { morpheme: "", comparative: '', superlative:'' },
+  tall: { morpheme: "", comparative: '', superlative: '' },
   cave: { morpheme: "" },
   // const quantifiers = {
   all: { morpheme: "" },
@@ -73,7 +75,7 @@ const dictionary = {
   no: { morpheme: "" },
   // };
   // const relativePronouns {
-  that: {morpheme: ""},
+  that: { morpheme: "" },
   // };
   // const distributive = {
   each: { morpheme: "" },
@@ -89,7 +91,7 @@ const dictionary = {
   how: { morpheme: "" },
   // };
   // const prepositions = {
-  than: {morpheme: ""},
+  than: { morpheme: "" },
   to: { morpheme: "" },
   up: { morpheme: "" },
   down: { morpheme: "" },

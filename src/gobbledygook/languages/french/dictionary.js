@@ -7,7 +7,7 @@ const dictionary = {
     declensionGroup: "zEnding",
   },
   orange: { morpheme: "oʁɑ̃ʒ" },
-  pink: {morpheme: "ʁoz"},
+  pink: { morpheme: "ʁoz" },
   small: { morpheme: "pɘti", declensionGroup: "tEnding" },
   give: { morpheme: "don" },
   go: {
@@ -48,7 +48,8 @@ const dictionary = {
   },
   beach: { morpheme: "plaʒ", gender: "fem" },
   chicken: { morpheme: "pulɛ", gender: "masc" },
-  dog: { morpheme: "ʃiɛ̃" },
+  dog: { morpheme: "ʃiɛ̃", gender: "masc" },
+  pancake: { morpheme: "pɑ̃kɛk" },
   lose: {
     morpheme: "peʁ",
     irregular: {
@@ -64,44 +65,53 @@ const dictionary = {
   find: {
     morpheme: "tʁuv",
   },
-  take: { morpheme: "pʁɑ̃",
-  irregular: {
-    default: {
+  take: {
+    morpheme: "pʁɑ̃",
+    irregular: {
       default: {
-        default: { default: "{morpheme}" },
+        default: {
+          default: { default: "{morpheme}" },
+        },
+        past: { default: { default: "a pʁi" } },
       },
-      past: { default: { default: "a pʁi" } },
     },
-  }, },
-  sing: { morpheme: "ʃɑ̃t",
-  irregular: {
-    default: {
+  },
+  sing: {
+    morpheme: "ʃɑ̃t",
+    irregular: {
       default: {
-        default: { default: "{morpheme}" },
+        default: {
+          default: { default: "{morpheme}" },
+        },
+        past: { default: { default: "a ʃɑ̃te" } },
       },
-      past: { default: { default: "a ʃɑ̃te" } },
     },
-  }, },
+  },
   group: { morpheme: "gʁup", gender: "masc" },
   place: { morpheme: "plas", gender: "fem" },
   hide: { morpheme: "kaʃ" },
   treasure: { morpheme: "tʁezoʁ", gender: "masc" },
   castle: { morpheme: "ʃato", gender: "masc" },
   tower: { morpheme: "tuʁ", gender: "fem" },
-  be: { morpheme: "ɛ",
-  irregular: {
-    default: {
+  make: {
+    morpheme: "fɛ"
+  },
+  be: {
+    morpheme: "ɛ",
+    irregular: {
       default: {
-        firstPerson: { singular: "syi", plural: "som" },
-        secondPerson: { singular: "ɛ", plural: "ɛt" },
-        thirdPerson: { singular: "ɛ", plural: "sɔ̃" },
-      },
-      past: {
-        default: { default: "hɪd" },
+        default: {
+          firstPerson: { singular: "syi", plural: "som" },
+          secondPerson: { singular: "ɛ", plural: "ɛt" },
+          thirdPerson: { singular: "ɛ", plural: "sɔ̃" },
+        },
+        past: {
+          default: { default: "hɪd" },
+        },
       },
     },
-  }, },
-  car: {morpheme: "vwatyʁ", gender: "fem"},
+  },
+  car: { morpheme: "vwatyʁ", gender: "fem" },
   round: { morpheme: "ʁɔ̃", declensionGroup: "dEnding" },
   ugly: { morpheme: "mɔʃ" },
   dumb: { morpheme: "kɔ̃" },
@@ -116,54 +126,54 @@ const dictionary = {
   very: { morpheme: "tʁɛ" },
   really: { morpheme: "vʁɛmɑ̃" },
   so: { morpheme: "osi" },
-  tall: {morpheme: 'gʁɑ̃'},
-  cave: {morpheme: 'gʁot', gender: "fem"},
+  tall: { morpheme: 'gʁɑ̃' },
+  cave: { morpheme: 'gʁot', gender: "fem" },
   // const quantifiers = {
-  all: {morpheme:"tu"},
-  some: {morpheme:"kelk"},
-  many: {morpheme:"boku"},
-  few: {morpheme:"pɘ"},
-  no: {morpheme:"okɛ̃"},
+  all: { morpheme: "tu" },
+  some: { morpheme: "kelk" },
+  many: { morpheme: "boku" },
+  few: { morpheme: "pɘ" },
+  no: { morpheme: "okɛ̃" },
   // };
   // const relativePronouns {
-  that: {morpheme: "kɘ"},
+  that: { morpheme: "kɘ" },
   // };
   // const distributive = {
-  each: {morpheme:"ʃak"},
-  any: {morpheme:"tu"},
+  each: { morpheme: "ʃak" },
+  any: { morpheme: "tu" },
   // };
   // const interrogative = {
-  what: {morpheme:"kɘ"},
-  which: {morpheme:"kɛl"},
-  when: {morpheme:"kɑ̃"},
-  where: {morpheme:"u"},
-  who: {morpheme:"ki"},
-  why: {morpheme:"puʁkwa"},
-  how: {morpheme:"komɑ̃"},
+  what: { morpheme: "kɘ" },
+  which: { morpheme: "kɛl" },
+  when: { morpheme: "kɑ̃" },
+  where: { morpheme: "u" },
+  who: { morpheme: "ki" },
+  why: { morpheme: "puʁkwa" },
+  how: { morpheme: "komɑ̃" },
   // };
   // const prepositions = {
-  than: {morpheme: "kɘ"},
-  to: {morpheme:"a"},
-  up: {morpheme:"o dɘsy"},
-  down: {morpheme:"ɑ̃ dɘsu"},
-  above: {morpheme:"o dɘsy"},
-  upon: {morpheme:"syʁ"},
-  under: {morpheme:"su"},
-  around: {morpheme:"otuʁ"},
-  through: {morpheme:"a tʁavɛʁ"},
-  infront: {morpheme:"dɘvɑ̃"},
-  behind: {morpheme:"dɛʁiɛʁ"},
-  in: {morpheme:"dɑ̃"},
-  out: {morpheme:"ɑ̃ deoʁ"},
-  into: {morpheme:"dɑ̃"},
-  outof: {morpheme:"oʁ"},
-  against: {morpheme:"kɔ̃tʁ"},
-  beside: {morpheme:"a kote"},
-  from: {morpheme:"dɘ"},
-  toward: {morpheme:"vɛʁ"},
-  with: {morpheme:"avɛk"},
-  by: {morpheme:"paʁ"},
-  for: {morpheme:"puʁ"},
+  than: { morpheme: "kɘ" },
+  to: { morpheme: "a" },
+  up: { morpheme: "o dɘsy" },
+  down: { morpheme: "ɑ̃ dɘsu" },
+  above: { morpheme: "o dɘsy" },
+  upon: { morpheme: "syʁ" },
+  under: { morpheme: "su" },
+  around: { morpheme: "otuʁ" },
+  through: { morpheme: "a tʁavɛʁ" },
+  infront: { morpheme: "dɘvɑ̃" },
+  behind: { morpheme: "dɛʁiɛʁ" },
+  in: { morpheme: "dɑ̃" },
+  out: { morpheme: "ɑ̃ deoʁ" },
+  into: { morpheme: "dɑ̃" },
+  outof: { morpheme: "oʁ" },
+  against: { morpheme: "kɔ̃tʁ" },
+  beside: { morpheme: "a kote" },
+  from: { morpheme: "dɘ" },
+  toward: { morpheme: "vɛʁ" },
+  with: { morpheme: "avɛk" },
+  by: { morpheme: "paʁ" },
+  for: { morpheme: "puʁ" },
   // };
 };
 

@@ -24,6 +24,7 @@ import {
   whereIsTheDog,
   whyAreTheseChickenHere,
   whyAreYouSoDumb,
+  iMakeAPancakeForMyDog,
 } from "./sample-sentences.js";
 
 const sentences = [
@@ -52,6 +53,7 @@ const sentences = [
   // whereIsTheDog,
   whyAreTheseChickenHere,
   // whyAreYouSoDumb,
+  iMakeAPancakeForMyDog
 ];
 export default sentences;
 

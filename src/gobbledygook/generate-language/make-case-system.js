@@ -29,7 +29,7 @@ export function makeCaseSystem(morphologyType, phonology, genders) {
         ...makeDeclension(phonology, morphologyType, cases, genders),
         prepositions: {},
       },
-      grammaticalCases: cases,
+      grammaticalCases: [...new Set(Object.keys(cases))],
     };
   }
 
@@ -59,7 +59,7 @@ export function makeCaseSystem(morphologyType, phonology, genders) {
         ...makeDeclension(phonology, morphologyType, cases, genders),
         prepositions: makePrepositions(phonology, prepositionsCases)
       },
-      grammaticalCases: cases,
+      grammaticalCases: [...new Set(Object.keys(cases))],
     };
   }
 
@@ -83,7 +83,7 @@ export function makeCaseSystem(morphologyType, phonology, genders) {
   };
 }
 
-function makePrepositions (phonology, grammaticalCases) {
+function makePrepositions(phonology, grammaticalCases) {
   let prepositions = {};
 
   grammaticalCases.forEach((prepositionCase) => {

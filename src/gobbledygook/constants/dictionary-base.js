@@ -8,6 +8,7 @@ export const actions = [
   "speak",
   "give",
   "take",
+  "make",
   "go",
   "come",
   "bring",
@@ -33,6 +34,6 @@ export const interrogativeWords = [
   "interrogativeParticle",
 ];
 export const places = ["beach", "place", "castle", "tower", "cave"];
-export const things = ["treasure", "grass", "car"];
+export const things = ["treasure", "grass", "car", "pancake"];
 export const adverbs = ["very", "really", "so", "here"];
 

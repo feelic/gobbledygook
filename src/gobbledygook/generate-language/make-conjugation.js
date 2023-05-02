@@ -26,7 +26,7 @@ export default function makeConjugation(phonology, morphologyType) {
   if (conjugationGroups) {
     rules.push("conjugationGroup");
   }
-  
+
   rules.push("tense");
 
   if (random() > 0.5) {

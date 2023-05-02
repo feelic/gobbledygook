@@ -4,7 +4,7 @@ const dictionary = {
   love: { morpheme: "lov" },
   gray: { morpheme: "greɪ" },
   orange: { morpheme: "orɪndʒ" },
-  pink: {morpheme: "pink"},
+  pink: { morpheme: "pink" },
   small: { morpheme: "smɔl" },
   give: {
     morpheme: "giv",
@@ -45,6 +45,7 @@ const dictionary = {
   beach: { morpheme: "bitʃ" },
   chicken: { morpheme: "tʃɪkɪn" },
   dog: { morpheme: "dɒɡ" },
+  pancake: { morpheme: "pankeɪk" },
   lose: {
     morpheme: "luz",
     irregular: {
@@ -85,16 +86,18 @@ const dictionary = {
       },
     },
   },
-  sing: { morpheme: "siŋ",
-  irregular: {
-    default: {
+  sing: {
+    morpheme: "siŋ",
+    irregular: {
       default: {
-        default: { default: "{morpheme}" },
-        thirdPerson: { singular: "{morpheme}s", plural: "{morpheme}" },
+        default: {
+          default: { default: "{morpheme}" },
+          thirdPerson: { singular: "{morpheme}s", plural: "{morpheme}" },
+        },
+        past: { default: { default: "saŋ" } },
       },
-      past: { default: { default: "saŋ" } },
     },
-  }, },
+  },
   group: { morpheme: "grup" },
   place: { morpheme: "pleɪs" },
   hide: {
@@ -114,6 +117,9 @@ const dictionary = {
   treasure: { morpheme: "trɛʒə" },
   castle: { morpheme: "kɑsəl" },
   tower: { morpheme: "taʊər" },
+  make: {
+    morpheme: "maɪk"
+  },
   be: {
     morpheme: "bi",
     irregular: {
@@ -129,7 +135,7 @@ const dictionary = {
       },
     },
   },
-  car: {morpheme: "kɑr"},
+  car: { morpheme: "kɑr" },
   round: { morpheme: "raʊnd" },
   ugly: { morpheme: "əɡli" },
   dumb: { morpheme: "dʌm" },
@@ -144,7 +150,7 @@ const dictionary = {
   very: { morpheme: "vɛri" },
   so: { morpheme: "so" },
   really: { morpheme: "rɪli" },
-  tall: { morpheme: "tɔl", comparative: 'tɔlər', superlative:'tɔləst' },
+  tall: { morpheme: "tɔl", comparative: 'tɔlər', superlative: 'tɔləst' },
   cave: { morpheme: "keɪv" },
   // const quantifiers = {
   all: { morpheme: "ɔl" },
@@ -154,7 +160,7 @@ const dictionary = {
   no: { morpheme: "no" },
   // };
   // const relativePronouns {
-  that: {morpheme: "ðat"},
+  that: { morpheme: "ðat" },
   // };
   // const distributive = {
   each: { morpheme: "itʃ" },
@@ -170,7 +176,7 @@ const dictionary = {
   how: { morpheme: "how" },
   // };
   // const prepositions = {
-  than: {morpheme: "ðən"},
+  than: { morpheme: "ðən" },
   to: { morpheme: "tu" },
   up: { morpheme: "up" },
   down: { morpheme: "down" },

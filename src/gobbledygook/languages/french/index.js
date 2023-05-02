@@ -21,8 +21,8 @@ export const french = {
           masc: { singular: "lɘ", plural: "le" },
           fem: { singular: "la", plural: "le" },
         },
-        dative: { default: { singular: "lɥi", plural: "lɘr" } },
-        genitive: { default: { singular: "sɔ̃", plural: "lɘr" } },
+        dative: { default: { singular: "lɥi", plural: "lɘʁ" } },
+        genitive: { default: { singular: "sɔ̃", plural: "lɘʁ" } },
       },
     },
   },
@@ -59,7 +59,8 @@ export const french = {
           fem: {
             singular: "sɛt", plural: "se"
           },
-         }},
+        }
+      },
       // distal: { singular: "", plural: "" },
       possessive: {
         firstPerson: {
@@ -200,7 +201,8 @@ export const french = {
     },
     prepositions: {
       lative: "a",
-      genitive: "dɘ"
+      genitive: "dɘ",
+      benefactive: "puʁ"
     }
   },
   conjugation: {

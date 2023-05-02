@@ -4,7 +4,7 @@ export const iHaveAPinkCar = {
     car: {
       core: "car",
       type: "object",
-      adjectives: { color: "pink"},
+      adjectives: { color: "pink" },
       number: "singular",
       determination: { type: "indefinite" },
       person: "thirdPerson",
@@ -709,8 +709,8 @@ export const whyAreTheseChickenHere = {
     },
     verb: { verb: "be", tense: "present" },
     adverbialClauses: {
-      id:"here",
-      grammaticalCase:"locative",
+      id: "here",
+      grammaticalCase: "locative",
     }
   },
 };
@@ -739,5 +739,41 @@ export const whyAreYouSoDumb = {
       type: "adjective",
       grammaticalCase: "accusative",
     }
+  },
+};
+
+export const iMakeAPancakeForMyDog = {
+  transcript: "I make a pancake for my dog",
+  entities: {
+    i: {
+      number: "singular",
+      usePronoun: true,
+      person: "firstPerson",
+    },
+    pancake: {
+      core: "pancake",
+      number: "singular",
+      determination: { type: "indefinite" },
+    },
+    dog: {
+      core: "dog",
+    },
+  },
+  sentence: {
+    subject: {
+      id: "i",
+    },
+    verb: { verb: "make", tense: "present" },
+    object: {
+      id: "pancake",
+      grammaticalCase: "accusative",
+    },
+    adverbialClauses: [
+      {
+        id: "dog",
+        determination: { type: "possessive", owner: "i", usePronoun: true },
+        grammaticalCase: "benefactive",
+      },
+    ],
   },
 };

@@ -52,7 +52,7 @@ export default function makePronouns(
 
 function makeForms(phonology, rules, ruleOptions) {
   if (rules[1]) {
-    if(!ruleOptions[rules[0]]) {
+    if (!ruleOptions[rules[0]]) {
       debugger;
     }
     return ruleOptions[rules[0]].reduce((prev, curr) => {

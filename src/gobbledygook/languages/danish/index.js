@@ -113,8 +113,9 @@ export const danish = {
       }
     },
     prepositions: {
-      lative:"til",
-      inessive:"i"
+      lative: "til",
+      inessive: "i",
+      benefactive: "til"
     }
   },
   conjugation: {

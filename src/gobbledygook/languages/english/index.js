@@ -67,23 +67,24 @@ export const english = {
     rules: ["type", "grammaticalCase", "number"],
     forms: {
       default: {
-          default:  { singular: "{morpheme}", plural: "{morpheme}s" },
+        default: { singular: "{morpheme}", plural: "{morpheme}s" },
 
-          genitive: { singular: "{morpheme}s", plural: "{morpheme}s" },
+        genitive: { singular: "{morpheme}s", plural: "{morpheme}s" },
       },
       adjective: {
-        default: {  default: "{morpheme}" } ,
+        default: { default: "{morpheme}" },
       },
       comparative: {
-        default: {  default: "{morpheme}" }  ,
+        default: { default: "{morpheme}" },
       },
       superlative: {
-        default: {  default: "{morpheme}" } ,
+        default: { default: "{morpheme}" },
       }
     },
     prepositions: {
-      lative:"tu",
-      inessive:"in"
+      lative: "tu",
+      inessive: "in",
+      benefactive: "for"
     }
   },
   conjugation: {
