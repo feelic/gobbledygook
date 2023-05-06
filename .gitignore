@@ -25,3 +25,7 @@ yarn-error.log*
 deploy.sh
 
 .eslintcache
+
+.next
+tsconfig.tsbuildinfo
+.vscode
