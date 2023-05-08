@@ -22,7 +22,9 @@ export default function AudioButton({
 
   return (
     <Fragment>
-      <button onClick={() => handlePlayAudio(sentence)}>:V</button>
+      <a href="#" onClick={() => handlePlayAudio(sentence)} role="button">
+        :V
+      </a>
       <audio ref={audioPlayer}>
         {audio && <source src={audio} type="audio/mpeg"></source>}
       </audio>

@@ -1,9 +1,4 @@
-import { Fragment } from "react";
-import {
-  transliterate,
-  makeSentence,
-  getIPATranscript,
-} from "../gobbledygook/use-language";
+import { makeSentence, getIPATranscript } from "../gobbledygook/use-language";
 import InteractiveTranscription from "./InteractiveTranscription";
 import AudioButton from "./AudioButton";
 import React from "react";
@@ -22,7 +17,7 @@ export default function Sentence({
   const formedSentence = makeSentence(lang, sentence);
 
   return (
-    <div className="sentenceBlock">
+    <article>
       <InteractiveTranscription lang={lang} sentence={formedSentence} />
       <p>
         <AudioButton
@@ -32,7 +27,7 @@ export default function Sentence({
         <br />
         <span className="transcript">{sentence.transcript}</span>
       </p>
-    </div>
+    </article>
   );
   // } catch (error: any) {
   //   return (

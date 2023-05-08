@@ -7,7 +7,8 @@ import sentences from "../gobbledygook/sample-sentences/index";
 import AudioButton from "../components/AudioButton";
 import InteractiveTranscription from "../components/InteractiveTranscription";
 import React from "react";
-import { SentenceDefinition, SentenceTree } from "../gobbledygook/interfaces";
+import { SentenceTree } from "../gobbledygook/interfaces";
+import styles from "./page.module.css";
 
 export default function PhraseBook() {
   return (
@@ -49,14 +50,14 @@ function PhraseActionsBlock({ sentence, voice }: PhraseActionsBlockProps) {
   const [open, setOpen] = useState(false);
   const sentenceIPA = getIPATranscript(sentence);
   return (
-    <div className="PhraseActionsBlock">
-      <div className="PhraseActionsButtons">
+    <div>
+      <div className={styles.controls}>
         <AudioButton sentence={sentenceIPA} voice={voice} />
         <button title="show phrase definition" onClick={() => setOpen(!open)}>
           +
         </button>
       </div>
-      <pre className={`codeBlock ${(open && "open") || ""}`}>
+      <pre className={`${styles.codeBlock} ${(open && styles.open) || ""}`}>
         {JSON.stringify(sentence, null, 2)}
       </pre>
     </div>

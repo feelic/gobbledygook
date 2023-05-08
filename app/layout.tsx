@@ -1,4 +1,5 @@
 import "./globals.css";
+import "@picocss/pico";
 import { Inter } from "next/font/google";
 import Link from "next/link";
 
@@ -22,17 +23,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="dark">
       <body className={inter.className}>
-        {children}
-        <footer>
-          {menu.map((entry) => {
-            return (
-              <Link key={entry.link} href={entry.link}>
-                {entry.title}
-              </Link>
-            );
-          })}
+        <nav className="container">
+          <h1>Gobbledygook</h1>
+          <ul>
+            {menu.map((entry) => {
+              return (
+                <li key={entry.link}>
+                  <Link href={entry.link}>{entry.title}</Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+        <main className="container">{children}</main>
+        <footer className="container">
           <span>
             made by <a href="https://twitter.com/feelic">@feelic</a> ;-){" "}
           </span>

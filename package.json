@@ -10,6 +10,7 @@
     "test": "npx @digitak/esrun ./test.ts"
   },
   "dependencies": {
+    "@picocss/pico": "^1.5.10",
     "@tippyjs/react": "^4.2.6",
     "@types/node": "18.16.3",
     "@types/react": "18.2.5",
