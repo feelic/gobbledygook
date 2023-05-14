@@ -1,0 +1,13 @@
+.codeBlock {
+    padding: 5px;
+    display: none;
+}
+.codeBlock.open {
+    display: block;
+}
+.controls {
+    max-width: 48px;
+    display: inline-flex;
+    margin-right: 12px;
+    padding: 12px 16px;
+}

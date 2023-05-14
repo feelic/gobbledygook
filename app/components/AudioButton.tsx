@@ -1,5 +1,8 @@
 import { useState, useRef, Fragment } from "react";
 import { fetchAudio } from "../api";
+import styles from "../styles.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBullhorn } from "@fortawesome/free-solid-svg-icons";
 
 export default function AudioButton({
   sentence,
@@ -22,9 +25,12 @@ export default function AudioButton({
 
   return (
     <Fragment>
-      <a href="#" onClick={() => handlePlayAudio(sentence)} role="button">
-        :V
-      </a>
+      <button
+        className={styles.controls}
+        onClick={() => handlePlayAudio(sentence)}
+      >
+        <FontAwesomeIcon icon={faBullhorn} />
+      </button>
       <audio ref={audioPlayer}>
         {audio && <source src={audio} type="audio/mpeg"></source>}
       </audio>

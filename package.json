@@ -10,6 +10,9 @@
     "test": "npx @digitak/esrun ./test.ts"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@picocss/pico": "^1.5.10",
     "@tippyjs/react": "^4.2.6",
     "@types/node": "18.16.3",

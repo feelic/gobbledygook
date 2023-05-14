@@ -1,11 +1,11 @@
 .container {
-  width: 390px;
+  width: 420px;
   flex: 100%;
   display: flex;
   flex-direction: column;
 }
 .header {
-  margin-left: 70px;
+  margin-left: 100px;
   span {
     margin: 0 40px;
   }
@@ -17,7 +17,7 @@
 .titleColumn {
   display: flex;
   flex-direction: column;
-  width: 90px;
+  width: 120px;
   padding-top: 5px;
   span {
     height: 32px;
@@ -50,8 +50,6 @@
     }
     &:nth-child(7) {
       padding-left: 90px;
-    }
-    span {
     }
   }
 }
