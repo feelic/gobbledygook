@@ -103,9 +103,7 @@ function makeTenses(phonology: PhonologyType) {
   ["present", "past", "future", "conditional"].forEach((tense: string) => {
     if (tenses.includes(tense)) {
       tenseSystem[tense] = tense;
-      console.log(tense, "own form");
     } else {
-      console.log(tense, "default form");
       tenseSystem[tense] = "default";
       tense !== "present" && requiredTenseMarkers.push(tense);
     }

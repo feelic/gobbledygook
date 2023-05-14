@@ -24,9 +24,9 @@ export function makeForms(
   }, {});
 }
 
-export function makeEmptyForm(rules: Array<string>): FormsType {
+export function makeEmptyForm(rules: Array<string>): FormsType | string {
   if (rules[1]) {
     return { default: makeEmptyForm(rules.slice(1)) };
   }
-  return { default: "" };
+  return "";
 }

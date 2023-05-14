@@ -230,7 +230,7 @@ function makeDeterminers(
 
   const forms = makeForms(phonology, rules, ruleOptions);
 
-  forms.properNoun = makeEmptyForm(rules.slice(1));
+  forms.properNoun = makeEmptyForm(rules);
   return { rules, forms };
 }
 

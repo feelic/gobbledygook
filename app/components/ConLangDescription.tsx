@@ -1,8 +1,8 @@
 import { Fragment } from "react";
 import { transliterate, getRequiredForm } from "../gobbledygook/use-language";
-import { PartOfSpeech } from "../components/InteractiveTranscription";
-import ConLangVowelChart from "../components/ConLangVowelChart";
-import ConLangConsonantChart from "../components/ConLangConsonantChart";
+import { PartOfSpeech } from "./InteractiveTranscription";
+import ConLangVowelChart from "./ConLangVowelChart";
+import ConLangConsonantChart from "./ConLangConsonantChart";
 import React from "react";
 import {
   FormParameters,
@@ -132,10 +132,13 @@ function FormTable({
                   [rules[1]]: option1,
                 };
                 const morphemeId = findAppropriateMorpheme(lang, parameters);
-                const morpheme = lang.morphemeDictionary[morphemeId];
+
+                const morpheme =
+                  morphemeId && lang.morphemeDictionary[morphemeId];
+
                 const form = getRequiredForm({ lang }, rule, {
                   ...parameters,
-                  morpheme: morpheme,
+                  morpheme,
                   id: morphemeId,
                 });
 
