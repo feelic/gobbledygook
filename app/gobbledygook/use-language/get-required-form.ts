@@ -61,6 +61,9 @@ export function getRequiredForm(
     return formTable[key];
   }, selectedRule);
 
+  if (!form.replace) {
+    debugger;
+  }
   const rawText = form.replace("{morpheme}", morpheme?.morpheme);
 
   if (rawText === "") {

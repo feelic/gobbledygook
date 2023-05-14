@@ -72,7 +72,7 @@ export type PhraseFormation = Array<string>;
 
 export interface FormTable {
   rules: Array<string>;
-  forms: FormsType;
+  forms: FormsType | string;
   prepositions?: any;
   tenseSystem?: Record<string, string>;
   tenseMarkers?: Record<string, string>;

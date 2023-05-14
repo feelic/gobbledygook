@@ -35,7 +35,13 @@ export function makeComparison(
         det && comparisonPhrase.push(det);
         break;
       case "adjective":
-        const type = (lang.declension.forms[degree] && degree) || "adjective";
+        let type = "adjective";
+        if (
+          typeof lang.declension.forms !== "string" &&
+          lang.declension.forms[degree]
+        ) {
+          type = degree;
+        }
         const qualityEntity = getNounInfo(context, { id: object.quality });
         const { declensionGroup, grammaticalCase, gender, number, morpheme } =
           qualityEntity;

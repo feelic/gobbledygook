@@ -11,6 +11,7 @@ import {
   randomWithCoef,
 } from "../util/random";
 import { Language, PhonologyType } from "../interfaces";
+import { makeEmptyForm, makeForms } from "./make-forms";
 
 export function generateLanguage(): Language {
   resetExistingWords();
@@ -194,29 +195,42 @@ function makeDeterminers(
   cases: Array<string> | null,
   genders: Array<string>
 ) {
-  // const determinationTypes = ["definite", "indefinite", "possessive"];
-  // const persons = ["firstPerson", "secondPerson", "thirdPerson"];
-  // const numbers = ["singular", "plural"];
-  // const formRules = [determinationTypes, persons, genders, genders, numbers];
+  const ruleOptions: Record<string, Array<string>> = {
+    ["determination.type"]: [
+      "definite",
+      "indefinite",
+      "possessive",
+      "demonstrative",
+    ],
+    ["owner.person"]: ["firstPerson", "secondPerson", "thirdPerson"],
+    ["owner.gender"]: genders || ["masc", "fem"],
+    person: ["firstPerson", "secondPerson", "thirdPerson"],
+    number: ["singular", "plural"],
+    gender: genders,
+  };
 
   //no determiner system
-  if (random() > 0.2) {
+  if (random() < 0.2) {
     return {
       rules: ["determination.type"],
       forms: { default: "" },
     };
   }
-  const rules = [
-    "determination.type",
-    "owner.person",
-    "owner.gender",
-    "gender",
-    "number",
-  ];
-  const forms = {
-    default: { default: { default: { default: { default: "" } } } },
-  };
 
+  let rules = ["determination.type"];
+  if (genders && genders.length && random() < 0.8) {
+    rules.push("gender");
+  }
+  if (!rules.includes("gender") && random() < 0.5) {
+    rules.push("owner.person", "owner.gender");
+  }
+  if (random() < 0.8) {
+    rules.push("number");
+  }
+
+  const forms = makeForms(phonology, rules, ruleOptions);
+
+  forms.properNoun = makeEmptyForm(rules.slice(1));
   return { rules, forms };
 }
 
