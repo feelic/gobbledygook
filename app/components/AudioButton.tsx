@@ -1,6 +1,6 @@
 import { useState, useRef, Fragment } from "react";
 import { fetchAudio } from "../api";
-import styles from "../styles.module.css";
+import styles from "../styles.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBullhorn } from "@fortawesome/free-solid-svg-icons";
 

@@ -97,7 +97,7 @@ function makePrepositions(
   grammaticalCases.forEach((prepositionCase) => {
     prepositions[prepositionCase] = makeMorpheme(
       phonology,
-      gaussian(1, 2)(),
+      Math.max(gaussian(1, 2)(), 1),
       false
     );
   });

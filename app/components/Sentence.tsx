@@ -3,6 +3,7 @@ import InteractiveTranscription from "./InteractiveTranscription";
 import AudioButton from "./AudioButton";
 import React from "react";
 import { Language, SentenceDefinition } from "../gobbledygook/interfaces";
+import styles from "../styles.module.scss";
 
 export default function Sentence({
   lang,
@@ -17,15 +18,14 @@ export default function Sentence({
   const formedSentence = makeSentence(lang, sentence);
 
   return (
-    <article>
+    <article className={styles.phraseBlock}>
       <InteractiveTranscription lang={lang} sentence={formedSentence} />
       <p>
         <AudioButton
           sentence={getIPATranscript(formedSentence)}
           voice={voice}
         />
-        <br />
-        <span className="transcript">{sentence.transcript}</span>
+        <small>{sentence.transcript}</small>
       </p>
     </article>
   );

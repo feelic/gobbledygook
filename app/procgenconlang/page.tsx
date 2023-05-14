@@ -14,7 +14,7 @@ import InteractiveTranscription from "../components/InteractiveTranscription";
 import ConLangDescription from "./ConLangDescription";
 import SentenceMaker from "../components/SentenceMaker";
 import Sentence from "../components/Sentence";
-import styles from "./page.module.scss";
+import styles from "../styles.module.scss";
 
 import { setSeed } from "../gobbledygook/util/random";
 import React from "react";
@@ -130,13 +130,12 @@ function CountToTen({ lang, voice }: LanguageDescriptionProps) {
   const sentenceIPA = getIPATranscript(sentence);
 
   return (
-    <div className="sentenceBlock">
+    <article className={styles.phraseBlock}>
       <InteractiveTranscription lang={lang} sentence={sentence} />
       <p>
         <AudioButton sentence={sentenceIPA} voice={voice} />
-        <br />
         <span className="transcript">0 1 2 3 4 5 6 7 8 9 10</span>
       </p>
-    </div>
+    </article>
   );
 }

@@ -8,22 +8,20 @@ export default function makeConjugation(
   morphologyType: string
 ) {
   if (morphologyType === "analytic") {
+    const tenseMarkers = makeTenseMarkers(phonology, [
+      "past",
+      "future",
+      "conditional",
+    ]);
     return {
-      rules: ["tense"],
-      forms: { default: "{morpheme}" },
+      rules: [],
+      forms: "{morpheme}",
+      tenseMarkers,
     };
   }
   const conjugationGroups = makeConjugationGroups(morphologyType);
-  const tenses = makeTenses();
-  const tenseSystem = (tenses && {
-    default: "default",
-    present: (tenses.includes("present") && "present") || "default",
-    past: (tenses.includes("past") && "past") || "default",
-    future: (tenses.includes("future") && "future") || "default",
-    conditional: (tenses.includes("conditional") && "conditional") || "default",
-  }) || {
-    default: "default",
-  };
+  const { tenses, tenseSystem, tenseMarkers } = makeTenses(phonology);
+
   const numbers = ["singular", "plural"];
   const persons = ["firstPerson", "secondPerson", "thirdPerson"];
   const rules = [];
@@ -48,7 +46,7 @@ export default function makeConjugation(
 
   const forms = makeForms(phonology, rules, ruleOptions);
 
-  return { forms, rules, conjugationGroups, tenseSystem };
+  return { forms, rules, conjugationGroups, tenseSystem, tenseMarkers };
 }
 
 function makeForms(
@@ -83,19 +81,43 @@ function makeConjugationGroups(morphologyType: string) {
     return `${getOrdinalNumber(idx + 1)} group`;
   });
 }
-function makeTenses() {
-  const tenses = ["default"];
-  if (random() > 0.5) {
-    tenses.push("past");
-  }
-  if (random() > 0.5) {
-    tenses.push("future");
-  }
-  if (random() > 0.5) {
-    tenses.push("conditional");
-  }
-  if (tenses.length === 1) {
-    return ["default"];
-  }
-  return tenses;
+function makeTenses(phonology: PhonologyType) {
+  const tenses = ["default", "past", "future"];
+
+  // const tenseRandomNbr = random();
+  // if (tenseRandomNbr > 0.3) {
+  //   tenses.push("past");
+  //   tenses.push("future");
+  // }
+  // if (tenseRandomNbr > ) {
+  //   tenses.push("farpast");
+  //   tenses.push("farfuture");
+  // }
+  // if (tenseRandomNbr > 0.8) {
+  //   tenses.push("conditional");
+  // }
+
+  const tenseSystem: Record<string, string> = { default: "default" };
+  const requiredTenseMarkers: Array<string> = [];
+
+  ["present", "past", "future", "conditional"].forEach((tense: string) => {
+    if (tenses.includes(tense)) {
+      tenseSystem[tense] = tense;
+      console.log(tense, "own form");
+    } else {
+      console.log(tense, "default form");
+      tenseSystem[tense] = "default";
+      tense !== "present" && requiredTenseMarkers.push(tense);
+    }
+  });
+
+  const tenseMarkers = makeTenseMarkers(phonology, requiredTenseMarkers);
+  return { tenses, tenseSystem, tenseMarkers };
+}
+
+function makeTenseMarkers(phonology: PhonologyType, tenses: Array<string>) {
+  return tenses.reduce((prev: any, curr: string) => {
+    const length = Math.max(gaussian(2, 2)(), 1);
+    return { ...prev, [curr]: `${makeMorpheme(phonology, length)}` };
+  }, {});
 }

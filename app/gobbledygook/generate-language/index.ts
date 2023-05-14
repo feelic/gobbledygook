@@ -165,6 +165,7 @@ function makeInterrogativeForms(declarative: Array<string>) {
     ].reverse(),
   };
 }
+// add variation
 function makeClausesFormation() {
   const nounPhraseFormation = [
     "preposition",
@@ -175,7 +176,7 @@ function makeClausesFormation() {
     "genitive",
     "adjectiveClause",
   ];
-  const verbPhraseFormation = ["verb", "adverb"];
+  const verbPhraseFormation = ["verb", "adverb", "tenseMarker"];
   const adjectiveClauseFormation = ["subject", "object", "verb"];
   const adjectiveFormation = ["adjective", "adverb"];
 

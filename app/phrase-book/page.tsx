@@ -8,7 +8,7 @@ import AudioButton from "../components/AudioButton";
 import InteractiveTranscription from "../components/InteractiveTranscription";
 import React from "react";
 import { SentenceTree } from "../gobbledygook/interfaces";
-import styles from "../styles.module.css";
+import styles from "../styles.module.scss";
 import { faAngleDown, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -22,7 +22,7 @@ export default function PhraseBook() {
         const frenchSentence = makeSentence(french, sentence);
 
         return (
-          <div key={sentence.transcript} className="sentenceBlock">
+          <article key={sentence.transcript} className={styles.phraseBlock}>
             <InteractiveTranscription lang={french} sentence={frenchSentence} />
 
             <PhraseActionsBlock sentence={frenchSentence} voice="Celine" />
@@ -37,7 +37,7 @@ export default function PhraseBook() {
             <InteractiveTranscription lang={danish} sentence={danishSentence} />
 
             <PhraseActionsBlock sentence={danishSentence} voice="Mads" />
-          </div>
+          </article>
         );
       })}
     </section>

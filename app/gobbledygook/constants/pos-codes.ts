@@ -5,6 +5,7 @@ export const posCodesLabels = {
   AdvP: "Adverbial clause",
   Con: "Conjunction",
   Det: "Determiner",
+  Deic: "Deictic",
   G: "Group",
   Int: "Interrogative",
   N: "Noun",

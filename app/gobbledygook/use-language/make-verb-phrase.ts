@@ -1,6 +1,6 @@
 import { getRequiredForm } from "./get-required-form";
 import { getSubjectInfo } from "./get-noun-info";
-import { getAdverb } from "./get-invariables";
+import { getAdverb, getTenseMarker } from "./get-invariables";
 import {
   Context,
   PoS,
@@ -42,6 +42,11 @@ export function makeVerbPhrase(
         });
 
         V && VP.push(V);
+        break;
+      case "tenseMarker":
+        const TM = getTenseMarker(context, tense);
+
+        TM && VP.push(TM);
         break;
       default:
         break;

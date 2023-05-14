@@ -75,6 +75,7 @@ export interface FormTable {
   forms: FormsType;
   prepositions?: any;
   tenseSystem?: Record<string, string>;
+  tenseMarkers?: Record<string, string>;
   declensionGroups?: Array<string> | null;
 }
 export type FormsType = Record<string, any>;
@@ -91,6 +92,7 @@ export type tPosCode =
   | "Adv"
   | "AdvP"
   | "Det"
+  | "Deic"
   | "Con"
   | "G"
   | "Int"

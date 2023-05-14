@@ -1,5 +1,6 @@
 import {
   iHaveAPinkCar,
+  iHadAPinkCar,
   horseLikesCarrots,
   horseLikesCarrotsJohnnyGaveHim,
   horseLikesCarrotsAndGrass,
@@ -29,6 +30,7 @@ import {
 
 const sentences = [
   iHaveAPinkCar,
+  iHadAPinkCar,
   horseLikesCarrots,
   horseLikesCarrotsJohnnyGaveHim,
   horseLikesCarrotsAndGrass,

@@ -30,6 +30,36 @@ export const iHaveAPinkCar: SentenceDefinition = {
     },
   },
 };
+export const iHadAPinkCar: SentenceDefinition = {
+  transcript: "I had a red car",
+  entities: {
+    car: {
+      core: "car",
+      type: "object",
+      adjectives: { color: "red" },
+      number: "singular",
+      determination: { type: "indefinite" },
+      person: "thirdPerson",
+    },
+    i: {
+      number: "singular",
+      person: "firstPerson",
+      usePronoun: true,
+      gender: "masc",
+    },
+  },
+  sentence: {
+    subject: {
+      id: "i",
+      grammaticalCase: "nominative",
+    },
+    verb: { verb: "have", tense: "past" },
+    object: {
+      id: "car",
+      grammaticalCase: "accusative",
+    },
+  },
+};
 
 export const horseLikesCarrots: SentenceDefinition = {
   transcript: "the small grey horse likes small orange carrots",

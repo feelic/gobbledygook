@@ -44,3 +44,15 @@ export function getInterrogativeParticle(context: Context, invariable: string) {
 export function getRelativePronoun(context: Context, invariable: string) {
   return getInvariable("Pro", context, invariable);
 }
+export function getTenseMarker(context: Context, tense: string): PoS | null {
+  const { lang } = context;
+
+  if (!lang.conjugation.tenseMarkers || !lang.conjugation.tenseMarkers[tense]) {
+    return null;
+  }
+  return {
+    pos: "Deic",
+    form: lang.conjugation.tenseMarkers[tense],
+    meaning: `${tense} preposition`,
+  };
+}
