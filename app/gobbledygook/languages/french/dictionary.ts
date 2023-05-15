@@ -10,6 +10,7 @@ const dictionary: Record<string, Morpheme> = {
   },
   orange: { morpheme: "oʁɑ̃ʒ" },
   pink: { morpheme: "ʁoz" },
+  red: { morpheme: "ʁuʒ" },
   small: { morpheme: "pɘti", declensionGroup: "tEnding" },
   give: { morpheme: "don" },
   go: {

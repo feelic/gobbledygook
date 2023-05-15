@@ -1,4 +1,6 @@
-export const posCodesLabels = {
+import { tPosCode } from "../interfaces";
+
+export const posCodesLabels: Record<tPosCode, string> = {
   Adj: "Adjective",
   AdjP: "Adjective clause",
   Adv: "Adverb",

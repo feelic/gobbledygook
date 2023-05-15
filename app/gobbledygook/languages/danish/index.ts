@@ -229,9 +229,10 @@ export const danish: Language = {
   },
   consonants: {
     ʀ: { weight: 1, translit: "r" },
+    ʁ: { weight: 1, translit: "r" },
     s: { weight: 1, translit: "s" },
     l: { weight: 1, translit: "l" },
-    ð: { weight: 1, translit: "th" },
+    ðˀ: { weight: 1, translit: "d" },
     θ: { weight: 1, translit: "th" },
     k: { weight: 1, translit: "k" },
     d: { weight: 1, translit: "d" },

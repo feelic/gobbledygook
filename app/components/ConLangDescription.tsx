@@ -7,8 +7,11 @@ import React from "react";
 import {
   FormParameters,
   Language,
+  Morpheme,
+  tPosCode,
   tRuleName,
 } from "../gobbledygook/interfaces";
+import { posCodesLabels } from "../gobbledygook/constants/pos-codes";
 
 export default function ConLangDescription({ lang }: { lang: Language }) {
   return (
@@ -136,9 +139,12 @@ function FormTable({
                 const morpheme =
                   morphemeId && lang.morphemeDictionary[morphemeId];
 
+                if (morpheme) {
+                  parameters.morpheme = morpheme;
+                }
+
                 const form = getRequiredForm({ lang }, rule, {
                   ...parameters,
-                  morpheme,
                   id: morphemeId,
                 });
 
@@ -158,18 +164,27 @@ function FormTable({
     </table>
   );
 }
-function findAppropriateMorpheme(
-  lang: Language,
-  parameters: Record<string, string>
-) {
-  return Object.keys(lang.morphemeDictionary).find((morphemeId) => {
-    const morpheme = lang.morphemeDictionary[morphemeId];
+function findAppropriateMorpheme(lang: Language, parameters: FormParameters) {
+  const appropriateMorpheme = Object.keys(lang.morphemeDictionary).find(
+    (morphemeId) => {
+      const morpheme = lang.morphemeDictionary[morphemeId];
 
-    return Object.keys(parameters).every((parameter) => {
-      if (!morpheme[parameter]) {
-        return true;
-      }
-      return morpheme[parameter] === parameters[parameter];
-    });
-  });
+      return Object.keys(parameters).every((parameter: string) => {
+        if (!morpheme[parameter as keyof Morpheme]) {
+          return true;
+        }
+        if (parameter === "type") {
+          const label = posCodesLabels[morpheme.type as tPosCode].toLowerCase();
+
+          return label === parameters[parameter as keyof FormParameters];
+        }
+        return (
+          morpheme[parameter as keyof Morpheme] ===
+          parameters[parameter as keyof FormParameters]
+        );
+      });
+    }
+  );
+
+  return appropriateMorpheme;
 }

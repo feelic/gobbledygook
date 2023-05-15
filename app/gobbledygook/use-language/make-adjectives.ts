@@ -30,6 +30,9 @@ export function makeAdjectives(
         return;
       }
       const morpheme = lang.morphemeDictionary[adjective];
+      if (!morpheme) {
+        debugger;
+      }
       const { declensionGroup } = morpheme;
       const declinedAdjective = getRequiredForm(context, "declension", {
         type: "adjective",

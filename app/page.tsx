@@ -7,18 +7,19 @@ import {
   makeNumber,
   getIPATranscript,
 } from "./gobbledygook/use-language";
+import { Language } from "./gobbledygook/interfaces";
 import sentences from "./gobbledygook/sample-sentences/index";
+import { setSeed } from "./gobbledygook/util/random";
+
 import AudioButton from "./components/AudioButton";
-import { VOICES, DEFAULT_VOICE } from "./constants/voices";
 import InteractiveTranscription from "./components/InteractiveTranscription";
 import ConLangDescription from "./components/ConLangDescription";
 import SentenceMaker from "./components/SentenceMaker";
 import Sentence from "./components/Sentence";
+
+import { VOICES, DEFAULT_VOICE } from "./constants/voices";
+
 import styles from "./styles.module.scss";
-
-import { setSeed } from "./gobbledygook/util/random";
-
-import { Language } from "./gobbledygook/interfaces";
 
 export default function Home() {
   const [seed, setCurrentSeed] = useState("");
@@ -74,9 +75,11 @@ type LanguageDescriptionProps = {
   voice: string;
 };
 function LanguageDescription({ lang, voice }: LanguageDescriptionProps) {
+  const rawLangName = transliterate(lang, lang.name);
+  const langName = rawLangName.slice(0, 1).toUpperCase() + rawLangName.slice(1);
   return (
     <Fragment>
-      <h2>ProcGenConLang: {transliterate(lang, lang.name)} language</h2>
+      <h2 id="title">{langName} language</h2>
       <ul>
         <li>
           <a href="#description">description</a>
@@ -92,12 +95,16 @@ function LanguageDescription({ lang, voice }: LanguageDescriptionProps) {
         </li>
       </ul>
       <h3 id="description">
-        A short description of the {transliterate(lang, lang.name)} language
+        A short description of the {langName} language <a href="#title">#</a>
       </h3>
       <ConLangDescription lang={lang} />
-      <h3>Make your own sentences</h3>
+      <h3>
+        Make your own sentences <a href="#title">#</a>
+      </h3>
       <SentenceMaker lang={lang} voice={voice} />
-      <h3 id="phrase-book">{transliterate(lang, lang.name)} phrase book</h3>
+      <h3 id="phrase-book">
+        {langName} phrase book <a href="#title">#</a>
+      </h3>
       {sentences.map((sentence) => {
         return (
           <Sentence
@@ -109,7 +116,9 @@ function LanguageDescription({ lang, voice }: LanguageDescriptionProps) {
         );
       })}
       <CountToTen lang={lang} voice={voice} />
-      <h3 id="dictionary">{transliterate(lang, lang.name)} dictionary</h3>
+      <h3 id="dictionary">
+        {langName} dictionary <a href="#title">#</a>
+      </h3>
       <ul>
         {Object.entries(lang.morphemeDictionary).map(([meaning, word]) => {
           const translit = transliterate(lang, word.morpheme);
@@ -122,7 +131,9 @@ function LanguageDescription({ lang, voice }: LanguageDescriptionProps) {
           );
         })}
       </ul>
-      <h3 id="raw">{transliterate(lang, lang.name)} raw definition</h3>
+      <h3 id="raw">
+        {langName} raw definition <a href="#title">#</a>
+      </h3>
       <pre className="codeBlock open">{JSON.stringify(lang, null, 2)}</pre>
     </Fragment>
   );

@@ -7,6 +7,7 @@ const dictionary: Record<string, Morpheme> = {
   gray: { morpheme: "greɪ" },
   orange: { morpheme: "orɪndʒ" },
   pink: { morpheme: "pink" },
+  red: { morpheme: "red" },
   small: { morpheme: "smɔl" },
   give: {
     morpheme: "giv",

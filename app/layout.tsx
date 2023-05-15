@@ -11,7 +11,7 @@ export const metadata = {
 };
 
 const menu = [
-  // { title: "gobbledygook", link: `${process.env.PUBLIC_URL}/` },
+  { title: "ProcGenConLang", link: `/` },
   { title: "Phrase book", link: `/phrase-book` },
   // { title: "About", link: `${process.env.PUBLIC_URL}/About` },
 ];

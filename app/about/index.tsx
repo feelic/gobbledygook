@@ -5,8 +5,8 @@ export default function About() {
     <section>
       <h2>Hi, welcome to Gobbledygook ;)</h2>
       <p>
-        It's a constructed language procedural generator, click on the menu to
-        find out more!
+        It&apos;s a constructed language procedural generator, click on the menu
+        to find out more!
       </p>
       <p>
         <b>ProcGenConLang</b>: generate an imaginary language, choose a voice

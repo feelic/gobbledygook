@@ -3,10 +3,11 @@ import { Morpheme } from "../../interfaces";
 const dictionary: Record<string, Morpheme> = {
   horse: { morpheme: "hest" },
   carrot: { morpheme: "guləʀoðˀ" },
-  love: { morpheme: "elsɡə" },
+  love: { morpheme: "elsgə" },
   gray: { morpheme: "gʁo" },
   orange: { morpheme: "orandʒ" },
   pink: { morpheme: "lysəʁœðˀ" },
+  red: { morpheme: "ʁœðˀ" },
   small: { morpheme: "lilə" },
   give: {
     morpheme: "giw",
@@ -20,7 +21,7 @@ const dictionary: Record<string, Morpheme> = {
     morpheme: "du",
   },
   have: {
-    morpheme: "ɦɑ",
+    morpheme: "hɑ",
   },
   beach: { morpheme: "sdʀan" },
   chicken: { morpheme: "kyleŋ" },

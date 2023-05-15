@@ -1,16 +1,14 @@
 "use client";
 
-import { useState } from "react";
-import { makeSentence, getIPATranscript } from "../gobbledygook/use-language";
+import { makeSentence } from "../gobbledygook/use-language";
 import { english, danish, french } from "../gobbledygook/languages/index";
+
 import sentences from "../gobbledygook/sample-sentences/index";
-import AudioButton from "../components/AudioButton";
+
+import PhraseActionsBlock from "../components/PhraseActionsBlock";
 import InteractiveTranscription from "../components/InteractiveTranscription";
-import React from "react";
-import { SentenceTree } from "../gobbledygook/interfaces";
+
 import styles from "../styles.module.scss";
-import { faAngleDown, faAngleRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function PhraseBook() {
   return (
@@ -41,34 +39,5 @@ export default function PhraseBook() {
         );
       })}
     </section>
-  );
-}
-
-type PhraseActionsBlockProps = {
-  sentence: SentenceTree;
-  voice: string;
-};
-function PhraseActionsBlock({ sentence, voice }: PhraseActionsBlockProps) {
-  const [open, setOpen] = useState(false);
-  const sentenceIPA = getIPATranscript(sentence);
-  return (
-    <div>
-      <div>
-        <AudioButton sentence={sentenceIPA} voice={voice} />
-
-        <button
-          className={styles.controls}
-          title="show phrase definition"
-          onClick={() => setOpen(!open)}
-        >
-          {(open && <FontAwesomeIcon icon={faAngleDown} />) || (
-            <FontAwesomeIcon icon={faAngleRight} />
-          )}
-        </button>
-      </div>
-      <pre className={`${styles.codeBlock} ${(open && styles.open) || ""}`}>
-        {JSON.stringify(sentence, null, 2)}
-      </pre>
-    </div>
   );
 }
