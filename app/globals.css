@@ -1,0 +1,41 @@
+/* Yellow Light scheme (Default) */
+/* Can be forced with data-theme="light" */
+[data-theme="light"],
+:root:not([data-theme="dark"]) {
+  --primary: #fdd835;
+  --primary-hover: #fbc02d;
+  --primary-focus: rgba(253, 216, 53, 0.125);
+  --primary-inverse: rgba(0, 0, 0, 0.75);
+}
+
+/* Yellow Dark scheme (Auto) */
+/* Automatically enabled if user has Dark mode enabled */
+@media only screen and (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --primary: #fdd835;
+    --primary-hover: #ffeb3b;
+    --primary-focus: rgba(253, 216, 53, 0.25);
+    --primary-inverse: rgba(0, 0, 0, 0.75);
+  }
+}
+
+/* Yellow Dark scheme (Forced) */
+/* Enabled if forced with data-theme="dark" */
+[data-theme="dark"] {
+  --primary: #fdd835;
+  --primary-hover: #ffeb3b;
+  --primary-focus: rgba(253, 216, 53, 0.25);
+  --primary-inverse: rgba(0, 0, 0, 0.75);
+}
+
+/* Yellow (Common styles) */
+:root {
+  --form-element-active-border-color: var(--primary);
+  --form-element-focus-color: var(--primary-focus);
+  --switch-color: var(--primary-inverse);
+  --switch-checked-background-color: var(--primary);
+  --line-height: 1.2;
+  --font-weight: 400;
+  --font-size: 14px;
+  --spacing: 0.7rem;
+}

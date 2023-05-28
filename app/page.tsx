@@ -34,8 +34,7 @@ export default function Home() {
   return (
     <section>
       <p>
-        Welcome to gobbledygook, it&apos;s a constructed language procedural
-        generator.
+        Welcome to gobbledygook: a constructed language procedural generator.
         <br />
         You can generate an imaginary language by changing the seed, choose a
         voice and listen to it !
