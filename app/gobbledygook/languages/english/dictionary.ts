@@ -64,7 +64,7 @@ const dictionary: Record<string, Morpheme> = {
     },
   },
   find: {
-    morpheme: "faind",
+    morpheme: "fajnd",
     irregular: {
       default: {
         default: {

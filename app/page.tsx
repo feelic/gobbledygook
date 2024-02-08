@@ -20,6 +20,7 @@ import Sentence from "./components/Sentence";
 import { VOICES, DEFAULT_VOICE } from "./constants/voices";
 
 import styles from "./styles.module.scss";
+import { makeMorpheme } from "./gobbledygook/generate-language/make-morpheme";
 
 export default function Home() {
   const [seed, setCurrentSeed] = useState("");
@@ -101,6 +102,11 @@ function LanguageDescription({ lang, voice }: LanguageDescriptionProps) {
         Make your own sentences <a href="#title">#</a>
       </h3>
       <SentenceMaker lang={lang} voice={voice} />
+      <h3>
+        Make your own proper nouns <a href="#title">#</a>
+      </h3>
+      <WordGenerator lang={lang} voice={voice} />
+      
       <h3 id="phrase-book">
         {langName} phrase book <a href="#title">#</a>
       </h3>
@@ -154,4 +160,29 @@ function CountToTen({ lang, voice }: LanguageDescriptionProps) {
       </p>
     </article>
   );
+}
+
+function WordGenerator({ lang, voice }: LanguageDescriptionProps){
+  const [words, setWords] = useState<Array<string>>([]);
+  const [length, setLength] = useState(2)
+
+  useEffect(()=> setWords([]),[lang])
+
+  return (
+    <Fragment>
+      <input type="number" value={length} onChange={(e)=>setLength(Number(e.target.value))} />
+      <button type="button" onClick={()=> {
+        setWords([...words, makeMorpheme(lang, length)])
+      }}>create</button>
+      <ul>
+
+      </ul>
+      {words.map(ipa => {
+         const rawWord = transliterate(lang, ipa);
+         const word = rawWord.slice(0, 1).toUpperCase() + rawWord.slice(1);
+        return <li key={word}>{word} ({ipa})<AudioButton sentence={ipa} voice={voice} /></li>
+      })}
+      
+    </Fragment>
+  )
 }

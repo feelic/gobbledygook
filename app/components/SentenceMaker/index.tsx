@@ -24,7 +24,7 @@ export default function SentenceMaker({
   const [sentence, setSentence] = useState<SentenceDefinition>({
     transcript: "sample sentence",
     sentence: {
-      subject: { id: "Bob" },
+      subject: { id: "Bob", grammaticalCase:"nominative" },
       verb: { verb: "sing", tense: "general" },
     },
     entities: {
@@ -236,6 +236,7 @@ function SentencePartForm({
   role,
   entities,
 }) {
+const grammaticalCases= ["nominative", "accusative", "benefactive", "locative", "inessive", "lative", "dative", "instrumental", "genitive"]
   return (
     <article>
       <label htmlFor={`partId${role}`}>{role}</label>
@@ -254,6 +255,26 @@ function SentencePartForm({
           return (
             <option key={key} value={key}>
               {key}
+            </option>
+          );
+        })}
+      </select>
+      <label htmlFor={`grammaticalCase${role}`}>Grammatical Case</label>
+      <select
+        id={`grammaticalCase${role}`}
+        value={sentencePart.grammaticalCase}
+        onChange={(e) => {
+          updateSentencePart({
+            ...sentencePart,
+            grammaticalCase: e.target.value,
+          });
+        }}
+      >
+        <option>none</option>
+        {grammaticalCases.map((grammaticalCase) => {
+          return (
+            <option key={grammaticalCase} value={grammaticalCase}>
+              {grammaticalCase}
             </option>
           );
         })}
@@ -294,7 +315,7 @@ function VerbForm({ verb, updateVerb }) {
   );
 }
 
-function DeterminationForm({ determination, updateDetermination, entities }) {
+function DeterminationForm({ determination = {}, updateDetermination, entities }) {
   return (
     <div>
       <div className="grid">
