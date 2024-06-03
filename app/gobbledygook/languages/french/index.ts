@@ -206,8 +206,10 @@ export const french: Language = {
     },
     prepositions: {
       lative: "a",
+      locative: "a",
       genitive: "dɘ",
       benefactive: "puʁ",
+      instrumental: "avek",
     },
   },
   conjugation: {

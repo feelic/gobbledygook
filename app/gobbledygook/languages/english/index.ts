@@ -87,8 +87,10 @@ export const english: Language = {
     },
     prepositions: {
       lative: "tu",
+      locative: "at",
       inessive: "in",
       benefactive: "for",
+      instrumental: "wið",
     },
   },
   conjugation: {
