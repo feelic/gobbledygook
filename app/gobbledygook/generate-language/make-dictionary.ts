@@ -1,5 +1,5 @@
 import {
-  family,
+  persons,
   animals,
   foods,
   auxiliaries,
@@ -12,6 +12,8 @@ import {
   adverbs,
   conjunctions,
   relativePronouns,
+  geography,
+  monsters
 } from "../constants/dictionary-base";
 import { makeMorpheme } from "./make-morpheme";
 import { gaussian, randomFromArray } from "../util/random";
@@ -51,7 +53,7 @@ export default function makeDictionary(
   }
 
   return {
-    ...makeMorphemesFromDictionary(family, gaussian(1.5, 1.5), 2, "N"),
+    ...makeMorphemesFromDictionary(persons, gaussian(1.5, 1.5), 2, "N"),
     ...makeMorphemesFromDictionary(animals, gaussian(2, 2), 2, "N"),
     ...makeMorphemesFromDictionary(foods, gaussian(3, 2.5), 2, "N"),
     ...makeMorphemesFromDictionary(auxiliaries, gaussian(0.5, 1.5), 1, "V"),
@@ -74,6 +76,8 @@ export default function makeDictionary(
     ...makeMorphemesFromDictionary(colors, gaussian(1.5, 1.2), 1, "Adj"),
     ...makeMorphemesFromDictionary(adjectives, gaussian(1.5, 1.5), 2, "Adj"),
     ...makeMorphemesFromDictionary(adverbs, gaussian(2.5, 1.2), 2, "Adv"),
+    ...makeMorphemesFromDictionary(geography, gaussian(2, 1.2), 1, "N"),
+    ...makeMorphemesFromDictionary(monsters, gaussian(3, 1.2), 3, "N"),
   };
 }
 

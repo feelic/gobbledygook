@@ -13,6 +13,8 @@ import {
   SentenceStructureDefinition,
 } from "@/app/gobbledygook/interfaces";
 
+import styles from "./index.module.scss";
+
 export default function SentenceMaker({
   lang,
   voice,
@@ -99,7 +101,7 @@ function SentenceForm({
   const [newEntityId, setNewEntityId] = useState("Joe");
 
   return (
-    <div>
+    <div className={styles.sentenceForm}>
       <input type="text" value={transcript} />
 
       <h4>Structure</h4>
