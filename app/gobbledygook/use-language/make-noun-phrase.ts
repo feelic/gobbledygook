@@ -9,6 +9,7 @@ import {
   SentencePartDefinition,
   SentenceTree,
 } from "../interfaces";
+import { DeclensionType, GrammaticalCase, PhraseElement, Conjunction, PosCode } from "../constants/grammar";
 
 export function makeNounPhrase(
   context: Context,
@@ -28,9 +29,9 @@ export function makeNounPhrase(
       if (idx === entities.length - 1) {
         return [...prev, np];
       }
-      return [...prev, np, getConjunction(context, "and")];
+      return [...prev, np, getConjunction(context, Conjunction.And)];
     }, []);
-    return { pos: "G", content: group };
+    return { pos: PosCode.Group, content: group };
   }
 
   const { lang, references = {} } = context;
@@ -55,24 +56,24 @@ export function makeNounPhrase(
   const NP: SentenceTree = [];
   lang.syntax.nounPhraseFormation.forEach((pos) => {
     switch (pos) {
-      case "preposition":
+      case PhraseElement.Preposition:
         const pre = getPreposition(context, grammaticalCase);
         pre && NP.push(pre);
         break;
-      case "determiner":
+      case PhraseElement.Determiner:
         const det = getDeterminer(context, nounDefinition);
         det && NP.push(det);
         break;
-      case "preadjectives":
-      case "postadjectives":
+      case PhraseElement.Preadjectives:
+      case PhraseElement.Postadjectives:
         const adjectives = makeAdjectives(context, nounDefinition);
         adjectives[pos]?.forEach((adj) => {
           NP.push(adj);
         });
         break;
-      case "noun":
+      case PhraseElement.Noun:
         const N = getRequiredForm(context, "declension", {
-          type: "noun",
+          declensionType: DeclensionType.Noun,
           declensionGroup,
           grammaticalCase,
           gender,
@@ -82,11 +83,11 @@ export function makeNounPhrase(
         });
         N && NP.push(N);
         break;
-      case "genitive":
+      case PhraseElement.Genitive:
         const genForm = makeGenitiveForm(context, nounDefinition);
         genForm && NP.push(genForm);
         break;
-      case "adjectiveClause":
+      case PhraseElement.AdjectiveClause:
         const AdjCl = makeAdjectiveClause(context, nounDefinition);
         AdjCl && NP.push(AdjCl);
         break;
@@ -95,7 +96,7 @@ export function makeNounPhrase(
     }
   });
 
-  return { pos: "NP", content: NP };
+  return { pos: PosCode.NounPhrase, content: NP };
 }
 
 function makeGenitiveForm(
@@ -109,9 +110,9 @@ function makeGenitiveForm(
   const { morpheme, gender, number } = nounDefinition;
   const { declensionGroup } = morpheme;
   const genitiveForm = getRequiredForm(context, "declension", {
-    type: "noun",
+    declensionType: DeclensionType.Noun,
     declensionGroup,
-    grammaticalCase: "genitive",
+    grammaticalCase: GrammaticalCase.Genitive,
     gender,
     number,
     morpheme,

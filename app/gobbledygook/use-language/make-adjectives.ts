@@ -1,10 +1,10 @@
 import { getRequiredForm } from "./get-required-form";
 import {
   Context,
-  EntityDefinition,
   SentencePartDefinition,
   SentenceTree,
 } from "../interfaces";
+import { AdjectiveCategory, DeclensionType } from "../constants/grammar";
 
 export function makeAdjectives(
   context: Context,
@@ -15,16 +15,16 @@ export function makeAdjectives(
   if (!nounDefinition.adjectives) {
     return { preadjectives: null, postadjectives: null };
   }
-  const { gender, number, grammaticalCase } = nounDefinition;
+  const { gender, number, grammaticalCase, adjectives } = nounDefinition;
 
-  function makeAdjectivesByPosition(adjectives: Array<string>) {
-    if (!adjectives || adjectives.length === 0) {
+  function makeAdjectivesByPosition(adjectiveCategories: Array<AdjectiveCategory>) {
+    if (!adjectiveCategories || adjectiveCategories.length === 0) {
       return null;
     }
 
     const adjArr: SentenceTree = [];
-    adjectives.forEach((adj) => {
-      const adjective = nounDefinition.adjectives[adj];
+    adjectiveCategories.forEach((category) => {
+      const adjective = adjectives?.[category];
 
       if (!adjective) {
         return;
@@ -35,7 +35,7 @@ export function makeAdjectives(
       }
       const { declensionGroup } = morpheme;
       const declinedAdjective = getRequiredForm(context, "declension", {
-        type: "adjective",
+        declensionType: DeclensionType.Adjective,
         declensionGroup,
         grammaticalCase,
         gender,

@@ -1,17 +1,23 @@
 import { useState } from "react";
-import {
-  makeSentence,
-  getIPATranscript,
-} from "../../gobbledygook/use-language";
 import { english, french } from "../../gobbledygook/languages/index";
-import sentences from "../../gobbledygook/sample-sentences/index";
 import Sentence from "../Sentence";
 import {
+  DeterminationDefinition,
   EntityDefinition,
   Language,
   SentenceDefinition,
+  SentencePartDefinition,
   SentenceStructureDefinition,
+  VerbDefinition,
 } from "@/app/gobbledygook/interfaces";
+import {
+  GrammaticalCase,
+  Gender,
+  GrammaticalNumber,
+  Tense,
+  DeterminationType,
+  enumValues,
+} from "@/app/gobbledygook/constants/grammar";
 
 import styles from "./index.module.scss";
 
@@ -26,15 +32,15 @@ export default function SentenceMaker({
   const [sentence, setSentence] = useState<SentenceDefinition>({
     transcript: "sample sentence",
     sentence: {
-      subject: { id: "Bob", grammaticalCase:"nominative" },
-      verb: { verb: "sing", tense: "general" },
+      subject: { id: "Bob", grammaticalCase: GrammaticalCase.Nominative },
+      verb: { verb: "sing", tense: Tense.General },
     },
     entities: {
       Bob: {
         core: "Bob",
-        number: "singular",
-        gender: "masc",
-        determination: { type: "properNoun" },
+        number: GrammaticalNumber.Singular,
+        gender: Gender.Masculine,
+        determination: { type: DeterminationType.ProperNoun },
       },
     },
   });
@@ -50,9 +56,10 @@ export default function SentenceMaker({
 
     setSentence(newSentence);
   }
-  function updateSentenceStructure(
-    prop: keyof SentenceStructureDefinition,
-    value: any
+
+  function updateSentenceStructure<K extends keyof SentenceStructureDefinition>(
+    prop: K,
+    value: SentenceStructureDefinition[K]
   ) {
     const newSentence: SentenceDefinition = {
       ...sentence,
@@ -88,32 +95,33 @@ export default function SentenceMaker({
   );
 }
 
+interface SentenceFormProps {
+  sentenceDefinition: SentenceDefinition;
+  updateEntity: (key: string, entity: EntityDefinition) => void;
+  updateSentence: <K extends keyof SentenceStructureDefinition>(
+    prop: K,
+    value: SentenceStructureDefinition[K]
+  ) => void;
+}
+
 function SentenceForm({
   sentenceDefinition,
   updateEntity,
   updateSentence,
-}: {
-  sentenceDefinition: SentenceDefinition;
-  updateEntity: Function;
-  updateSentence: Function;
-}) {
+}: SentenceFormProps) {
   const { entities, transcript, sentence } = sentenceDefinition;
   const [newEntityId, setNewEntityId] = useState("Joe");
 
   return (
     <div className={styles.sentenceForm}>
-      <input type="text" value={transcript} />
+      <input type="text" value={transcript} readOnly />
 
       <h4>Structure</h4>
-      {/* export interface SentenceStructureDefinition {
-      question?: "who" | "what" | "where" | "why" | "how";
-      subject: SentencePartDefinition;
-      verb: VerbDefinition;
-      object?: SentencePartDefinition;
-      adverbialClauses?: Array<SentencePartDefinition>; */}
       <label htmlFor="sentenceType">Sentence type</label>
-      <select id="sentenceType" value={sentence.type}>
+      <select id="sentenceType" value={sentence.type || "declarative"}>
         <option value="declarative">declarative</option>
+        <option value="polarInterrogative">polar interrogative</option>
+        <option value="openInterrogative">open interrogative</option>
       </select>
 
       <SentencePartForm
@@ -136,19 +144,17 @@ function SentenceForm({
       />
 
       <h4>Entities</h4>
-      {Object.entries(entities).map(
-        ([key, entity]: [key: string, entity: EntityDefinition]) => {
-          return (
-            <EntityForm
-              key={key}
-              id={key}
-              entity={entity}
-              entities={entities}
-              updateEntity={(value) => updateEntity(key, value)}
-            />
-          );
-        }
-      )}
+      {Object.entries(entities).map(([key, entity]) => {
+        return (
+          <EntityForm
+            key={key}
+            id={key}
+            entity={entity}
+            entities={entities}
+            updateEntity={(value) => updateEntity(key, value)}
+          />
+        );
+      })}
       <div className="grid">
         <input type="text" onChange={(e) => setNewEntityId(e.target.value)} />
         <button onClick={() => updateEntity(newEntityId, {})}>
@@ -160,8 +166,18 @@ function SentenceForm({
   );
 }
 
-function EntityForm({ entity, updateEntity, id, entities }) {
-  function handleUpdateEntity(prop: keyof EntityDefinition, value: any) {
+interface EntityFormProps {
+  entity: EntityDefinition;
+  updateEntity: (entity: EntityDefinition) => void;
+  id: string;
+  entities: Record<string, EntityDefinition>;
+}
+
+function EntityForm({ entity, updateEntity, id, entities }: EntityFormProps) {
+  function handleUpdateEntity<K extends keyof EntityDefinition>(
+    prop: K,
+    value: EntityDefinition[K]
+  ) {
     updateEntity({
       ...entity,
       [prop]: value,
@@ -172,120 +188,133 @@ function EntityForm({ entity, updateEntity, id, entities }) {
     <article>
       <header>{id}</header>
       <div className="grid">
-        <label htmlFor="core">Core</label>
+        <label htmlFor={`core-${id}`}>Core</label>
         <input
           type="text"
-          id="core"
-          value={entity.core}
-          onChange={(e) => {
-            handleUpdateEntity("core", e.target.value);
-          }}
+          id={`core-${id}`}
+          value={entity.core || ""}
+          onChange={(e) => handleUpdateEntity("core", e.target.value)}
         />
       </div>
       <div className="grid">
-        <label htmlFor="gender">Gender</label>
+        <label htmlFor={`gender-${id}`}>Gender</label>
         <select
-          id="gender"
-          value={entity.gender}
-          onChange={(e) => {
-            handleUpdateEntity("gender", e.target.value);
-          }}
+          id={`gender-${id}`}
+          value={entity.gender || ""}
+          onChange={(e) =>
+            handleUpdateEntity("gender", e.target.value as Gender)
+          }
         >
-          <option value="masc">masc</option>
-          <option value="fem">fem</option>
-          <option value="neut">neut</option>
+          <option value="">none</option>
+          {enumValues(Gender).map((gender: string) => (
+            <option key={gender} value={gender}>
+              {gender}
+            </option>
+          ))}
         </select>
       </div>
       <div className="grid">
-        <label htmlFor="number">Number</label>
+        <label htmlFor={`number-${id}`}>Number</label>
         <select
-          id="number"
-          value={entity.gender}
-          onChange={(e) => {
-            handleUpdateEntity("number", e.target.value);
-          }}
+          id={`number-${id}`}
+          value={entity.number || ""}
+          onChange={(e) =>
+            handleUpdateEntity("number", e.target.value as GrammaticalNumber)
+          }
         >
-          <option value="singular">singular</option>
-          <option value="plural">plural</option>
+          <option value="">none</option>
+          {enumValues(GrammaticalNumber).map((num: string) => (
+            <option key={num} value={num}>
+              {num}
+            </option>
+          ))}
         </select>
       </div>
       <div className="grid">
         <DeterminationForm
           determination={entity.determination}
           entities={entities}
-          updateDetermination={(determination) => {
-            handleUpdateEntity("determination", determination);
-          }}
+          updateDetermination={(determination) =>
+            handleUpdateEntity("determination", determination)
+          }
         />
       </div>
       <div className="grid">
-        <label htmlFor="usePronoun">Use pronoun</label>
+        <label htmlFor={`usePronoun-${id}`}>Use pronoun</label>
         <input
           type="checkbox"
-          id="usePronoun"
-          onChange={(e) => {
-            handleUpdateEntity("usePronoun", e.target.value);
-          }}
+          id={`usePronoun-${id}`}
+          checked={entity.usePronoun || false}
+          onChange={(e) => handleUpdateEntity("usePronoun", e.target.checked)}
         />
       </div>
     </article>
   );
 }
 
+interface SentencePartFormProps {
+  sentencePart?: SentencePartDefinition;
+  updateSentencePart: (value: SentencePartDefinition) => void;
+  role: string;
+  entities: Record<string, EntityDefinition>;
+}
+
 function SentencePartForm({
-  sentencePart = {},
+  sentencePart,
   updateSentencePart,
   role,
   entities,
-}) {
-const grammaticalCases= ["nominative", "accusative", "benefactive", "locative", "inessive", "lative", "dative", "instrumental", "genitive"]
+}: SentencePartFormProps) {
+  const currentPart: SentencePartDefinition = sentencePart || {};
+
   return (
     <article>
       <label htmlFor={`partId${role}`}>{role}</label>
       <select
         id={`partId${role}`}
-        value={sentencePart.id}
+        value={currentPart.id || ""}
         onChange={(e) => {
           updateSentencePart({
-            ...sentencePart,
-            id: e.target.value,
+            ...currentPart,
+            id: e.target.value || undefined,
           });
         }}
       >
-        <option>none</option>
-        {Object.keys(entities).map((key) => {
-          return (
-            <option key={key} value={key}>
-              {key}
-            </option>
-          );
-        })}
+        <option value="">none</option>
+        {Object.keys(entities).map((key) => (
+          <option key={key} value={key}>
+            {key}
+          </option>
+        ))}
       </select>
       <label htmlFor={`grammaticalCase${role}`}>Grammatical Case</label>
       <select
         id={`grammaticalCase${role}`}
-        value={sentencePart.grammaticalCase}
+        value={currentPart.grammaticalCase || ""}
         onChange={(e) => {
           updateSentencePart({
-            ...sentencePart,
-            grammaticalCase: e.target.value,
+            ...currentPart,
+            grammaticalCase: (e.target.value as GrammaticalCase) || undefined,
           });
         }}
       >
-        <option>none</option>
-        {grammaticalCases.map((grammaticalCase) => {
-          return (
-            <option key={grammaticalCase} value={grammaticalCase}>
-              {grammaticalCase}
-            </option>
-          );
-        })}
+        <option value="">none</option>
+        {enumValues(GrammaticalCase).map((grammaticalCase: string) => (
+          <option key={grammaticalCase} value={grammaticalCase}>
+            {grammaticalCase}
+          </option>
+        ))}
       </select>
     </article>
   );
 }
 
-function VerbForm({ verb, updateVerb }) {
+interface VerbFormProps {
+  verb: VerbDefinition;
+  updateVerb: (verb: VerbDefinition) => void;
+}
+
+function VerbForm({ verb, updateVerb }: VerbFormProps) {
   return (
     <article>
       <label htmlFor="verb">Verb</label>
@@ -307,68 +336,86 @@ function VerbForm({ verb, updateVerb }) {
         onChange={(e) => {
           updateVerb({
             ...verb,
-            tense: e.target.value,
+            tense: e.target.value as Tense,
           });
         }}
       >
-        <option value="general">general</option>
+        {enumValues(Tense).map((tense: string) => (
+          <option key={tense} value={tense}>
+            {tense}
+          </option>
+        ))}
       </select>
     </article>
   );
 }
 
-function DeterminationForm({ determination = {}, updateDetermination, entities }) {
+interface DeterminationFormProps {
+  determination?: DeterminationDefinition;
+  updateDetermination: (determination: DeterminationDefinition) => void;
+  entities: Record<string, EntityDefinition>;
+}
+
+function DeterminationForm({
+  determination,
+  updateDetermination,
+  entities,
+}: DeterminationFormProps) {
+  const currentDetermination: DeterminationDefinition = determination || {
+    type: DeterminationType.Definite,
+  };
+
   return (
     <div>
       <div className="grid">
         <label htmlFor="determinationType">Determination type</label>
         <select
           id="determinationType"
-          value={determination.type}
+          value={currentDetermination.type}
           onChange={(e) => {
             updateDetermination({
-              type: e.target.value,
+              type: e.target.value as DeterminationType,
             });
           }}
         >
-          <option value="properNoun">Proper Noun</option>
-          <option value="indefinite">Indefinite</option>
-          <option value="definite">Definite</option>
-          <option value="possessive">Possessive</option>
+          {enumValues(DeterminationType).map((type: string) => (
+            <option key={type} value={type}>
+              {type}
+            </option>
+          ))}
         </select>
       </div>
-      {determination.type === "possessive" && (
+      {currentDetermination.type === "possessive" && (
         <>
-          <label htmlFor="usePronoun">Use pronoun</label>
+          <label htmlFor="possessiveUsePronoun">Use pronoun</label>
           <input
             type="checkbox"
-            id="usePronoun"
+            id="possessiveUsePronoun"
+            checked={currentDetermination.usePronoun || false}
             onChange={(e) => {
               updateDetermination({
-                ...determination,
-                usePronoun: e.target.value,
+                ...currentDetermination,
+                usePronoun: e.target.checked,
               });
             }}
           />
-          <label htmlFor={`owner`}>Owner</label>
+          <label htmlFor="owner">Owner</label>
           <select
-            id={`owner`}
-            value={determination.owner}
+            id="owner"
+            value={currentDetermination.owner || ""}
             onChange={(e) => {
               updateDetermination({
-                ...determination,
-                owner: e.target.value,
+                ...currentDetermination,
+                owner: e.target.value || undefined,
               });
             }}
           >
-            <option>none</option>
-            {Object.keys(entities).map((key) => {
-              return (
-                <option key={key} value={key}>
-                  {key}
-                </option>
-              );
-            })}
+            <option value="">none</option>
+            {Object.keys(entities).map((key) => (
+              <option key={key} value={key}>
+                {key}
+              </option>
+            ))}
           </select>
         </>
       )}

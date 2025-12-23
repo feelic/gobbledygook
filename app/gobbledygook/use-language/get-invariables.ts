@@ -1,8 +1,9 @@
-import { PoS, Context, tPosCode } from "../interfaces";
+import { PoS, Context } from "../interfaces";
+import { GrammaticalCase, PosCode } from "../constants/grammar";
 import { posCodesLabels } from "../constants/pos-codes";
 
 function getInvariable(
-  posCode: tPosCode,
+  posCode: PosCode,
   context: Context,
   invariable: string
 ): PoS {
@@ -21,28 +22,28 @@ function getInvariable(
 }
 
 export function getConjunction(context: Context, invariable: string) {
-  return getInvariable("Con", context, invariable);
+  return getInvariable(PosCode.Conjunction, context, invariable);
 }
 export function getAdverb(context: Context, invariable: string) {
-  return getInvariable("Adv", context, invariable);
+  return getInvariable(PosCode.Adverb, context, invariable);
 }
-export function getPreposition(context: Context, grammaticalCase: string): PoS {
+export function getPreposition(context: Context, grammaticalCase?: GrammaticalCase): PoS {
   const { lang } = context;
 
   return {
-    pos: "Pre",
-    form: lang.declension.prepositions[grammaticalCase] || "",
+    pos: PosCode.Preposition,
+    form: (grammaticalCase && lang.declension.prepositions?.[grammaticalCase]) || "",
     meaning: `${grammaticalCase} preposition`,
   };
 }
 export function getInterrogative(context: Context, invariable: string) {
-  return getInvariable("Int", context, invariable);
+  return getInvariable(PosCode.Interrogative, context, invariable);
 }
 export function getInterrogativeParticle(context: Context, invariable: string) {
-  return getInvariable("Int", context, invariable);
+  return getInvariable(PosCode.Interrogative, context, invariable);
 }
 export function getRelativePronoun(context: Context, invariable: string) {
-  return getInvariable("Pro", context, invariable);
+  return getInvariable(PosCode.Pronoun, context, invariable);
 }
 export function getTenseMarker(context: Context, tense: string): PoS | null {
   const { lang } = context;
@@ -51,7 +52,7 @@ export function getTenseMarker(context: Context, tense: string): PoS | null {
     return null;
   }
   return {
-    pos: "Deic",
+    pos: PosCode.Deictic,
     form: lang.conjugation.tenseMarkers[tense],
     meaning: `${tense} preposition`,
   };

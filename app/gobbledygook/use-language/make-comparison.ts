@@ -4,12 +4,21 @@ import { makeNounPhrase } from "./make-noun-phrase";
 import { getRequiredForm } from "./get-required-form";
 import { getRelativePronoun } from "./get-invariables";
 import {
-  ComparisonDegreeType,
   Context,
   PoS,
   SentencePartDefinition,
   SentenceTree,
 } from "../interfaces";
+import { 
+  COMPARISON_MEANINGS, 
+  ComparisonDegree,
+  DeclensionType, 
+  DeterminationType,
+  GrammaticalCase,
+  PhraseElement,
+  ComparisonConjunction,
+  PosCode,
+} from "../constants/grammar";
 
 export function makeComparison(
   context: Context,
@@ -20,36 +29,39 @@ export function makeComparison(
   if (!object.degree || !context.sentence) {
     return [];
   }
-  const degree: ComparisonDegreeType = object.degree;
+  const degree: ComparisonDegree = object.degree;
   const forms = lang.syntax[degree];
   const subjectEntity = getNounInfo(context, context.sentence.subject);
 
   const comparisonPhrase: SentenceTree = [];
   forms.forEach((pos) => {
     switch (pos) {
-      case "determiner":
+      case PhraseElement.Determiner:
         const det = getDeterminer(context, {
           ...subjectEntity,
-          determination: { type: "definite" },
+          determination: { type: DeterminationType.Definite },
         });
         det && comparisonPhrase.push(det);
         break;
-      case "adjective":
-        let type = "adjective";
+      case PhraseElement.Adjective:
+        let declensionType: DeclensionType = DeclensionType.Adjective;
         if (
           typeof lang.declension.forms !== "string" &&
           lang.declension.forms[degree]
         ) {
-          type = degree;
+          // Map ComparisonDegree to DeclensionType
+          declensionType = degree === ComparisonDegree.Comparative 
+            ? DeclensionType.Comparative 
+            : DeclensionType.Superlative;
         }
         const qualityEntity = getNounInfo(context, { id: object.quality });
-        const { declensionGroup, grammaticalCase, gender, number, morpheme } =
-          qualityEntity;
+        const { grammaticalCase, gender, number, morpheme } = qualityEntity;
+        const { declensionGroup } = morpheme;
         if (!object.quality) {
           throw new Error("trying to compare without defining a quality");
         }
         const adj = getRequiredForm(context, "declension", {
-          type,
+          declensionType,
           declensionGroup,
           grammaticalCase,
           gender,
@@ -59,20 +71,20 @@ export function makeComparison(
         });
         adj && comparisonPhrase.push(adj);
         break;
-      case "comparisonAdverb":
+      case PhraseElement.ComparisonAdverb:
         const compAdv = makeComparativeAdverb(context, object);
         compAdv && comparisonPhrase.push(compAdv);
         break;
-      case "comparedObject":
+      case PhraseElement.ComparedObject:
         const objectEntity = getNounInfo(context, { id: object.object });
         const NP = makeNounPhrase(context, {
           ...objectEntity,
-          grammaticalCase: "genitive",
+          grammaticalCase: GrammaticalCase.Genitive,
         });
         NP && comparisonPhrase.push(NP);
         break;
-      case "comparisonPreposition":
-        const pro = getRelativePronoun(context, "than");
+      case PhraseElement.ComparisonPreposition:
+        const pro = getRelativePronoun(context, ComparisonConjunction.Than);
         pro && comparisonPhrase.push(pro);
         break;
       default:
@@ -88,23 +100,13 @@ function makeComparativeAdverb(
   object: SentencePartDefinition
 ): PoS | null {
   const { lang } = context;
-  const meaning: Record<ComparisonDegreeType, Record<string, string>> = {
-    comparative: {
-      negative: "less",
-      positive: "more",
-    },
-    superlative: {
-      negative: "least",
-      positive: "most",
-    },
-  };
 
   if (!object.degree || !object.value) {
     return null;
   }
   return {
-    pos: "Adv",
+    pos: PosCode.Adverb,
     form: lang.comparisonAdverb[object.degree][object.value],
-    meaning: meaning[object.degree][object.value],
+    meaning: COMPARISON_MEANINGS[object.degree][object.value],
   };
 }

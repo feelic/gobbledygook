@@ -1,62 +1,68 @@
-import { FormTable, Morpheme, PhonologyType } from "../interfaces";
+import { FormTable, PhonologyType } from "../interfaces";
+import { 
+  MorphologyType, 
+  GrammaticalCase, 
+  DeclensionType, 
+  RuleName,
+  FallbackValue,
+  enumValues 
+} from "../constants/grammar";
 import { gaussian, randomFromArray } from "../util/random";
 import makeDeclension from "./make-declension";
 import { makeMorpheme } from "./make-morpheme";
 
-export function makeMorphologyType() {
-  return randomFromArray([
-    "inflectional",
-    "semiFlectional",
-    "analytic",
-    // "agglutinative", i'll do that later
-  ]);
+export function makeMorphologyType(): MorphologyType {
+  return randomFromArray(enumValues(MorphologyType));
 }
 
 export function makeCaseSystem(
-  morphologyType: string,
+  morphologyType: MorphologyType,
   phonology: PhonologyType,
   genders: Array<string>
-): { declension: FormTable; grammaticalCases: Array<string> | null } {
-  if (morphologyType === "inflectional") {
-    let cases = {
-      nominative: "nominative",
-      accusative: "accusative",
-      dative: "dative",
-      genitive: "genitive", // of
-      ablative: "ablative", // from
-      lative: "lative", // to
-      inessive: "inessive", // in
-      instrumental: "instrumental", // using
-      benefactive: "benefactive", // for
+): { declension: FormTable; grammaticalCases: Array<GrammaticalCase> | null } {
+  if (morphologyType === MorphologyType.Inflectional) {
+    const cases: Record<GrammaticalCase, GrammaticalCase> = {
+      [GrammaticalCase.Nominative]: GrammaticalCase.Nominative,
+      [GrammaticalCase.Accusative]: GrammaticalCase.Accusative,
+      [GrammaticalCase.Dative]: GrammaticalCase.Dative,
+      [GrammaticalCase.Genitive]: GrammaticalCase.Genitive,
+      [GrammaticalCase.Ablative]: GrammaticalCase.Ablative,
+      [GrammaticalCase.Lative]: GrammaticalCase.Lative,
+      [GrammaticalCase.Locative]: GrammaticalCase.Locative,
+      [GrammaticalCase.Inessive]: GrammaticalCase.Inessive,
+      [GrammaticalCase.Instrumental]: GrammaticalCase.Instrumental,
+      [GrammaticalCase.Benefactive]: GrammaticalCase.Benefactive,
     };
     return {
       declension: {
         ...makeDeclension(phonology, morphologyType, cases, genders),
         prepositions: {},
       },
-      grammaticalCases: [...new Set(Object.keys(cases))],
+      grammaticalCases: [...new Set(Object.values(cases))],
     };
   }
 
-  if (morphologyType === "semiFlectional") {
-    let cases = {
-      nominative: "nominative",
-      accusative: "accusative",
-      dative: "dative",
-      genitive: "genitive", // of
-      ablative: "dative", // from
-      lative: "dative", // to
-      inessive: "dative", // in
-      instrumental: "dative", // using
-      benefactive: "dative", // for
+  if (morphologyType === MorphologyType.SemiFlectional) {
+    // Some cases share the same declension form (e.g., ablative uses dative form)
+    const cases: Record<GrammaticalCase, GrammaticalCase> = {
+      [GrammaticalCase.Nominative]: GrammaticalCase.Nominative,
+      [GrammaticalCase.Accusative]: GrammaticalCase.Accusative,
+      [GrammaticalCase.Dative]: GrammaticalCase.Dative,
+      [GrammaticalCase.Genitive]: GrammaticalCase.Genitive,
+      [GrammaticalCase.Ablative]: GrammaticalCase.Dative,
+      [GrammaticalCase.Lative]: GrammaticalCase.Dative,
+      [GrammaticalCase.Locative]: GrammaticalCase.Dative,
+      [GrammaticalCase.Inessive]: GrammaticalCase.Dative,
+      [GrammaticalCase.Instrumental]: GrammaticalCase.Dative,
+      [GrammaticalCase.Benefactive]: GrammaticalCase.Dative,
     };
-    let prepositionsCases = [
-      "genitive",
-      "ablative",
-      "lative",
-      "inessive",
-      "instrumental",
-      "benefactive",
+    const prepositionsCases: GrammaticalCase[] = [
+      GrammaticalCase.Genitive,
+      GrammaticalCase.Ablative,
+      GrammaticalCase.Lative,
+      GrammaticalCase.Inessive,
+      GrammaticalCase.Instrumental,
+      GrammaticalCase.Benefactive,
     ];
 
     return {
@@ -64,24 +70,27 @@ export function makeCaseSystem(
         ...makeDeclension(phonology, morphologyType, cases, genders),
         prepositions: makePrepositions(phonology, prepositionsCases),
       },
-      grammaticalCases: [...new Set(Object.keys(cases))],
+      grammaticalCases: [...new Set(Object.values(cases))],
     };
   }
 
-  let prepositionsCases = [
-    "genitive",
-    "ablative",
-    "lative",
-    "inessive",
-    "instrumental",
-    "benefactive",
+  const prepositionsCases: GrammaticalCase[] = [
+    GrammaticalCase.Genitive,
+    GrammaticalCase.Ablative,
+    GrammaticalCase.Lative,
+    GrammaticalCase.Inessive,
+    GrammaticalCase.Instrumental,
+    GrammaticalCase.Benefactive,
   ];
 
-  //analytic
+  // analytic
   return {
     declension: {
-      rules: ["type"],
-      forms: { default: "{morpheme}", adjective: "{morpheme}" },
+      rules: [RuleName.DeclensionType],
+      forms: { 
+        [FallbackValue.Default]: "{morpheme}", 
+        [DeclensionType.Adjective]: "{morpheme}" 
+      },
       prepositions: makePrepositions(phonology, prepositionsCases),
     },
     grammaticalCases: null,
@@ -90,7 +99,7 @@ export function makeCaseSystem(
 
 function makePrepositions(
   phonology: PhonologyType,
-  grammaticalCases: Array<string>
+  grammaticalCases: Array<GrammaticalCase>
 ) {
   let prepositions: Record<string, string> = {};
 

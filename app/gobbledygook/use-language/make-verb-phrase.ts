@@ -8,6 +8,7 @@ import {
   SentenceTree,
   VerbDefinition,
 } from "../interfaces";
+import { GrammaticalNumber, GrammaticalPerson, PosCode } from "../constants/grammar";
 
 export function makeVerbPhrase(
   context: Context,
@@ -15,7 +16,9 @@ export function makeVerbPhrase(
   verbDefinition: VerbDefinition
 ): PoS {
   const { lang } = context;
-  const { number, person } = getSubjectInfo(context, subject);
+  const subjectInfo = getSubjectInfo(context, subject);
+  const number: GrammaticalNumber = "number" in subjectInfo ? subjectInfo.number : GrammaticalNumber.Singular;
+  const person: GrammaticalPerson = "person" in subjectInfo ? subjectInfo.person : GrammaticalPerson.Third;
   const { verb, tense, group, adverbs } = verbDefinition;
   const morpheme = lang.morphemeDictionary[verb];
 
@@ -53,5 +56,5 @@ export function makeVerbPhrase(
     }
   });
 
-  return { pos: "VP", content: VP };
+  return { pos: PosCode.VerbPhrase, content: VP };
 }

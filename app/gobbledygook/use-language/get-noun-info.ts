@@ -3,37 +3,55 @@ import {
   EntityDefinition,
   Morpheme,
   SentencePartDefinition,
+  DeterminationDefinition,
 } from "../interfaces";
+import {
+  GrammaticalCase,
+  GrammaticalNumber,
+  GrammaticalPerson,
+  DeterminationType,
+  Gender,
+} from "../constants/grammar";
 
-export function getNounInfo(context: Context, noun: SentencePartDefinition) {
+/** Normalized noun info with guaranteed required fields */
+export interface NormalizedNounInfo extends EntityDefinition {
+  id: string;
+  morpheme: Morpheme;
+  gender: Gender | undefined;
+  number: GrammaticalNumber;
+  determination: DeterminationDefinition;
+  grammaticalCase: GrammaticalCase;
+  person: GrammaticalPerson;
+}
+
+export function getNounInfo(context: Context, noun: SentencePartDefinition): NormalizedNounInfo {
   const { entities } = context;
 
-  if (!noun.id || !entities[noun.id]) {
+  if (!entities || !noun.id || !entities[noun.id]) {
     throw new Error(`no entity for ${noun.id}`);
   }
   const nounDefinition = entities[noun.id];
 
   const morpheme = getMorpheme(context, nounDefinition);
 
-  const normalizedDefinition = {
+  return {
     ...nounDefinition,
+    id: noun.id,
     morpheme,
-    gender: nounDefinition.gender || morpheme.gender || null,
-    number: nounDefinition.number || "singular",
-    determination: nounDefinition.determination || { type: "definite" },
-    grammaticalCase: noun.grammaticalCase || "nominative",
-    person: nounDefinition.person || "thirdPerson",
+    gender: nounDefinition.gender || morpheme.gender,
+    number: nounDefinition.number || GrammaticalNumber.Singular,
+    determination: nounDefinition.determination || { type: DeterminationType.Definite },
+    grammaticalCase: noun.grammaticalCase || GrammaticalCase.Nominative,
+    person: nounDefinition.person || GrammaticalPerson.Third,
     ...noun,
   };
-
-  return normalizedDefinition;
 }
 
-export function getSubjectInfo(context: Context, subject: any) {
+export function getSubjectInfo(context: Context, subject: SentencePartDefinition) {
   if (subject.entities) {
     return {
-      number: "plural",
-      person: "thirdPerson",
+      number: GrammaticalNumber.Plural,
+      person: GrammaticalPerson.Third,
     };
   }
 

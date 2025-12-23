@@ -1,42 +1,37 @@
 import { Context, PoS } from "../interfaces";
+import { PosCode } from "../constants/grammar";
 
 export function makeNumber(context: Context, number: number): PoS {
   const { lang } = context;
-  const numbersRules = lang.numbers;
-  if (!numbersRules) {
-    return { pos: "Num", form: String(number), meaning: String(number) };
+  if (!lang.numbers) {
+    return { pos: PosCode.Number, form: String(number), meaning: String(number) };
   }
-
-  if (numbersRules.digits[number]) {
+  if (lang.numbers.digits[number]) {
     return {
-      pos: "Num",
-      form: numbersRules.digits[number],
+      pos: PosCode.Number,
+      form: lang.numbers.digits[number],
       meaning: String(number),
     };
   }
-  const placeNames = ["units", "tens", "hundreds", "thousands"];
-  const breakdown = number.toString().split("").reverse();
 
-  const bits: Record<string, string> = breakdown.reduce((prev, curr, idx) => {
-    const placeName = placeNames[idx];
+  const digits = number
+    .toString()
+    .split("")
+    .map((digit) => parseInt(digit, 10));
 
-    const paddedNumber = curr + new Array(idx).fill(0).join("");
-    const digit =
-      numbersRules.digits[Number(paddedNumber)] ||
-      numbersRules.digits[Number(curr)];
+  const formedNumber = digits.reduce((prev, digit, i) => {
+    const unit = digits.length - i - 1;
+    const digitMorpheme = lang.numbers.digits[digit];
+    const unitMorpheme = lang.numbers.unitFormation[unit];
 
-    return {
-      ...prev,
-      [placeName]: numbersRules.unitFormation[placeName].replace(
-        "{digit}",
-        digit
-      ),
-    };
-  }, {});
+    if (digit === 0) {
+      return prev;
+    }
 
-  const formedNumber = placeNames.reduce((prev, curr) => {
-    return prev.replace(`{${curr}}`, bits[curr] || "");
-  }, numbersRules.formation);
+    return `${prev} ${lang.numbers.formation
+      .replace("{digit}", digitMorpheme)
+      .replace("{unit}", unitMorpheme || "")}`;
+  }, "");
 
-  return { pos: "Num", form: formedNumber, meaning: String(number) };
+  return { pos: PosCode.Number, form: formedNumber, meaning: String(number) };
 }

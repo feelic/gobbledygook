@@ -2,36 +2,43 @@ import { random, gaussian } from "../util/random";
 import { makeMorpheme } from "./make-morpheme";
 import { getOrdinalNumber } from "../util";
 import { FormTable, FormsType, PhonologyType } from "../interfaces";
+import { 
+  MorphologyType, 
+  GrammaticalNumber,
+  DeclensionType,
+  enumValues,
+  RuleName,
+} from "../constants/grammar";
 
 export default function makeDeclension(
   phonology: PhonologyType,
-  morphologyType: string,
+  morphologyType: MorphologyType,
   cases: Record<string, string>,
   genders: Array<string>
 ): FormTable {
-  const rules = ["type"];
-  const types = ["noun", "adjective"];
+  const rules = [RuleName.DeclensionType];
+  const types = [DeclensionType.Noun, DeclensionType.Adjective];
   const declensionGroups = makeDeclensionGroups(morphologyType);
-  const numbers = ["singular", "plural"];
+  const numbers = enumValues(GrammaticalNumber);
 
   if (declensionGroups) {
-    rules.push("declensionGroup");
+    rules.push(RuleName.DeclensionGroup);
   }
   if (cases && cases.length && random() > 0.5) {
-    rules.push("grammaticalCase");
+    rules.push(RuleName.GrammaticalCase);
   }
   if (genders && random() > 0.5) {
-    rules.push("gender");
+    rules.push(RuleName.Gender);
   }
   if (random() > 0.5) {
-    rules.push("number");
+    rules.push(RuleName.Number);
   }
   const ruleOptions: Record<string, Array<string> | null> = {
-    type: types,
-    grammaticalCase: [...new Set(Object.values(cases))],
-    gender: genders,
-    number: numbers,
-    declensionGroup: declensionGroups,
+    [RuleName.DeclensionType]: types,
+    [RuleName.GrammaticalCase]: [...new Set(Object.values(cases))],
+    [RuleName.Gender]: genders,
+    [RuleName.Number]: numbers,
+    [RuleName.DeclensionGroup]: declensionGroups,
   };
 
   const forms = makeForms(phonology, rules, ruleOptions);
@@ -65,10 +72,10 @@ function makeForms(
   }, {});
 }
 
-function makeDeclensionGroups(morphologyType: string) {
+function makeDeclensionGroups(morphologyType: MorphologyType) {
   const numberOfGroups = Math.ceil(random() * 4);
 
-  if (morphologyType === "semiFlectional" || numberOfGroups < 2) {
+  if (morphologyType === MorphologyType.SemiFlectional || numberOfGroups < 2) {
     return null;
   }
 

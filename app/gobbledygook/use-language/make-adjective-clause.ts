@@ -8,6 +8,7 @@ import {
   SentenceTree,
   PoS,
 } from "../interfaces";
+import { RelativePronoun, PhraseElement, PosCode } from "../constants/grammar";
 
 export function makeAdjectiveClause(
   context: Context,
@@ -28,25 +29,27 @@ export function makeAdjectiveClause(
 
   lang.syntax.adjectiveClauseFormation.forEach((pos: string) => {
     switch (pos) {
-      case "relativePronoun":
-        const pro = getRelativePronoun(context, "that");
+      case PhraseElement.RelativePronoun:
+        const pro = getRelativePronoun(context, RelativePronoun.That);
         if (pro) clause.push(pro);
         break;
-      case "subject":
+      case PhraseElement.Subject:
         const S = makeNounPhrase(context, subject);
         S && clause.push(S);
         break;
-      case "verb":
+      case PhraseElement.Verb:
         clause.push(makeVerbPhrase(context, subject, adjectiveClause.verb));
         break;
-      case "object":
-        const O = makeNounPhrase(context, object);
-        O && clause.push(O);
+      case PhraseElement.Object:
+        if (object) {
+          const O = makeNounPhrase(context, object);
+          O && clause.push(O);
+        }
         break;
       default:
         break;
     }
   });
 
-  return { pos: "AdjP", content: clause };
+  return { pos: PosCode.AdjectivePhrase, content: clause };
 }
