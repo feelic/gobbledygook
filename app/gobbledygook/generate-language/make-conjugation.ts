@@ -1,47 +1,53 @@
 import { random, gaussian } from "../util/random";
 import { makeMorpheme } from "./make-morpheme";
 import { getOrdinalNumber } from "../util";
-import { PhonologyType } from "../interfaces";
+import { FormTable, PhonologyType } from "../interfaces";
+import { 
+  MorphologyType, 
+  GrammaticalNumber, 
+  GrammaticalPerson,
+  Tense,
+  FallbackValue,
+  RuleName,
+  TENSE_MARKER_CANDIDATES,
+  enumValues,
+} from "../constants/grammar";
 
 export default function makeConjugation(
   phonology: PhonologyType,
-  morphologyType: string
-) {
-  if (morphologyType === "analytic") {
-    const tenseMarkers = makeTenseMarkers(phonology, [
-      "past",
-      "future",
-      "conditional",
-    ]);
+  morphologyType: MorphologyType
+): FormTable {
+  if (morphologyType === MorphologyType.Analytic) {
+    const tenseMarkers = makeTenseMarkers(phonology, [...TENSE_MARKER_CANDIDATES]);
     return {
-      rules: [],
-      forms: "{morpheme}",
+      rules: [RuleName.DeclensionType],
+      forms: { [FallbackValue.Default]: "{morpheme}" },
       tenseMarkers,
     };
   }
   const conjugationGroups = makeConjugationGroups(morphologyType);
   const { tenses, tenseSystem, tenseMarkers } = makeTenses(phonology);
 
-  const numbers = ["singular", "plural"];
-  const persons = ["firstPerson", "secondPerson", "thirdPerson"];
-  const rules = [];
+  const numbers = enumValues(GrammaticalNumber);
+  const persons = enumValues(GrammaticalPerson);
+  const rules: string[] = [];
   const ruleOptions: Record<string, Array<string>> = {
-    tense: tenses,
+    [RuleName.Tense]: tenses,
   };
   if (conjugationGroups) {
-    rules.push("conjugationGroup");
-    ruleOptions.conjugationGroup = conjugationGroups;
+    rules.push(RuleName.ConjugationGroup);
+    ruleOptions[RuleName.ConjugationGroup] = conjugationGroups;
   }
 
-  rules.push("tense");
+  rules.push(RuleName.Tense);
 
   if (random() > 0.5) {
-    rules.push("person");
-    ruleOptions.person = persons;
+    rules.push(RuleName.Person);
+    ruleOptions[RuleName.Person] = persons;
   }
   if (random() > 0.5) {
-    rules.push("number");
-    ruleOptions.number = numbers;
+    rules.push(RuleName.Number);
+    ruleOptions[RuleName.Number] = numbers;
   }
 
   const forms = makeForms(phonology, rules, ruleOptions);
@@ -70,10 +76,10 @@ function makeForms(
   }, {});
 }
 
-function makeConjugationGroups(morphologyType: string) {
+function makeConjugationGroups(morphologyType: MorphologyType) {
   const numberOfGroups = Math.ceil(random() * 3);
 
-  if (morphologyType === "semiFlectional" || numberOfGroups < 2) {
+  if (morphologyType === MorphologyType.SemiFlectional || numberOfGroups < 2) {
     return;
   }
 
@@ -81,31 +87,19 @@ function makeConjugationGroups(morphologyType: string) {
     return `${getOrdinalNumber(idx + 1)} group`;
   });
 }
+
 function makeTenses(phonology: PhonologyType) {
-  const tenses = ["default", "past", "future"];
+  const tenses = [FallbackValue.Default, Tense.Past, Tense.Future];
 
-  // const tenseRandomNbr = random();
-  // if (tenseRandomNbr > 0.3) {
-  //   tenses.push("past");
-  //   tenses.push("future");
-  // }
-  // if (tenseRandomNbr > ) {
-  //   tenses.push("farpast");
-  //   tenses.push("farfuture");
-  // }
-  // if (tenseRandomNbr > 0.8) {
-  //   tenses.push("conditional");
-  // }
-
-  const tenseSystem: Record<string, string> = { default: "default" };
+  const tenseSystem: Record<string, string> = { [FallbackValue.Default]: FallbackValue.Default };
   const requiredTenseMarkers: Array<string> = [];
 
-  ["present", "past", "future", "conditional"].forEach((tense: string) => {
+  ([Tense.Present, Tense.Past, Tense.Future, Tense.Conditional]).forEach((tense) => {
     if (tenses.includes(tense)) {
       tenseSystem[tense] = tense;
     } else {
-      tenseSystem[tense] = "default";
-      tense !== "present" && requiredTenseMarkers.push(tense);
+      tenseSystem[tense] = FallbackValue.Default;
+      tense !== Tense.Present && requiredTenseMarkers.push(tense);
     }
   });
 
@@ -114,7 +108,7 @@ function makeTenses(phonology: PhonologyType) {
 }
 
 function makeTenseMarkers(phonology: PhonologyType, tenses: Array<string>) {
-  return tenses.reduce((prev: any, curr: string) => {
+  return tenses.reduce((prev: Record<string, string>, curr: string) => {
     const length = Math.max(gaussian(2, 2)(), 1);
     return { ...prev, [curr]: `${makeMorpheme(phonology, length)}` };
   }, {});

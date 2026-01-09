@@ -8,17 +8,17 @@ import {
   FormParameters,
   Language,
   Morpheme,
-  tPosCode,
   tRuleName,
 } from "../gobbledygook/interfaces";
 import { posCodesLabels } from "../gobbledygook/constants/pos-codes";
+import { MorphologyType, PosCode } from "../gobbledygook/constants/grammar";
 
 export default function ConLangDescription({ lang }: { lang: Language }) {
   return (
     <Fragment>
       <p>
         The {transliterate(lang, lang.name)} language, pronounced /{lang.name}/,
-        is {(lang.morphologyType === "isolating" && "an") || "a"}{" "}
+        is {(lang.morphologyType === MorphologyType.Analytic && "an") || "a"}{" "}
         {lang.morphologyType} language.
       </p>
 
@@ -174,7 +174,7 @@ function findAppropriateMorpheme(lang: Language, parameters: FormParameters) {
           return true;
         }
         if (parameter === "type") {
-          const label = posCodesLabels[morpheme.type as tPosCode].toLowerCase();
+          const label = posCodesLabels[morpheme.type as PosCode].toLowerCase();
 
           return label === parameters[parameter as keyof FormParameters];
         }

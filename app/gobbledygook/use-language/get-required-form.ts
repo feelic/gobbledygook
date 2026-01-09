@@ -4,10 +4,11 @@ import {
   Context,
   tRuleName,
   PoS,
-  tPosCode,
   FormParameters,
+  FormsType,
 } from "../interfaces";
 import { makeNumber } from "./make-number";
+import { FallbackValue, DeclensionType, DeterminationType, PosCode } from "../constants/grammar";
 
 export function getRequiredForm(
   context: Context,
@@ -22,31 +23,44 @@ export function getRequiredForm(
     );
   }
   const formTableStructure = lang[rule].rules;
-  let usedRules: any = {};
+  const usedRules: Record<string, string> = {};
 
   const selectedRule = morpheme?.irregular || lang[rule].forms;
-  const form = formTableStructure.reduce((formTable, agreementParameter) => {
+  
+  // Navigate through the nested form table structure
+  let currentLevel: FormsType | string = selectedRule;
+  
+  for (const agreementParameter of formTableStructure) {
+    if (typeof currentLevel === "string") {
+      break;
+    }
+
+    // If the current level is an empty object, no form is available
+    if (Object.keys(currentLevel).length === 0) {
+      return null;
+    }
+    
     const originalKey = getPropertyValue(agreementParameter, parameters);
     let key = originalKey;
 
-    if (!formTable[key] && formTable[key] !== "") {
-      key = "1st group";
+    if (!currentLevel[key] && currentLevel[key] !== "") {
+      key = FallbackValue.FirstGroup;
     }
-    if (!formTable[key] && formTable[key] !== "") {
-      key = "default";
+    if (!currentLevel[key] && currentLevel[key] !== "") {
+      key = FallbackValue.Default;
     }
 
-    if (!formTable[key] && formTable[key] !== "" && originalKey === "default") {
-      key = Object.keys(formTable)[0];
+    if (!currentLevel[key] && currentLevel[key] !== "" && originalKey === FallbackValue.Default) {
+      key = Object.keys(currentLevel)[0];
     }
-    if (!formTable[key] && formTable[key] !== "") {
+    if (!currentLevel[key] && currentLevel[key] !== "") {
       throw new Error(
         AgreementException(
           context,
           rule,
           agreementParameter,
           formTableStructure,
-          formTable,
+          currentLevel,
           key,
           parameters,
           morpheme
@@ -54,17 +68,19 @@ export function getRequiredForm(
       );
     }
 
-    if (originalKey !== "default") {
+    if (originalKey !== FallbackValue.Default) {
       usedRules[agreementParameter] = originalKey;
     }
 
-    return formTable[key];
-  }, selectedRule);
-
-  if (!form.replace) {
-    debugger;
+    currentLevel = currentLevel[key];
   }
-  const rawText = form.replace("{morpheme}", morpheme?.morpheme);
+
+  if (typeof currentLevel !== "string") {
+    throw new Error(`Form resolution did not end with a string template for rule ${rule}`);
+  }
+  
+  const form = currentLevel;
+  const rawText = form.replace("{morpheme}", morpheme?.morpheme || "");
 
   if (rawText === "") {
     return null;
@@ -77,19 +93,25 @@ export function getRequiredForm(
   };
 }
 
-function getPOSCode(rule: string, parameters: any): tPosCode {
+function getPOSCode(rule: string, parameters: FormParameters): PosCode {
+  const adjectivalTypes: DeclensionType[] = [
+    DeclensionType.Adjective, 
+    DeclensionType.Comparative, 
+    DeclensionType.Superlative
+  ];
+  
   switch (rule) {
     case "determiners":
-      return "Det";
+      return PosCode.Determiner;
     case "conjugation":
-      return "V";
+      return PosCode.Verb;
     case "declension":
-      if (parameters.type === "adjective") {
-        return "Adj";
+      if (parameters.declensionType && adjectivalTypes.includes(parameters.declensionType)) {
+        return PosCode.Adjective;
       }
-      return "N";
+      return PosCode.Noun;
     case "pronouns":
-      return "Pro";
+      return PosCode.Pronoun;
     default:
       throw new Error(`unknown pos code for rule ${rule}`);
   }
@@ -99,6 +121,9 @@ function getPropertyValue(
   property: string,
   parameters: Record<string, any>
 ): string {
+  if (!parameters) {
+    return FallbackValue.Default;
+  }
   const path = property.split(".");
   const parameterValue = parameters[path[0]];
 
@@ -106,7 +131,7 @@ function getPropertyValue(
     return getPropertyValue(path.slice(1).join(""), parameterValue);
   }
 
-  return parameterValue || "default";
+  return parameterValue || FallbackValue.Default;
 }
 
 function AgreementException(
@@ -143,17 +168,17 @@ export function getDeterminer(
   nounDefinition: EntityDefinition
 ): PoS | null {
   const { gender, number, determination, person, morpheme } = nounDefinition;
-  let owner = {};
+  let owner: EntityDefinition | undefined;
 
   if (!determination) {
     throw new Error(
       "no determination parameter provided with getDeterminer call"
     );
   }
-  if (determination.type === "count") {
+  if (determination.type === DeterminationType.Count) {
     return makeNumber(context, Number(nounDefinition.count));
   }
-  if (determination.type === "possessive") {
+  if (determination.type === DeterminationType.Possessive && determination.owner && context.entities) {
     owner = context.entities[determination.owner];
   }
 

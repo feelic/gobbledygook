@@ -9,6 +9,7 @@ import {
   SentencePartDefinition,
   SentenceTree,
 } from "../interfaces";
+import { DeclensionType, EntityType, Conjunction, PhraseElement, PosCode } from "../constants/grammar";
 
 export function makeObject(
   context: Context,
@@ -30,20 +31,20 @@ export function makeObject(
         return [...prev, np];
       }
 
-      return [...prev, np, getConjunction(context, "and")];
+      return [...prev, np, getConjunction(context, Conjunction.And)];
     }, []);
-    return { pos: "G", content: group };
+    return { pos: PosCode.Group, content: group };
   }
-  if (object.type === "comparison") {
-    return { pos: "G", content: makeComparison(context, object) };
+  if (object.type === EntityType.Comparison) {
+    return { pos: PosCode.Group, content: makeComparison(context, object) };
   }
-  if (object.type === "adjective" || object.type === "adverb") {
+  if (object.type === EntityType.Adjective) {
     const subject = context.sentence?.subject;
     if (!subject) {
       return null;
     }
     return {
-      pos: "G",
+      pos: PosCode.Group,
       content: makeAdjectivePredicate(context, subject, object),
     };
   }
@@ -63,17 +64,20 @@ function makeAdjectivePredicate(
   }
   const { lang } = context;
   const morpheme = lang.morphemeDictionary[id];
-  const { gender, number } = getSubjectInfo(context, subject);
+  const subjectInfo = getSubjectInfo(context, subject);
+  const gender = "gender" in subjectInfo ? subjectInfo.gender : undefined;
+  const number = "number" in subjectInfo ? subjectInfo.number : undefined;
   const { grammaticalCase, adverbs } = object;
   const { declensionGroup } = morpheme;
+  const declensionType = DeclensionType.Adjective;
 
   const AdjPredicate: SentenceTree = [];
 
   lang.syntax.adjectiveFormation.forEach((pos) => {
     switch (pos) {
-      case "adjective":
+      case PhraseElement.Adjective:
         const adjective = getRequiredForm(context, "declension", {
-          type: "adjective",
+          declensionType,
           declensionGroup,
           grammaticalCase,
           gender,
@@ -83,7 +87,7 @@ function makeAdjectivePredicate(
         });
         adjective && AdjPredicate.push(adjective);
         break;
-      case "adverb":
+      case PhraseElement.Adverb:
         if (!adverbs || !adverbs[0]) break;
         const adverb = getAdverb(context, adverbs[0]);
         adverb && AdjPredicate.push(adverb);

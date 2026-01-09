@@ -3,6 +3,8 @@ import { makeVerbPhrase } from "./make-verb-phrase";
 import { makeObject } from "./make-object";
 import { getInterrogative, getInterrogativeParticle } from "./get-invariables";
 import { Language, PoS, SentenceDefinition, SentenceTree } from "../interfaces";
+import { PosCode } from "../constants/grammar";
+import { PhraseElement, SentenceType } from "../constants/grammar";
 
 export function makeSentence(
   lang: Language,
@@ -20,14 +22,14 @@ export function makeSentence(
     references: {},
   };
 
-  const sentenceType = sentence.type || "declarative";
+  const sentenceType = sentence.type || SentenceType.Declarative;
   const sentenceFormation = lang.syntax.sentenceFormations[sentenceType];
 
   const formedSentence: SentenceTree = [];
 
   sentenceFormation.forEach((pos) => {
     switch (pos) {
-      case "subject":
+      case PhraseElement.Subject:
         const subject = makeNounPhrase(context, sentence.subject);
 
         if (!subject) {
@@ -35,27 +37,27 @@ export function makeSentence(
         }
 
         formedSentence.push({
-          pos: "S",
+          pos: PosCode.Subject,
           content: [subject],
         });
         break;
-      case "verb":
+      case PhraseElement.Verb:
         formedSentence.push(
           makeVerbPhrase(context, sentence.subject, sentence.verb)
         );
         return;
-      case "object":
+      case PhraseElement.Object:
         if (!sentence.object) {
           break;
         }
         const obj = makeObject(context, sentence.object);
         obj &&
           formedSentence.push({
-            pos: "Obj",
+            pos: PosCode.Object,
             content: [obj],
           });
         break;
-      case "adverbialClauses":
+      case PhraseElement.AdverbialClauses:
         if (!sentence.adverbialClauses) {
           break;
         }
@@ -63,22 +65,22 @@ export function makeSentence(
           const NP = makeNounPhrase(context, clause);
           NP &&
             formedSentence.push({
-              pos: "AdvP",
+              pos: PosCode.AdverbialPhrase,
               content: [NP],
             });
         });
         break;
-      case "interrogativePronoun":
+      case PhraseElement.InterrogativePronoun:
         if (!sentence.question) {
           break;
         }
         const interrogative = getInterrogative(context, sentence.question);
         interrogative && formedSentence.push(interrogative);
         break;
-      case "interrogativeParticle":
+      case PhraseElement.InterrogativeParticle:
         const interrogativeParticle = getInterrogativeParticle(
           context,
-          "interrogativeParticle"
+          PhraseElement.InterrogativeParticle
         );
         interrogativeParticle && formedSentence.push(interrogativeParticle);
         break;

@@ -1,8 +1,9 @@
 import { Morpheme } from "../../interfaces";
+import { Gender } from "../../constants/grammar";
 
 const dictionary: Record<string, Morpheme> = {
-  horse: { morpheme: "ʃɘval", gender: "masc" },
-  carrot: { morpheme: "kaʁot", gender: "fem" },
+  horse: { morpheme: "ʃɘval", gender: Gender.Masculine },
+  carrot: { morpheme: "kaʁot", gender: Gender.Feminine },
   love: { morpheme: "ɛm" },
   gray: {
     morpheme: "gʁi",
@@ -49,9 +50,9 @@ const dictionary: Record<string, Morpheme> = {
       },
     },
   },
-  beach: { morpheme: "plaʒ", gender: "fem" },
-  chicken: { morpheme: "pulɛ", gender: "masc" },
-  dog: { morpheme: "ʃiɛ̃", gender: "masc" },
+  beach: { morpheme: "plaʒ", gender: Gender.Feminine },
+  chicken: { morpheme: "pulɛ", gender: Gender.Masculine },
+  dog: { morpheme: "ʃiɛ̃", gender: Gender.Masculine },
   pancake: { morpheme: "pɑ̃kɛk" },
   lose: {
     morpheme: "peʁ",
@@ -99,12 +100,12 @@ const dictionary: Record<string, Morpheme> = {
       },
     },
   },
-  group: { morpheme: "gʁup", gender: "masc" },
-  place: { morpheme: "plas", gender: "fem" },
+  group: { morpheme: "gʁup", gender: Gender.Masculine },
+  place: { morpheme: "plas", gender: Gender.Feminine },
   hide: { morpheme: "kaʃ" },
-  treasure: { morpheme: "tʁezoʁ", gender: "masc" },
-  castle: { morpheme: "ʃato", gender: "masc" },
-  tower: { morpheme: "tuʁ", gender: "fem" },
+  treasure: { morpheme: "tʁezoʁ", gender: Gender.Masculine },
+  castle: { morpheme: "ʃato", gender: Gender.Masculine },
+  tower: { morpheme: "tuʁ", gender: Gender.Feminine },
   make: {
     morpheme: "fɛ",
   },
@@ -123,7 +124,7 @@ const dictionary: Record<string, Morpheme> = {
       },
     },
   },
-  car: { morpheme: "vwatyʁ", gender: "fem" },
+  car: { morpheme: "vwatyʁ", gender: Gender.Feminine },
   round: { morpheme: "ʁɔ̃", declensionGroup: "dEnding" },
   ugly: { morpheme: "mɔʃ" },
   dumb: { morpheme: "kɔ̃" },
@@ -139,7 +140,7 @@ const dictionary: Record<string, Morpheme> = {
   really: { morpheme: "vʁɛmɑ̃" },
   so: { morpheme: "osi" },
   tall: { morpheme: "gʁɑ̃" },
-  cave: { morpheme: "gʁot", gender: "fem" },
+  cave: { morpheme: "gʁot", gender: Gender.Feminine },
   // const quantifiers = {
   all: { morpheme: "tu" },
   some: { morpheme: "kelk" },

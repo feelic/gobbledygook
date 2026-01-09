@@ -11,7 +11,20 @@ import {
   randomWithCoef,
 } from "../util/random";
 import { Language, PhonologyType } from "../interfaces";
+import { GrammaticalCase, Gender, AdjectiveCategory } from "../constants/grammar";
 import { makeEmptyForm, makeForms } from "./make-forms";
+import {
+  GENDER_SYSTEMS,
+  GrammaticalNumber,
+  GrammaticalPerson,
+  Gender as GenderEnum,
+  AdjectiveCategory as AdjectiveCategoryEnum,
+  DeterminationType,
+  PhraseElement,
+  FallbackValue,
+  RuleName,
+  enumValues,
+} from "../constants/grammar";
 
 export function generateLanguage(): Language {
   resetExistingWords();
@@ -28,25 +41,25 @@ export function generateLanguage(): Language {
   const { grammaticalCases, declension } = makeCaseSystem(
     morphologyType,
     phonology,
-    genders
+    genders || []
   );
   const pronouns = makePronouns(
     phonology,
     morphologyType,
     grammaticalCases,
-    genders
+    genders || []
   );
   const determiners = makeDeterminers(
     phonology,
     morphologyType,
     grammaticalCases,
-    genders
+    genders || []
   );
 
   const conjugation = makeConjugation(phonology, morphologyType);
 
   const morphemeDictionary = makeDictionary(phonology, {
-    genders,
+    genders: genders || [],
     declensionGroups: declension.declensionGroups,
     conjugationGroups: conjugation.conjugationGroups,
   });
@@ -58,8 +71,8 @@ export function generateLanguage(): Language {
     adjectiveClauseFormation,
     adjectiveFormation,
   } = makeClausesFormation();
-  const adjectives = {
-    preadjectives: ["size", "age", "color"],
+  const adjectives: { preadjectives: AdjectiveCategory[]; postadjectives: AdjectiveCategory[] } = {
+    preadjectives: [AdjectiveCategoryEnum.Size, AdjectiveCategoryEnum.Age, AdjectiveCategoryEnum.Color],
     postadjectives: [],
   };
   const { comparative, superlative, comparisonAdverb } =
@@ -69,7 +82,7 @@ export function generateLanguage(): Language {
   const language: Language = {
     name,
     morphologyType,
-    grammaticalCases,
+    grammaticalCases: grammaticalCases as GrammaticalCase[] | null,
     genders,
     pronouns,
     determiners,
@@ -95,18 +108,13 @@ export function generateLanguage(): Language {
 }
 
 // classifier systems should probably go in there too at some point
-function makeGenders() {
-  const genderSystems = [
-    ["fem", "masc"],
-    ["fem", "masc", "neut"],
-  ];
-
+function makeGenders(): Gender[] | undefined {
   // grammatical genders only occur in 40% of languages
   if (random() > 0.4) {
-    return;
+    return undefined;
   }
 
-  return randomFromArray(genderSystems);
+  return randomFromArray(GENDER_SYSTEMS);
 }
 
 function makeSentenceFormations() {
@@ -117,10 +125,10 @@ function makeSentenceFormations() {
     VOS: { weight: 5 }, // VOS "Loves him she." 5%
   };
   const wordOrdersTemplates = {
-    SOV: ["subject", "object", "verb", "adverbialClauses"],
-    SVO: ["subject", "verb", "adverbialClauses", "object"],
-    VSO: ["verb", "adverbialClauses", "subject", "object"],
-    VOS: ["verb", "adverbialClauses", "object", "subject"],
+    SOV: [PhraseElement.Subject, PhraseElement.Object, PhraseElement.Verb, PhraseElement.AdverbialClauses],
+    SVO: [PhraseElement.Subject, PhraseElement.Verb, PhraseElement.AdverbialClauses, PhraseElement.Object],
+    VSO: [PhraseElement.Verb, PhraseElement.AdverbialClauses, PhraseElement.Subject, PhraseElement.Object],
+    VOS: [PhraseElement.Verb, PhraseElement.AdverbialClauses, PhraseElement.Object, PhraseElement.Subject],
   };
   const wordOrder: "SOV" | "SVO" | "VSO" | "VOS" = randomWithCoef(wordOrders);
 
@@ -139,47 +147,47 @@ function makeInterrogativeForms(declarative: Array<string>) {
     // french / english style
     return {
       polarInterrogative: [...declarative].reverse(),
-      openInterrogative: [...declarative, "interrogativePronoun"].reverse(),
+      openInterrogative: [...declarative, PhraseElement.InterrogativePronoun].reverse(),
     };
   }
 
   if (randomNbr < 0.6) {
     return {
-      polarInterrogative: [...declarative, "interrogativeParticle"],
-      openInterrogative: ["interrogativePronoun", ...declarative],
+      polarInterrogative: [...declarative, PhraseElement.InterrogativeParticle],
+      openInterrogative: [PhraseElement.InterrogativePronoun, ...declarative],
     };
   }
 
   if (randomNbr < 0.8) {
     return {
-      polarInterrogative: ["interrogativeParticle", ...declarative].reverse(),
-      openInterrogative: [...declarative, "interrogativePronoun"].reverse(),
+      polarInterrogative: [PhraseElement.InterrogativeParticle, ...declarative].reverse(),
+      openInterrogative: [...declarative, PhraseElement.InterrogativePronoun].reverse(),
     };
   }
 
   return {
-    polarInterrogative: ["interrogativeParticle", ...declarative].reverse(),
+    polarInterrogative: [PhraseElement.InterrogativeParticle, ...declarative].reverse(),
     openInterrogative: [
-      "interrogativeParticle",
+      PhraseElement.InterrogativeParticle,
       ...declarative,
-      "interrogativePronoun",
+      PhraseElement.InterrogativePronoun,
     ].reverse(),
   };
 }
 // add variation
 function makeClausesFormation() {
   const nounPhraseFormation = [
-    "preposition",
-    "determiner",
-    "preadjectives",
-    "noun",
-    "postadjectives",
-    "genitive",
-    "adjectiveClause",
+    PhraseElement.Preposition,
+    PhraseElement.Determiner,
+    PhraseElement.Preadjectives,
+    PhraseElement.Noun,
+    PhraseElement.Postadjectives,
+    PhraseElement.Genitive,
+    PhraseElement.AdjectiveClause,
   ];
-  const verbPhraseFormation = ["verb", "adverb", "tenseMarker"];
-  const adjectiveClauseFormation = ["subject", "object", "verb"];
-  const adjectiveFormation = ["adjective", "adverb"];
+  const verbPhraseFormation = [PhraseElement.Verb, PhraseElement.Adverb, PhraseElement.TenseMarker];
+  const adjectiveClauseFormation = [PhraseElement.Subject, PhraseElement.Object, PhraseElement.Verb];
+  const adjectiveFormation = [PhraseElement.Adjective, PhraseElement.Adverb];
 
   return {
     nounPhraseFormation,
@@ -196,41 +204,41 @@ function makeDeterminers(
   genders: Array<string>
 ) {
   const ruleOptions: Record<string, Array<string>> = {
-    ["determination.type"]: [
-      "definite",
-      "indefinite",
-      "possessive",
-      "demonstrative",
+    [RuleName.DeterminationType]: [
+      DeterminationType.Definite,
+      DeterminationType.Indefinite,
+      DeterminationType.Possessive,
+      DeterminationType.Demonstrative,
     ],
-    ["owner.person"]: ["firstPerson", "secondPerson", "thirdPerson"],
-    ["owner.gender"]: genders || ["masc", "fem"],
-    person: ["firstPerson", "secondPerson", "thirdPerson"],
-    number: ["singular", "plural"],
-    gender: genders,
+    [RuleName.OwnerPerson]: enumValues(GrammaticalPerson),
+    [RuleName.OwnerGender]: genders || [GenderEnum.Masculine, GenderEnum.Feminine],
+    [RuleName.Person]: enumValues(GrammaticalPerson),
+    [RuleName.Number]: enumValues(GrammaticalNumber),
+    [RuleName.Gender]: genders,
   };
 
   //no determiner system
   if (random() < 0.2) {
     return {
-      rules: ["determination.type"],
-      forms: { default: "" },
+      rules: [RuleName.DeterminationType],
+      forms: { [FallbackValue.Default]: "" },
     };
   }
 
-  let rules = ["determination.type"];
+  let rules = [RuleName.DeterminationType];
   if (genders && genders.length && random() < 0.8) {
-    rules.push("gender");
+    rules.push(RuleName.Gender);
   }
-  if (!rules.includes("gender") && random() < 0.5) {
-    rules.push("owner.person", "owner.gender");
+  if (!rules.includes(RuleName.Gender) && random() < 0.5) {
+    rules.push(RuleName.OwnerPerson, RuleName.OwnerGender);
   }
   if (random() < 0.8) {
-    rules.push("number");
+    rules.push(RuleName.Number);
   }
 
   const forms = makeForms(phonology, rules, ruleOptions);
 
-  forms.properNoun = makeEmptyForm(rules);
+  forms[DeterminationType.ProperNoun] = makeEmptyForm(rules);
   return { rules, forms };
 }
 
@@ -276,16 +284,16 @@ function makeComparisonSystem(phonology: PhonologyType) {
       },
     },
     comparative: [
-      "comparisonAdverb",
-      "adjective",
-      "comparisonPreposition",
-      "comparedObject",
+      PhraseElement.ComparisonAdverb,
+      PhraseElement.Adjective,
+      PhraseElement.ComparisonPreposition,
+      PhraseElement.ComparedObject,
     ],
     superlative: [
-      "determiner",
-      "comparisonAdverb",
-      "adjective",
-      "comparedObject",
+      PhraseElement.Determiner,
+      PhraseElement.ComparisonAdverb,
+      PhraseElement.Adjective,
+      PhraseElement.ComparedObject,
     ],
   };
 }

@@ -1,32 +1,45 @@
 import { SentenceDefinition } from "../interfaces";
+import {
+  GrammaticalCase,
+  GrammaticalNumber,
+  GrammaticalPerson,
+  Gender,
+  Tense,
+  DeterminationType,
+  EntityType,
+  ComparisonDegree,
+  ComparisonValue,
+  SentenceType,
+  InterrogativeWord,
+} from "../constants/grammar";
 
 export const iHaveAPinkCar: SentenceDefinition = {
   transcript: "I have a pink car",
   entities: {
     car: {
       core: "car",
-      type: "object",
+      type: EntityType.Object,
       adjectives: { color: "pink" },
-      number: "singular",
-      determination: { type: "indefinite" },
-      person: "thirdPerson",
+      number: GrammaticalNumber.Singular,
+      determination: { type: DeterminationType.Indefinite },
+      person: GrammaticalPerson.Third,
     },
     i: {
-      number: "singular",
-      person: "firstPerson",
+      number: GrammaticalNumber.Singular,
+      person: GrammaticalPerson.First,
       usePronoun: true,
-      gender: "masc",
+      gender: Gender.Masculine,
     },
   },
   sentence: {
     subject: {
       id: "i",
-      grammaticalCase: "nominative",
+      grammaticalCase: GrammaticalCase.Nominative,
     },
-    verb: { verb: "have", tense: "general" },
+    verb: { verb: "have", tense: Tense.General },
     object: {
       id: "car",
-      grammaticalCase: "accusative",
+      grammaticalCase: GrammaticalCase.Accusative,
     },
   },
 };
@@ -35,28 +48,28 @@ export const iHadAPinkCar: SentenceDefinition = {
   entities: {
     car: {
       core: "car",
-      type: "object",
+      type: EntityType.Object,
       adjectives: { color: "red" },
-      number: "singular",
-      determination: { type: "indefinite" },
-      person: "thirdPerson",
+      number: GrammaticalNumber.Singular,
+      determination: { type: DeterminationType.Indefinite },
+      person: GrammaticalPerson.Third,
     },
     i: {
-      number: "singular",
-      person: "firstPerson",
+      number: GrammaticalNumber.Singular,
+      person: GrammaticalPerson.First,
       usePronoun: true,
-      gender: "masc",
+      gender: Gender.Masculine,
     },
   },
   sentence: {
     subject: {
       id: "i",
-      grammaticalCase: "nominative",
+      grammaticalCase: GrammaticalCase.Nominative,
     },
-    verb: { verb: "have", tense: "past" },
+    verb: { verb: "have", tense: Tense.Past },
     object: {
       id: "car",
-      grammaticalCase: "accusative",
+      grammaticalCase: GrammaticalCase.Accusative,
     },
   },
 };
@@ -66,31 +79,31 @@ export const horseLikesCarrots: SentenceDefinition = {
   entities: {
     horse: {
       core: "horse",
-      type: "animal",
+      type: EntityType.Animal,
       adjectives: { color: "gray", size: "small" },
-      number: "singular",
-      determination: { type: "definite" },
-      person: "thirdPerson",
+      number: GrammaticalNumber.Singular,
+      determination: { type: DeterminationType.Definite },
+      person: GrammaticalPerson.Third,
     },
     carrots: {
       core: "carrot",
-      number: "plural",
+      number: GrammaticalNumber.Plural,
       adjectives: {
         color: "orange",
         size: "small",
       },
-      determination: { type: "definite" },
+      determination: { type: DeterminationType.Definite },
     },
   },
   sentence: {
     subject: {
       id: "horse",
-      grammaticalCase: "nominative",
+      grammaticalCase: GrammaticalCase.Nominative,
     },
-    verb: { verb: "love", tense: "general" },
+    verb: { verb: "love", tense: Tense.General },
     object: {
       id: "carrots",
-      grammaticalCase: "accusative",
+      grammaticalCase: GrammaticalCase.Accusative,
     },
   },
 };
@@ -100,34 +113,34 @@ export const horseLikesCarrotsAndGrass: SentenceDefinition = {
   entities: {
     horse: {
       core: "horse",
-      type: "animal",
-      number: "singular",
-      determination: { type: "definite" },
-      person: "thirdPerson",
+      type: EntityType.Animal,
+      number: GrammaticalNumber.Singular,
+      determination: { type: DeterminationType.Definite },
+      person: GrammaticalPerson.Third,
     },
     carrots: {
       core: "carrot",
-      number: "plural",
+      number: GrammaticalNumber.Plural,
       adjectives: {
         size: "small",
       },
-      determination: { type: "definite" },
+      determination: { type: DeterminationType.Definite },
     },
     grass: {
       core: "grass",
-      number: "singular",
-      determination: { type: "definite" },
+      number: GrammaticalNumber.Singular,
+      determination: { type: DeterminationType.Definite },
     },
   },
   sentence: {
     subject: {
       id: "horse",
-      grammaticalCase: "nominative",
+      grammaticalCase: GrammaticalCase.Nominative,
     },
-    verb: { verb: "love", tense: "general" },
+    verb: { verb: "love", tense: Tense.General },
     object: {
       entities: [{ id: "carrots" }, { id: "grass" }],
-      grammaticalCase: "accusative",
+      grammaticalCase: GrammaticalCase.Accusative,
     },
   },
 };
@@ -137,43 +150,43 @@ export const horseAndDonkeyLikeCarrots: SentenceDefinition = {
   entities: {
     horse: {
       core: "horse",
-      type: "animal",
-      number: "singular",
-      determination: { type: "definite" },
-      person: "thirdPerson",
+      type: EntityType.Animal,
+      number: GrammaticalNumber.Singular,
+      determination: { type: DeterminationType.Definite },
+      person: GrammaticalPerson.Third,
     },
     donkey: {
       core: "donkey",
-      type: "animal",
-      number: "singular",
-      determination: { type: "definite" },
-      person: "thirdPerson",
+      type: EntityType.Animal,
+      number: GrammaticalNumber.Singular,
+      determination: { type: DeterminationType.Definite },
+      person: GrammaticalPerson.Third,
     },
     carrots: {
       core: "carrot",
-      number: "plural",
+      number: GrammaticalNumber.Plural,
       adjectives: {
         size: "small",
       },
-      determination: { type: "definite" },
+      determination: { type: DeterminationType.Definite },
     },
     grass: {
       core: "grass",
-      number: "singular",
+      number: GrammaticalNumber.Singular,
       adjectives: {
         size: "small",
       },
-      determination: { type: "definite" },
+      determination: { type: DeterminationType.Definite },
     },
   },
   sentence: {
     subject: {
       entities: [{ id: "horse" }, { id: "donkey" }],
     },
-    verb: { verb: "love", tense: "general" },
+    verb: { verb: "love", tense: Tense.General },
     object: {
       id: "carrots",
-      grammaticalCase: "accusative",
+      grammaticalCase: GrammaticalCase.Accusative,
     },
   },
 };
@@ -183,44 +196,44 @@ export const horseLikesCarrotsJohnnyGaveHim: SentenceDefinition = {
   entities: {
     horse: {
       core: "horse",
-      type: "animal",
+      type: EntityType.Animal,
       adjectives: { color: "gray", size: "small" },
-      number: "singular",
-      determination: { type: "definite" },
-      person: "thirdPerson",
+      number: GrammaticalNumber.Singular,
+      determination: { type: DeterminationType.Definite },
+      person: GrammaticalPerson.Third,
     },
     carrots: {
       core: "carrot",
-      number: "plural",
+      number: GrammaticalNumber.Plural,
       adjectives: { color: "orange", size: "small" },
-      determination: { type: "definite" },
+      determination: { type: DeterminationType.Definite },
     },
     johnny: {
       core: "dʒonɪ",
-      number: "singular",
-      person: "thirdPerson",
-      determination: { type: "properNoun" },
-      gender: "masc",
+      number: GrammaticalNumber.Singular,
+      person: GrammaticalPerson.Third,
+      determination: { type: DeterminationType.ProperNoun },
+      gender: Gender.Masculine,
     },
   },
   sentence: {
     subject: {
       id: "horse",
-      grammaticalCase: "nominative",
+      grammaticalCase: GrammaticalCase.Nominative,
     },
-    verb: { verb: "love", tense: "general" },
+    verb: { verb: "love", tense: Tense.General },
     object: {
       id: "carrots",
-      grammaticalCase: "accusative",
+      grammaticalCase: GrammaticalCase.Accusative,
       adjectiveClause: {
         subject: {
           id: "johnny",
-          grammaticalCase: "nominative",
+          grammaticalCase: GrammaticalCase.Nominative,
         },
-        verb: { verb: "give", tense: "past" },
+        verb: { verb: "give", tense: Tense.Past },
         object: {
           id: "horse",
-          grammaticalCase: "dative",
+          grammaticalCase: GrammaticalCase.Dative,
         },
       },
     },
@@ -231,27 +244,27 @@ export const sheGoesToTheBeach: SentenceDefinition = {
   transcript: "she goes to the beach",
   entities: {
     she: {
-      number: "singular",
-      person: "thirdPerson",
-      gender: "fem",
+      number: GrammaticalNumber.Singular,
+      person: GrammaticalPerson.Third,
+      gender: Gender.Feminine,
       usePronoun: true,
     },
     beach: {
       core: "beach",
-      number: "singular",
-      determination: { type: "definite" },
+      number: GrammaticalNumber.Singular,
+      determination: { type: DeterminationType.Definite },
     },
   },
   sentence: {
     subject: {
       id: "she",
-      grammaticalCase: "nominative",
+      grammaticalCase: GrammaticalCase.Nominative,
     },
-    verb: { verb: "go", tense: "present" },
+    verb: { verb: "go", tense: Tense.Present },
     adverbialClauses: [
       {
         id: "beach",
-        grammaticalCase: "lative",
+        grammaticalCase: GrammaticalCase.Lative,
       },
     ],
   },
@@ -261,27 +274,27 @@ export const sheHasLostHerDog: SentenceDefinition = {
   transcript: "she lost her dog",
   entities: {
     she: {
-      number: "singular",
-      person: "thirdPerson",
-      gender: "fem",
+      number: GrammaticalNumber.Singular,
+      person: GrammaticalPerson.Third,
+      gender: Gender.Feminine,
       usePronoun: true,
     },
     dog: {
       core: "dog",
-      number: "singular",
-      gender: "masc",
-      determination: { type: "possessive", owner: "she", usePronoun: true },
+      number: GrammaticalNumber.Singular,
+      gender: Gender.Masculine,
+      determination: { type: DeterminationType.Possessive, owner: "she", usePronoun: true },
     },
   },
   sentence: {
     subject: {
       id: "she",
-      grammaticalCase: "nominative",
+      grammaticalCase: GrammaticalCase.Nominative,
     },
-    verb: { verb: "lose", tense: "past" },
+    verb: { verb: "lose", tense: Tense.Past },
     object: {
       id: "dog",
-      grammaticalCase: "accusative",
+      grammaticalCase: GrammaticalCase.Accusative,
     },
   },
 };
@@ -289,27 +302,27 @@ export const sheFoundADog: SentenceDefinition = {
   transcript: "she found a dog",
   entities: {
     she: {
-      number: "singular",
-      person: "thirdPerson",
-      gender: "fem",
+      number: GrammaticalNumber.Singular,
+      person: GrammaticalPerson.Third,
+      gender: Gender.Feminine,
       usePronoun: true,
     },
     dog: {
       core: "dog",
-      number: "singular",
-      gender: "masc",
-      determination: { type: "indefinite" },
+      number: GrammaticalNumber.Singular,
+      gender: Gender.Masculine,
+      determination: { type: DeterminationType.Indefinite },
     },
   },
   sentence: {
     subject: {
       id: "she",
-      grammaticalCase: "nominative",
+      grammaticalCase: GrammaticalCase.Nominative,
     },
-    verb: { verb: "find", tense: "past" },
+    verb: { verb: "find", tense: Tense.Past },
     object: {
       id: "dog",
-      grammaticalCase: "accusative",
+      grammaticalCase: GrammaticalCase.Accusative,
     },
   },
 };
@@ -318,26 +331,26 @@ export const heTakesHisPlace: SentenceDefinition = {
   transcript: "he takes his place",
   entities: {
     he: {
-      number: "singular",
-      person: "thirdPerson",
-      gender: "masc",
+      number: GrammaticalNumber.Singular,
+      person: GrammaticalPerson.Third,
+      gender: Gender.Masculine,
       usePronoun: true,
     },
     place: {
       core: "place",
-      number: "singular",
-      determination: { type: "possessive", owner: "he", usePronoun: true },
+      number: GrammaticalNumber.Singular,
+      determination: { type: DeterminationType.Possessive, owner: "he", usePronoun: true },
     },
   },
   sentence: {
     subject: {
       id: "he",
-      grammaticalCase: "nominative",
+      grammaticalCase: GrammaticalCase.Nominative,
     },
-    verb: { verb: "take", tense: "present" },
+    verb: { verb: "take", tense: Tense.Present },
     object: {
       id: "place",
-      grammaticalCase: "accusative",
+      grammaticalCase: GrammaticalCase.Accusative,
     },
   },
 };
@@ -346,35 +359,35 @@ export const iHaveHiddenMyTreasure: SentenceDefinition = {
   transcript: "i have hidden my treasure in a cave",
   entities: {
     i: {
-      number: "singular",
-      person: "firstPerson",
-      gender: "masc",
+      number: GrammaticalNumber.Singular,
+      person: GrammaticalPerson.First,
+      gender: Gender.Masculine,
       usePronoun: true,
     },
     treasure: {
       core: "treasure",
-      number: "singular",
-      determination: { type: "possessive", owner: "i", usePronoun: true },
+      number: GrammaticalNumber.Singular,
+      determination: { type: DeterminationType.Possessive, owner: "i", usePronoun: true },
     },
     cave: {
       core: "cave",
-      determination: { type: "indefinite" },
+      determination: { type: DeterminationType.Indefinite },
     },
   },
   sentence: {
     subject: {
       id: "i",
-      grammaticalCase: "nominative",
+      grammaticalCase: GrammaticalCase.Nominative,
     },
-    verb: { verb: "hide", tense: "past" },
+    verb: { verb: "hide", tense: Tense.Past },
     object: {
       id: "treasure",
-      grammaticalCase: "accusative",
+      grammaticalCase: GrammaticalCase.Accusative,
     },
     adverbialClauses: [
       {
         id: "cave",
-        grammaticalCase: "inessive",
+        grammaticalCase: GrammaticalCase.Inessive,
       },
     ],
   },
@@ -385,33 +398,33 @@ export const bobsHorseLikesCarrots: SentenceDefinition = {
   entities: {
     horse: {
       core: "horse",
-      type: "animal",
-      number: "singular",
-      person: "thirdPerson",
+      type: EntityType.Animal,
+      number: GrammaticalNumber.Singular,
+      person: GrammaticalPerson.Third,
     },
     carrots: {
       core: "carrot",
-      number: "plural",
-      determination: { type: "definite" },
+      number: GrammaticalNumber.Plural,
+      determination: { type: DeterminationType.Definite },
     },
     bob: {
       core: "bob",
-      number: "singular",
-      person: "thirdPerson",
-      gender: "masc",
-      determination: { type: "properNoun" },
+      number: GrammaticalNumber.Singular,
+      person: GrammaticalPerson.Third,
+      gender: Gender.Masculine,
+      determination: { type: DeterminationType.ProperNoun },
     },
   },
   sentence: {
     subject: {
       id: "horse",
-      grammaticalCase: "nominative",
+      grammaticalCase: GrammaticalCase.Nominative,
       genitive: "bob",
     },
-    verb: { verb: "love", tense: "general", adverbs: ["really"] },
+    verb: { verb: "love", tense: Tense.General, adverbs: ["really"] },
     object: {
       id: "carrots",
-      grammaticalCase: "accusative",
+      grammaticalCase: GrammaticalCase.Accusative,
     },
   },
 };
@@ -420,27 +433,27 @@ export const theyHave31Chickens: SentenceDefinition = {
   transcript: "they have 31 chickens",
   entities: {
     he: {
-      number: "plural",
-      person: "thirdPerson",
-      gender: "masc",
+      number: GrammaticalNumber.Plural,
+      person: GrammaticalPerson.Third,
+      gender: Gender.Masculine,
       usePronoun: true,
     },
     chickens: {
       core: "chicken",
-      number: "plural",
-      determination: { type: "count" },
+      number: GrammaticalNumber.Plural,
+      determination: { type: DeterminationType.Count },
       count: 31,
     },
   },
   sentence: {
     subject: {
       id: "he",
-      grammaticalCase: "nominative",
+      grammaticalCase: GrammaticalCase.Nominative,
     },
-    verb: { verb: "have", tense: "present" },
+    verb: { verb: "have", tense: Tense.Present },
     object: {
       id: "chickens",
-      grammaticalCase: "accusative",
+      grammaticalCase: GrammaticalCase.Accusative,
     },
   },
 };
@@ -450,8 +463,8 @@ export const theHorseIsUgly: SentenceDefinition = {
   entities: {
     horse: {
       core: "horse",
-      number: "singular",
-      person: "thirdPerson",
+      number: GrammaticalNumber.Singular,
+      person: GrammaticalPerson.Third,
     },
     ugly: {
       core: "ugly",
@@ -460,13 +473,13 @@ export const theHorseIsUgly: SentenceDefinition = {
   sentence: {
     subject: {
       id: "horse",
-      grammaticalCase: "nominative",
+      grammaticalCase: GrammaticalCase.Nominative,
     },
-    verb: { verb: "be", tense: "present" },
+    verb: { verb: "be", tense: Tense.Present },
     object: {
       id: "ugly",
-      type: "adjective",
-      grammaticalCase: "accusative",
+      type: EntityType.Adjective,
+      grammaticalCase: GrammaticalCase.Accusative,
     },
   },
 };
@@ -476,10 +489,10 @@ export const bobIsUglyAndStupid: SentenceDefinition = {
   entities: {
     bob: {
       core: "bob",
-      number: "singular",
-      gender: "masc",
-      person: "thirdPerson",
-      determination: { type: "properNoun" },
+      number: GrammaticalNumber.Singular,
+      gender: Gender.Masculine,
+      person: GrammaticalPerson.Third,
+      determination: { type: DeterminationType.ProperNoun },
     },
     ugly: {
       core: "ugly",
@@ -491,13 +504,13 @@ export const bobIsUglyAndStupid: SentenceDefinition = {
   sentence: {
     subject: {
       id: "bob",
-      grammaticalCase: "nominative",
+      grammaticalCase: GrammaticalCase.Nominative,
     },
-    verb: { verb: "be", tense: "present" },
+    verb: { verb: "be", tense: Tense.Present },
     object: {
       entities: [{ id: "ugly", adverbs: ["very"] }, { id: "stupid" }],
-      type: "adjective",
-      grammaticalCase: "accusative",
+      type: EntityType.Adjective,
+      grammaticalCase: GrammaticalCase.Accusative,
     },
   },
 };
@@ -507,17 +520,17 @@ export const jezIsTallerThanMark: SentenceDefinition = {
   entities: {
     mark: {
       core: "mɑrk",
-      number: "singular",
-      gender: "masc",
-      person: "thirdPerson",
-      determination: { type: "properNoun" },
+      number: GrammaticalNumber.Singular,
+      gender: Gender.Masculine,
+      person: GrammaticalPerson.Third,
+      determination: { type: DeterminationType.ProperNoun },
     },
     jez: {
       core: "dʒez",
-      number: "singular",
-      gender: "masc",
-      person: "thirdPerson",
-      determination: { type: "properNoun" },
+      number: GrammaticalNumber.Singular,
+      gender: Gender.Masculine,
+      person: GrammaticalPerson.Third,
+      determination: { type: DeterminationType.ProperNoun },
     },
     tall: {
       core: "tall",
@@ -526,14 +539,14 @@ export const jezIsTallerThanMark: SentenceDefinition = {
   sentence: {
     subject: {
       id: "jez",
-      grammaticalCase: "nominative",
+      grammaticalCase: GrammaticalCase.Nominative,
     },
-    verb: { verb: "be", tense: "present" },
+    verb: { verb: "be", tense: Tense.Present },
     object: {
       quality: "tall",
-      degree: "comparative",
-      type: "comparison",
-      value: "positive",
+      degree: ComparisonDegree.Comparative,
+      type: EntityType.Comparison,
+      value: ComparisonValue.Positive,
       object: "mark",
     },
   },
@@ -543,16 +556,16 @@ export const johnnyIsTheTallestOfTheGroup: SentenceDefinition = {
   entities: {
     johnny: {
       core: "dʒonɪ",
-      number: "singular",
-      person: "thirdPerson",
-      determination: { type: "properNoun" },
-      gender: "masc",
+      number: GrammaticalNumber.Singular,
+      person: GrammaticalPerson.Third,
+      determination: { type: DeterminationType.ProperNoun },
+      gender: Gender.Masculine,
     },
     group: {
       core: "group",
-      number: "singular",
-      person: "thirdPerson",
-      determination: { type: "definite" },
+      number: GrammaticalNumber.Singular,
+      person: GrammaticalPerson.Third,
+      determination: { type: DeterminationType.Definite },
     },
     tall: {
       core: "tall",
@@ -561,14 +574,14 @@ export const johnnyIsTheTallestOfTheGroup: SentenceDefinition = {
   sentence: {
     subject: {
       id: "johnny",
-      grammaticalCase: "nominative",
+      grammaticalCase: GrammaticalCase.Nominative,
     },
-    verb: { verb: "be", tense: "present" },
+    verb: { verb: "be", tense: Tense.Present },
     object: {
       quality: "tall",
-      degree: "superlative",
-      type: "comparison",
-      value: "positive",
+      degree: ComparisonDegree.Superlative,
+      type: EntityType.Comparison,
+      value: ComparisonValue.Positive,
       object: "group",
     },
   },
@@ -579,8 +592,8 @@ export const theDogSmellsReallyBad: SentenceDefinition = {
   entities: {
     dog: {
       core: "dog",
-      number: "singular",
-      person: "thirdPerson",
+      number: GrammaticalNumber.Singular,
+      person: GrammaticalPerson.Third,
     },
     bad: {
       core: "bad",
@@ -589,14 +602,14 @@ export const theDogSmellsReallyBad: SentenceDefinition = {
   sentence: {
     subject: {
       id: "dog",
-      grammaticalCase: "nominative",
+      grammaticalCase: GrammaticalCase.Nominative,
     },
-    verb: { verb: "smell", tense: "present" },
+    verb: { verb: "smell", tense: Tense.Present },
     object: {
       id: "bad",
       adverbs: ["very"],
-      type: "adjective",
-      grammaticalCase: "accusative",
+      type: EntityType.Adjective,
+      grammaticalCase: GrammaticalCase.Accusative,
     },
   },
 };
@@ -606,14 +619,14 @@ export const theCastleTowerIsRound: SentenceDefinition = {
   entities: {
     castle: {
       core: "castle",
-      type: "object",
-      number: "singular",
-      person: "thirdPerson",
+      type: EntityType.Object,
+      number: GrammaticalNumber.Singular,
+      person: GrammaticalPerson.Third,
     },
     tower: {
       core: "tower",
-      number: "singular",
-      determination: { type: "definite", owner: "castle" },
+      number: GrammaticalNumber.Singular,
+      determination: { type: DeterminationType.Definite, owner: "castle" },
     },
     round: {
       core: "round",
@@ -622,36 +635,34 @@ export const theCastleTowerIsRound: SentenceDefinition = {
   sentence: {
     subject: {
       id: "tower",
-      grammaticalCase: "nominative",
+      grammaticalCase: GrammaticalCase.Nominative,
       genitive: "castle",
     },
-    verb: { verb: "be", tense: "present" },
+    verb: { verb: "be", tense: Tense.Present },
     object: {
       id: "round",
-      type: "adjective",
-      grammaticalCase: "accusative",
+      type: EntityType.Adjective,
+      grammaticalCase: GrammaticalCase.Accusative,
     },
   },
 };
-
-// export const theChickenAndTheThiefAreGone: SentenceDefinition = {};
 
 export const sheSings: SentenceDefinition = {
   transcript: "She sings",
   entities: {
     she: {
-      number: "singular",
-      person: "thirdPerson",
-      gender: "fem",
+      number: GrammaticalNumber.Singular,
+      person: GrammaticalPerson.Third,
+      gender: Gender.Feminine,
       usePronoun: true,
     },
   },
   sentence: {
     subject: {
       id: "she",
-      grammaticalCase: "nominative",
+      grammaticalCase: GrammaticalCase.Nominative,
     },
-    verb: { verb: "sing", tense: "present" },
+    verb: { verb: "sing", tense: Tense.Present },
   },
 };
 
@@ -659,67 +670,67 @@ export const whoIsThis: SentenceDefinition = {
   transcript: "Who is he?",
   entities: {
     he: {
-      number: "singular",
-      person: "thirdPerson",
-      gender: "masc",
+      number: GrammaticalNumber.Singular,
+      person: GrammaticalPerson.Third,
+      gender: Gender.Masculine,
       usePronoun: true,
     },
   },
   sentence: {
-    type: "openInterrogative",
-    question: "who",
+    type: SentenceType.OpenInterrogative,
+    question: InterrogativeWord.Who,
     subject: {
       id: "he",
-      grammaticalCase: "nominative",
+      grammaticalCase: GrammaticalCase.Nominative,
     },
-    verb: { verb: "be", tense: "present" },
+    verb: { verb: "be", tense: Tense.Present },
   },
 };
 export const whatIsThis: SentenceDefinition = {
   transcript: "What is this?",
   entities: {
     this: {
-      number: "singular",
-      person: "thirdPerson",
-      gender: "masc",
+      number: GrammaticalNumber.Singular,
+      person: GrammaticalPerson.Third,
+      gender: Gender.Masculine,
       usePronoun: true,
     },
   },
   sentence: {
-    type: "openInterrogative",
-    question: "what",
+    type: SentenceType.OpenInterrogative,
+    question: InterrogativeWord.What,
     subject: {
       id: "this",
-      grammaticalCase: "nominative",
+      grammaticalCase: GrammaticalCase.Nominative,
     },
-    verb: { verb: "be", tense: "present" },
+    verb: { verb: "be", tense: Tense.Present },
   },
 };
 export const areYouReady: SentenceDefinition = {
   transcript: "Are you ready?",
   entities: {
     you: {
-      number: "plural",
-      person: "secondPerson",
-      gender: "masc",
+      number: GrammaticalNumber.Plural,
+      person: GrammaticalPerson.Second,
+      gender: Gender.Masculine,
       usePronoun: true,
-      determination: { type: "demonstrative" },
+      determination: { type: DeterminationType.Demonstrative },
     },
     ready: {
       core: "ready",
     },
   },
   sentence: {
-    type: "polarInterrogative",
+    type: SentenceType.PolarInterrogative,
     subject: {
       id: "you",
-      grammaticalCase: "nominative",
+      grammaticalCase: GrammaticalCase.Nominative,
     },
-    verb: { verb: "be", tense: "present" },
+    verb: { verb: "be", tense: Tense.Present },
     object: {
       id: "ready",
-      type: "adjective",
-      grammaticalCase: "accusative",
+      type: EntityType.Adjective,
+      grammaticalCase: GrammaticalCase.Accusative,
     },
   },
 };
@@ -728,23 +739,23 @@ export const whereIsTheDog: SentenceDefinition = {
   entities: {
     dog: {
       core: "dog",
-      number: "singular",
-      person: "thirdPerson",
-      determination: { type: "definite" },
-      gender: "masc",
+      number: GrammaticalNumber.Singular,
+      person: GrammaticalPerson.Third,
+      determination: { type: DeterminationType.Definite },
+      gender: Gender.Masculine,
     },
     ready: {
       core: "ready",
     },
   },
   sentence: {
-    type: "openInterrogative",
-    question: "where",
+    type: SentenceType.OpenInterrogative,
+    question: InterrogativeWord.Where,
     subject: {
       id: "dog",
-      grammaticalCase: "nominative",
+      grammaticalCase: GrammaticalCase.Nominative,
     },
-    verb: { verb: "be", tense: "present" },
+    verb: { verb: "be", tense: Tense.Present },
   },
 };
 export const whyAreTheseChickenHere: SentenceDefinition = {
@@ -752,27 +763,27 @@ export const whyAreTheseChickenHere: SentenceDefinition = {
   entities: {
     chicken: {
       core: "chicken",
-      number: "plural",
-      person: "thirdPerson",
-      determination: { type: "demonstrative" },
-      gender: "masc",
+      number: GrammaticalNumber.Plural,
+      person: GrammaticalPerson.Third,
+      determination: { type: DeterminationType.Demonstrative },
+      gender: Gender.Masculine,
     },
     here: {
       core: "here",
     },
   },
   sentence: {
-    type: "openInterrogative",
-    question: "why",
+    type: SentenceType.OpenInterrogative,
+    question: InterrogativeWord.Why,
     subject: {
       id: "chicken",
-      grammaticalCase: "nominative",
+      grammaticalCase: GrammaticalCase.Nominative,
     },
-    verb: { verb: "be", tense: "present" },
+    verb: { verb: "be", tense: Tense.Present },
     adverbialClauses: [
       {
         id: "here",
-        grammaticalCase: "locative",
+        grammaticalCase: GrammaticalCase.Locative,
       },
     ],
   },
@@ -781,9 +792,9 @@ export const whyAreYouSoDumb: SentenceDefinition = {
   transcript: "Why are you so dumb?",
   entities: {
     you: {
-      number: "singular",
-      person: "secondPerson",
-      gender: "masc",
+      number: GrammaticalNumber.Singular,
+      person: GrammaticalPerson.Second,
+      gender: Gender.Masculine,
       usePronoun: true,
     },
     dumb: {
@@ -791,17 +802,17 @@ export const whyAreYouSoDumb: SentenceDefinition = {
     },
   },
   sentence: {
-    type: "openInterrogative",
-    question: "why",
+    type: SentenceType.OpenInterrogative,
+    question: InterrogativeWord.Why,
     subject: {
       id: "you",
-      grammaticalCase: "nominative",
+      grammaticalCase: GrammaticalCase.Nominative,
     },
-    verb: { verb: "be", tense: "present" },
+    verb: { verb: "be", tense: Tense.Present },
     object: {
       entities: [{ id: "dumb", adverbs: ["so"] }],
-      type: "adjective",
-      grammaticalCase: "accusative",
+      type: EntityType.Adjective,
+      grammaticalCase: GrammaticalCase.Accusative,
     },
   },
 };
@@ -810,15 +821,15 @@ export const iMakeAPancakeForMyDog: SentenceDefinition = {
   transcript: "I make a pancake for my dog",
   entities: {
     i: {
-      number: "singular",
+      number: GrammaticalNumber.Singular,
       usePronoun: true,
-      person: "firstPerson",
-      gender: "masc",
+      person: GrammaticalPerson.First,
+      gender: Gender.Masculine,
     },
     pancake: {
       core: "pancake",
-      number: "singular",
-      determination: { type: "indefinite" },
+      number: GrammaticalNumber.Singular,
+      determination: { type: DeterminationType.Indefinite },
     },
     dog: {
       core: "dog",
@@ -827,18 +838,18 @@ export const iMakeAPancakeForMyDog: SentenceDefinition = {
   sentence: {
     subject: {
       id: "i",
-      grammaticalCase: "nominative",
+      grammaticalCase: GrammaticalCase.Nominative,
     },
-    verb: { verb: "make", tense: "present" },
+    verb: { verb: "make", tense: Tense.Present },
     object: {
       id: "pancake",
-      grammaticalCase: "accusative",
+      grammaticalCase: GrammaticalCase.Accusative,
     },
     adverbialClauses: [
       {
         id: "dog",
-        determination: { type: "possessive", owner: "i", usePronoun: true },
-        grammaticalCase: "benefactive",
+        determination: { type: DeterminationType.Possessive, owner: "i", usePronoun: true },
+        grammaticalCase: GrammaticalCase.Benefactive,
       },
     ],
   },

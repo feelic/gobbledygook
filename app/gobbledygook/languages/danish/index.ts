@@ -1,4 +1,18 @@
 import { Language } from "../../interfaces";
+import { 
+  AdjectiveCategory,
+  RuleName,
+  GrammaticalPerson,
+  GrammaticalCase,
+  GrammaticalNumber,
+  Gender,
+  DeterminationType,
+  DeclensionType,
+  Tense,
+  FallbackValue,
+  SentenceType,
+  PhraseElement,
+} from "../../constants/grammar";
 import morphemeDictionary from "./dictionary";
 
 export const danish: Language = {
@@ -6,158 +20,157 @@ export const danish: Language = {
   morphemeDictionary,
   grammaticalCases: null,
   pronouns: {
-    rules: ["person", "grammaticalCase", "gender", "number"],
+    rules: [RuleName.Person, RuleName.GrammaticalCase, RuleName.Gender, RuleName.Number],
     forms: {
-      firstPerson: {
-        default: { default: { singular: "jɑ", plural: "vi" } },
+      [GrammaticalPerson.First]: {
+        [FallbackValue.Default]: { [FallbackValue.Default]: { [GrammaticalNumber.Singular]: "jɑ", [GrammaticalNumber.Plural]: "vi" } },
       },
-      secondPerson: {
-        default: { default: { singular: "du", plural: "i" } },
+      [GrammaticalPerson.Second]: {
+        [FallbackValue.Default]: { [FallbackValue.Default]: { [GrammaticalNumber.Singular]: "du", [GrammaticalNumber.Plural]: "i" } },
       },
-      thirdPerson: {
-        nominative: {
-          default: { default: "hæn", plural: "di" },
-          masc: { singular: "hæn", plural: "di" },
-          fem: { default: "hun", plural: "di" },
+      [GrammaticalPerson.Third]: {
+        [GrammaticalCase.Nominative]: {
+          [FallbackValue.Default]: { [FallbackValue.Default]: "hæn", [GrammaticalNumber.Plural]: "di" },
+          [Gender.Masculine]: { [GrammaticalNumber.Singular]: "hæn", [GrammaticalNumber.Plural]: "di" },
+          [Gender.Feminine]: { [FallbackValue.Default]: "hun", [GrammaticalNumber.Plural]: "di" },
         },
-        accusative: {
-          default: { singular: "hɑm", plural: "dem" },
-          masc: { singular: "hɑm", plural: "dem" },
-          fem: { singular: "henə", plural: "dem" },
+        [GrammaticalCase.Accusative]: {
+          [FallbackValue.Default]: { [GrammaticalNumber.Singular]: "hɑm", [GrammaticalNumber.Plural]: "dem" },
+          [Gender.Masculine]: { [GrammaticalNumber.Singular]: "hɑm", [GrammaticalNumber.Plural]: "dem" },
+          [Gender.Feminine]: { [GrammaticalNumber.Singular]: "henə", [GrammaticalNumber.Plural]: "dem" },
         },
-        dative: {
-          default: { singular: "hɑm", plural: "dem" },
-          masc: { singular: "hɑm", plural: "dem" },
-          fem: { singular: "henə", plural: "dem" },
+        [GrammaticalCase.Dative]: {
+          [FallbackValue.Default]: { [GrammaticalNumber.Singular]: "hɑm", [GrammaticalNumber.Plural]: "dem" },
+          [Gender.Masculine]: { [GrammaticalNumber.Singular]: "hɑm", [GrammaticalNumber.Plural]: "dem" },
+          [Gender.Feminine]: { [GrammaticalNumber.Singular]: "henə", [GrammaticalNumber.Plural]: "dem" },
         },
-        genitive: {
-          default: { default: "" },
-          masc: { singular: "hæns", plural: "dɛrəs" },
-          fem: { singular: "henəs", plural: "dɛrəs" },
+        [GrammaticalCase.Genitive]: {
+          [FallbackValue.Default]: { [FallbackValue.Default]: "" },
+          [Gender.Masculine]: { [GrammaticalNumber.Singular]: "hæns", [GrammaticalNumber.Plural]: "dɛrəs" },
+          [Gender.Feminine]: { [GrammaticalNumber.Singular]: "henəs", [GrammaticalNumber.Plural]: "dɛrəs" },
         },
       },
     },
   },
   determiners: {
     rules: [
-      "determination.type",
-      "owner.person",
-      "owner.gender",
-      "gender",
-      "number",
+      RuleName.DeterminationType,
+      RuleName.OwnerPerson,
+      RuleName.OwnerGender,
+      RuleName.Gender,
+      RuleName.Number,
     ],
     forms: {
-      definite: {
-        default: {
-          default: {
-            default: { singular: "den", plural: "de" },
-            neuter: { singular: "det", plural: "de" },
+      [DeterminationType.Definite]: {
+        [FallbackValue.Default]: {
+          [FallbackValue.Default]: {
+            [FallbackValue.Default]: { [GrammaticalNumber.Singular]: "den", [GrammaticalNumber.Plural]: "de" },
+            [Gender.Neuter]: { [GrammaticalNumber.Singular]: "det", [GrammaticalNumber.Plural]: "de" },
           },
         },
       },
-      indefinite: {
-        default: {
-          default: {
-            default: { singular: "en", plural: "" },
-            neuter: { singular: "et", plural: "" },
+      [DeterminationType.Indefinite]: {
+        [FallbackValue.Default]: {
+          [FallbackValue.Default]: {
+            [FallbackValue.Default]: { [GrammaticalNumber.Singular]: "en", [GrammaticalNumber.Plural]: "" },
+            [Gender.Neuter]: { [GrammaticalNumber.Singular]: "et", [GrammaticalNumber.Plural]: "" },
           },
         },
       },
-      properNoun: {
-        default: { default: { default: { singular: "", plural: "" } } },
+      [DeterminationType.ProperNoun]: {
+        [FallbackValue.Default]: { [FallbackValue.Default]: { [FallbackValue.Default]: { [GrammaticalNumber.Singular]: "", [GrammaticalNumber.Plural]: "" } } },
       },
-      demonstrative: {
-        default: {
-          default: {
-            default: { singular: "dɛnə", plural: "disə" },
-            neutral: { singular: "dɛtə", plural: "disə" },
+      [DeterminationType.Demonstrative]: {
+        [FallbackValue.Default]: {
+          [FallbackValue.Default]: {
+            [FallbackValue.Default]: { [GrammaticalNumber.Singular]: "dɛnə", [GrammaticalNumber.Plural]: "disə" },
+            [Gender.Neuter]: { [GrammaticalNumber.Singular]: "dɛtə", [GrammaticalNumber.Plural]: "disə" },
           },
         },
       },
-      distal: {
-        default: { default: { default: { singular: "", plural: "" } } },
+      [DeterminationType.Distal]: {
+        [FallbackValue.Default]: { [FallbackValue.Default]: { [FallbackValue.Default]: { [GrammaticalNumber.Singular]: "", [GrammaticalNumber.Plural]: "" } } },
       },
-      possessive: {
-        firstPerson: {
-          default: { default: { singular: "", plural: "" } },
-          masc: { default: { singular: "", plural: "" } },
-          fem: { default: { singular: "", plural: "" } },
+      [DeterminationType.Possessive]: {
+        [GrammaticalPerson.First]: {
+          [FallbackValue.Default]: { [FallbackValue.Default]: { [GrammaticalNumber.Singular]: "", [GrammaticalNumber.Plural]: "" } },
+          [Gender.Masculine]: { [FallbackValue.Default]: { [GrammaticalNumber.Singular]: "", [GrammaticalNumber.Plural]: "" } },
+          [Gender.Feminine]: { [FallbackValue.Default]: { [GrammaticalNumber.Singular]: "", [GrammaticalNumber.Plural]: "" } },
         },
-        secondPerson: {
-          default: { default: { singular: "", plural: "" } },
-          masc: { default: { singular: "", plural: "" } },
-          fem: { default: { singular: "", plural: "" } },
+        [GrammaticalPerson.Second]: {
+          [FallbackValue.Default]: { [FallbackValue.Default]: { [GrammaticalNumber.Singular]: "", [GrammaticalNumber.Plural]: "" } },
+          [Gender.Masculine]: { [FallbackValue.Default]: { [GrammaticalNumber.Singular]: "", [GrammaticalNumber.Plural]: "" } },
+          [Gender.Feminine]: { [FallbackValue.Default]: { [GrammaticalNumber.Singular]: "", [GrammaticalNumber.Plural]: "" } },
         },
-        thirdPerson: {
-          default: { default: { singular: "", plural: "" } },
-          masc: { default: { singular: "", plural: "" } },
-          fem: { default: { singular: "", plural: "" } },
+        [GrammaticalPerson.Third]: {
+          [FallbackValue.Default]: { [FallbackValue.Default]: { [GrammaticalNumber.Singular]: "", [GrammaticalNumber.Plural]: "" } },
+          [Gender.Masculine]: { [FallbackValue.Default]: { [GrammaticalNumber.Singular]: "", [GrammaticalNumber.Plural]: "" } },
+          [Gender.Feminine]: { [FallbackValue.Default]: { [GrammaticalNumber.Singular]: "", [GrammaticalNumber.Plural]: "" } },
         },
       },
     },
   },
   declension: {
-    rules: ["type", "grammaticalCase", "number"],
+    rules: [RuleName.DeclensionType, RuleName.GrammaticalCase, RuleName.Number],
     forms: {
-      default: {
-        default: { singular: "{morpheme}", plural: "{morpheme}" },
-
-        genitive: { singular: "{morpheme}s", plural: "{morpheme}s" },
+      [FallbackValue.Default]: {
+        [FallbackValue.Default]: { [GrammaticalNumber.Singular]: "{morpheme}", [GrammaticalNumber.Plural]: "{morpheme}" },
+        [GrammaticalCase.Genitive]: { [GrammaticalNumber.Singular]: "{morpheme}s", [GrammaticalNumber.Plural]: "{morpheme}s" },
       },
-      adjective: {
-        default: { default: "{morpheme}" },
+      [DeclensionType.Adjective]: {
+        [FallbackValue.Default]: { [FallbackValue.Default]: "{morpheme}" },
       },
-      comparative: {
-        default: { default: "{morpheme}" },
+      [DeclensionType.Comparative]: {
+        [FallbackValue.Default]: { [FallbackValue.Default]: "{morpheme}" },
       },
-      superlative: {
-        default: { default: "{morpheme}" },
+      [DeclensionType.Superlative]: {
+        [FallbackValue.Default]: { [FallbackValue.Default]: "{morpheme}" },
       },
     },
     prepositions: {
-      lative: "til",
-      inessive: "i",
-      benefactive: "til",
+      [GrammaticalCase.Lative]: "til",
+      [GrammaticalCase.Inessive]: "i",
+      [GrammaticalCase.Benefactive]: "til",
     },
   },
   conjugation: {
-    rules: ["tense"],
+    rules: [RuleName.Tense],
     forms: {
-      default: "{morpheme}",
+      [FallbackValue.Default]: "{morpheme}",
     },
   },
   syntax: {
     nounPhraseFormation: [
-      "preposition",
-      "determiner",
-      "genitive",
-      "preadjectives",
-      "noun",
-      "adjectiveClause",
+      PhraseElement.Preposition,
+      PhraseElement.Determiner,
+      PhraseElement.Genitive,
+      PhraseElement.Preadjectives,
+      PhraseElement.Noun,
+      PhraseElement.AdjectiveClause,
     ],
-    verbPhraseFormation: ["adverb", "verb"],
+    verbPhraseFormation: [PhraseElement.Adverb, PhraseElement.Verb],
     sentenceFormations: {
-      declarative: ["subject", "verb", "object", "adverbialClauses"],
-      polarInterrogative: ["verb", "subject", "object"],
-      openInterrogative: ["interrogativePronoun", "verb", "subject", "object"],
+      [SentenceType.Declarative]: [PhraseElement.Subject, PhraseElement.Verb, PhraseElement.Object, PhraseElement.AdverbialClauses],
+      [SentenceType.PolarInterrogative]: [PhraseElement.Verb, PhraseElement.Subject, PhraseElement.Object],
+      [SentenceType.OpenInterrogative]: [PhraseElement.InterrogativePronoun, PhraseElement.Verb, PhraseElement.Subject, PhraseElement.Object],
     },
-    adjectiveClauseFormation: ["relativePronoun", "subject", "verb", "object"],
-    adjectiveFormation: ["adverb", "adjective"],
+    adjectiveClauseFormation: [PhraseElement.RelativePronoun, PhraseElement.Subject, PhraseElement.Verb, PhraseElement.Object],
+    adjectiveFormation: [PhraseElement.Adverb, PhraseElement.Adjective],
     adjectives: {
-      preadjectives: ["size", "age", "color"],
+      preadjectives: [AdjectiveCategory.Size, AdjectiveCategory.Age, AdjectiveCategory.Color],
+      postadjectives: [],
     },
-
     comparative: [
-      "comparisonAdverb",
-      "adjective",
-      "comparisonPreposition",
-      "comparedObject",
+      PhraseElement.ComparisonAdverb,
+      PhraseElement.Adjective,
+      PhraseElement.ComparisonPreposition,
+      PhraseElement.ComparedObject,
     ],
     superlative: [
-      "determiner",
-      "comparisonAdverb",
-      "adjective",
-      "comparedObject",
+      PhraseElement.Determiner,
+      PhraseElement.ComparisonAdverb,
+      PhraseElement.Adjective,
+      PhraseElement.ComparedObject,
     ],
   },
   comparisonAdverb: {
@@ -212,12 +225,12 @@ export const danish: Language = {
   vowels: {
     æ: { weight: 1, translit: "a" },
     ɑ: { weight: 1, translit: "a" },
-    ɒ: { weight: 1, translit: "o" },
+        ɒ: { weight: 1, translit: "o" },
     ɔ: { weight: 1, translit: "o" },
     ɪ: { weight: 1, translit: "i" },
     e: { weight: 1, translit: "e" },
     ɛ: { weight: 1, translit: "e" },
-    ʌ: { weight: 1, translit: "u" },
+        ʌ: { weight: 1, translit: "u" },
     ʊ: { weight: 1, translit: "u" },
     // eɪ: { weight: 1, translit: "a" },
     i: { weight: 1, translit: "i" },

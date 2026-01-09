@@ -44,7 +44,11 @@ export default function Sentence({
           in {transliterate(lang, lang.name)}
           <br />
           <span className="errorDetail">
-            error {error.stack.split("\n").slice(1, 2)}
+            {error.stack.split("\n").map((line: string, index: number) => (
+              <span key={index}>
+                {line} <br />
+                </span>
+                ))}
           </span>
         </p>
       </>
