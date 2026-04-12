@@ -21,7 +21,7 @@
     "@types/seedrandom": "^3.0.5",
     "eslint": "8.39.0",
     "eslint-config-next": "13.4.0",
-    "next": "13.4.0",
+    "next": "15.5.15",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sass": "^1.62.1",
